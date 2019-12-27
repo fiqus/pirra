@@ -1,4 +1,4 @@
-(Working progress)
+(Work in progress)
 
 # Pirra - Facturas electronicas AFIP como Zeus manda
 
