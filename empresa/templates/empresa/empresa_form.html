@@ -1,0 +1,29 @@
+{% extends "base_form.html" %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block form_title %}
+    Datos de tu empresa
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Empresa</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Configuracion</li>
+{% endblock %}
+
+{% block form_container %}
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons submit="Guardar" %}{% endbuttons %}
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            $("form").validate();
+        });
+    </script>
+    <script src="{% static "js/empresa_form.js" %}"></script>
+{% endblock %}

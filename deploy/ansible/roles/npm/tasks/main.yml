@@ -1,0 +1,9 @@
+---
+
+- name: Running NPM install
+  npm: path={{project_path}}
+
+- name: NPM Build
+  command: npm run build
+  args:
+    chdir: "{{ project_path }}"

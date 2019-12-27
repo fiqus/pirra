@@ -1,0 +1,137 @@
+[
+  {
+    "fields": {
+      "nombre": "Canada (F\u00edsica)",
+      "cuit": "50000002043",
+      "id_afip": "204"
+    },
+    "model": "afip.paisdestino",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "Estados Unidos (F\u00edsica)",
+      "cuit": "50000002124",
+      "id_afip": "212"
+    },
+    "model": "afip.paisdestino",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "Costa Rica (F\u00edsica)",
+      "cuit": "50000001586",
+      "id_afip": "206"
+    },
+    "model": "afip.paisdestino",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "Costa Rica (Jur\u00eddica)",
+      "cuit": "55000001588",
+      "id_afip": "206"
+    },
+    "model": "afip.paisdestino",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "nombre": "Estados Unidos (Jur\u00eddica)",
+      "cuit": "55000002126",
+      "id_afip": "212"
+    },
+    "model": "afip.paisdestino",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "nombre": "Canada (Jur\u00eddica)",
+      "cuit": "55000002045",
+      "id_afip": "204"
+    },
+    "model": "afip.paisdestino",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "nombre": "Italia (F\u00edsica)",
+      "cuit": "50000003546",
+      "id_afip": "417"
+    },
+    "model": "afip.paisdestino",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "nombre": "Italia (Jur\u00eddica)",
+      "cuit": "55000003548",
+      "id_afip": "417"
+    },
+    "model": "afip.paisdestino",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "nombre": "Chile (Jur\u00eddica)",
+      "cuit": "55000000034",
+      "id_afip": "208"
+    },
+    "model": "afip.paisdestino",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "nombre": "Paraguay (Juridica)",
+      "cuit": "55000000026",
+      "id_afip": "221"
+    },
+    "model": "afip.paisdestino",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "nombre": "Panama (Juridica)",
+      "cuit": "55000002207",
+      "id_afip": "220"
+    },
+    "model": "afip.paisdestino",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "nombre": "Bolivia (Juridica)",
+      "cuit": "55000000042",
+      "id_afip": "202"
+    },
+    "model": "afip.paisdestino",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "nombre": "Australia (Juridica)",
+      "cuit": "55000004994",
+      "id_afip": "501"
+    },
+    "model": "afip.paisdestino",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "nombre": "Israel (F\u00edsica)",
+      "cuit": "50000002876",
+      "id_afip": "319"
+    },
+    "model": "afip.paisdestino",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "nombre": "Israel (Juridica)",
+      "cuit": "55000002878",
+      "id_afip": "319"
+    },
+    "model": "afip.paisdestino",
+    "pk": 15
+  }
+]

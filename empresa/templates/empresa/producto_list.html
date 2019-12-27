@@ -1,0 +1,85 @@
+{% extends "base_table.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+{% load render_table from django_tables2 %}
+{% load custom_filters %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Empresa</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Productos</li>
+{% endblock %}
+
+{% block card-body %}
+    <div class="row mb-2">
+        <div class="d-flex w-100 mx-3">
+            <div class="flex-grow-0"><span>Todos los productos de tu empresa</span></div>
+            <div class="btn-group ml-auto" role="group" aria-label="Acciones">
+                {% if perms.empresa.change_producto %}
+                    <a href="#" class="nav-item btn btn-outline-primary btn-sm"
+                       id="modificar-precios" data-url="{% url "producto.change_prices" %}">
+                        <i class="fa fa-pencil-alt"></i>
+                        <i class="fa fa-dollar-sign"></i>
+                        <span class="d-sm-down-none"> Actualizar Precios</span>
+                    </a>
+                    {% if perms.empresa.add_producto %}
+                        <a id="importar" class="nav-item btn btn-outline-primary btn-sm"
+                           href="{% url 'producto.import_product' %}">
+                            <i class="fa fa-upload"></i><span class="d-sm-down-none"> Importar</span>
+                        </a>
+                        <a href="{% url "producto.create" %}" class="nav-item btn btn-outline-primary btn-sm">
+                            <i class="fa fa-plus"></i><span class="d-sm-down-none">  Crear Producto</span>
+                        </a>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+    <form class="form-inline my-4">
+        {% bootstrap_form form layout='inline' size='sm' field_class="mr-2" bound_css_class="" %}
+        <input type="submit" value="Buscar" class="btn btn-sm btn-primary ml-auto">
+    </form>
+    <div class="row">
+        <div class="col">
+            {% render_table table %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/producto_list.js" %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            var detalles = $('tbody tr');
+            var boton;
+            for (var i = 0; i < detalles.length; i++) {
+                var el = $(detalles[i]);
+                boton = el.find('.btn-danger');
+                if (el.find('.true').length) {
+                    boton.text('Desactivar').addClass('activar-desactivar-button');
+                } else {
+                    el.addClass('danger');
+                    boton.removeClass('btn-danger').addClass('btn-success').text('Activar').addClass('activar-desactivar-button');
+                }
+            }
+
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <script id="importar-productos-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="importacionModal" tabindex="-1" role="dialog"
+             aria-labelledby="importacionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Importación de Productos</h4>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+{% endblock js %}

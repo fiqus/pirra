@@ -1,0 +1,32 @@
+{% load staticfiles %}
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Pirra</title>
+    <link rel="icon" href="{% static "img/favicon.ico" %}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en">
+    {% render_bundle 'main' 'css' %}
+    {% block css %}{% endblock %}
+
+</head>
+
+<div class="overlay" style="display: none;"></div>
+
+<body class="app {% block bgclass %}{% endblock %}">
+{% block app %}
+<div class="app-body">
+    <main class="main">
+        {% block main %}{% endblock %}
+    </main>
+</div>
+{% endblock app %}
+{% render_bundle 'main' 'js' %}
+
+</body>

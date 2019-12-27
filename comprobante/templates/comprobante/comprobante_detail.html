@@ -1,0 +1,248 @@
+{% load staticfiles %}
+{% load custom_filters %}
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      {% if comprobante.cae and comprobante.observaciones_wsfe %}
+          <div class="aviso-afip obs-warning">
+            <strong>Observaciones AFIP:</strong> <br/>
+            <p>El comprobante se encuentra autorizado por la AFIP, sin embargo se le realizaron las siguientes observaciones:</p>
+            {{ comprobante.observaciones_wsfe|safe }}
+          </div>
+      {% endif %}
+      {% if not comprobante.cae %}
+        {% if comprobante.errores_wsfe or comprobante.observaciones_wsfe %}
+          <div class="aviso-afip obs-danger">
+            <strong>Errores AFIP:</strong> <br/>
+            <p>El comprobante <strong>no se encuentra autorizado por la AFIP</strong>, debido a los siguientes errores:</p>
+            {% if comprobante.errores_custom %}
+                {{ comprobante.errores_custom|safe }}
+            {% elif comprobante.errores_wsfe %}
+              {{ comprobante.errores_wsfe|safe }}
+            {% endif %}
+            {% if comprobante.obs_custom %}
+                {{ comprobante.obs_custom|safe }}
+            {% elif comprobante.observaciones_wsfe %}
+              {{ comprobante.observaciones_wsfe|safe }}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endif %}
+      {% if object.orden_compra %}
+          <div class="row" style="margin-bottom: 15px; margin-left: 0px;">
+            <strong>Generado desde Orden Compra Nro.: </strong>{{ object.orden_compra.nro }}
+          </div>
+      {% endif %}
+      <div class="row">
+          {% include "comprobante/text_label_snippet.html" with class="col-md-2" label="Empresa" value=object.empresa.nombre %}
+          {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Concepto" value=object.concepto %}
+          {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Punto de Venta" value=object.punto_vta %}
+
+          {% include "comprobante/text_label_snippet.html" with class="col-md-4" label="Tipo de Comprobante" value=object.tipo_cbte.nombre|add:" "|add:object.tipo_cbte.letra %}
+      </div>
+      <div class="row">
+          {% include "comprobante/text_label_snippet.html" with class="col-md-2" label="Numero" value=object.pp_numero %}
+          {% if object.condicion_venta %}
+            {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Cond. de Venta" value=object.condicion_venta %}
+          {% endif %}
+          {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Fecha Emision" value=object.fecha_emision %}
+          {% include "comprobante/text_label_snippet.html" with class="col-md-4" label="Fecha Venc. Pago" value=object.fecha_venc_pago %}
+      </div>
+      <div class="row">
+          {% include "comprobante/text_label_snippet.html" with class="col-md-5" label="Cliente" value=object.cliente.nombre %}
+      </div>
+
+    {% if comprobante.es_comprobante_e %}
+    <br/>
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              Más Información
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+        <div class="row">
+              {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Tipo Exportación" value=object.tipo_expo %}
+              {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Moneda" value=object.moneda.nombre %}
+              {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Moneda Ctz" value=object.moneda_ctz %}
+              {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Idioma" value=object.idioma %}
+        </div>
+        <div class="row">
+            {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Pais Destino" value=object.pais_destino.nombre %}
+            {% if object.incoterms %}
+              {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Incoterms" value=object.incoterms %}
+            {% endif %}
+            {% if object.incoterms_ds %}
+              {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Incoterms Ds" value=object.incoterms_ds %}
+            {% endif %}
+            {% if object.id_impositivo %}
+              {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Id Impositivo" value=object.id_impositivo %}
+            {% endif %}
+            {% if object.forma_pago %}
+              {% include "comprobante/text_label_snippet.html" with class="col-md-3" label="Forma de Pago" value=object.forma_pago %}
+            {% endif %}
+            {% if object.cbte_asoc %}
+                <div class="form-group col-md-3">
+                    <label class="control-label">Comprobante asociado:</label>
+                    <p class="form-control-static">{{ object.cbte_asoc.tipo_cbte.nombre }} {{ object.cbte_asoc.tipo_cbte.letra }} {{ object.cbte_asoc.pp_numero }}</p>
+                </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <br/>
+    {% endif %}
+
+      <table class="table table-condensed">
+          <thead>
+              <tr>
+                  <th>Cant</th>
+                  <th>Unidad</th>
+                  <th>Detalle</th>
+                  <th class="money">Precio Unit</th>
+                  <th class="money">Subtotal</th>
+                  {% if comprobante.muestra_alicuotas_iva %}<th>IVA</th>{% endif %}
+                  <th class="money">Total</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for detalle in comprobante.detallecomprobante_set.all %}
+                  {% if detalle.unidad.id_afip != 99 %}
+                      <tr>
+                          <td>{{ detalle.cant }}</td>
+                          <td>{{ detalle.unidad.nombre }}</td>
+                          <td style="width:40%;">{{ detalle.detalle }}</td>
+                          <td class="money">{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}${% endif %}
+                            {% if comprobante.discrimina_iva %}
+                                {{ detalle.precio_unit|floatformat:2|money }}
+                            {% else %}
+                                {{ detalle.precio_unitario_con_iva|floatformat:2|money }}
+                            {% endif %}
+                          </td>
+                          <td class="money">{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}${% endif %}
+                              {{ detalle.importe_neto|floatformat:2|money }}
+                          </td>
+                          {% if comprobante.muestra_alicuotas_iva %}
+                              <td>{{ detalle.alicuota_iva }}</td>
+                          {% endif %}
+                          <td class="money">{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}${% endif %} {{ detalle.precio_total|floatformat:2 }}</td>
+                      </tr>
+                  {% endif %}
+              {% endfor %}
+          </tbody>
+      </table>
+
+      {% if comprobante.muestra_subtotales or importe_descuento > 0 or object.importe_tributos > 0 %}
+        <div class="row ">
+          <label class="col-md-3 col-md-offset-7" for="inputSubtotal" id="label_subtotal">Subtotal</label>
+          <span class="col-md-2 money" id="subtotal">{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}${% endif %}
+              {{ subtotal|floatformat:2|money }}
+          </span>
+        </div>
+        {% if importe_descuento > 0 %}
+            <div class="row ">
+                <div id="descuentos">
+                    <label class="col-md-3 col-md-offset-7" for="inputDescuento" id="label_descuento">Descuento ({{ object.descuento|floatformat:0 }}%)</label>
+                    <span class="col-md-2 money" id="descuento">{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}${% endif %} {{ importe_descuento|floatformat:2 }}</span>
+                </div>
+            </div>
+        {% endif %}
+      {% endif %}
+
+      {% if comprobante.muestra_subtotales %}
+          <div class="row ">
+              <label class="col-md-3 col-md-offset-7">Neto Gravado</label>
+              <span class="money col-md-2">{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}${% endif %} {{ importe_neto_gravado|floatformat:2 }}</span>
+          </div>
+          <div class="subtotales row">
+              <div id="totales_alicuotas">
+                  {% if importe_no_gravado > 0 %}
+                      <label class="col-md-3 col-md-offset-7" >No Gravado</label>
+                      <span class="col-md-2 money">{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}
+                              ${% endif %} {{ importe_no_gravado|floatformat:2|money }}</span>
+                  {% endif %}
+                  {% if importe_exento > 0 %}
+                      <label class="col-md-3 col-md-offset-7" >Exento</label>
+                      <span class="col-md-2 money">{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}
+                              ${% endif %} {{ importe_exento|floatformat:2|money }}</span>
+                  {% endif %}
+                  {% for id, alicuota in comprobante.importes_ivas.items %}
+                      <label class="col-md-3 col-md-offset-7" >{{ alicuota.nombre }} ({{ alicuota.porc|floatformat }}%)</label>
+                      <span class="col-md-2 money">{% if object.moneda %}
+                        {{ object.moneda.simbolo }}{% else %}
+                        ${% endif %} {{ alicuota.valor|floatformat:2|money }}
+                      </span>
+                  {% endfor %}
+              </div>
+          </div>
+      {% endif %}
+      {% if comprobante.muestra_tributos and object.importe_tributos > 0 %}
+          <div class="row ">
+              <div id="totales_tributos">
+                  {% for tributo in comprobante.tributocomprobante_set.all %}
+                      <label class="col-md-3 col-md-offset-7" >{{ tributo.detalle }} ({{ tributo.alicuota|floatformat }}%)</label>
+                      <span class="col-md-2 money">{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}
+                              ${% endif %} {{ tributo.total|floatformat:2|money }}</span>
+                  {% endfor %}
+              </div>
+          </div>
+      {% endif %}
+      <div class="row ">
+          <label class="col-md-3 col-md-offset-7">Importe Total</label>
+          <span class="money col-md-2"><b>{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}${% endif %} {{ object.importe_total|floatformat:2 }}</b></span>
+      </div>
+      {% if object.opcionales %}
+          {% include "comprobante/comprobante_detail_table_opcionales.html" with class="col-md-3" label="Idioma" value=object.idioma %}
+      {% endif %}
+      {% if object.cae %}
+      <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+              <label class="col-md-2">CAE:</label>
+              <span class="col-md-3">{{ object.cae }}</span>
+              <img class="col-md-7" src="{{ comprobante.codigo_barras.url }}">
+      </div>
+      <div class="row">
+              <label class="col-md-2">Fecha vto. CAE:</label>
+              <span class="col-md-3">{{ object.fecha_vto_cae }}</span>
+      </div>
+      {% endif %}
+
+      {% if object.observaciones %}
+        <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+            <label class="col-md-4">Observaciones:</label>
+            <span class="col-md-12">{{ object.observaciones }}</span>
+        </div>
+      {% endif %}
+      <div class="modal-footer">
+        {% if object.cae %}
+          <button type="button" data-target="#carousel-example-generic" data-slide-to="1" class="btn btn-success"><i class="glyphicon glyphicon-envelope"></i>  Enviar por E-mail</button>
+        {% endif %}
+        {% if object.cae and comprobante.orden_compra and envia_edi %}
+            <a class="btn btn-success" href="{% url "ordencompra.enviar_factura_edi" comprobante.id %}">
+                <i title="Enviar por EDI" class="glyphicon glyphicon-transfer"></i> Enviar por EDI
+            </a>
+        {% endif %}
+        <button type="button" class="btn btn-success" onclick="print_pdf('{% url "comprobante.imprimir" comprobante.pk %}');"><i class="glyphicon glyphicon-print"></i>Imprimir</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+    <div class="item">
+        {% include "comprobante/comprobante_enviar_mail.html"%}
+    </div>
+  </div>
+</div>
+
+{% block js %}
+    <script>
+        var url_email = '{% url "comprobante.enviar"  %}';
+    </script>
+    <script src="{% static "js/comprobante_detail.js" %}"></script>
+{% endblock %}
+

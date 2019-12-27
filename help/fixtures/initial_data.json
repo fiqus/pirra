@@ -1,0 +1,92 @@
+[
+  {
+    "fields": {
+      "question": "¿Puedo evitar tener que cargar los datos del cliente en cada factura que haga?",
+      "answer": "<p>SI. Con Pirra podras cargar a tus clientes juntos con sus datos a modo de facilitar la confeccion de la factura y no tengas que completar sus datos en cada venta.</p>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "question": "¿Puedo crear usuarios con distintos permisos?",
+      "answer": "<p>SI. Pueden crearse usuarios con distintos permisos:&nbsp;<strong>Administrador de Usuarios; Facturacion Clientes; Administracion de Empresa.</strong></p>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "question": "¿Que es una Factura Electronica?",
+      "answer": "<p>Una&nbsp;factura electr&oacute;nica es la evoluci&oacute;n natural de una factura en soporte papel a un&nbsp;soporte electr&oacute;nico. Entonces, una factura electr&oacute;nica es un documento tributario&nbsp;que sustituye al documento f&iacute;sico y que conserva su mismo valor legal.</p><p><span style=\"color:rgb(34, 34, 34)\">Entonces, la misma informac&iacute;on que antes completaba en un talonario de papel, ahora lo completa en un formulario dentro de nuestro sistema. Una vez cargada la informaci&oacute;n de la factura, usetd puede mandar a autorizarla por la AFIP.&nbsp;</span></p><p><span style=\"color:rgb(34, 34, 34)\">Las facturas que son&nbsp;autorizadas por la Administraci&oacute;n Federal de Ingresos Publicos, poseen un c&oacute;digo llamado CAE. Una factura es electronica, s&oacute;lo si paso&nbsp;la autorizaci&oacute;n de la AFIP y por lo tanto posee un CAE.</span></p>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "question": "¿A quienes puedo facturar electronicamente con Pirra?",
+      "answer": "<p>Se puede facturar a cualquier condicion de cliente: Consumidores Finales, Monotributistas, Responsables Inscriptos y Exentos</p>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "question": "¿Que sujetos se ven obligadas a emitir facturas electronicas?",
+      "answer": "<p>Los sujetos que revistan el car&aacute;cter de responsables inscriptos en el impuesto al valor agregado y hayan declarado ante esta Administraci&oacute;n Federal o desarrollen alguna de las actividades previstas en el <a href=\"http://biblioteca.afip.gob.ar/pdfp/RG_3571_AFIP_A1.pdf\">Anexo I de la RG 3571</a>, deben emitir comprobantes electr&oacute;nicos originales, en los t&eacute;rminos de la <a href=\"http://biblioteca.afip.gob.ar/dcp/REAG01002485_2008_08_28?searchFor=2485\">RG 2485</a>, sus modificatorias y complementarias, a los fines de respaldar todas las operaciones realizadas en el mercado interno.</p><p>Los sujetos son obligados son:</p><p>Responsables inscriptos al I.V.A. incluidos en el <a href=\"http://biblioteca.afip.gob.ar/pdfp/RG_3571_AFIP_A1.pdf\">Anexo I de la RG 3571</a></p><p>Monotributistas categor&iacute;as H, I, J, K o L</p><p>Exentos de I.V.A.</p><p>Para el resto es optativo.</p>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "question": "¿Es necesario descargar la factura como archivo para su posterior envio al cliente?",
+      "answer": "<p>NO. Pirra brinda la posibilidad de enviar la factura por mail directamente hacia la cuenta de los clientes. Las facturas quedan almacenadas en nuestro sistema para su posterior impresi&oacute;n, envio o consulta.</p>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "question": "Soy vendedor de un determinado producto, ¿Debo completar todos los datos en el formulario de alta de comprobantes cada vez que venda dicho producto?",
+      "answer": "<p>NO. Pirra te permite crear tus <strong>productos</strong> con sus datos esenciales (precio. alicuota IVA, etc)&nbsp;para hacer mas c&oacute;moda la confecci&oacute;n&nbsp;de los comprobantes.</p>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "question": "¿Que puntos de venta debo utilizar?",
+      "answer": "<p>A efectos de facturar electronicamente, deben generarse nuevos puntos de ventas. Tal procedimiento figura en el instructivo que Pirra le acerca a penas se da de alta como usuario.</p><p>Los puntos de venta se generan en el sistema registral de la AFIP, al que se ingresa con clave fiscal. Una vez creado el punto de venta, se da de alta el mismo, desde la p&aacute;gina de Pirra. Es decir, se hace una referencia desde Pirra, al dado de alta previamente en la AFIP.</p>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "question": "¿Que significa la fecha de vencimiento del C.A.E?",
+      "answer": "<div>Significa el plazo en que debe ser puesta a disposici&oacute;n la factura electr&oacute;nica al cliente. Este plazo es dentro de los 10 d&iacute;as corridos contados desde la asignaci&oacute;n del &quot;C.A.E.&quot;.</div><div>La Factura electr&oacute;nica propiamente dicha <strong>no</strong> tiene vencimiento.</div><div>Fuente: Art.30 RG 2485/08</div><div>&nbsp;</div>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "question": "Una vez realizada la vinculación para usar un servicio de Facturación Electrónica, ¿Puedo revocar la vinculación?",
+      "answer": "<p>Si, y es muy sencillo de hacer:</p><p>Entre&nbsp;con su clave fiscal al sistema de la AFIP, vaya a al administrador&nbsp;de relaciones de clave fiscal y haga click en &quot;consultar&quot;. Ah&iacute; mismo en&nbsp;representantes del usuario, haga click en la &quot;lupita&quot; del CUIT de la empresa de&nbsp;sistemas con la que cuenta la vinculaci&oacute;n que quiere&nbsp;revocar y ah&iacute; haga click en &quot;Revocar la Autorizaci&oacute;n&quot;.</p><p>Este proceso le puede resultar &uacute;til si usted ya contaba con un sistema de Facturaci&oacute;n Electr&oacute;nica anterior al nuestro,&nbsp;tiene realizada la vinculaci&oacute;n y quiere revocarla&nbsp;para empezar a usar Pirra. Tambi&eacute;n puede resultarle de utilidad si&nbsp;usted desea discontinuar nuestro servicio y&nbsp;revocar la vinculaci&oacute;n de nuestro sistema.</p>",
+      "published": true
+    },
+    "model": "help.FrequentlyAskedQuestion",
+    "pk": 10
+  }
+]

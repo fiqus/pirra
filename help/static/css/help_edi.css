@@ -1,0 +1,36 @@
+.panel-edi {
+    width: 68%;
+    margin: 0 auto;
+}
+
+.edi-heading {
+    color: #ffffff;
+}
+
+.text-edi-heading {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.carousel-edi-indicator-div {
+    bottom: -24px;
+}
+
+.carousel-edi-indicator {
+    background-color: #1ab394 !important;
+    border-color: #1ab394 !important;
+    width: 8px !important;
+    height: 8px !important;
+}
+
+.carousel-edi-indicator.active {
+    background-color: #1ab394 !important;
+    border-color: #1ab394 !important;
+    width: 9px !important;
+    height: 9px !important;
+}
+
+.carousel-edi-slide {
+    background-image: none !important;
+}

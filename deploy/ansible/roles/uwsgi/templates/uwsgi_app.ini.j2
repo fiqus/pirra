@@ -1,0 +1,19 @@
+[uwsgi]
+
+socket = {{ app_socket_path }}
+safe-pidfile = {{ app_uwsgi_pidfile }}
+chmod-socket = {{ app_uwsgi_socket_chmod }}
+chown-socket = {{ app_uwsgi_socket_user }}:{{ app_uwsgi_socket_group }}
+
+processes = {{ app_uwsgi_process_number }}
+max-requests = {{ app_uwsgi_process_requests_max }}
+
+chdir = {{ app_uwsgi_chdir }}
+uid = {{ app_uwsgi_exec_user }}
+gid = {{ app_uwsgi_exec_group }}
+
+plugins = 0:{{ app_uwsgi_plugin|replace('-', '_')|replace('.', '') }}
+
+logto = /var/log/uwsgi/app/{{ application_name }}.log
+
+{% include 'templates/uwsgi_plugins/'+app_uwsgi_plugin+'.ini.j2' with context %}

@@ -1,0 +1,101 @@
+{% extends "base_table.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+{% load render_table from django_tables2 %}
+{% load custom_filters %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Empresa</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Clientes</li>
+{% endblock %}
+
+{% block card-body %}
+    <div class="row mb-2">
+        <div class="d-flex w-100 mx-3">
+            <div class="flex-grow-0"><span>Todos los clientes de tu empresa</span></div>
+            <div class="btn-group ml-auto" role="group" aria-label="Acciones">
+                {% if perms.empresa.add_cliente %}
+                    <a id="importar" class="nav-item btn btn-outline-primary btn-sm"  href="{% url "cliente.import_client" %}">
+                        <i class="fa fa-upload"></i><span class="d-sm-down-none"> Importar</span>
+                    </a>
+                    <a href="{% url "cliente.create" %}" class="nav-item btn btn-outline-primary btn-sm">
+                        <i class="fa fa-plus"></i><span class="d-sm-down-none">  Crear Cliente </span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <form class="form-inline my-4">
+        {% bootstrap_form form layout='inline' size='sm' field_class="mr-2" bound_css_class="" %}
+        <input type="submit" value="Buscar" class="btn btn-sm btn-primary ml-auto">
+    </form>
+    <div class="row">
+        <div class="col">
+            {% render_table table %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{#{% block main %}#}
+{#    <div class="wrapper wrapper-content  animated fadeInRight">#}
+{#        <div class="row">#}
+{#            <div class="col-lg-12">#}
+{#                <div class="ibox">#}
+{#                    <div class="ibox-title">#}
+{#                        <h5>Todos los clientes de tu empresa</h5>#}
+{##}
+{#                        <div class="ibox-tools">#}
+{#                            {% if perms.empresa.add_cliente %}#}
+{#                                <a id="importar" style="margin-top: -10px; color: #FFFFFF;"#}
+{#                                   class="btn btn-default btn-xl" href="{% url "cliente.import_client" %}">#}
+{#                                    <i class="fa fa-upload"></i><span class="hidden-sm hidden-xs"> Importar</span>#}
+{#                                </a>#}
+{#                                <a href="{% url "cliente.create" %}" class="btn btn-primary btn-xl"#}
+{#                                   style="margin-top: -10px; margin-right: -10px;"><i class="fa fa-plus"></i><span#}
+{#                                        class="hidden-sm hidden-xs">  Crear Cliente<span/></a>#}
+{#                            {% endif %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="ibox-content">#}
+{#                        <div class="m-b-lg">#}
+{#                            <form action="" class="form row">#}
+{#                                {% bootstrap_field form.nombre layout="inline" form_group_class="form-group col-md-2" %}#}
+{#                                {% bootstrap_field form.doc layout="inline" form_group_class="form-group col-md-2" %}#}
+{#                                {% bootstrap_field form.activo layout="inline" form_group_class="form-group col-md-3" %}#}
+{#                                {% buttons submit="Buscar" %}{% endbuttons %}#}
+{#                            </form>#}
+{#                        </div>#}
+{##}
+{#                        <div class="table-responsive tablesaw tablesaw-stack">#}
+{#                            {% render_table table %}#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#{% endblock main %}#}
+
+{% block js %}
+    <script src="{% static "js/cliente_list.js" %}"></script>
+
+    <script id="importar-clientes-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="importacionModal" tabindex="-1" role="dialog"
+             aria-labelledby="importacionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Importación de Clientes</h4>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% load bootstrap3 %}
+<form id="contact-form" class="form" method="post">
+    {% csrf_token %}
+    {% block form %}
+        {% bootstrap_form form %}
+    {% endblock %}
+</form>

@@ -1,0 +1,47 @@
+{% load bootstrap4 %}
+
+<div>
+    {{ formset.management_form }}
+</div>
+
+{% if tiene_opcionales %}
+    <div id="panel_opcionales">
+        <h2 class="title-opcionales">Datos adicionales de resoluciones generales</h2>
+        {% for rg in rgs %}
+            <fieldset class="form-group fieldset-opcionales">
+                <legend class="legend-opcionales">{{ rg.numero }} - {{ rg.nombre }}</legend>
+                {% for op in opcionales %}
+                    {% for form in formset.forms %}
+                        {% if op.resolucion_general == rg and op.id|slugify == form.opcional.value|slugify  %}
+                            <div class="row row-opcionales">
+                                {% if form_show_errors and not form.is_extra %}
+                                    {%  bootstrap_form_errors form %}
+                                {% endif %}
+                                <div class="col-md-6 form-group">
+                                    {{ form.opcional.as_hidden }}
+                                    <div style="display: none">{% bootstrap_field form.id %}</div>
+                                    <label>{{ op.campo }}</label>
+                                </div>
+                                {% if op.tiene_opciones %}
+                                    <div class="col-md-6 form-group">
+                                        <select class="form-control" id="{{ form.prefix }}-valor" name="{{ form.prefix }}-valor" required="required" aria-required="true" value="{{ option.valor }}">
+                                            <option value="">Elegir una opcion</option>
+                                            {% for option in op.opcionopcional_set.all %}
+                                                 <option {% if option.valor == form.initial.valor|slugify %} selected="selected" {% endif %} value="{{ option.valor }}">{{ option.descripcion }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                {% else %}
+                                    <div class="col-md-6 form-group">
+                                        {% bootstrap_field form.valor form_group_class="" layout="inline" size="sm"%}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </fieldset>
+        {% endfor %}
+    </div>
+{% endif %}
+

@@ -1,0 +1,26 @@
+{% extends "base_form.html" %}
+{% block title %}
+    {% if object %}
+        <h2>Editar grupo {{ object }}</h2>
+    {% else %}
+        <h2>Crear un nuevo grupo</h2>
+    {% endif %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li>
+            <a href="">Configuracion</a>
+        </li>
+        <li>
+            <a href="{% url "group.list" %}">Grupos</a>
+        </li>
+        <li class="active">
+            {% if object %}
+                <strong>{{ object.name }}</strong>
+            {% else %}
+                <strong>Crear</strong>
+            {% endif %}
+        </li>
+    </ol>
+{% endblock %}

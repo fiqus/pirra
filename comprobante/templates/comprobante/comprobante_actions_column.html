@@ -1,0 +1,64 @@
+<div class="btn-group" role="group">
+    {% if not record.cae and perms.comprobante.change_comprobante %}
+        <button type="button" class="btn btn-primary btn-sm"
+                onclick="autorizar('{% url "comprobante.autorizar" record.id %}');">
+            <i title="Autorizar" class="fa fa-barcode"></i> Autorizar
+        </button>
+    {% else %}
+        <a target="_blank" class="btn btn-primary btn-sm" href="{% url "comprobante.imprimir" record.id %}">
+            <i title="Imprimir" class="fa fa-print"></i> Imprimir
+        </a>
+    {% endif %}
+
+    {% if not row.has_cae_and_nro and perms.comprobante.change_comprobante or not record.cae and perms.comprobante.delete_comprobante or not record.cae and perms.comprobante.change_comprobante or record.cae or perms.comprobante.add_comprobante %}
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"></button>
+        <div class="dropdown-menu">
+            {% if not row.has_cae_and_nro and perms.comprobante.change_comprobante %}
+                <a class="dropdown-item" href="{% url "comprobante.edit" record.id %}">
+                    <i class="fa fa-edit"></i> Editar
+                </a>
+            {% endif %}
+
+            {% if not row.has_cae_and_nro and perms.comprobante.change_comprobante %}
+                <a class="dropdown-item" target="_blank" href="{% url "comprobante.imprimir" record.id %}">
+                    <i class="fa fa-print"></i> Imprimir
+                </a>
+            {% endif %}
+            {% if record.cae %}
+                <a class="enviar-comp-mail dropdown-item" href="#" data-tipo-cbte="{{ record.tipo_cbte }}" data-numero="{{ record.pp_numero }}"
+                   data-url="{% url "comprobante.enviar_comp_mail" record.id %}">
+                    <i class="fa fa-envelope"></i> Enviar por E-mail
+                </a>
+                <a class="historial-enviados dropdown-item" href="#" data-tipo-cbte="{{ record.tipo_cbte }}"
+                   data-numero="{{ record.pp_numero }}"
+                   data-url="{% url "comprobante.historial_envios" record.id %}">
+                    <i title="Historial de envíos" class="fa fa-history"></i> Historial de envíos
+                </a>
+            {% endif %}
+            {% if perms.comprobante.add_comprobante %}
+                <a class="dropdown-item" id="comprobante_duplicate" href="{% url "comprobante.duplicate" record.id %}">
+                    <i title="Duplicar" class="fa fa-copy"></i> Duplicar
+                </a>
+            {% endif %}
+            {% if not record.cae and perms.comprobante.delete_comprobante %}
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger"
+                       href="{% url "comprobante.delete" record.id %}">
+                    <i title="Eliminar" class="fa fa-trash"></i> Eliminar
+                </a>
+            {% endif %}
+        </div>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+
+            {% if not record.cae and perms.comprobante.delete_comprobante %}
+                <li role="separator" class="divider"></li>
+                <li><a class="btn-danger btn-danger-acciones" type="button"
+                       href="{% url "comprobante.delete" record.id %}">
+                    <i title="Eliminar" class="glyphicon glyphicon-remove"></i> Eliminar
+                </a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+</div>

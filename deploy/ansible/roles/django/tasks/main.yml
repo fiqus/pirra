@@ -1,0 +1,31 @@
+---
+
+- name: Install packages required by the Django app inside virtualenv
+  pip:
+    requirements: "{{ requirements_file }}"
+    virtualenv: "{{ virtualenv_path }}"
+
+- name: Create settings
+  template:
+    src: "{{ settings_template }}"
+    dest: "{{ application_path }}/pirra_web/settings/prod.py"
+    backup: true
+  tags: django.create_settings
+
+- name: Migrate schemas
+  shell: "{{ virtualenv_path }}/bin/python manage.py migrate --settings {{ django_settings_file }}"
+  args:
+    chdir: "{{ application_path }}"
+  tags: django.migrate
+
+#- name: Run Django collectstatic
+#  become: yes
+#  become_user: root
+#  django_manage:
+#    command: collectstatic
+#    app_path: "{{ application_path }}"
+#    virtualenv: "{{ virtualenv_path }}"
+#    settings: "{{ django_settings_file }}"
+#  environment: django_environment
+#  when: run_django_collectstatic
+#  tags: django.collectstatic

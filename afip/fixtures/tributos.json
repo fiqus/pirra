@@ -1,0 +1,42 @@
+[
+  {
+    "fields": {
+      "nombre": "Impuestos nacionales",
+      "id_afip": 1
+    },
+    "model": "afip.tributo",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "Impuestos provinciales",
+      "id_afip": 2
+    },
+    "model": "afip.tributo",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "Impuestos municipales",
+      "id_afip": 3
+    },
+    "model": "afip.tributo",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "Impuestos Internos",
+      "id_afip": 4
+    },
+    "model": "afip.tributo",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "nombre": "Otro",
+      "id_afip": 99
+    },
+    "model": "afip.tributo",
+    "pk": 5
+  }
+]

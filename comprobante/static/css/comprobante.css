@@ -1,0 +1,156 @@
+.money {
+    text-align: right;
+}
+#detalle_table .checkbox {
+    display: none;
+}
+
+#id_impuestos .checkbox{
+    display:inline-block;
+}
+
+#cliente-combo {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#agregar-cliente {
+    margin-top: 23px;
+    padding: 0 !important;
+}
+
+#agregar-cliente .btn {
+    background-color: #1A7BB9;
+    border-color: #1A7BB9;
+    color: #FFF;
+}
+
+.renglones label {
+    border-bottom: 1px solid #e3e3e3;
+}
+.renglones span {
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.precio-unitario input {
+    width: 100px;
+}
+
+.precio-final input {
+    width: 100px;
+}
+
+#detalle_table tbody tr, #tributo_table tbody tr {
+    height: 60px;
+}
+
+#detalle_table label.error, #tributo_table label.error {
+    position: absolute;
+}
+
+#comprobante_add legend {
+    margin-bottom: 5px;
+}
+
+.help-container {
+    float: right;
+}
+
+.help {
+    font-weight: bold;
+}
+
+th.alicuotas-iva {
+    display: table-cell;
+}
+
+@media (max-width: 991px) {
+
+    th.alicuotas-iva {
+        display: none !important;
+    }
+}
+
+.descuentos{
+    margin: 22px 0 20px 0;
+}
+
+.observaciones-div {
+    margin-left: 0px;
+    margin-bottom: 20px;
+}
+
+.descuento {
+    margin-top: 15px;
+}
+
+#tributo_table input.base_imponible, span.total {
+    min-width: 100px;
+}
+
+.producto .form-control.selectize-control{
+    height: 32px;
+}
+@media (min-width: 992px) and (max-width: 1190px) {
+    .producto .form-control.selectize-control {
+        width: 20vw;
+    }
+}
+@media (min-width: 1190px){
+    .producto .form-control.selectize-control{
+        width: 30vw;
+    }
+}
+.producto .selectize-input{
+    height: 30px;
+    max-width: 290px;
+    min-height: unset;
+}
+
+.producto .selectize-control{
+    max-width: 290px;
+}
+
+#detalle_table tbody tr td.alicuotas-iva:first-child {
+    min-width: 94px;
+}
+
+#detalle_table tbody tr input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+#detalle_table tbody tr input::-webkit-outer-spin-button,
+#detalle_table tbody tr input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.fieldset-opcionales {
+    margin: 12px 5px 12px 5px;
+    border: 1px solid #E5E5E5;
+}
+
+.legend-opcionales {
+    width: 100.2%;
+    background-color: #F9F9F9;
+    font-size: 16px;
+    padding: 5px 5px 5px 10px;
+    margin: 0 0 15px -1px !important;
+    border: 1px solid #E5E5E5;
+}
+
+.row-opcionales {
+    padding: 0 15px 0 15px;
+}
+
+.title-opcionales {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: inherit;
+    color: #333;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+    font-weight: 400;
+}

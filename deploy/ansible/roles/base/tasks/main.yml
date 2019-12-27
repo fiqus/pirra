@@ -1,0 +1,43 @@
+---
+
+- name: Ensure bash, OpenSSl, and libssl are the latest versions
+  apt:
+    name: ['bash', 'openssl', 'libssl-dev', 'libssl-doc']
+    update_cache: "{{ update_apt_cache }}" 
+    state: latest
+  tags: packages
+
+- name: Install base packages
+  apt: 
+    name: ['build-essential', 'mc', 'ntp', 'htop', 'git', 'python3-dev', 'python3', 'python3-pip', 'python3-venv',
+           'python-pycurl', 'supervisor', 'tmpreaper']
+    update_cache: "{{ update_apt_cache }}"
+    force: yes
+    state: present
+  tags: packages
+
+- name: Install Required packages
+  apt:
+    name: ['nodejs', 'npm']
+    update_cache: "{{ update_apt_cache }}"
+    force: yes
+    state: present
+  tags: packages
+
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+    
+- name: Install virtualenv
+  pip: 
+    name: virtualenv
+    executable: pip3
+  tags: packages
+
+- include: create_users_and_groups.yml
+
+- include: setup_virtualenv.yml
+
+- include: setup_git_repo.yml

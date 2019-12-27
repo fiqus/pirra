@@ -1,0 +1,44 @@
+$coreui-icons-font-path: "~@coreui/icons/fonts";
+
+@import "~@coreui/coreui/scss/coreui";
+@import "~@coreui/icons/scss/coreui-icons";
+@import "~selectize/dist/css/selectize";
+@import "~selectize-bootstrap4-theme/scss/selectize.bootstrap4";
+@import "~toastr/toastr";
+
+
+.table-sm{
+  font-size: 14px;
+  .btn{
+    font-size: 14px;
+    line-height: 14px;
+    padding: 2px 4px;
+  }
+  margin-bottom: 0;
+}
+
+.bootbox-body {
+  iframe{
+    width: 100%;
+  }
+}
+
+.importar-producto {
+  .modal-content {
+    width: 1050px;
+  }
+  iframe {
+    width: 100%;
+    height: 550px;
+  }
+}
+
+.importar-cliente {
+  .modal-content {
+    width: 1000px;
+  }
+  iframe {
+    width: 100%;
+    height: 500px;
+  }
+}

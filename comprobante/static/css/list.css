@@ -1,0 +1,16 @@
+
+#comprobantes-table td.actions {
+    border-bottom: 1px solid #E0E0E0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-width: 146px;
+    vertical-align: middle;
+}
+
+button.more-actions:hover {
+    border-left: 1px solid;
+}
+
+.acciones_masivas {
+    margin-left: -15px;
+}

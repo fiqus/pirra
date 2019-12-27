@@ -1,0 +1,45 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <h1>Consultar Pagos</h1>
+    <br/>
+    {% if payments %}
+        <h1>Pagos</h1>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Importe</th>
+                <th>Medio Pago</th>
+                <th>Estado</th>
+                <th>Descripcion</th>
+                <th>Referencia</th>
+                <th>Fecha</th>
+                <th>Email</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Tipo Doc</th>
+                <th>Nro Doc</th>
+            </tr>
+        <tbody>
+            {% for payment in payments %}
+                <tr>
+                    <td>{{ payment.id }}</td>
+                    <td>{{ payment.transaction_amount }}</td>
+                    <td>{{ payment.payment_method_id }}</td>
+                    <td>{{ payment.status }} - {{ payment.status_detail }}</td>
+                    <td>{{ payment.description }}</td>
+                    <td>{{ payment.external_reference }}</td>
+                    <td>{{ payment.date_created }}</td>
+                    <td>{{ payment.payer_email }}</td>
+                    <td>{{ payment.payer_fname }}</td>
+                    <td>{{ payment.payer_lname }}</td>
+                    <td>{{ payment.payer_doc_type }}</td>
+                    <td>{{ payment.payer_doc_num }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}
+    <br/>
+    {{ msg }}
+{% endblock %}

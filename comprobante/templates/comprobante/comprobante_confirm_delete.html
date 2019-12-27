@@ -1,0 +1,19 @@
+{% extends "base_confirm_delete.html" %}
+{% load staticfiles %}
+
+{% block card-body %}
+    <h1>Eliminar</h1>
+    <p>¿Desea <strong>eliminar</strong> el siguiente comprobante?</p>
+    <p><b>Cliente: </b>{{ object.cliente }}<br />
+    <b>Tipo de comprobante: </b>{{ object.tipo_cbte }}<br />
+    <b>Fecha: </b>{{ object.fecha_emision }}<br />
+    <b>Monto: </b>{% if object.moneda %}{{ object.moneda.simbolo }}{% else %}${% endif %} {{ object.importe_total|floatformat:2 }}</p>
+    <form action method="post">
+        {% csrf_token %}
+        <div class="buttonHolder">
+            <a class="btn btn-dark" href="{% url "comprobante.list" %}">Cancelar</a>
+            <input type="submit" name="submit" value="Eliminar" class="btn btn-danger">
+        </div>
+    </form>
+
+{% endblock %}

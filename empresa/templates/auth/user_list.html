@@ -1,0 +1,35 @@
+{% extends "base_table.html" %}
+{% load render_table from django_tables2 %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Empresa</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+{% endblock %}
+
+{% block card-body %}
+    <div class="row mb-2">
+        <div class="d-flex w-100 mx-3">
+            <div class="flex-grow-0"><span>Todos los usuarios de tu empresa</span></div>
+            <div class="btn-group ml-auto" role="group" aria-label="Acciones">
+                <a href="{% url "user.create" %}" class="nav-item btn btn-outline-primary btn-sm">
+                    <i class="fa fa-plus"></i> Crear Usuario
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% render_table table %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+{% endblock js %}
+

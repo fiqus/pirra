@@ -1,0 +1,16 @@
+---
+
+#- name: Create load_padron cron job
+#  cron: minute="0" hour="2"
+#    name="Load padron de CUITS de AFIP"
+#    user="{{ application_name }}"
+#    job="/webapps/{{ application_name }}/bin/python /webapps/{{ application_name }}/{{ project_name }}/manage.py load_padron --settings pirra_web.settings.prod"
+#  tags:
+#    - cron
+#
+#- name: Create delete_tmp cron job
+#  cron: minute="0" hour="5"
+#    name="Delete /tmp"
+#    job="tmpreaper 1d  /tmp"
+#  tags:
+#    - cron

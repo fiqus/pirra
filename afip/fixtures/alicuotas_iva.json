@@ -1,0 +1,941 @@
+[
+  {
+    "fields": {
+      "id_afip": 3,
+      "nombre": "IVA",
+      "porc": "0"
+    },
+    "model": "afip.alicuotaiva",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "id_afip": 4,
+      "nombre": "IVA",
+      "porc": "10.5"
+    },
+    "model": "afip.alicuotaiva",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "id_afip": 5,
+      "nombre": "IVA",
+      "porc": "21"
+    },
+    "model": "afip.alicuotaiva",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "id_afip": 6,
+      "nombre": "IVA",
+      "porc": "27"
+    },
+    "model": "afip.alicuotaiva",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "id_afip": 8,
+      "nombre": "IVA",
+      "porc": "5"
+    },
+    "model": "afip.alicuotaiva",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "id_afip": 9,
+      "nombre": "IVA",
+      "porc": "2.5"
+    },
+    "model": "afip.alicuotaiva",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "alicuota_iva": 1,
+      "orden": 0,
+      "tipo_comp": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "alicuota_iva": 1,
+      "orden": 0,
+      "tipo_comp": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "alicuota_iva": 1,
+      "orden": 0,
+      "tipo_comp": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "alicuota_iva": 1,
+      "orden": 0,
+      "tipo_comp": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "alicuota_iva": 2,
+      "orden": 0,
+      "tipo_comp": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "alicuota_iva": 2,
+      "orden": 0,
+      "tipo_comp": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "alicuota_iva": 2,
+      "orden": 0,
+      "tipo_comp": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "alicuota_iva": 2,
+      "orden": 0,
+      "tipo_comp": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "alicuota_iva": 3,
+      "orden": 0,
+      "tipo_comp": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "alicuota_iva": 3,
+      "orden": 0,
+      "tipo_comp": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "alicuota_iva": 3,
+      "orden": 0,
+      "tipo_comp": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "alicuota_iva": 3,
+      "orden": 0,
+      "tipo_comp": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "alicuota_iva": 4,
+      "orden": 0,
+      "tipo_comp": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "alicuota_iva": 4,
+      "orden": 0,
+      "tipo_comp": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "alicuota_iva": 4,
+      "orden": 0,
+      "tipo_comp": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "alicuota_iva": 4,
+      "orden": 0,
+      "tipo_comp": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "alicuota_iva": 5,
+      "orden": 0,
+      "tipo_comp": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "alicuota_iva": 5,
+      "orden": 0,
+      "tipo_comp": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "alicuota_iva": 5,
+      "orden": 0,
+      "tipo_comp": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "alicuota_iva": 5,
+      "orden": 0,
+      "tipo_comp": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "alicuota_iva": 6,
+      "orden": 0,
+      "tipo_comp": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "alicuota_iva": 6,
+      "orden": 0,
+      "tipo_comp": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "alicuota_iva": 6,
+      "orden": 0,
+      "tipo_comp": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "alicuota_iva": 6,
+      "orden": 0,
+      "tipo_comp": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "id_afip": 1,
+      "nombre": "No Gravado",
+      "porc": "0"
+    },
+    "model": "afip.alicuotaiva",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "id_afip": 2,
+      "nombre": "Exento",
+      "porc": "0"
+    },
+    "model": "afip.alicuotaiva",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "alicuota_iva": 7,
+      "orden": 0,
+      "tipo_comp": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "alicuota_iva": 8,
+      "orden": 0,
+      "tipo_comp": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "alicuota_iva": 7,
+      "orden": 0,
+      "tipo_comp": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "alicuota_iva": 8,
+      "orden": 0,
+      "tipo_comp": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "alicuota_iva": 7,
+      "orden": 0,
+      "tipo_comp": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "alicuota_iva": 8,
+      "orden": 0,
+      "tipo_comp": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "alicuota_iva": 7,
+      "orden": 0,
+      "tipo_comp": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "alicuota_iva": 8,
+      "orden": 0,
+      "tipo_comp": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 32
+  },
+    {
+    "fields": {
+      "alicuota_iva": 7,
+      "orden": 0,
+      "tipo_comp": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "alicuota_iva": 8,
+      "orden": 0,
+      "tipo_comp": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "alicuota_iva": 7,
+      "orden": 0,
+      "tipo_comp": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "alicuota_iva": 8,
+      "orden": 0,
+      "tipo_comp": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "alicuota_iva": 7,
+      "orden": 0,
+      "tipo_comp": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "alicuota_iva": 8,
+      "orden": 0,
+      "tipo_comp": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "alicuota_iva": 7,
+      "orden": 0,
+      "tipo_comp": 8
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "alicuota_iva": 8,
+      "orden": 0,
+      "tipo_comp": 8
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 40
+  },
+
+  {
+    "fields": {
+      "alicuota_iva": 1,
+      "orden": 0,
+      "tipo_comp": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "alicuota_iva": 2,
+      "orden": 0,
+      "tipo_comp": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "alicuota_iva": 1,
+      "orden": 0,
+      "tipo_comp": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "alicuota_iva": 2,
+      "orden": 0,
+      "tipo_comp": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "alicuota_iva": 1,
+      "orden": 0,
+      "tipo_comp": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "alicuota_iva": 2,
+      "orden": 0,
+      "tipo_comp": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "alicuota_iva": 1,
+      "orden": 0,
+      "tipo_comp": 8
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "alicuota_iva": 2,
+      "orden": 0,
+      "tipo_comp": 8
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 48
+  },
+
+  {
+    "fields": {
+      "alicuota_iva": 3,
+      "orden": 0,
+      "tipo_comp": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "alicuota_iva": 4,
+      "orden": 0,
+      "tipo_comp": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "alicuota_iva": 3,
+      "orden": 0,
+      "tipo_comp": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "alicuota_iva": 4,
+      "orden": 0,
+      "tipo_comp": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "alicuota_iva": 3,
+      "orden": 0,
+      "tipo_comp": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "alicuota_iva": 4,
+      "orden": 0,
+      "tipo_comp": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "alicuota_iva": 3,
+      "orden": 0,
+      "tipo_comp": 8
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "alicuota_iva": 4,
+      "orden": 0,
+      "tipo_comp": 8
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 56
+  },
+
+  {
+    "fields": {
+      "alicuota_iva": 5,
+      "orden": 0,
+      "tipo_comp": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "alicuota_iva": 6,
+      "orden": 0,
+      "tipo_comp": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 58
+  },
+  {
+    "fields": {
+      "alicuota_iva": 5,
+      "orden": 0,
+      "tipo_comp": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 59
+  },
+  {
+    "fields": {
+      "alicuota_iva": 6,
+      "orden": 0,
+      "tipo_comp": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 60
+  },
+  {
+    "fields": {
+      "alicuota_iva": 5,
+      "orden": 0,
+      "tipo_comp": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 61
+  },
+  {
+    "fields": {
+      "alicuota_iva": 6,
+      "orden": 0,
+      "tipo_comp": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 62
+  },
+  {
+    "fields": {
+      "alicuota_iva": 5,
+      "orden": 0,
+      "tipo_comp": 8
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 63
+  },
+  {
+    "fields": {
+      "alicuota_iva": 6,
+      "orden": 0,
+      "tipo_comp": 8
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 64
+  },
+  {
+    "fields": {
+      "tipo_comp": 16,
+      "alicuota_iva": 1,
+      "orden": 0
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 65
+  },
+  {
+    "fields": {
+      "tipo_comp": 16,
+      "alicuota_iva": 2,
+      "orden": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 66
+  },
+  {
+    "fields": {
+      "tipo_comp": 16,
+      "alicuota_iva": 3,
+      "orden": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 67
+  },
+  {
+    "fields": {
+      "tipo_comp": 16,
+      "alicuota_iva": 4,
+      "orden": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 68
+  },
+  {
+    "fields": {
+      "tipo_comp": 16,
+      "alicuota_iva": 5,
+      "orden": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 69
+  },
+  {
+    "fields": {
+      "tipo_comp": 16,
+      "alicuota_iva": 6,
+      "orden": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 70
+  },
+  {
+    "fields": {
+      "tipo_comp": 16,
+      "alicuota_iva": 7,
+      "orden": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 71
+  },
+  {
+    "fields": {
+      "tipo_comp": 16,
+      "alicuota_iva": 8,
+      "orden": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 72
+  },
+  {
+    "fields": {
+      "tipo_comp": 17,
+      "alicuota_iva": 1,
+      "orden": 0
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 73
+  },
+  {
+    "fields": {
+      "tipo_comp": 17,
+      "alicuota_iva": 2,
+      "orden": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 74
+  },
+  {
+    "fields": {
+      "tipo_comp": 17,
+      "alicuota_iva": 3,
+      "orden": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 75
+  },
+  {
+    "fields": {
+      "tipo_comp": 17,
+      "alicuota_iva": 4,
+      "orden": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 76
+  },
+  {
+    "fields": {
+      "tipo_comp": 17,
+      "alicuota_iva": 5,
+      "orden": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 77
+  },
+  {
+    "fields": {
+      "tipo_comp": 17,
+      "alicuota_iva": 6,
+      "orden": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 78
+  },
+  {
+    "fields": {
+      "tipo_comp": 17,
+      "alicuota_iva": 7,
+      "orden": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 79
+  },
+  {
+    "fields": {
+      "tipo_comp": 17,
+      "alicuota_iva": 8,
+      "orden": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 80
+  },
+  {
+    "fields": {
+      "tipo_comp": 18,
+      "alicuota_iva": 1,
+      "orden": 0
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 81
+  },
+  {
+    "fields": {
+      "tipo_comp": 18,
+      "alicuota_iva": 2,
+      "orden": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 82
+  },
+  {
+    "fields": {
+      "tipo_comp": 18,
+      "alicuota_iva": 3,
+      "orden": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 83
+  },
+  {
+    "fields": {
+      "tipo_comp": 18,
+      "alicuota_iva": 4,
+      "orden": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 84
+  },
+  {
+    "fields": {
+      "tipo_comp": 18,
+      "alicuota_iva": 5,
+      "orden": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 85
+  },
+  {
+    "fields": {
+      "tipo_comp": 18,
+      "alicuota_iva": 6,
+      "orden": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 86
+  },
+  {
+    "fields": {
+      "tipo_comp": 18,
+      "alicuota_iva": 7,
+      "orden": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 87
+  },
+  {
+    "fields": {
+      "tipo_comp": 18,
+      "alicuota_iva": 8,
+      "orden": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 88
+  },
+  {
+    "fields": {
+      "tipo_comp": 19,
+      "alicuota_iva": 1,
+      "orden": 0
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 89
+  },
+  {
+    "fields": {
+      "tipo_comp": 19,
+      "alicuota_iva": 2,
+      "orden": 1
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 90
+  },
+  {
+    "fields": {
+      "tipo_comp": 19,
+      "alicuota_iva": 3,
+      "orden": 2
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 91
+  },
+  {
+    "fields": {
+      "tipo_comp": 19,
+      "alicuota_iva": 4,
+      "orden": 3
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 92
+  },
+  {
+    "fields": {
+      "tipo_comp": 19,
+      "alicuota_iva": 5,
+      "orden": 4
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 93
+  },
+  {
+    "fields": {
+      "tipo_comp": 19,
+      "alicuota_iva": 6,
+      "orden": 5
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 94
+  },
+  {
+    "fields": {
+      "tipo_comp": 19,
+      "alicuota_iva": 7,
+      "orden": 6
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 95
+  },
+  {
+    "fields": {
+      "tipo_comp": 19,
+      "alicuota_iva": 8,
+      "orden": 7
+    },
+    "model": "afip.tipocomprobantealicuotaiva",
+    "pk": 96
+  }
+]

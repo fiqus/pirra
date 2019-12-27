@@ -1,0 +1,65 @@
+*.py[cod]
+virtualenv
+venv
+env
+pirra_web.iml
+facturas/*
+afip_ws/ws/cache/*
+pirra_web/media/*
+pirra_web/settings/dev.py
+deploy/config/tmp/ansible.log
+get-pip.py
+media/**
+
+# C extensions
+*.so
+
+*.pkl
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# project
+test.db
+.idea
+cache/*
+comprobante/vendor/pyafipws/ws/cache/*
+comprobante/vendor/pyafipws/cache/*
+logs/*.log*
+bower_components
+
+data
+static/**
+node_modules
+/assets/webpack_bundles/
+webpack-stats.json
+pirra.iml
+
+# Vagrant
+/deploy/.vagrant/
+
+deploy/ansible/deploy_pirra.retry

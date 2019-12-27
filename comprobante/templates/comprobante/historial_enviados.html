@@ -1,0 +1,28 @@
+{% block main %}
+{% if envios %}
+    <table class="table table-hover no-margins">
+        <thead>
+        <tr>
+            <th>Destinatario</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for envio in envios %}
+                <tr>
+                    <td>{{ envio.email }}</td>
+                    <td><i class="fa fa-clock-o"></i> {{ envio.fecha_envio|date:"j N Y H:i" }}</td>
+                    <td>
+                        {% if envio.estado == "Ok" %}<span class="label label-primary">Enviado</span>{% else %}<span class="label label-danger">Error</span>{% endif %}
+                        {% if envio.observaciones == "EDI" %}<span class="label label-success">EDI</span>{% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <h2>No hemos registrado envios todavia.</h2>
+    <small>Es posible que se deba a que hayas enviado este comprobante antes de que agreguemos la funcionalidad del historial de envios por comprobante.</small>
+{% endif %}
+{% endblock %}

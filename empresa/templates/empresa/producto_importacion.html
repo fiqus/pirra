@@ -1,0 +1,42 @@
+{% extends "layout_empty.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block bgclass %}bg-white{% endblock %}
+
+{% block app %}
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <form class="form" method="post" action="{% url "producto.import_product" %}" target="_self" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% block form %}
+                        <div class="alert alert-info" style="margin-bottom: 10px; margin-top: 0;padding:10px;">
+                            <i class="fa fa-exclamation-circle"></i>
+                            Click <a href="{% static "xls/archivo_modelo_importacion_productos.xlsx" %}" target="_blank" class="alert-link">aquí</a> para descargar el archivo modelo de importación (formato CSV/EXCEL).
+                            <a id="show_prod_import_instructivo" onclick="instructivo_click();" class="alert-link" data-target="#carousel-example-generic" data-slide-to="1" >Ver instructivo de importación   <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                        {% bootstrap_form form %}
+                    {% endblock %}
+                </form>
+                <hr>
+            </div>
+            <div class="carousel-item">
+                <button id="prod_import_image_back" type="button" onclick="back_click();" data-target="#carousel-example-generic" data-slide-to="0" class="btn btn-default"><i class="glyphicon glyphicon-circle-arrow-left"></i>  Atrás</button>
+                <a style="display:block; float:right;" download="instructivo_importacion_productos.png" title="instructivo_importacion_productos" class="alert-link" href="{% static "xls/importacion_productos_instructivo.png" %}">Descargar instructivo de importación   <i class="fa fa-file-download"></i></a>
+                <img id="prod_import_image" src=" {% static "xls/importacion_productos_instructivo.png" %} " class="img-rounded img-responsive">
+            </div>
+        </div>
+    </div>
+    <script>
+        function instructivo_click (){
+            $('.carousel').carousel('next')
+        };
+
+        function back_click (){
+            $('.carousel').carousel('prev')
+        };
+
+    </script>
+
+{% endblock %}

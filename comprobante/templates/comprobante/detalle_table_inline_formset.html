@@ -1,0 +1,99 @@
+{% load bootstrap4 %}
+
+<div>
+    {{ formset.management_form }}
+</div>
+
+<table id="detalle_table" class="table table-striped table-condensed table-responsive-lg">
+    <thead>
+    {% if formset.readonly and not formset.queryset.exists %}
+    {% else %}
+        <tr class="font-xs">
+            <th class="control-label requiredField" style="width: 80px;">Cantidad<span class="asteriskField">*</span></th>
+            <th class="control-label requiredField" style="width: 100px;">Unidad</th>
+            <th class="control-label requiredField" style="width: auto;">Detalle <span class="asteriskField">*</span></th>
+            <th class="control-label requiredField precio-unitario" style="width: 80px;">Precio Unit.<span class="asteriskField">*</span></th>
+            <th class="control-label requiredField precio-final" style="width: 80px;">Precio Final<span class="asteriskField">*</span></th>
+            <th class="control-label alicuotas-iva requiredField" style="width: 80px;">IVA<span class="asteriskField">*</span></th>
+            <th class="control-label alicuotas-iva requiredField imp_iva" style="width: 80px;">Imp. IVA</th>
+            <th class="control-label requiredField" style="width: 80px;">Total</th>
+            <th class="control-label " style="width: 80px;">Acciones</th>
+        </tr>
+    {% endif %}
+    </thead>
+
+    <tbody>
+    {% for form in formset %}
+        {% if form_show_errors and not form.is_extra %}
+            {% bootstrap_form_errors form %}
+        {% endif %}
+        <tr>
+            <td class="cantidad p-1">{% bootstrap_field form.cant layout="inline" size="sm" form_group_class="m-0" %}</td>
+            <td class="unidad p-1">{% bootstrap_field form.unidad layout="inline" size="sm" form_group_class="m-0" %}</td>
+            <td class="p-1">
+                {{ form.detalle.as_hidden }}
+                {% bootstrap_field form.producto form_group_class="producto" layout="inline" size="sm" %}
+            </td>
+            <td class="precio-final p-1"><input class="form-control form-control-sm precio_final money"
+                                            id="id_form-{{ forloop.counter0 }}-precio_final"></td>
+            <td class="precio-unitario p-1">{% bootstrap_field form.precio_unit form_group_class="precio-unitario" layout="inline" size="sm" %}</td>
+            <td class="alicuotas-iva p-1">{% bootstrap_field form.alicuota_iva layout="inline" size="sm" form_group_class="m-0" %}</td>
+            <td id="div_id_form-{{ forloop.counter0 }}-imp_iva" class="alicuotas-iva imp_iva p-1 m-0">
+                <div class="controls ">
+                    <span class="form-control form-control-sm imp_iva money"
+                          id="id_form-{{ forloop.counter0 }}-imp_iva"></span>
+                </div>
+            </td>
+            <td class="precio-total p-1" id="div_id_form-{{ forloop.counter0 }}-precio_total">
+                <div class="controls ">
+                    <span class="form-control form-control-sm precio_total money"
+                          id="id_form-{{ forloop.counter0 }}-precio_total"></span>
+                </div>
+            </td>
+            <td class="p-1">
+                <button type="button" class="remove_btn btn-sm btn-danger pull-right"><i
+                        class="fa fa-trash"></i></button>
+                <div style="display: none">
+                    {% bootstrap_field form.id %}
+                    {{ form.DELETE }}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% verbatim %}
+<script id="detail-template" type="text/x-handlebars-template">
+<tr>
+            <td class="cantidad p-1"><div class="m-0"><label class="sr-only" for="id_detalles-{{n}}-cant">Cant</label><input step="any" type="number" class="form-control form-control-sm" id="id_detalles-{{n}}-cant" name="detalles-{{n}}-cant" placeholder="Cant" title="b''" value="1.00"></div></td>
+            <td class="unidad p-1"><div class="m-0"><label class="sr-only" for="id_detalles-{{n}}-unidad">Unidad</label><select name="detalles-{{n}}-unidad" class="form-control form-control-sm" title="" id="id_detalles-{{n}}-unidad"></select></div></td>
+            <td class="p-1">
+                <input type="hidden" name="detalles-{{n}}-detalle" value="cod1 - nombre prod 1" id="id_detalles-{{n}}-detalle">
+                <div class="producto"><label class="sr-only" for="id_detalles-{{n}}-producto">Producto</label><select name="detalles-{{n}}-producto" class="form-control form-control-sm" title="" id="id_detalles-{{n}}-producto"></select></div>
+            </td>
+            <td class="precio-final p-1"><input class="form-control form-control-sm precio_final money" id="id_form-{{n}}-precio_final"></td>
+            <td class="precio-unitario p-1"><div class="precio-unitario"><label class="sr-only" for="id_detalles-{{n}}-precio_unit">Precio unit</label><input step="any" type="number" class="form-control form-control-sm" id="id_detalles-{{n}}-precio_unit" name="detalles-{{n}}-precio_unit" placeholder="Precio unit" title="b''" value="2.5000"></div></td>
+            <td class="alicuotas-iva p-1"><div class="m-0">
+                <label class="sr-only" for="id_detalles-{{n}}-alicuota_iva">Alicuota iva</label>
+                <select name="detalles-{{n}}-alicuota_iva" class="form-control form-control-sm" title="" id="id_detalles-{{n}}-alicuota_iva"></select></div>
+            </td>
+            <td id="div_id_form-{{n}}-imp_iva" class="alicuotas-iva imp_iva p-1 m-0">
+                <div class="controls ">
+                    <span class="form-control form-control-sm imp_iva money" id="id_form-{{n}}-imp_iva"></span>
+                </div>
+            </td>
+            <td class="precio-total p-1" id="div_id_form-{{n}}-precio_total">
+                <div class="controls ">
+                    <span class="form-control form-control-sm precio_total money" id="id_form-{{n}}-precio_total"></span>
+                </div>
+            </td>
+            <td class="p-1">
+                <button type="button" class="remove_btn btn-sm btn-danger pull-right"><svg class="svg-inline--fa fa-trash fa-w-14" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path></svg><!-- <i class="fa fa-trash"></i> --></button>
+                <div style="display: none">
+                    <input type="checkbox" name="detalles-{{n}}-DELETE" id="id_detalles-{{n}}-DELETE">
+                </div>
+            </td>
+        </tr>
+</script>
+{% endverbatim%}

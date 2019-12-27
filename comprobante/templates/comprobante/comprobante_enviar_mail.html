@@ -1,0 +1,85 @@
+{% load staticfiles %}
+{% block main %}
+    <div id="contacts">
+        <form name="sentMessage" id="contactForm"  novalidate>
+            <legend>Enviar Factura</legend>
+              <input type="hidden" id="pk" value="{{ comprobante.pk }}"/>
+            <div class="control-group">
+                  <div class="controls">
+                     <input type="text" name="email" class="form-control" placeholder="Email del destinatario" id="email" value="{% if comprobante.cliente.email %}{{ comprobante.cliente.email }}{% endif %}"/>
+                  </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <textarea rows="13" cols="100" class="form-control" placeholder="Mensaje" id="message" maxlength="999" style="resize:none"></textarea>
+                </div>
+                <div>
+                    <small>* La factura electrónica se enviará como archivo adjunto en el email.</small>
+                </div>
+            </div>
+            <br/>
+            <div style="text-align: right;">
+              <button id="btn-enviar-mail" type="submit" class="btn btn-success"><i class="glyphicon glyphicon-envelope"></i>  Enviar</button>
+              {% if not envio_desde_listado %}
+                  <button type="button" data-target="#carousel-example-generic" data-slide-to="0" class="btn btn-default"><i class="glyphicon glyphicon-circle-arrow-left"></i>  Atrás</button>
+               {% endif %}
+              <button id="btn-detail-close" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static "js/comprobante_detail.js" %}"></script>
+    <script>
+        var url_email = '{% url "comprobante.enviar"  %}';
+        $("#contactForm").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                email: {
+                  required: "Por favor ingrese el email del destinatario",
+                  email: "Debe ingresar un e-mail válido"
+                }
+            },
+            submitHandler: sendEmail
+        });
+
+        function sendEmail() {
+            var pk = $("input#pk").val();
+            var email = $("input#email").val();
+            var message = $("textarea#message").val();
+
+            $("#btn-enviar-mail").attr("disabled", "disabled");
+
+            $.ajax({
+                url: url_email,
+                type: "POST",
+                data: {pk: pk, email: email, message: message},
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                    if (data.success) {
+                        // Success message
+                        toastr["success"]("La factura ha sido enviada.");
+                        $("#btn-detail-close").click();
+                    }
+                    else {
+                        console.log(data);
+                        toastr["error"]("<strong> El comprobante no pudo ser enviado. </strong> " + data.message);
+                        $("#btn-enviar-mail").attr("disabled", null);
+                    }
+                },
+                error: function (request, status, error) {
+                    console.log(request);
+                    // Fail message
+                    toastr["error"]("<strong> El e-mail no pudo ser enviado</strong> Por favor intente más tarde. Si el problema persiste comuniquese con soporte técnico, muchas gracias.");
+                    $("#btn-enviar-mail").attr("disabled", null);
+                }
+            })
+        }
+    </script>
+{% endblock %}

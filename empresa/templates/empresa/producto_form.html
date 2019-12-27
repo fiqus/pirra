@@ -1,0 +1,34 @@
+{% extends "base_form.html" %}
+{% load staticfiles %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Empresa</a></li>
+    <li class="breadcrumb-item">
+        <a href="{% url "producto.list" %}">Productos</a>
+    </li>
+    <li class="breadcrumb-item active">
+            {% if object %}
+                <strong>{{ object }}</strong>
+            {% else %}
+                <strong>Crear</strong>
+            {% endif %}    </li>
+{% endblock %}
+
+{% block form_title %}
+    {% if object %}
+        Editar producto {{ object }}
+    {% else %}
+        Crear un nuevo producto
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/valid_cuit.js" %}"></script>
+    <script src="{% static "js/producto_form.js" %}"></script>
+    <script src="{% static "js/search_cuit.js" %}"></script>
+    <script>
+        $(document).ready(function () {
+            $("form").validate();
+        });
+    </script>
+{% endblock %}

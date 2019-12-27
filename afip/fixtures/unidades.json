@@ -1,0 +1,106 @@
+[
+  {
+    "fields": {
+      "nombre": "miligramos",
+      "id_afip": 41
+    },
+    "model": "afip.unidad",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "unidades",
+      "id_afip": 7
+    },
+    "model": "afip.unidad",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "kilogramo",
+      "id_afip": 1
+    },
+    "model": "afip.unidad",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "gramo",
+      "id_afip": 14
+    },
+    "model": "afip.unidad",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "nombre": "litros",
+      "id_afip": 5
+    },
+    "model": "afip.unidad",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "nombre": "metro cubico",
+      "id_afip": 4
+    },
+    "model": "afip.unidad",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "nombre": "centimetro cubico",
+      "id_afip": 27
+    },
+    "model": "afip.unidad",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "nombre": "tonelada",
+      "id_afip": 29
+    },
+    "model": "afip.unidad",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "nombre": "otras unidades",
+      "id_afip": 98
+    },
+    "model": "afip.unidad",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "nombre": "docena",
+      "id_afip": 9
+    },
+    "model": "afip.unidad",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "nombre": "milimetro",
+      "id_afip": 15
+    },
+    "model": "afip.unidad",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "nombre": "bonificacion",
+      "id_afip": 99
+    },
+    "model": "afip.unidad",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "nombre": "pack",
+      "id_afip": 62
+    },
+    "model": "afip.unidad",
+    "pk": 13
+  }
+]

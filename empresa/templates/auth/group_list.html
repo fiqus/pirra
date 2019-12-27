@@ -1,0 +1,47 @@
+{% extends "base_table.html" %}
+
+{% block title %}
+    <h2>Grupos</h2>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li>
+            <a href="">Configuracion</a>
+        </li>
+        <li class="active">
+            <strong>Grupos</strong>
+        </li>
+    </ol>
+{% endblock %}
+
+{% block box-title %}
+    <h5>Todos los grupos de tu empresa</h5>
+    <div class="ibox-tools">
+        <a href="{% url "group.create" %}" class="btn btn-primary btn-xs">Crear Grupo</a>
+    </div>
+{% endblock %}
+
+{% block table %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for group in object_list %}
+            <tr>
+                <td>{{ group.pk }}</td>
+                <td>{{ group.name }}</td>
+                <td>
+                    <a href="{% url "group.update" group.pk %}" class="btn btn-white btn-sm"><i
+                            class="fa fa-pencil"></i> Editar </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

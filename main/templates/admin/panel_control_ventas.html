@@ -1,0 +1,193 @@
+{% extends "admin/base_site.html" %}
+{% load custom_filters %}
+
+{% block content %}
+    <h1>Reporte de Ventas</h1>
+
+    <hr/><br/>
+
+    <ul class="tab">
+      <li><a href="javascript:void(0)" class="tablinks" onclick="openContent(event, 'clientes')">Clientes</a></li>
+      <li><a href="javascript:void(0)" class="tablinks" onclick="openContent(event, 'planes')">Planes</a></li>
+      <li><a href="javascript:void(0)" class="tablinks" onclick="openContent(event, 'promocion')">Promoción</a></li>
+    </ul>
+
+    <div id="clientes" class="tabcontent">
+        <h3>Clientes actuales</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>NO Vinculados</th>
+                <th>Vinculados Activos</th>
+                <th>Vinculados Inactivos</th>
+            </tr>
+            <p>Se consideran inactivos los clientes que no hayan creado algun comprobante dentro de los
+                ultimos 3 meses y su ultimo periodo pago fue hace 1 mes o mas</p>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ data.unrelated_clients }}</td>
+                    <td>{{ data.active_related_clients }}</td>
+                    <td>{{ data.inactive_related_clients }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr/><br/><br/>
+
+        <h2>Clientes nuevos</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Ultimos 15 dias</th>
+                <th>Ultimo mes</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ data.new_users_last_15_days }}</td>
+                    <td>{{ data.new_users_last_month }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr/><br/><br/>
+
+        <h2>Signups</h2>
+        <table>
+            <thead>
+                <tr>
+                    {% for month in data.signups.values %}
+                        <th>{{ month.description }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for month in data.signups.values %}
+                        <td>{{ month.count }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="planes" class="tabcontent">
+        <table>
+            <thead>
+            <tr>
+                <th>Plan</th>
+                <th>Clientes</th>
+                <th>Cantidad</th>
+                <th>Dinero a ingresar</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for plan in data.planes_agrupados %}
+                    <tr>
+                        <td valign="bottom" align="center">{{ plan.tipo_plan }}</td>
+                        <td>
+                            {% for cliente in plan.clientes %}
+                                {{ cliente }} <br>
+                            {% endfor %}
+                        </td>
+                        <td valign="bottom" align="center">{{ plan.cantidad }}</td>
+                        <td valign="bottom" align="center">${{ plan.dinero_a_ingresar|floatformat:2|money }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2" valign="bottom" align="center"><strong>TOTAL</strong></td>
+                    <td valign="bottom" align="center"><strong>{{ data.qty_total }}</strong></td>
+                    <td valign="bottom" align="center"><strong>${{ data.amount_total|floatformat:2|money }}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <br/><br/>
+    </div>
+
+    <div id="promocion" class="tabcontent">
+        <table>
+            <thead>
+            <tr>
+                <th>Forma de promoción</th>
+                <th>Cantidad</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for group in data.ads_grouped %}
+                    <tr>
+                        {% for ad_info in group %}
+                            <td valign="bottom" align="center">{{ ad_info }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {# TODO sacar esto de acá, debería ir en un .css que el adminplus no me toma #}
+    <style type="text/css">
+        /* Style the list */
+        ul.tab {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Float the list items side by side */
+        ul.tab li {float: left; list-style-type: none;}
+
+        /* Style the links inside the list items */
+        ul.tab li a {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of links on hover */
+        ul.tab li a:hover {background-color: #ddd;}
+
+        /* Create an active/current tablink class */
+        ul.tab li a:focus, .active {background-color: #ccc;}
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 15px 15px 15px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        {# TODO sacar esto de acá, debería ir en un .js que el adminplus no me toma #}
+        function openContent(evt, contentName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the link that opened the tab
+            document.getElementById(contentName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+{% endblock %}
+

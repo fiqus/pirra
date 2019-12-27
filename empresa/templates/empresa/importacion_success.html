@@ -1,0 +1,26 @@
+{% extends "layout_empty.html" %}
+{% load bootstrap4 %}
+
+{% block bgclass %}white-bg{% endblock %}
+{% block body %}
+        <div id="massive-result" class="alert alert-{{ result.result_type}}" style="margin-bottom: 10px; margin-top: 0;">
+            <span id="massive-result-header"><strong>Resultado de la importación:</strong></span>
+            <div id="massive-result-body">
+                {{ result.display_message }}
+            </div>
+            {% if result.imported or result.updated or result.ignored %}
+                <span id="massive-result-footer">
+                    {% if result.imported %}
+                        Se importaron <strong> {{ result.imported }} </strong> {{ entity }}{{ result.imported|pluralize}}.</br>
+                    {% endif %}
+                    {% if result.updated %}
+                        Se actualizaron <strong> {{ result.updated }} </strong> {{ entity }}{{ result.updated|pluralize}}.</br>
+                    {% endif %}
+                    {% if result.ignored %}
+                        Se ignoraron <strong> {{ result.ignored }} </strong> {{ entity }}{{ result.ignored|pluralize}}.</br>
+                    {% endif %}
+                </span>
+            {% endif %}
+        </div>
+    <hr>
+{% endblock %}

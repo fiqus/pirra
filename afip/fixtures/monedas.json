@@ -1,0 +1,38 @@
+[
+  {
+    "fields": {
+      "nombre": "Pesos Argentinos",
+      "simbolo": "$",
+      "id_afip": "PES"
+    },
+    "model": "afip.moneda",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "D\u00f3lar Estadounidense",
+      "simbolo": "US$",
+      "id_afip": "DOL"
+    },
+    "model": "afip.moneda",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "D\u00f3lar Canadiense",
+      "simbolo": "CA$",
+      "id_afip": "018"
+    },
+    "model": "afip.moneda",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "Euro",
+      "simbolo": "\u20ac",
+      "id_afip": "060"
+    },
+    "model": "afip.moneda",
+    "pk": 4
+  }
+]

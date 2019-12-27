@@ -1,0 +1,5 @@
+[program:{{ application_name }}]
+command = {{ virtualenv_path }}/bin/gunicorn_start
+user = {{ application_name }}
+stdout_logfile = {{ application_log_file }}
+redirect_stderr = true

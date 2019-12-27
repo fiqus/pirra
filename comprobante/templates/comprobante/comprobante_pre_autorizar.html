@@ -1,0 +1,18 @@
+{% block main %}
+    <form action="{% url "comprobante.autorizar" comprobante.id %}" method="post">
+        {% csrf_token %}
+        {% if not punto_venta_eliminado %}
+            <p class="bg-danger" style="padding: 10px;">El comprobante <strong>NO</strong> puede ser autorizado porque tiene un punto de venta que ha sido eliminado, por favor edite el comprobante y cámbielo.</p>
+        {% endif %}
+        <div class="modal-body">
+            <p>¿Desea autorizar el siguiente comprobante?</p>
+            <p><b>Cliente: </b>{{ comprobante.cliente }}<br />
+            <b>Tipo de comprobante: </b>{{ comprobante.tipo_cbte }}<br />
+            <b>Monto: </b>{% if comprobante.moneda %}{{ comprobante.moneda.simbolo }}{% else %}${% endif %} {{ comprobante.importe_total|floatformat:2 }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <input type="submit" class="btn btn-primary" value="Autorizar"></button>
+        </div>
+    </form>
+{% endblock %}

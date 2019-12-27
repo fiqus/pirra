@@ -1,0 +1,6 @@
+- name: Install Nginx
+  apt:
+    name: ['nginx']
+    update_cache: "{{ update_apt_cache }}"
+    state: present
+  tags: packages

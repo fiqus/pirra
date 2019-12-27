@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+{% load hooks %}
+
+
+{% block sidebar-header %}
+    <div class="dropdown profile-element">
+    </div>
+    <div class="logo-element">
+    </div>
+{% endblock %}
+
+{% block sidebar-items %}
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "index" %}">
+                        <i class="nav-icon fa fa-chart-pie"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="nav-icon fa fa-file-invoice"></i> Comprobantes
+                    </a>
+                    <ul class="nav-dropdown-items">
+                        {% if perms.comprobante.add_comprobante %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "comprobante.create" %}">
+                                    <i class="nav-icon fa fa-plus-square"></i> Crear
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "comprobante.list" %}">
+                                <i class="nav-icon fa fa-list"></i> Listar
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="nav-icon fa fa-box-open"></i> Productos
+                    </a>
+                    <ul class="nav-dropdown-items">
+                        {% if perms.comprobante.add_comprobante %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "producto.create" %}">
+                                    <i class="nav-icon fa fa-plus-square"></i> Crear
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "producto.list" %}">
+                                <i class="nav-icon fa fa-list"></i> Listar
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="nav-icon fa fa-address-card"></i> Clientes
+                    </a>
+                    <ul class="nav-dropdown-items">
+                        {% if perms.comprobante.add_comprobante %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "cliente.create" %}">
+                                    <i class="nav-icon fa fa-plus-square"></i> Crear
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "cliente.list" %}">
+                                <i class="nav-icon fa fa-list"></i> Listar
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% if perms.empresa or perms.auth %}
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="nav-icon fa fa-building"></i> Empresa
+                        </a>
+                        <ul class="nav-dropdown-items">
+                            {% if perms.empresa.change_empresa %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url "empresa.update" %}">
+                                        <i class="nav-icon fa fa-cogs"></i> Configuracion
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if perms.empresa.add_puntodeventa %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url "punto_de_venta.list" %}">
+                                        <i class="nav-icon fa fa-briefcase"></i> Puntos de Venta
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if perms.auth.add_user %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url "user.list" %}">
+                                        <i class="nav-icon fa fa-address-book"></i> Usuarios
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endif %}
+            {% if user.is_authenticated %}
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="nav-icon fa fa-life-ring"></i> Ayuda
+                    </a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "help.faqs" %}">
+                                <i class="nav-icon fa fa-question-circle"></i> Preguntas Frecuentes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="menu-trip">
+                                <i class="nav-icon fa fa-bus"></i> Recorrido
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            {% endif %}
+            {% hook "pirra.template.nav" %}
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+{% endblock %}

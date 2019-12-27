@@ -1,0 +1,26 @@
+---
+
+# the place where to store socket files
+app_socket_root: /var/run/uwsgi/
+
+# permissions over the socket file
+app_uwsgi_socket_chmod: 770
+app_uwsgi_socket_user: "{{ user }}"
+app_uwsgi_socket_group: "{{ group }}"
+
+# number of parallel processes
+app_uwsgi_process_number: 3
+
+# number of requests done to trigger process restart
+app_uwsgi_process_requests_max: 1000
+
+# directory under the app will run
+app_uwsgi_chdir: ''
+
+# uwsgi plugin name required by app
+app_uwsgi_plugin: 'python3'
+app_uwsgi_plugin_python3_venv_path: "{{ virtualenv_path }}"
+
+# app will be executed as
+app_uwsgi_exec_user: "{{ user }}"
+app_uwsgi_exec_group: "{{ group }}"

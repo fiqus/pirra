@@ -1,0 +1,16 @@
+{% load bootstrap4 %}
+{% block main %}
+    <form id="modificar-precios-form" style="height: 200px;" action="{% url "producto.change_prices" %}" method="post">
+        {% csrf_token %}
+        <div class="col-xs-12 col-md-12 col-sm-12">
+            <div class="alert alert-info" style="margin-bottom: 10px; margin-top: 0;padding:10px;">
+                <i class="fa fa-exclamation-circle"></i> En esta pantalla podrá modificar en forma masiva el precio de <strong>todos</strong>
+                los productos de su empresa.
+                Por favor ingrese un porcentaje de actualizacion de precios.
+            </div>
+        </div>
+        <div class="col-xs-10 col-sm-12 col-md-12">
+            {% bootstrap_form form %}
+        </div>
+    </form>
+{% endblock %}

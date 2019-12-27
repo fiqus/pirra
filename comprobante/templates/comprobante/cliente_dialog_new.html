@@ -1,0 +1,75 @@
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Nuevo cliente</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form id="cliente_form_new" method="post" action="{% url 'comprobante.new_cliente' %}">
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert" style="display:none;">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="error-text"></span>
+                </div>
+                {% csrf_token %}
+                {% bootstrap_form form %}
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Crear cliente</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /.modal-dialog -->
+<script src="{% static "js/search_cuit.js" %}"></script>
+<script src="{% static "js/valid_cuit.js" %}"></script>
+<script type="text/javascript">
+    $(function () {
+        function onSuccess(data) {
+            if (!data.error) { // success
+                var selectizeclient = $("#id_cliente").selectize()[0].selectize;
+                selectizeclient.addOption({value: data.pk, text: data.nombre + ' - ' + data.nro_doc});
+                selectizeclient.addItem(data.pk);
+                selectizeclient.refreshOptions();
+                $("#modal_dialog").modal('hide');
+            } else {
+                $('.alert .error-text').html(data.error['__all__'][0]);
+                $('.alert').show();
+                $(".modal").animate({scrollTop: 0});
+                toastr['error']('Hay errores en el formulario.');
+            }
+        }
+
+        $('#id_nro_doc').on('change', function () {
+            $('.alert').hide();
+        });
+
+        $('.btn-search-cuit').attr('disabled', 'disabled');
+        $('#id_tipo_doc').change(function () {
+            var value = $(this).find("option:selected").text().toLowerCase();
+            if (value === 'cuit') {
+                $('.btn-search-cuit').removeAttr('disabled');
+            } else {
+                $('.btn-search-cuit').attr('disabled', 'disabled');
+            }
+        });
+
+        function onError(errors) {
+            console.log(errors);
+            alert('ERROR! :' + errors);
+        }
+
+        $("#cliente_form_new").validate({
+            submitHandler: function (form) {
+                $(form).ajaxSubmit({success: onSuccess, error: onError});
+            }
+        });
+    });
+</script>
+<script src="{% static "js/cliente_form.js" %}"></script>

@@ -1,0 +1,10 @@
+Pirra - Sistema de facturación
+
+Estimado/a {{name}}, recibimos su consulta con éxito.
+A la brevedad nos pondremos en contacto para responderle.
+
+Atentamente,
+
+Pirra.
+
+{% include 'email_legal.txt'%}

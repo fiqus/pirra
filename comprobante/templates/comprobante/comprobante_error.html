@@ -1,0 +1,18 @@
+{% extends "base_header.html" %}
+
+{% block breadcrumb_container %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-danger" role="alert">
+                Faltan algunas configuraciones antes de poder crear un comprobante. <br/>
+                Verifica que tengas creado un <strong>punto de venta </strong>. <a
+                    href="{% url "punto_de_venta.list" %}">Para hacerlo ingresa acá.</a><br/>
+                Y hayas seleccionado algún <strong>tipo de comprobante</strong> en la configuración de la
+                empresa. <a href="{% url "empresa.update" %}">Para hacerlo ingresa acá.</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "base_form.html" %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Empresa</a></li>
+    <li class="breadcrumb-item">
+        <a href="{% url "punto_de_venta.list" %}">Puntos de Venta</a>
+    </li>
+    <li class="breadcrumb-item active">
+            {% if object %}
+                <strong>{{ object }}</strong>
+            {% else %}
+                <strong>Crear</strong>
+            {% endif %}    </li>
+{% endblock %}
+
+{% block form_title %}
+    {% if object %}
+        Editar punto de venta {{ object }}
+    {% else %}
+        Crear un nuevo punto de venta
+    {% endif %}
+{% endblock %}

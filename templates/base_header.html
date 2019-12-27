@@ -1,0 +1,17 @@
+{% extends "layout_customer.html" %}
+
+
+{% block breadcrumb_container %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% block breadcrumbs %}{% endblock %}
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        {% block content %}
+        {% endblock %}
+    </div>
+{% endblock %}

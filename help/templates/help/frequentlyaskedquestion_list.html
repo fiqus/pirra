@@ -1,0 +1,29 @@
+{% extends "base_header.html" %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Ayuda</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Preguntas Frecuentes</li>
+{% endblock %}
+
+{% block content %}
+    <div class="accordion" id="accordion">
+        {% for item in object_list %}
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                data-target="#collapse{{ item.pk }}" aria-expanded="false" aria-controls="collapseOne">
+                            {{ item.question }}
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapse{{ item.pk }}" class="collapse card-body" aria-labelledby="headingOne"
+                     data-parent="#accordion">
+                    <div class="card-body">
+                        {{ item.answer | safe }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

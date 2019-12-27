@@ -1,0 +1,98 @@
+[
+  {
+    "fields": {
+      "nombre": "IVA Responsable no Inscripto",
+      "id_afip": 3
+    },
+    "model": "afip.condicioniva",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "IVA no Responsable",
+      "id_afip": 4
+    },
+    "model": "afip.condicioniva",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "nombre": "Consumidor Final",
+      "id_afip": 5
+    },
+    "model": "afip.condicioniva",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "nombre": "Responsable Monotributo",
+      "id_afip": 6
+    },
+    "model": "afip.condicioniva",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "nombre": "Sujeto no Categorizado",
+      "id_afip": 7
+    },
+    "model": "afip.condicioniva",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "nombre": "Proveedor del Exterior",
+      "id_afip": 8
+    },
+    "model": "afip.condicioniva",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "nombre": "Cliente del Exterior",
+      "id_afip": 9
+    },
+    "model": "afip.condicioniva",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "nombre": "IVA Liberado – Ley Nº 19.640",
+      "id_afip": 10
+    },
+    "model": "afip.condicioniva",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "nombre": "IVA Responsable Inscripto – Agente de Percepción",
+      "id_afip": 11
+    },
+    "model": "afip.condicioniva",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "nombre": "Pequeño Contribuyente Eventual",
+      "id_afip": 12
+    },
+    "model": "afip.condicioniva",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "nombre": "Monotributista Social",
+      "id_afip": 13
+    },
+    "model": "afip.condicioniva",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "nombre": "Pequeño Contribuyente Eventual Social",
+      "id_afip": 14
+    },
+    "model": "afip.condicioniva",
+    "pk": 14
+  }
+]

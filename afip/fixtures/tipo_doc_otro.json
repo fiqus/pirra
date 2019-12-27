@@ -1,0 +1,10 @@
+[
+  {
+    "fields": {
+        "nombre": "OTRO",
+        "id_afip": 99
+    },
+    "model": "afip.tipodoc",
+    "pk": 5
+  }
+]

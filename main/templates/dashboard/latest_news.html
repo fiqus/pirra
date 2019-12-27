@@ -1,0 +1,31 @@
+{% regroup news by date as news_list %}
+<div class="ibox float-e-margins dashboard-lg">
+    <div class="ibox-title">
+        <h5>Novedades de Pirra</h5>
+    </div>
+    <div class="ibox-content inspinia-timeline novedades">
+        {% if not news_list %}
+            No hay nuevas noticias.
+        {% endif %}
+        {% for date in  news_list %}
+            <div class="timeline-item">
+                <div class="row">
+                    <div class="col-xs-2 date">
+                        <i class="fa fa-calendar"></i>
+                        {{ date.grouper }}
+                    </div>
+                    <div class="col-xs-8 content no-top-border">
+                        <ul>
+                            {% for item in date.list %}
+                                <li>
+                                    <p class="m-b-xs"><strong>{{ item.title }}</strong></p>
+                                    {{ item.description | safe }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

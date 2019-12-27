@@ -1,0 +1,44 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Listado de Clientes</h4>
+        </div>
+        <div class="modal-body">
+            <h5>Haga click sobre un cliente para seleccionarlo, o puede crear uno nuevo haciendo click en 'Nuevo cliente' si aún no existe.</h5>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Domicilio</th>
+                    <th>Doc</th>
+                    <th>Condicion IVA.</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cliente in object_list %}
+                    <tr class="cliente-selected" style="cursor: pointer">
+                        <td class="name"><strong>{{ cliente.nombre }}</strong></td>
+                        <input type="hidden" value="{{ cliente.pk }}" class="cliente_pk" />
+                        <td>{{ cliente.domicilio }} - {{ cliente.localidad }}</td>
+                        <td>{{ cliente.tipo_doc }} - {{ cliente.nro_doc }}</td>
+                        <td>{{ cliente.condicion_iva }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" />
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+<script type="text/javascript">
+  $('.cliente-selected').click(function(){
+    var cliente_pk = $(this).find('.cliente_pk').val();
+    $('#id_cliente').val(cliente_pk);
+    $("#modal_dialog").modal('hide');
+  });
+</script>

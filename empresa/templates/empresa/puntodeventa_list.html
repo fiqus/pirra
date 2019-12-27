@@ -1,0 +1,35 @@
+{% extends "base_table.html" %}
+{% load render_table from django_tables2 %}
+{% load staticfiles %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Empresa</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Puntos de Venta</li>
+{% endblock %}
+
+{% block card-body %}
+    <div class="row mb-2">
+        <div class="d-flex w-100 mx-3">
+            <div class="flex-grow-0"><span>Todos los puntos de venta de tu empresa</span></div>
+            <div class="btn-group ml-auto" role="group" aria-label="Acciones">
+                    <a href="{% url "punto_de_venta.create" %}" class="nav-item btn btn-outline-primary btn-sm">
+                        <i class="fa fa-plus"></i><span class="d-sm-down-none">  Crear Punto de Venta</span>
+                    </a>
+                    <a href="#" class="nav-item btn btn-outline-primary btn-sm"  id="importar-ptos-vta-afip"
+                       data-url="{% url "punto_de_venta.get_ptos_venta_afip" %}">
+                        <i class="fa fa-upload"></i><span class="d-sm-down-none"> Importar desde AFIP</span>
+                    </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% render_table table %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static "js/pto_vta_list.js" %}"></script>
+{% endblock %}

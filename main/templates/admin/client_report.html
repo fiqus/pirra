@@ -1,0 +1,35 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <h1>Reporte de Clientes</h1>
+    <table>
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>CUIT</th>
+        <th>Vinculada</th>
+        <th>Email</th>
+        <th>Fecha alta</th>
+        <th>Cbtes creados</th>
+        <th>Cbtes autorizados</th>
+        <th>Como nos conocio?</th>
+        <th>Detalle</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+            <tr>
+                <td>{% if row.vinculada %}<strong>{{ row.name }}</strong>{% else %}{{ row.name }}{% endif %}</td>
+                <td>{% if row.vinculada %}<strong>{{ row.cuit }}</strong>{% else %}{{ row.cuit }}{% endif %}</td>
+                <td>{% if row.vinculada %}&#10004;{% else %}&#10060;{% endif %}</td>
+                <td>{% if row.vinculada %}<strong>{{ row.email }}</strong>{% else %}{{ row.email }}{% endif %}</td>
+                <td>{% if row.vinculada %}<strong>{{ row.created_at|date:"d/m/Y H:i" }}</strong>{% else %}{{ row.created_at|date:"d/m/Y H:i" }}{% endif %}</td>
+                <td>{% if row.vinculada %}<strong>{{ row.cbtes_creados }}</strong>{% else %}{{ row.cbtes_creados }}{% endif %}</td>
+                <td>{% if row.vinculada %}<strong>{{ row.cbtes_autorizados }}</strong>{% else %}{{ row.cbtes_autorizados }}{% endif %}</td>
+                <td>{% if row.vinculada %}<strong>{{ row.como_nos_conocio }}</strong>{% else %}{{ row.como_nos_conocio}}{% endif %}</td>
+                <td><a href="{% url 'admin:client_details' row.id %}">Detalle</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

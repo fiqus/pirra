@@ -1,0 +1,43 @@
+{% load bootstrap4 %}
+{% block main %}
+    <form action="{% url "comprobante.enviar_masivo_seleccion" %}" method="post" id="form_enviar_masivo_seleccion">
+        {% csrf_token %}
+        <div class="modal-body">
+            {% if comprobantes_list|length == 0 %}
+                <div class="alert alert-danger" style="margin-bottom: 10px; margin-top: 0;">
+                    <i class="fa fa-exclamation-circle"></i> No ha seleccionado ningún comprobante que pueda ser <strong>enviado</strong>!<br/> Recuerde que los comprobantes NO autorizados no pueden ser enviados. <br/> Por favor vuelva al listado de comprobantes para corregir su selección.
+                </div>
+            {% else %}
+                <div class="alert alert-info" style="margin-bottom: 10px; margin-top: 0;">
+                    <i class="fa fa-exclamation-circle"></i> En esta pantalla podrá enviar los comprobante que haya seleccionado en el listado de comprobantes;
+                    los mismos <strong>deben haber sido autorizados</strong>, de otra manera serán ignorados.<br/>
+                    Como máximo por envío, podrá enviar la cantidad de comprobantes que se listan en esta pantalla. <br/>Por ser un envío masivo no podrá agregar un mensaje para cada comprobante.
+                </div>
+                {% block form %}
+                    <input class="form-control" id="nros_comp_enviar" name="nros_comp_enviar" type="text" style="display: none" value="{{ nros_comp_enviar }}">
+                    <p class="comp_to_send_el">Ha seleccionado enviar los comprobantes:</p>
+                    <div class="comp_to_send_el" class="ibox-content">
+                        <ul>
+                        {% for comp in comprobantes_list %}
+                            <li>{{ comp }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <p class="comp_to_send_el">Haga click en el botón <strong>Enviar</strong> para completar la acción.</p>
+                {% endblock %}
+                <div id="massive-result" class="alert">
+                    <span id="massive-result-header" style="display: none"><strong>Resultado del envío:</strong></span>
+                    <div id="massive-result-body"></div>
+                    <span id="massive-result-footer" style="display: none"></span>
+                    <div id="sent_comp_result"></div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            {% if comprobantes_list|length > 0 %}
+                <input type="submit" class="btn btn-primary" id="eliminar_masivo" value="Enviar"><i class='spinner fa fa-spinner fa-spin' style="display: none"></i>
+            {% endif %}
+        </div>
+    </form>
+{% endblock %}

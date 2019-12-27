@@ -1,0 +1,12 @@
+{% load bootstrap4 %}
+{% block main %}
+    <form id="importar-ptos-vta-afip-form" style="height: 130px;" action="{% url "punto_de_venta.get_ptos_venta_afip" %}" method="post">
+        {% csrf_token %}
+        <div class="col-md-12">
+            <div class="alert alert-info" style="margin-bottom: 10px; margin-top: 0;">
+                <i class="fa fa-exclamation-circle"></i> En esta pantalla podrá importar los puntos de venta que haya dado de alta en la AFIP.
+                Se agregarán automáticamente a este listado los puntos de venta que no estén bloqueados ni dados de baja.
+            </div>
+        </div>
+    </form>
+{% endblock %}

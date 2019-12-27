@@ -1,0 +1,23 @@
+---
+
+- name: Provision a {{ project_name }} server
+  hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  vars:
+    - setup_git_repo: yes
+    - update_apt_cache: yes
+  vars_files:
+    - group_vars/extra-variables.yml
+  
+  roles:
+    - role: base
+    - role: postgres
+    - role: uwsgi
+    - role: npm
+    - role: django
+    - role: supervisor
+    - role: nginx
+    - role: redis
+    - role: cron

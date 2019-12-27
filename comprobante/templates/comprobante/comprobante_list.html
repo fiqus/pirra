@@ -1,0 +1,298 @@
+{% extends "base_table.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+{% load render_table from django_tables2 %}
+{% load custom_filters %}
+
+{% block css %}
+    <link href="{% static "css/list.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Comprobantes</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Listar</li>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/comprobante_list.js" %}"></script>
+
+    <script id="detail-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-comprobante fade" id="detailModal" tabindex="-1" role="dialog"
+             aria-labelledby="detailLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Detalle de comprobante</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="ajax_loader" src="{% static "img/ajax-loader.gif" %}" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="autorizar-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-comprobante fade" id="autorizarModal" tabindex="-1" role="dialog"
+             aria-labelledby="autorizarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Autorizar Comprobante <i class='spinner fa fa-spinner fa-spin'
+                            style="display: none"></i></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="duplicar-masivo-seleccion-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="masivoModal" tabindex="-1" role="dialog"
+             aria-labelledby="masivoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Duplicación Masiva de Comprobantes Selecionados</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="autorizar-masivo-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="masivoModal" tabindex="-1" role="dialog"
+             aria-labelledby="masivoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Autorización Masiva de Comprobantes</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="autorizar-masivo-seleccion-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="masivoModal" tabindex="-1" role="dialog"
+             aria-labelledby="masivoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Autorización Masiva de Comprobantes Selecionados</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="imprimir-masivo-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="impresionModal" tabindex="-1" role="dialog"
+             aria-labelledby="impresionlLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Impresión Masiva de Comprobantes</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="exportar-masivo-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="exportarModal" tabindex="-1" role="dialog"
+             aria-labelledby="exportarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Exportar Comprobantes</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="imprimir-masivo-seleccion-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="impresionModal" tabindex="-1" role="dialog"
+             aria-labelledby="impresionlLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Impresión Masiva de Comprobantes Seleccionados</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="eliminar-masivo-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="eliminacionModal" tabindex="-1" role="dialog"
+             aria-labelledby="eliminacionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminación Masiva de Comprobantes</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="eliminar-masivo-seleccion-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="eliminacionModal" tabindex="-1" role="dialog"
+             aria-labelledby="eliminacionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminación Masiva de Comprobantes Seleccionados</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="enviar-masivo-seleccion-modal-template" type="text/x-handlebars-template">
+        <div class="modal modal-masivo fade" id="envioModal" tabindex="-1" role="dialog"
+             aria-labelledby="envioLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Envío Masivo de Comprobantes Seleccionados</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-dynamic-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+{% endblock js %}
+
+
+{% block card-body %}
+    <div class="row mb-2">
+        <div class="d-flex w-100 mx-3">
+            <div class="flex-grow-0"><span>Comprobantes</span></div>
+            <div class="btn-group ml-auto" role="group" aria-label="Acciones">
+                <a id="imprimir_masivo_seleccion" class="nav-item btn btn-outline-primary btn-sm accion-masiva-selected d-none" href="#"
+                   onclick="imprimir_masivo_seleccion('{% url "comprobante.imprimir_masivo_seleccion" %}');">
+                    <i class="fas fa-print"></i><span class="d-sm-down-none"> Imprimir</span>
+                </a>
+                <a id="enviar_masivo_seleccion" class="nav-item btn btn-outline-primary btn-sm accion-masiva-selected d-none" href="#"
+                   onclick="enviar_masivo_seleccion('{% url "comprobante.enviar_masivo_seleccion" %}');">
+                    <i class="fas fa-paper-plane"></i><span class="d-sm-down-none"> Enviar</span>
+                </a>
+                <a id="duplicar_masivo_seleccion" class="nav-item btn btn-outline-primary btn-sm accion-masiva-selected d-none" href="#"
+                   onclick="duplicar_masivo_seleccion('{% url "comprobante.duplicar_masivo_seleccion" %}');">
+                    <i class="fa fa-copy"></i><span class="d-sm-down-none"> Duplicar</span>
+                </a>
+                <a id="autorizar_masivo_seleccion" class="nav-item btn btn-outline-primary btn-sm accion-masiva-selected d-none" href="#"
+                   onclick="autorizar_masivo_seleccion('{% url "comprobante.autorizar_masivo_seleccion" %}');">
+                    <i class="fa fa-barcode"></i><span class="d-sm-down-none"> Autorizar</span>
+                </a>
+                <a id="eliminar_masivo_seleccion" class="nav-item btn btn-outline-primary btn-sm accion-masiva-selected d-none" href="#"
+                   onclick="eliminar_masivo_seleccion('{% url "comprobante.eliminar_masivo_seleccion" %}');">
+                    <i class="fa fa-trash"></i><span class="d-sm-down-none"> Eliminar</span>
+                </a>
+                <div class="btn-group accion-masiva-deselected">
+                    <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-list"></i><span class="d-sm-down-none"> Acciones</span> <span
+                            class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"
+                           onclick="imprimir_masivo('{% url "comprobante.imprimir_masivo" %}');">
+                            <i class="fa fa-print"></i><span> Imprimir</span>
+                        </a>
+                        {% if perms.comprobante.change_comprobante %}
+                            <a class="dropdown-item" href="#"
+                               onclick="autorizar_masivo('{% url "comprobante.autorizar_masivo" %}');">
+                                <i class="fa fa-barcode"></i><span> Autorizar</span>
+                            </a>
+                        {% endif %}
+                        {% if perms.comprobante.delete_comprobante %}
+                            <a class="dropdown-item" href="#"
+                               onclick="eliminar_masivo('{% url "comprobante.eliminar_masivo" %}');">
+                                <i class="fa fa-trash"></i><span> Eliminar</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if perms.comprobante.add_comprobante %}
+                    <div class="btn-group importar_exportar_buttons accion-masiva-deselected">
+                        <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle"
+                                data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-upload"></i><span class="d-sm-down-none"> Importar</span> <span
+                                class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="import dropdown-item" href="{% url "comprobante.import" %}"><i
+                                    class="fa fa-file-excel"></i> Archivo csv</a></li>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="btn-group importar_exportar_buttons accion-masiva-deselected">
+                    <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-download"></i><span class="d-sm-down-none"> Exportar</span> <span
+                            class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href="#" id="exportar-citi-ventas"
+                           data-url="{% url "comprobante.exportar_citi_ventas" %}">
+                            <i class="fa fa-download"></i> Reg. inf. de Ventas</a>
+                        <a href="#" class="dropdown-item"
+                           onclick="exportar_masivo('{% url "comprobante.exportar_masivo" %}');">
+                            <i class="fa fa-file-export"></i><span class="d-sm-down-none"> Archivo Comprobantes</span>
+                        </a>
+                    </ul>
+                </div>
+
+                {% if perms.comprobante.add_comprobante %}
+                    <a href="{% url "comprobante.create" %}" class="nav-item btn btn-outline-primary btn-sm">
+                        <i class="fa fa-plus"></i><span class="d-sm-down-none"> Crear</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    <form class="form-inline my-4">
+        {% bootstrap_form form layout='inline' size='sm' field_class="mr-2" bound_css_class="" %}
+        <input type="submit" value="Buscar" class="btn btn-sm btn-primary ml-auto">
+    </form>
+    <div class="row">
+        <div class="col">
+            {% render_table table %}
+        </div>
+    </div>
+{% endblock %}

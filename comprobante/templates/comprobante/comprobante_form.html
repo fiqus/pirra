@@ -1,0 +1,246 @@
+{% extends "base_form.html" %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+{% block css %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{% url "comprobante.list" %}">Comprobantes</a></li>
+    <li class="breadcrumb-item active" aria-current="page">
+        {% if object %}
+            <strong>Editar {{ object }}</strong>
+        {% else %}
+            <strong>Crear</strong>
+        {% endif %}
+    </li>
+{% endblock %}
+
+{% block form_title %}
+    {% if object %}
+        Editar comprobante {{ object }}
+    {% else %}
+        Crear un nuevo comprobante
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script>
+        var exento_id = "{{ exento_id }}";
+        var no_gravado_id = "{{ no_gravado_id }}";
+        var factura_a_id = "{{ factura_a_id }}";
+        var nd_a_id = "{{ nd_a_id }}";
+        var nc_a_id = "{{ nc_a_id }}";
+
+        var factura_b_id = "{{ factura_b_id }}";
+        var nc_b_id = "{{ nc_b_id }}";
+        var nd_b_id = "{{ nd_b_id }}";
+        var recibo_b_id = "{{ recibo_b_id }}";
+
+        var factura_c_id = "{{ factura_c_id }}";
+        var nc_c_id = "{{ nc_c_id }}";
+        var nd_c_id = "{{ nd_c_id }}";
+        var recibo_c_id = "{{ recibo_c_id }}";
+
+        var factura_e_id = "{{ factura_e_id }}";
+        var nd_e_id = "{{ nd_e_id }}";
+        var nc_e_id = "{{ nc_e_id }}";
+
+        var factura_m_id = "{{ factura_m_id }}";
+        var nd_m_id = "{{ nd_m_id }}";
+        var nc_m_id = "{{ nc_m_id }}";
+
+        var productos = {{ productos | safe }};
+    </script>
+
+    <script src="{% static "js/selectize_custom_plugins.js" %}"></script>
+    <script src="{% static "js/comprobante_form.js" %}"></script>
+
+{% endblock %}
+
+{% block form_container %}
+    <div class="comprobante-form-container">
+        <select id="unidades_ocultas" class="d-none">
+            {% for unidad in unidades %}
+
+                {% if unidad.nombre == "unidades" %}
+                    <option id="unidad_{{ unidad.pk }}" data-name="{{ unidad.nombre }}" value="{{ unidad.pk }}"
+                            selected>
+                        {{ unidad.nombre }}
+                    </option>
+                {% else %}
+                    <option id="unidad_{{ unidad.pk }}" data-name="{{ unidad.nombre }}" value="{{ unidad.pk }}">
+                        {{ unidad.nombre }}
+                    </option>
+                {% endif %}
+
+            {% endfor %}
+        </select>
+        <select id="alicuotas_iva_ocultas" class="d-none">
+            {% for alicuota_iva in alicuotas_iva %}
+                <option id="alicuota_iva_{{ alicuota_iva.pk }}" data-tipo_cbte="{{ alicuota_iva.id_tipo_cbtes }}"
+                        data-porc="{{ alicuota_iva.porc }}" value="{{ alicuota_iva.pk }}">
+                    {{ alicuota_iva }}
+                </option>
+            {% endfor %}
+        </select>
+        <select id="tributos_ocultos" class="d-none">
+            {% for tributo in tributos %}
+                <option id="tributo_{{ tributo.pk }}" value="{{ tributo.pk }}">
+                    {{ tributo }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+        </div>
+
+        <form id="comprobante_add" action method="post">
+            {% csrf_token %}
+            {% bootstrap_field form.empresa %}
+
+            <div id="panel_cbte" class="row form-group">
+                {% bootstrap_field form.tipo_cbte form_group_class="col-md-2" %}
+                {% bootstrap_field form.concepto form_group_class="col-md-2" %}
+                {% bootstrap_field form.punto_vta form_group_class="col-md-2" %}
+                {% bootstrap_field form.remito_nro form_group_class="col-md-2" %}
+                <div id="div-forma-pago" class="col-md-2">
+                    {% bootstrap_field form.forma_pago %}
+                </div>
+                <div id="div-condicion-venta" class="col-md-2">
+                    {% bootstrap_field form.condicion_venta %}
+                </div>
+            </div>
+            <hr>
+            <div class="row form-group">
+                <div class="col-md-6 d-flex">
+                    {% bootstrap_field form.cliente form_group_class="flex-grow-1" %}
+                    <button class="btn btn-primary mt-auto" type="button" id="agregar-cliente"
+                            title="agregar nuevo cliente" data-target="#modal_dialog" data-ref="{% url 'comprobante.new_cliente' %}">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+
+                {% bootstrap_field form.fecha_emision form_group_class="col-md-2 col-xs-12" %}
+                {% bootstrap_field form.fecha_venc_pago form_group_class="col-md-2 col-xs-12" %}
+            </div>
+            <hr>
+            <div id="panel_exportacion" style="display: none">
+                <div class="row form-group">
+                    {% bootstrap_field form.tipo_expo form_group_class="col-md-2" %}
+                    {% bootstrap_field form.pais_destino form_group_class="col-md-2" %}
+                    {% bootstrap_field form.moneda form_group_class="col-md-2" %}
+                    {% bootstrap_field form.moneda_ctz form_group_class="col-md-2" %}
+                    {% bootstrap_field form.id_impositivo form_group_class="col-md-2" %}
+                </div>
+                <div class="row form-group">
+                    {% bootstrap_field form.idioma form_group_class="col-md-2" %}
+                    {% bootstrap_field form.incoterms form_group_class="col-md-2" %}
+                    {% bootstrap_field form.incoterms_ds form_group_class="col-md-2" %}
+                    <div id="cbte_asoc_container" class="col-md-4" style="padding: 0;">
+                        {% bootstrap_field form.cbte_asoc form_group_class="col-md-12" %}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+            </div>
+
+            <h5>Detalle</h5>
+
+            {% include 'comprobante/detalle_table_inline_formset.html' with formset=formset_detalle %}
+
+            <div class="row">
+                <div class="col text-right">
+                    <button id="btn_add_detail" type="button" class="btn btn-success btn-sm">
+                        <i class="fa fa-plus"></i> Agregar item
+                    </button>
+                </div>
+            </div>
+
+            <div id="panel_tributos">
+                <h5>Tributos</h5>
+
+                {% include 'comprobante/tributo_table_inline_formset.html' with formset=formset_tributo %}
+
+                <div class="row">
+                    <div class="col text-right">
+                        <button id="btn_add_tributo" type="button" class="btn btn-success btn-sm">
+                            <i class="fa fa-plus"></i> Agregar Tributo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {% include 'comprobante/opcional_table_inline_formset.html' with formset=formset_opcional tiene_opcionales=tiene_opcionales %}
+
+
+            <div class="row">
+                {% bootstrap_field form.importe_total form_group_class="col-md-4 ml-auto my-2" %}
+            </div>
+            <div class="row">
+                {% bootstrap_field form.descuento form_group_class="col-md-4 ml-auto my-2" addon_after="%" %}
+            </div>
+            <hr>
+            <h5>Totales</h5>
+
+            <div class="row">
+                <label class="col-md-3 ml-auto" for="inputTotal" id="label_subtotal">Subtotal</label>
+                <span class="col-md-1 money" id="subtotal"></span>
+            </div>
+            <div class="row">
+                <label class="col-md-3 ml-auto" for="inputDescuento" id="label_descuento">Descuento</label>
+                <span class="col-md-1 money" id="descuento"></span>
+            </div>
+            <div class="row">
+                <label class="col-md-3 ml-auto">Neto Gravado</label>
+                <span id="neto_gravado" class="col-md-1 money">0.00</span>
+            </div>
+
+            <div class="row">
+                <label class="col-md-3 ml-auto">No Gravado</label>
+                <span id="total_alicuotaiva_{{ no_gravado_id }}" class="col-md-1 money">0.00</span>
+            </div>nombre
+
+            <div class="row">
+                <label class="col-md-3 ml-auto">Exento</label>
+                <span id="total_alicuotaiva_{{ exento_id }}" class="col-md-1 money">0.00</span>
+            </div>
+            {% for alicuota_iva in alicuotas_iva %}
+                {% if alicuota_iva.pk != exento_id and alicuota_iva.pk != no_gravado_id %}
+                    <div class="row">
+                        <label class="col-md-3 ml-auto">{{ alicuota_iva }}</label>
+                        <span id="total_alicuotaiva_{{ alicuota_iva.pk }}" class="col-md-1 money">0.00</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% for tributo in tributos %}
+                <div class="row">
+                    <label class="col-md-3 ml-auto">{{ tributo.nombre }}</label>
+                    <span id="total_tributo_{{ tributo.pk }}" class="col-md-1 money">0.00</span>
+                </div>
+            {% endfor %}
+
+
+            <div class="row">
+                <label class="col-md-3 ml-auto" for="inputTotal">Importe Total</label>
+                <span class="col-md-1 money" id="total"></span>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                {% bootstrap_field form.observaciones form_group_class="col-md-6" %}
+
+                {% bootstrap_field form.observaciones_comerciales form_group_class="col-md-6" %}
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col text-right">
+                    <input type="submit" name="submit" value="Guardar" class="btn btn-primary" id="submit-id-submit">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

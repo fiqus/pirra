@@ -1,0 +1,185 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <h1>Datos de Client</h1>
+    <table>
+        <tbody>
+        <tr>
+            <td><strong>Nombre</strong></td>
+            <td>{{ client.name }}</td>
+        </tr>
+        <tr>
+            <td><strong>Razon Social</strong></td>
+            <td>{{ client.nombre_empresa }}</td>
+        </tr>
+        <tr>
+            <td><strong>Documento</strong></td>
+            <td>{{ client.nro_doc }}</td>
+        </tr>
+        <tr>
+            <td><strong>Email</strong></td>
+            <td>{{ client.email }}</td>
+        </tr>
+        <tr>
+            <td><strong>Activation Key</strong></td>
+            <td>{{ client.activation_key }}</td>
+        </tr>
+        </tbody>
+    </table>
+    {% if empresa %}
+        <hr/><br/><br/>
+
+        <h1>Datos de Empresa</h1>
+        <table>
+            <tbody>
+            <tr>
+                <td><strong>Nombre</strong></td>
+                <td>{{ empresa.nombre }}</td>
+            </tr>
+            <tr>
+                <td><strong>Nro Doc</strong></td>
+                <td>{{ empresa.nro_doc }}</td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>{{ empresa.email }}</td>
+            </tr>
+            <tr>
+                <td><strong>Domicilio</strong></td>
+                <td>{{ empresa.domicilio }}</td>
+            </tr>
+            <tr>
+                <td><strong>Localidad</strong></td>
+                <td>{{ empresa.localidad }}</td>
+            </tr>
+            <tr>
+                <td><strong>Codigo Postal</strong></td>
+                <td>{{ empresa.cod_postal }}</td>
+            </tr>
+            <tr>
+                <td><strong>Condicion IVA</strong></td>
+                <td>{{ empresa.condicion_iva }}</td>
+            </tr>
+            <tr>
+                <td><strong>Condicion IIBB</strong></td>
+                <td>{{ empresa.condicion_iibb }}</td>
+            </tr>
+            <tr>
+                <td><strong>Nro IIBB</strong></td>
+                <td>{{ empresa.nro_iibb }}</td>
+            </tr>
+            <tr>
+                <td><strong>Concepto</strong></td>
+                <td>{{ empresa.concepto }}</td>
+            </tr>
+            <tr>
+                <td><strong>Tipos de Cbte</strong></td>
+                <td>
+                    <ul>
+                        {% for tipo_cbte in empresa.tipos_cbte.all %}
+                            <li>{{ tipo_cbte }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Resoluciones Generales</strong></td>
+                <td>
+                    <ul>
+                        {% for rg in empresa.resoluciones_generales.all %}
+                            <li>{{ rg }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Fecha serv. Desde</strong></td>
+                <td>{{ empresa.fecha_serv_desde }}</td>
+            </tr>
+            <tr>
+                <td><strong>Fecha serv. Hasta</strong></td>
+                <td>{{ empresa.fecha_serv_hasta }}</td>
+            </tr>
+            </tbody>
+        </table>
+    {% endif %}
+    {% if counts %}
+        <hr/><br/><br/>
+        <h1>Entidades creadas</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Entidad</th>
+                <th>Cantidad</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for count in counts %}
+                <tr>
+                    <td>{{ count.name }}</td>
+                    <td>{{ count.count }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    {% endif %}
+    {% if cbtes %}
+        <hr/><br/><br/>
+
+        <h1>Comprobantes emitidos por mes</h1>
+        <table>
+            <thead>
+            <tr>
+                <td><strong>Comprobantes creados</strong></td>
+                <td>{{ cbtes_creados }}</td>
+            </tr>
+            <tr>
+                <td><strong>Comprobantes autorizados</strong></td>
+                <td>{{ cbtes_autorizados }}</td>
+            </tr>
+
+            <tr>
+                <th>Mes</th>
+                <th>Cantidad</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cbte in cbtes %}
+                <tr>
+                    <td>{{ cbte.month.year }} - {{ cbte.month.month }}</td>
+                    <td>{{ cbte.pk__count }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    {% endif %}
+    {% if ocs and mostrar_oc_recibidas %}
+        <hr/><br/><br/>
+
+        <h1>Ordenes de Compra recibidas por mes</h1>
+        <table>
+            <thead>
+            <tr>
+                <td><strong>Ordenes de Compra recibidas</strong></td>
+                <td>{{ oc_recibidas }}</td>
+            </tr>
+
+            <tr>
+                <th>Mes</th>
+                <th>Cantidad</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for oc in ocs %}
+                <tr>
+                    <td>{{ oc.month.year }} - {{ oc.month.month }}</td>
+                    <td>{{ oc.pk__count }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

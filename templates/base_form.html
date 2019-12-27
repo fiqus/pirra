@@ -1,0 +1,24 @@
+{% extends "base_header.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5>{% block form_title %}{% endblock %}</h5>
+                    {% block card-body %}{% endblock %}
+                    {% block form_container %}
+                        <form class="form" method="post">
+                            {% csrf_token %}
+                            {% block form %}
+                                {% bootstrap_form form %}
+                            {% endblock %}
+                            {% buttons submit="Guardar" %}{% endbuttons %}
+                        </form>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "admin/base_site.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block content %}
+    <h1>Tokens</h1>
+
+        <table>
+            <thead>
+                <th>Username</th>
+                <th>Token</th>
+                <th>Acciones</th>
+            </thead>
+            <tbody>
+                {% for token in tokens %}
+                <form action="/admin/tokens_admin/delete_token/" method="post">
+                    {% csrf_token %}
+                    <tr>
+                        <td style="vertical-align: middle">{{ token.user.username }}</td>
+                        <td style="display: none;">
+                            <input type="text" name="user_id" value="{{ token.user.id }}" />
+                        </td>
+                        <td style="vertical-align: middle">{{ token.key }}</td>
+                        <td><button id="buttonEliminarToken" type="submit" style="font-size: 11px; padding: 0px;">Eliminar Token</button></td>
+                    </tr>
+                </form>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <p>
+
+    <h2>Usuarios sin Token</h2>
+    <table>
+    <thead>
+        <th>Username</th>
+        <th>Acciones</th>
+    </thead>
+    <tbody>
+        {% for user in users_without_token %}
+        <form action="/admin/tokens_admin/create_token/" method="post">
+            {% csrf_token %}
+
+            <tr>
+                <td style="vertical-align: middle">{{ user.username }}</td>
+                <td style="display: none;">
+                    <input type="text" name="user_id" value="{{ user.id }}" />
+                </td>
+                <td><button id="buttonCrearToken" type="submit" style="font-size: 11px; padding: 0px;">Crear Token</button></td>
+            </tr>
+        </form>
+        {% endfor %}
+    </tbody>
+    </table>
+
+    <p>
+
+    <h2>Agrear usuario con Token</h2>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset style="border: hidden;">
+            <div class="form-group">
+                {% bootstrap_field form_user.username form_group_class='col-md-4' %}
+                {% bootstrap_field form_user.email form_group_class='col-md-4' %}
+                <input type="submit" name="submit" value="Guardar" class="btn btn-primary" id="submit-id-submit">
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layout_empty.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block body %}
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div class="logo-name"></div>
+
+            <p>¿Olvidó su contraseña? Introduzca su dirección de email abajo y le enviaremos instrucciones para establecer una nueva.</p>
+
+            <form action="" method="post">{% csrf_token %}
+            {{ form.email.errors }}
+            <p>
+                {% bootstrap_field form.email %}
+                <input type="submit" class="btn btn-primary block full-width m-b" value="{% trans 'Reset my password' %}" />
+            </p>
+            </form>
+            <p class="m-t">
+                <small>Pirra! &copy; 2020</small>
+            </p>
+        </div>
+    </div>
+{% endblock %}

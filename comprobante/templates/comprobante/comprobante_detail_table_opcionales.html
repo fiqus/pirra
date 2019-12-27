@@ -1,0 +1,38 @@
+<br/>
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            Adicionales por Resolución General
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="row ">
+              <div id="opcionales">
+                  <table class="table table-condensed">
+                      <thead>
+                          <tr>
+                              <th>RG</th>
+                              <th>Campo</th>
+                              <th>Valor</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        {% for opcional in comprobante.opcionalcomprobante_set.all %}
+                            <tr>
+                              <td>{{ opcional.opcional.resolucion_general.numero }}</td>
+                              <td>{{ opcional.opcional.campo }}</td>
+                              <td>{{ opcional.valor_formateado }}</td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

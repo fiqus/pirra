@@ -1,0 +1,237 @@
+[
+  {
+    "fields": {
+      "nombre": "IVA Responsable Inscripto",
+      "id_afip": 1
+    },
+    "model": "afip.condicioniva",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "IVA Sujeto Exento",
+      "id_afip": 2
+    },
+    "model": "afip.condicioniva",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "Regimen simplificado",
+      "id_afip": 0
+    },
+    "model": "afip.condicioniibb",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "Exento",
+      "id_afip": 0
+    },
+    "model": "afip.condicioniibb",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "CUIT",
+      "id_afip": 80
+    },
+    "model": "afip.tipodoc",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "Exportaci\u00f3n definitiva de Bienes",
+      "id_afip": 1
+    },
+    "model": "afip.tipoexportacion",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "Servicios",
+      "id_afip": 2
+    },
+    "model": "afip.tipoexportacion",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "Otros",
+      "id_afip": 4
+    },
+    "model": "afip.tipoexportacion",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "Espa\u00f1ol",
+      "id_afip": 1
+    },
+    "model": "afip.idioma",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "Ingl\u00e9s",
+      "id_afip": 2
+    },
+    "model": "afip.idioma",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "Portugu\u00e9s",
+      "id_afip": 3
+    },
+    "model": "afip.idioma",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "EXW",
+      "id_afip": "EXW"
+    },
+    "model": "afip.incoterms",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "FCA",
+      "id_afip": "FCA"
+    },
+    "model": "afip.incoterms",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "FAS",
+      "id_afip": "FAS"
+    },
+    "model": "afip.incoterms",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "FOB",
+      "id_afip": "FOB"
+    },
+    "model": "afip.incoterms",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "nombre": "CFR",
+      "id_afip": "CFR"
+    },
+    "model": "afip.incoterms",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "nombre": "CIF",
+      "id_afip": "CIF"
+    },
+    "model": "afip.incoterms",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "nombre": "CPT",
+      "id_afip": "CPT"
+    },
+    "model": "afip.incoterms",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "nombre": "CIP",
+      "id_afip": "CIP"
+    },
+    "model": "afip.incoterms",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "nombre": "DAF",
+      "id_afip": "DAF"
+    },
+    "model": "afip.incoterms",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "nombre": "DES",
+      "id_afip": "DES"
+    },
+    "model": "afip.incoterms",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "nombre": "DEQ",
+      "id_afip": "DEQ"
+    },
+    "model": "afip.incoterms",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "nombre": "DDU",
+      "id_afip": "DDU"
+    },
+    "model": "afip.incoterms",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "nombre": "DDP",
+      "id_afip": "DDP"
+    },
+    "model": "afip.incoterms",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "nombre": "DAT",
+      "id_afip": "DAT"
+    },
+    "model": "afip.incoterms",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "nombre": "DAP",
+      "id_afip": "DAP"
+    },
+    "model": "afip.incoterms",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "ws_afip": "wsfev1",
+      "id_afip": "1",
+      "nombre": "Producto"
+    },
+    "model": "afip.concepto",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "ws_afip": "wsfev1",
+      "id_afip": "2",
+      "nombre": "Servicios"
+    },
+    "model": "afip.concepto",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "ws_afip": "wsfev1",
+      "id_afip": "3",
+      "nombre": "Productos y Servicios"
+    },
+    "model": "afip.concepto",
+    "pk": 3
+  }
+]

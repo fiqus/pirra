@@ -1,0 +1,19 @@
+{% extends "base_form.html" %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Empresa</a></li>
+    <li class="breadcrumb-item">
+        <a href="{% url "user.list" %}">Usuarios</a>
+    </li>
+    <li class="breadcrumb-item active">
+        {% if object %} {{ object.username }} {% else %} Crear {% endif %}
+    </li>
+{% endblock %}
+
+{% block form_title %}
+    {% if object %}
+        Editar datos del usuario {{ object.username }}
+    {% else %}
+        Crear un nuevo usuario
+    {% endif %}
+{% endblock %}

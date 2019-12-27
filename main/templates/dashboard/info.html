@@ -1,0 +1,16 @@
+{% if ptos_vta == 0 %}
+    <div class="alert alert-danger" role="alert">
+        Todavía no tenés cargado ningún <strong>punto de venta</strong>. Para gestionar tus puntos
+        de venta, <a href="{% url "punto_de_venta.list" %}" class="alert-link">ingresá acá</a>
+    </div>
+{% endif %}
+{% if empresa_tipos_cbte == 0 or empresa_concepto == 0 %}
+    <div class="alert alert-danger" role="alert">
+        Falta información en la configuración de la empresa. Necesitas seleccionar un <strong>tipo de
+        comprobante</strong> y el <strong>concepto en la empresa</strong>.
+        <a href="{% url "empresa.update" %}">Para hacerlo ingresá acá.</a>
+    </div>
+{% endif %}
+{% if dashboard_data.show_vinculacion_msg %}
+    {% include "cuenta/display_warning_afip_no_vinculada.html" %}
+{% endif %}

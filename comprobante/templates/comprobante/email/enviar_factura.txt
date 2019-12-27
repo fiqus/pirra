@@ -1,0 +1,18 @@
+Este email contiene un comprobante electrónico adjunto realizado por {{ name }} usando Pirra Facturacion Electronica.
+
+Por cualquier consulta referida a este comprobante, debe contactarse a:
+{{ empresa_email }}
+
+{% if msg %}
+    Mensaje de {{name}}:
+    {{ msg }}
+{% endif%}
+
+
+Todavía no te sumaste a la facturación electrónica?
+Implementá Pirra y comenzá a facturar desde donde estés!
+
+
+https://github.com/fiqus/pirra
+---
+{% include 'email_legal.html'%}

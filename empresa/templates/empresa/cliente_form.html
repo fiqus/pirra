@@ -1,0 +1,35 @@
+{% extends "base_form.html" %}
+{% load staticfiles %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Empresa</a></li>
+    <li class="breadcrumb-item">
+        <a href="{% url "cliente.list" %}">Clientes</a>
+    </li>
+    <li class="breadcrumb-item active">
+            {% if object %}
+                <strong>{{ object }}</strong>
+            {% else %}
+                <strong>Crear</strong>
+            {% endif %}    </li>
+{% endblock %}
+
+{% block form_title %}
+    {% if object %}
+        Editar cliente {{ object }}
+    {% else %}
+        Crear un nuevo cliente
+    {% endif %}
+{% endblock %}
+
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            $("form").validate();
+        });
+    </script>
+    <script src="{% static "js/valid_cuit.js" %}"></script>
+    <script src="{% static "js/cliente_form.js" %}"></script>
+    <script src="{% static "js/search_cuit.js" %}"></script>
+{% endblock %}

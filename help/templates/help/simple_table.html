@@ -1,0 +1,34 @@
+{% load querystring from django_tables2 %}
+{% load title from django_tables2 %}
+{% load trans blocktrans from i18n %}
+{% load bootstrap3 %}
+
+{% block table %}
+    <table class="table table-striped table-bordered">
+        {% block table.thead %}
+            <thead>
+            <tr>
+                {% for column in table.columns %}
+                    <th>{{ column.header|title }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+        {% endblock table.thead %}
+        {% block table.tbody %}
+            <tbody>
+            {% for row in table.rows %}
+                {% block table.tbody.row %}
+                    <tr class="{% cycle "odd" "even" %}">
+                        {% for column, cell in row.items %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endblock table.tbody.row %}
+            {% endfor %}
+            </tbody>
+        {% endblock table.tbody %}
+        {% block table.tfoot %}
+            <tfoot></tfoot>
+        {% endblock table.tfoot %}
+    </table>
+{% endblock table %}

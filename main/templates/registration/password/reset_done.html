@@ -1,0 +1,22 @@
+{% extends "layout_empty.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block body %}
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div style="font-size: 15px;">
+            <div class="logo-name"></div>
+            <br />
+            <p>Le hemos enviado las instrucciones para recuperar su contraseña en forma exitosa al correo indicado.</p>
+
+            <p>Si no lo recibió, por favor asegúrese de revisar en la carpeta de Spam.</p>
+
+            Vuelva a <a href="{% url "login" %}">Iniciar Sesi&oacute;n</a>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

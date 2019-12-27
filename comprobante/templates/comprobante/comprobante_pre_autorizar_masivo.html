@@ -1,0 +1,25 @@
+{% load bootstrap4 %}
+{% block main %}
+    <form action="{% url "comprobante.autorizar_masivo" %}" method="post" id="form_autorizar_masivo">
+        {% csrf_token %}
+        <div class="modal-body">
+            <div class="alert alert-info" style="margin-bottom: 10px; margin-top: 0;">
+                <i class="fa fa-exclamation-circle"></i> En esta pantalla podrá autorizar más de un comprobante a la vez en un rango de fechas. <br/>
+                Recuerde que los comprobantes a autorizar <strong>no</strong> deben haber sido autorizados anteriormente ni tener asociado un punto de venta eliminado, de otra manera serán ignorados.
+            </div>
+            <p>Seleccione el rango de fechas para el que desea autorizar los comprobantes</p>
+            {% block form %}
+                {% bootstrap_form form %}
+            {% endblock %}
+            <div id="massive-result" class="alert">
+                <span id="massive-result-header" style="display: none"><strong>Resultado de la autorización:</strong></span>
+                <div id="massive-result-body"></div>
+                <span id="massive-result-footer" style="display: none"></span>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <input type="submit" class="btn btn-primary" id="autorizar_masivo" value="Autorizar"></button>
+        </div>
+    </form>
+{% endblock %}

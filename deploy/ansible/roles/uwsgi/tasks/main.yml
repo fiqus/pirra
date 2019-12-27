@@ -1,0 +1,31 @@
+---
+
+- name: Install UWSGI Required packages
+  apt:
+    name: ['uwsgi', 'uwsgi-plugin-python3']
+    update_cache: "{{ update_apt_cache }}"
+    force: yes
+    state: latest
+  tags: packages
+
+- name: Generating app socket path
+  set_fact:
+    app_socket_path: "{{ (app_socket_root + '/' + application_name + '.sock')|replace('//', '/') }}"
+    app_uwsgi_pidfile: "{{ (app_socket_root + '/' + application_name + '.pid')|replace('//', '/') }}"
+
+- name: Ensure uWSGI service present
+  apt:
+    name: uwsgi
+    state: present
+
+- name: Ensure app uWSGI plugin present
+  apt:
+    name: "uwsgi-plugin-{{ app_uwsgi_plugin }}"
+    state: present
+
+- name: Ensure app uWSGI config present
+  template:
+    src: templates/uwsgi_app.ini.j2
+    dest: "/etc/uwsgi/apps-enabled/{{ application_name }}.ini"
+  notify:
+    - uwsgi restart

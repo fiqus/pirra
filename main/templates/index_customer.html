@@ -1,0 +1,123 @@
+{% extends "layout_customer.html" %}
+{% load staticfiles %}
+{% load custom_filters %}
+
+{% block navbar-items %}
+{% endblock %}
+
+{% block wrapper_class %}dashboard{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        {% include "dashboard/info.html" %}
+
+        <div class="card-deck mt-4">
+            {% include "dashboard/number_display.html" with title="Cbtes. sin autorizar" value=dashboard_data.cbtes_sin_aut %}
+            {% with dashboard_data.fact_today|floatformat:2|money as val %}
+                {% include "dashboard/number_display.html" with title="Facturacion del dia" value="$"|add:val %}
+            {% endwith %}
+            {% with dashboard_data.fact_month|floatformat:2|money as val %}
+                {% include "dashboard/number_display.html" with title="Facturacion del mes" value="$"|add:val %}
+            {% endwith %}
+            {% with dashboard_data.fact_year|floatformat:2|money as val %}
+                {% include "dashboard/number_display.html" with title="Facturacion del año" value="$"|add:val %}
+            {% endwith %}
+        </div>
+
+        <div class="card-deck mt-4">
+            {% include "dashboard/cant_cbtes.html" %}
+            {% include "dashboard/facturacion_anual.html" %}
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 mt-4">
+                {% include "dashboard/facturacion_mensual.html" %}
+            </div>
+        </div>
+
+        <div class="card-deck mb-4">
+            {% include "dashboard/fact_prod_anio.html" %}
+            {% include "dashboard/fact_prod_mes.html" %}
+            {% include "dashboard/fact_client_mes.html" %}
+            {% include "dashboard/fact_client_anio.html" %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        $(function () {
+            var options = {
+                legend: {
+                    display: false
+                },
+                elements: {
+                    line: {
+                        tension: 0.001, // disables bezier curves
+                        fill:
+                            false
+                    }
+                },
+                plugins: {
+                    colorschemes: {
+                        scheme: 'tableau.ClassicMedium10'
+                    }
+                }
+            };
+            var optionsLine = {
+                layout: {
+                    padding: 15
+                },
+                scales: {
+
+                    xAxes: [
+                        {
+                            gridLines: {
+                                display: false
+                            },
+                            ticks: {
+                                display: false
+                            }
+                        }
+                    ]
+                }, ...options
+            };
+
+            new Chart('cbtes_month', {
+                type: 'line',
+                data: {{ dashboard_data.cbtes_month | safe}},
+                options: optionsLine
+            });
+            new Chart('fact_anual', {
+                type: 'line',
+                data: {{ dashboard_data.fact_monthly | safe}},
+                options: optionsLine
+            });
+            new Chart('fact_mensual', {
+                type: 'line',
+                data: {{ dashboard_data.fact_daily | safe}},
+                options: optionsLine
+            });
+            new Chart('fact_prod_mes', {
+                type: 'doughnut',
+                data: {{ dashboard_data.prod_month | safe }},
+                options: options
+            });
+            new Chart('fact_prod_anio', {
+                type: 'doughnut',
+                data: {{ dashboard_data.prod_year | safe }},
+                options: options
+            });
+            new Chart('fact_client_mes', {
+                type: 'doughnut',
+                data: {{ dashboard_data.client_month | safe }},
+                options: options
+            });
+            new Chart('fact_client_anio', {
+                type: 'doughnut',
+                data: {{ dashboard_data.client_year | safe }},
+                options: options
+            });
+        });
+    </script>
+{% endblock %}

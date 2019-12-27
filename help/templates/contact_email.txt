@@ -1,0 +1,8 @@
+Recibiste una consulta de un cliente.
+--
+{{ name }} - {{ email }}
+Dominio: {{ client_name }}
+--
+{{message}}
+--
+{% include 'email_legal.txt'%}

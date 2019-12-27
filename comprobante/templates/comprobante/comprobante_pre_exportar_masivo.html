@@ -1,0 +1,25 @@
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block main %}
+    <form action="{% url "comprobante.exportar_masivo" %}" method="post" id="form_exportar_masivo">
+        {% csrf_token %}
+        <div class="modal-body">
+            <div class="alert alert-info" style="margin-bottom: 10px; margin-top: 0;">
+                <i class="fa fa-exclamation-circle"></i> En esta pantalla podrá <b>exportar comprobantes autorizados</b> filtrando por un rango de fechas. </br>
+                <b>Algunos tips a tener en cuenta:</b></br>
+                1) El formato de exportación es ".csv", un formato que puede ser abierto con cualquier planilla de cálculo (por ejemplo Excel).</br>
+                2) Cuando abra el archivo con una planilla de cálculo, asegurese de que la codificación diga "UTF-8" y que el lenguaje sea Español-Argentina.</br>
+                3) Si abre el archivo con el programa Excel y no ve correctamente la información en las columnas, lea el siguiente <a href="{{ STATIC_URL }}pdf/instructivo_apertura_excel.pdf" target="_blank" class="alert-link"><b>instructivo de apertura en Excel</b>.</a>
+            </div>
+            <p>Seleccione el rango de fechas para el que desea exportar los comprobantes</p>
+            {% block form %}
+                {% bootstrap_form form %}
+            {% endblock %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <input type="submit" class="btn btn-primary" id="exportar_masivo" value="Exportar"></button>
+        </div>
+    </form>
+{% endblock %}

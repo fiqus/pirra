@@ -1,0 +1,51 @@
+[
+  {
+    "fields": {
+      "nombre": "Contado"
+    },
+    "model": "afip.condicionventa",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "Tarjeta de Débito"
+    },
+    "model": "afip.condicionventa",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "Tarjeta de Crédito"
+    },
+    "model": "afip.condicionventa",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "Cuenta Corriente"
+    },
+    "model": "afip.condicionventa",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "nombre": "Cheque"
+    },
+    "model": "afip.condicionventa",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "nombre": "Ticket"
+    },
+    "model": "afip.condicionventa",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "nombre": "Otra"
+    },
+    "model": "afip.condicionventa",
+    "pk": 7
+  }
+]

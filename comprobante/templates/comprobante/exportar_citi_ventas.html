@@ -1,0 +1,33 @@
+{% block main %}
+    <form action="{% url "comprobante.generar_citi_ventas" %}" method="get">
+        {% csrf_token %}
+        <div class="modal-body">
+            <div class="col-md-12">
+                <p>Por favor, elija el período para el cual desea generar el archivo según el Regimen de información de ventas de la AFIP.</p>
+            </div>
+            <div class="col-md-6">
+                <select name="exportar_mes" id="mes" class="form-control col-md-6">
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <select name="exportar_anio" class="form-control">
+                    <option value="{{ year }}">{{ year }}</option>
+                    <option value="{{ last_year }}">{{ last_year }}</option>
+                </select>
+            </div>
+            <br />
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+[
+  {
+    "fields": {
+      "nombre": "CUIL",
+      "id_afip": 86
+    },
+    "model": "afip.tipodoc",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "CDI",
+      "id_afip": 87
+    },
+    "model": "afip.tipodoc",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "DNI",
+      "id_afip": 96
+    },
+    "model": "afip.tipodoc",
+    "pk": 4
+  }
+]

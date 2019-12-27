@@ -1,0 +1,76 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    {% if not comprobante %}
+        <h1>Consultar Comprobante</h1>
+        {% if error %}<b>{{ error }}</b>{% endif %}
+        <form action="/admin/consultar_comprobante/" method="post">
+          {% csrf_token %}
+            CUIT: <input type="text" name="cuit" /> <i>(sin guiones)</i><br />
+            Tipo cbte: <select name="tipo_cbte" />
+            {% for tipo_cbte in tipos_cbte %}
+                <option value="{{ tipo_cbte.id_afip }}">{{ tipo_cbte }}</option>
+            {% endfor %}
+            </select>
+            <br />
+            Punto de venta: <input type="text" name="punto_vta" /><br />
+            Nro de cbte: <input type="text" name="nro" /><br />
+          <input type="hidden" name="{{ source.title }}">
+          <input type="submit" value="Consultar" class="btn btn-primary">
+        </form>
+    {% else %}
+        <h1>Resultado de la consulta</h1>
+        <table>
+        <tbody>
+            <tr>
+                <td><strong>CAE</strong></td>
+                <td>{{ comprobante.CAE }}</td>
+            </tr>
+            <tr>
+                <td><strong>Vencimiento CAE</strong></td>
+                <td>{{ comprobante.Vencimiento }}</td>
+            </tr>
+            <tr>
+                <td><strong>Número cbte</strong></td>
+                <td>{{ comprobante.CbteNro }}</td>
+            </tr>
+            <tr>
+                <td><strong>CUIT cliente</strong></td>
+                <td>{{ comprobante.Cuit }}</td>
+            </tr>
+            <tr>
+                <td><strong>ErrMsg</strong></td>
+                <td>{{ comprobante.ErrMsg }}</td>
+            </tr>
+            <tr>
+                <td><strong>Fecha cbte</strong></td>
+                <td>{{ comprobante.FechaCbte }}</td>
+            </tr>
+            <tr>
+                <td><strong>Importe IVA</strong></td>
+                <td>{{ comprobante.ImpIVA }}</td>
+            </tr>
+            <tr>
+                <td><strong>Importe Neto</strong></td>
+                <td>{{ comprobante.ImpNeto }}</td>
+            </tr>
+            <tr>
+                <td><strong>Importe Exento</strong></td>
+                <td>{{ comprobante.ImpOpEx }}</td>
+            </tr>
+            <tr>
+                <td><strong>Importe Total</strong></td>
+                <td>{{ comprobante.ImpTotal }}</td>
+            </tr>
+            <tr>
+                <td><strong>Importe Tributos</strong></td>
+                <td>{{ comprobante.ImpTrib }}</td>
+            </tr>
+            <tr>
+                <td><strong>Liq.</strong></td>
+                <td>{{ comprobante.ImptoLiq }}</td>
+            </tr>
+        </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

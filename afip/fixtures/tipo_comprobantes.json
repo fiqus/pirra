@@ -1,0 +1,173 @@
+[
+  {
+    "fields": {
+      "nombre": "Factura",
+      "letra": "A",
+      "id_afip": 1
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "nombre": "Nota de D\u00e9bito",
+      "letra": "A",
+      "id_afip": 2
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "nombre": "Nota de Cr\u00e9dito",
+      "letra": "A",
+      "id_afip": 3
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "Recibo",
+      "letra": "A",
+      "id_afip": 4
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "nombre": "Factura",
+      "letra": "B",
+      "id_afip": 6
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "nombre": "Nota de D\u00e9bito",
+      "letra": "B",
+      "id_afip": 7
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "nombre": "Nota de Cr\u00e9dito",
+      "letra": "B",
+      "id_afip": 8
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "nombre": "Recibo",
+      "letra": "B",
+      "id_afip": 9
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "nombre": "Factura",
+      "letra": "E",
+      "id_afip": 19
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "nombre": "Nota de D\u00e9bito",
+      "letra": "E",
+      "id_afip": 20
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "nombre": "Nota de Cr\u00e9dito",
+      "letra": "E",
+      "id_afip": 21
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "nombre": "Factura",
+      "letra": "C",
+      "id_afip": 11
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "nombre": "Nota de D\u00e9bito",
+      "letra": "C",
+      "id_afip": 12
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "nombre": "Nota de Cr\u00e9dito",
+      "letra": "C",
+      "id_afip": 13
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "nombre": "Recibo",
+      "letra": "C",
+      "id_afip": 15
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "nombre": "Factura",
+      "letra": "M",
+      "id_afip": 51
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "nombre": "Nota de D\u00e9bito",
+      "letra": "M",
+      "id_afip": 52
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "nombre": "Nota de Cr\u00e9dito",
+      "letra": "M",
+      "id_afip": 53
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "nombre": "Recibo",
+      "letra": "M",
+      "id_afip": 54
+    },
+    "model": "afip.tipocomprobante",
+    "pk": 19
+  }
+]

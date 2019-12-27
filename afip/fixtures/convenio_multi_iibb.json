@@ -1,0 +1,10 @@
+[
+  {
+    "fields": {
+      "nombre": "Convenio Multilateral",
+      "id_afip": 0
+    },
+    "model": "afip.condicioniibb",
+    "pk": 5
+  }
+]

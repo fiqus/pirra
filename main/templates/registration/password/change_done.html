@@ -1,0 +1,17 @@
+{% extends "layout_empty.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+{% block userlinks %}{% url 'django-admindocs-docroot' as docsroot %}{% if docsroot %}<a href="{{ docsroot }}">{% trans 'Documentation' %}</a> / {% endif %}{% trans 'Change password' %} / <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>{% endblock %}
+
+
+{% block body %}
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div class="logo-name"></div>
+            <p>{% trans 'Your password was changed.' %}</p>
+            <p class="m-t">
+                <small>Pirra! &copy; 2015</small>
+            </p>
+        </div>
+    </div>
+{% endblock %}

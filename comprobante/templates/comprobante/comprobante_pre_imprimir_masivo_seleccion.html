@@ -1,0 +1,40 @@
+{% load bootstrap4 %}
+{% block main %}
+    <form action="{% url "comprobante.imprimir_masivo_seleccion" %}" method="post" id="form_imprimir_masivo_seleccion">
+        {% csrf_token %}
+        <div class="modal-body">
+            {% if comprobantes_list|length == 0 %}
+                <div class="alert alert-danger" style="margin-bottom: 10px; margin-top: 0;">
+                    <i class="fa fa-exclamation-circle"></i> No ha seleccionado ningún comprobante <strong>autorizado</strong> que pueda ser impreso!<br/> Por favor vuelva al listado de comprobantes para corregir su selección.
+                </div>
+            {% else %}
+                <div class="alert alert-info" style="margin-bottom: 10px; margin-top: 0;">
+                    <i class="fa fa-exclamation-circle"></i> En esta pantalla podrá imprimir los comprobante <strong>autorizados</strong> que haya seleccionado en el listado de comprobantes.<br/> Los comprobantes que no estén autorizados no serán tomados en cuenta para esta acción.
+                </div>
+                {% block form %}
+                    <input class="form-control" id="nros_comp_imprimir" name="nros_comp_imprimir" type="text" style="display: none" value="{{ nros_comp_imprimir }}">
+                    <p>Ha seleccionado imprimir los comprobantes:</p>
+                    <div class="ibox-content">
+                        <ul>
+                        {% for comp in comprobantes_list %}
+                            <li>{{ comp }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <p>Haga click en el botón <strong>Imprimir</strong> para completar la acción.</p>
+                {% endblock %}
+                <div id="massive-result" class="alert">
+                    <span id="massive-result-header" style="display: none"><strong>Resultado de la impresión:</strong></span>
+                    <div id="massive-result-body"></div>
+                    <span id="massive-result-footer" style="display: none"></span>
+                </div>
+            {% endif %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          {% if comprobantes_list|length > 0 or not show_no_plan_message or not show_error_sin_pago %}
+              <input type="submit" class="btn btn-primary" id="imprimir_masivo" value="Imprimir"></button>
+          {% endif %}
+        </div>
+    </form>
+{% endblock %}

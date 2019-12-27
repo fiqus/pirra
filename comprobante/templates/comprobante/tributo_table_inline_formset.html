@@ -1,0 +1,97 @@
+{% load bootstrap4 %}
+
+<div>
+    {{ formset.management_form }}
+</div>
+
+
+<table id="tributo_table" class="table table-striped table-condensed tablesaw tablesaw-stack"
+       data-tablesaw-mode="stack">
+    <thead>
+    {% if formset.readonly and not formset.queryset.exists %}
+    {% else %}
+        <tr class="font-xs">
+            <th class="control-label requiredField">Tributo</th>
+            <th class="control-label requiredField">Detalle</th>
+            <th class="control-label requiredField">Base imp.</th>
+            <th class="control-label requiredField">Alicuota %</th>
+            <th class="control-label requiredField">Total</th>
+            <th class="control-label">Acciones</th>
+        </tr>
+    {% endif %}
+    </thead>
+
+    <tbody>
+    {% for form in formset %}
+        {% if form_show_errors and not form.is_extra %}
+            {%  bootstrap_form_errors form %}
+        {% endif %}
+
+        <tr>
+            <td class="p-1">{% bootstrap_field form.tributo form_group_class="" layout="inline" size="sm"%}</td>
+            <td class="p-1">{% bootstrap_field form.detalle form_group_class="" layout="inline" size="sm"%}</td>
+            <td class="p-1">{% bootstrap_field form.base_imponible form_group_class="" layout="inline" size="sm"%}</td>
+            <td class="p-1">{% bootstrap_field form.alicuota form_group_class="" layout="inline" size="sm"%}</td>
+            <td class="p-1" id="div_id_form-{{ forloop.counter0 }}-total">
+                <div class="controls ">
+                    <span class="form-control input-sm money" id="id_form-{{ forloop.counter0 }}-total"></span>
+                </div>
+            </td>
+            <td class="p-1">
+                <button type="button" class="remove_btn btn-sm btn-danger pull-right"><i
+                        class="fa fa-trash"></i></button>
+                <div style="display: none">
+                    {% bootstrap_field form.id %}
+                    {{ form.DELETE }}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% verbatim %}
+<script id="tributo-template" type="text/x-handlebars-template">
+    <tr>
+        <td class="tributos p-1">
+            <div class=""><label class="sr-only" for="id_tributos-{{n}}-tributo">Tributo</label><select
+                    class="form-control input-sm tributos" id="id_tributos-{{n}}-tributo"
+                    name="tributos-{{n}}-tributo"
+                    required="required"></select>
+            </div>
+        </td>
+        <td class="p-1">
+            <div><label class="sr-only" for="id_tributos-{{n}}-detalle">Detalle</label>
+                <input class="form-control input-sm desc_detalle_tributo" id="id_tributos-{{n}}-detalle"
+                       maxlength="256"
+                       name="tributos-{{n}}-detalle" required="required" title="" type="text" aria-required="true">
+            </div>
+        </td>
+        <td class="p-1">
+            <div><label class="sr-only" for="id_tributos-{{n}}-base_imponible">Base imp.</label>
+                <input class="form-control input-sm base_imponible" id="id_tributos-{{n}}-base_imponible"
+                       maxlength="256"
+                       name="tributos-{{n}}-base_imponible" required="required" title="" type="text"
+                       aria-required="true">
+            </div>
+        </td>
+        <td class="p-1">
+            <div class=""><label class="sr-only" for="id_tributos-{{n}}-alicuota">Alicuota</label><input
+                    class="form-control input-sm alicuota p-1" id="id_tributos-{{n}}-alicuota"
+                    name="tributos-{{n}}-alicuota" required="required" step="1" title="" type="number"
+                    aria-required="true">
+            </div>
+        </td>
+        <td class="p-1" id="div_id_tributos-{{n}}-total">
+            <div class="controls ">
+                <span class="form-control input-sm total money" id="id_tributos-{{n}}-total"></span>
+            </div>
+        </td>
+        <td class="p-1">
+            <button type="button" class="remove_btn btn-sm btn-danger pull-right"><i class="fa fa-trash"></i></button>
+            <div style="display: none"><input id="id_tributos-{{n}}-id" name="tributos-{{n}}-id" type="hidden"></div>
+        </td>
+    </tr>
+</script>
+{% endverbatim %}

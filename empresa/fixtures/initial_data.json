@@ -1,0 +1,1176 @@
+[
+  {
+    "fields": {
+      "model": "client",
+      "app_label": "main"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "model": "plan",
+      "app_label": "main"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "model": "empresa",
+      "app_label": "empresa"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "model": "cliente",
+      "app_label": "empresa"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "model": "puntodeventa",
+      "app_label": "empresa"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "model": "incoterms",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "model": "condicionventa",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "model": "idioma",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "model": "condicioniva",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "model": "unidad",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "model": "concepto",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "model": "tipodoc",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "model": "condicioniibb",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "model": "tributo",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "model": "tipoexportacion",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "model": "moneda",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "model": "padron",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "model": "paisdestino",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "model": "tipocomprobantealicuotaiva",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "model": "alicuotaiva",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "model": "tipocomprobante",
+      "app_label": "afip"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "model": "contenttype",
+      "app_label": "contenttypes"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "model": "comprobante",
+      "app_label": "comprobante"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "model": "detallecomprobante",
+      "app_label": "comprobante"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "model": "tributocomprobante",
+      "app_label": "comprobante"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "model": "frequentlyaskedquestion",
+      "app_label": "help"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "model": "logentry",
+      "app_label": "admin"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "model": "group",
+      "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "model": "user",
+      "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "model": "permission",
+      "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "model": "session",
+      "app_label": "sessions"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "model": "producto",
+      "app_label": "empresa"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "codename": "add_client",
+      "name": "Can add client",
+      "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "codename": "change_client",
+      "name": "Can change client",
+      "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "codename": "delete_client",
+      "name": "Can delete client",
+      "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "codename": "add_plan",
+      "name": "Can add plan",
+      "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "codename": "change_plan",
+      "name": "Can change plan",
+      "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "codename": "delete_plan",
+      "name": "Can delete plan",
+      "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "codename": "add_empresa",
+      "name": "Can add empresa",
+      "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "codename": "change_empresa",
+      "name": "Can change empresa",
+      "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "codename": "delete_empresa",
+      "name": "Can delete empresa",
+      "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "codename": "add_puntodeventa",
+      "name": "Can add punto de venta",
+      "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "codename": "change_puntodeventa",
+      "name": "Can change punto de venta",
+      "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "codename": "delete_puntodeventa",
+      "name": "Can delete punto de venta",
+      "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "codename": "add_cliente",
+      "name": "Can add cliente",
+      "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "codename": "change_cliente",
+      "name": "Can change cliente",
+      "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "codename": "delete_cliente",
+      "name": "Can delete cliente",
+      "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "codename": "add_condicioniva",
+      "name": "Can add condicion iva",
+      "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "codename": "change_condicioniva",
+      "name": "Can change condicion iva",
+      "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "codename": "delete_condicioniva",
+      "name": "Can delete condicion iva",
+      "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "codename": "add_condicioniibb",
+      "name": "Can add condicion iibb",
+      "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "codename": "change_condicioniibb",
+      "name": "Can change condicion iibb",
+      "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "codename": "delete_condicioniibb",
+      "name": "Can delete condicion iibb",
+      "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "codename": "add_tipodoc",
+      "name": "Can add tipo doc",
+      "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "codename": "change_tipodoc",
+      "name": "Can change tipo doc",
+      "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "codename": "delete_tipodoc",
+      "name": "Can delete tipo doc",
+      "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "codename": "add_alicuotaiva",
+      "name": "Can add alicuota iva",
+      "content_type": 20
+    },
+    "model": "auth.permission",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "codename": "change_alicuotaiva",
+      "name": "Can change alicuota iva",
+      "content_type": 20
+    },
+    "model": "auth.permission",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "codename": "delete_alicuotaiva",
+      "name": "Can delete alicuota iva",
+      "content_type": 20
+    },
+    "model": "auth.permission",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "codename": "add_tipocomprobantealicuotaiva",
+      "name": "Can add tipo comprobante alicuota iva",
+      "content_type": 19
+    },
+    "model": "auth.permission",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "codename": "change_tipocomprobantealicuotaiva",
+      "name": "Can change tipo comprobante alicuota iva",
+      "content_type": 19
+    },
+    "model": "auth.permission",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "codename": "delete_tipocomprobantealicuotaiva",
+      "name": "Can delete tipo comprobante alicuota iva",
+      "content_type": 19
+    },
+    "model": "auth.permission",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "codename": "add_tipocomprobante",
+      "name": "Can add tipo comprobante",
+      "content_type": 21
+    },
+    "model": "auth.permission",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "codename": "change_tipocomprobante",
+      "name": "Can change tipo comprobante",
+      "content_type": 21
+    },
+    "model": "auth.permission",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "codename": "delete_tipocomprobante",
+      "name": "Can delete tipo comprobante",
+      "content_type": 21
+    },
+    "model": "auth.permission",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "codename": "add_tipoexportacion",
+      "name": "Can add tipo exportacion",
+      "content_type": 15
+    },
+    "model": "auth.permission",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "codename": "change_tipoexportacion",
+      "name": "Can change tipo exportacion",
+      "content_type": 15
+    },
+    "model": "auth.permission",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "codename": "delete_tipoexportacion",
+      "name": "Can delete tipo exportacion",
+      "content_type": 15
+    },
+    "model": "auth.permission",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "codename": "add_moneda",
+      "name": "Can add moneda",
+      "content_type": 16
+    },
+    "model": "auth.permission",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "codename": "change_moneda",
+      "name": "Can change moneda",
+      "content_type": 16
+    },
+    "model": "auth.permission",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "codename": "delete_moneda",
+      "name": "Can delete moneda",
+      "content_type": 16
+    },
+    "model": "auth.permission",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "codename": "add_idioma",
+      "name": "Can add idioma",
+      "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "codename": "change_idioma",
+      "name": "Can change idioma",
+      "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "codename": "delete_idioma",
+      "name": "Can delete idioma",
+      "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "codename": "add_unidad",
+      "name": "Can add unidad",
+      "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "codename": "change_unidad",
+      "name": "Can change unidad",
+      "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "codename": "delete_unidad",
+      "name": "Can delete unidad",
+      "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "codename": "add_incoterms",
+      "name": "Can add incoterms",
+      "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "codename": "change_incoterms",
+      "name": "Can change incoterms",
+      "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "codename": "delete_incoterms",
+      "name": "Can delete incoterms",
+      "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "codename": "add_paisdestino",
+      "name": "Can add pais destino",
+      "content_type": 18
+    },
+    "model": "auth.permission",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "codename": "change_paisdestino",
+      "name": "Can change pais destino",
+      "content_type": 18
+    },
+    "model": "auth.permission",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "codename": "delete_paisdestino",
+      "name": "Can delete pais destino",
+      "content_type": 18
+    },
+    "model": "auth.permission",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "codename": "add_condicionventa",
+      "name": "Can add condicion venta",
+      "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "codename": "change_condicionventa",
+      "name": "Can change condicion venta",
+      "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "codename": "delete_condicionventa",
+      "name": "Can delete condicion venta",
+      "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "codename": "add_concepto",
+      "name": "Can add concepto",
+      "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "codename": "change_concepto",
+      "name": "Can change concepto",
+      "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 56
+  },
+  {
+    "fields": {
+      "codename": "delete_concepto",
+      "name": "Can delete concepto",
+      "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "codename": "add_padron",
+      "name": "Can add padron",
+      "content_type": 17
+    },
+    "model": "auth.permission",
+    "pk": 58
+  },
+  {
+    "fields": {
+      "codename": "change_padron",
+      "name": "Can change padron",
+      "content_type": 17
+    },
+    "model": "auth.permission",
+    "pk": 59
+  },
+  {
+    "fields": {
+      "codename": "delete_padron",
+      "name": "Can delete padron",
+      "content_type": 17
+    },
+    "model": "auth.permission",
+    "pk": 60
+  },
+  {
+    "fields": {
+      "codename": "add_tributo",
+      "name": "Can add tributo",
+      "content_type": 14
+    },
+    "model": "auth.permission",
+    "pk": 61
+  },
+  {
+    "fields": {
+      "codename": "change_tributo",
+      "name": "Can change tributo",
+      "content_type": 14
+    },
+    "model": "auth.permission",
+    "pk": 62
+  },
+  {
+    "fields": {
+      "codename": "delete_tributo",
+      "name": "Can delete tributo",
+      "content_type": 14
+    },
+    "model": "auth.permission",
+    "pk": 63
+  },
+  {
+    "fields": {
+      "codename": "add_contenttype",
+      "name": "Can add content type",
+      "content_type": 22
+    },
+    "model": "auth.permission",
+    "pk": 64
+  },
+  {
+    "fields": {
+      "codename": "change_contenttype",
+      "name": "Can change content type",
+      "content_type": 22
+    },
+    "model": "auth.permission",
+    "pk": 65
+  },
+  {
+    "fields": {
+      "codename": "delete_contenttype",
+      "name": "Can delete content type",
+      "content_type": 22
+    },
+    "model": "auth.permission",
+    "pk": 66
+  },
+  {
+    "fields": {
+      "codename": "add_comprobante",
+      "name": "Can add comprobante",
+      "content_type": 23
+    },
+    "model": "auth.permission",
+    "pk": 67
+  },
+  {
+    "fields": {
+      "codename": "change_comprobante",
+      "name": "Can change comprobante",
+      "content_type": 23
+    },
+    "model": "auth.permission",
+    "pk": 68
+  },
+  {
+    "fields": {
+      "codename": "delete_comprobante",
+      "name": "Can delete comprobante",
+      "content_type": 23
+    },
+    "model": "auth.permission",
+    "pk": 69
+  },
+  {
+    "fields": {
+      "codename": "add_detallecomprobante",
+      "name": "Can add detalle comprobante",
+      "content_type": 24
+    },
+    "model": "auth.permission",
+    "pk": 70
+  },
+  {
+    "fields": {
+      "codename": "change_detallecomprobante",
+      "name": "Can change detalle comprobante",
+      "content_type": 24
+    },
+    "model": "auth.permission",
+    "pk": 71
+  },
+  {
+    "fields": {
+      "codename": "delete_detallecomprobante",
+      "name": "Can delete detalle comprobante",
+      "content_type": 24
+    },
+    "model": "auth.permission",
+    "pk": 72
+  },
+  {
+    "fields": {
+      "codename": "add_tributocomprobante",
+      "name": "Can add tributo comprobante",
+      "content_type": 25
+    },
+    "model": "auth.permission",
+    "pk": 73
+  },
+  {
+    "fields": {
+      "codename": "change_tributocomprobante",
+      "name": "Can change tributo comprobante",
+      "content_type": 25
+    },
+    "model": "auth.permission",
+    "pk": 74
+  },
+  {
+    "fields": {
+      "codename": "delete_tributocomprobante",
+      "name": "Can delete tributo comprobante",
+      "content_type": 25
+    },
+    "model": "auth.permission",
+    "pk": 75
+  },
+  {
+    "fields": {
+      "codename": "add_frequentlyaskedquestion",
+      "name": "Can add frequently asked question",
+      "content_type": 26
+    },
+    "model": "auth.permission",
+    "pk": 76
+  },
+  {
+    "fields": {
+      "codename": "change_frequentlyaskedquestion",
+      "name": "Can change frequently asked question",
+      "content_type": 26
+    },
+    "model": "auth.permission",
+    "pk": 77
+  },
+  {
+    "fields": {
+      "codename": "delete_frequentlyaskedquestion",
+      "name": "Can delete frequently asked question",
+      "content_type": 26
+    },
+    "model": "auth.permission",
+    "pk": 78
+  },
+  {
+    "fields": {
+      "codename": "add_logentry",
+      "name": "Can add log entry",
+      "content_type": 27
+    },
+    "model": "auth.permission",
+    "pk": 79
+  },
+  {
+    "fields": {
+      "codename": "change_logentry",
+      "name": "Can change log entry",
+      "content_type": 27
+    },
+    "model": "auth.permission",
+    "pk": 80
+  },
+  {
+    "fields": {
+      "codename": "delete_logentry",
+      "name": "Can delete log entry",
+      "content_type": 27
+    },
+    "model": "auth.permission",
+    "pk": 81
+  },
+  {
+    "fields": {
+      "codename": "add_permission",
+      "name": "Can add permission",
+      "content_type": 30
+    },
+    "model": "auth.permission",
+    "pk": 82
+  },
+  {
+    "fields": {
+      "codename": "change_permission",
+      "name": "Can change permission",
+      "content_type": 30
+    },
+    "model": "auth.permission",
+    "pk": 83
+  },
+  {
+    "fields": {
+      "codename": "delete_permission",
+      "name": "Can delete permission",
+      "content_type": 30
+    },
+    "model": "auth.permission",
+    "pk": 84
+  },
+  {
+    "fields": {
+      "codename": "add_group",
+      "name": "Can add group",
+      "content_type": 28
+    },
+    "model": "auth.permission",
+    "pk": 85
+  },
+  {
+    "fields": {
+      "codename": "change_group",
+      "name": "Can change group",
+      "content_type": 28
+    },
+    "model": "auth.permission",
+    "pk": 86
+  },
+  {
+    "fields": {
+      "codename": "delete_group",
+      "name": "Can delete group",
+      "content_type": 28
+    },
+    "model": "auth.permission",
+    "pk": 87
+  },
+  {
+    "fields": {
+      "codename": "add_user",
+      "name": "Can add user",
+      "content_type": 29
+    },
+    "model": "auth.permission",
+    "pk": 88
+  },
+  {
+    "fields": {
+      "codename": "change_user",
+      "name": "Can change user",
+      "content_type": 29
+    },
+    "model": "auth.permission",
+    "pk": 89
+  },
+  {
+    "fields": {
+      "codename": "delete_user",
+      "name": "Can delete user",
+      "content_type": 29
+    },
+    "model": "auth.permission",
+    "pk": 90
+  },
+  {
+    "fields": {
+      "codename": "add_session",
+      "name": "Can add session",
+      "content_type": 31
+    },
+    "model": "auth.permission",
+    "pk": 91
+  },
+  {
+    "fields": {
+      "codename": "change_session",
+      "name": "Can change session",
+      "content_type": 31
+    },
+    "model": "auth.permission",
+    "pk": 92
+  },
+  {
+    "fields": {
+      "codename": "delete_session",
+      "name": "Can delete session",
+      "content_type": 31
+    },
+    "model": "auth.permission",
+    "pk": 93
+  },
+  {
+    "fields": {
+      "codename": "add_producto",
+      "name": "Can add producto",
+      "content_type": 32
+    },
+    "model": "auth.permission",
+    "pk": 94
+  },
+  {
+    "fields": {
+      "codename": "change_producto",
+      "name": "Can change producto",
+      "content_type": 32
+    },
+    "model": "auth.permission",
+    "pk": 95
+  },
+  {
+    "fields": {
+      "codename": "delete_producto",
+      "name": "Can delete producto",
+      "content_type": 32
+    },
+    "model": "auth.permission",
+    "pk": 96
+  },
+  {
+    "fields": {
+      "name": "Administracion de usuarios",
+      "permissions": [
+        88,
+        89,
+        90
+      ]
+    },
+    "model": "auth.group",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "name": "Facturacion y Clientes",
+      "permissions": [
+        13,
+        14,
+        15,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ]
+    },
+    "model": "auth.group",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "name": "Administracion de empresa",
+      "permissions": [
+        13,
+        14,
+        15,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        94,
+        95,
+        96
+      ]
+    },
+    "model": "auth.group",
+    "pk": 3
+  }
+]

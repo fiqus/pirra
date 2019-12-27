@@ -1,0 +1,14 @@
+{% extends "layout_empty.html" %}
+{% load bootstrap4 %}
+
+{% block bgclass %}bg-white{% endblock %}
+{% block app %}
+    <form class="form" method="post" action="{% url "comprobante.import" %}" target="_self" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% block form %}
+            {% bootstrap_form form %}
+        {% endblock %}
+    </form>
+    <hr>
+    <a target="_top" href="{% url 'help.dev_help' %}">Ayuda sobre el formato del archivo</a>
+{% endblock %}

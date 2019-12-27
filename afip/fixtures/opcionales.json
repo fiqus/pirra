@@ -1,0 +1,168 @@
+[
+  {
+    "fields": {
+      "numero": "",
+      "nombre": "Empresas Promovidas"
+    },
+    "model": "afip.resoluciongeneral",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "numero": "3411",
+      "nombre": "Bienes Usados"
+    },
+    "model": "afip.resoluciongeneral",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "numero": "3668",
+      "nombre": "Impuesto al Valor Agregado"
+    },
+    "model": "afip.resoluciongeneral",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "numero": "3368",
+      "nombre": "Establecimientos de educación pública de gestión privada"
+    },
+    "model": "afip.resoluciongeneral",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "numero": "2820",
+      "nombre": "Operaciones económicas vinculadas con bienes inmuebles"
+    },
+    "model": "afip.resoluciongeneral",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "numero": "3687",
+      "nombre": "Locación temporaria de inmuebles con fines turísticos"
+    },
+    "model": "afip.resoluciongeneral",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "id_afip": 2,
+      "resolucion_general": 1,
+      "campo": "Indentificador de proyecto vinculado a Régimen de Promoción Industrial"
+    },
+    "model": "afip.opcional",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "id_afip": 91,
+      "resolucion_general": 2,
+      "campo": "Nombre y Apellido o Denominación del vendedor del bien usado"
+    },
+    "model": "afip.opcional",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "id_afip": 92,
+      "resolucion_general": 2,
+      "campo": "Nacionalidad del vendedor del bien usado"
+    },
+    "model": "afip.opcional",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "id_afip": 93,
+      "resolucion_general": 2,
+      "campo": "Domicilio del vendedor del bien usado"
+    },
+    "model": "afip.opcional",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "id_afip": 5,
+      "resolucion_general": 3,
+      "campo": "Art.12 IVA Excepciones"
+    },
+    "model": "afip.opcional",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "id_afip": 61,
+      "resolucion_general": 3,
+      "campo": "Art.12 IVA Firmante Doc Tipo"
+    },
+    "model": "afip.opcional",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "id_afip": 62,
+      "resolucion_general": 3,
+      "campo": "Art.12 IVA Firmante Doc Nro"
+    },
+    "model": "afip.opcional",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "id_afip": 7,
+      "resolucion_general": 3,
+      "campo": "Art.12 IVA Carácter del Firmante"
+    },
+    "model": "afip.opcional",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "id_afip": 10,
+      "resolucion_general": 4,
+      "campo": "Actividad Comprendida"
+    },
+    "model": "afip.opcional",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "id_afip": 1011,
+      "resolucion_general": 4,
+      "campo": "Tipo de Documento"
+    },
+    "model": "afip.opcional",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "id_afip": 1012,
+      "resolucion_general": 4,
+      "campo": "Número de Documento"
+    },
+    "model": "afip.opcional",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "id_afip": 11,
+      "resolucion_general": 5,
+      "campo": "Actividad Comprendida"
+    },
+    "model": "afip.opcional",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "id_afip": 12,
+      "resolucion_general": 6,
+      "campo": "Actividad Comprendida"
+    },
+    "model": "afip.opcional",
+    "pk": 12
+  }
+
+]

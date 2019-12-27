@@ -1,0 +1,17 @@
+<p class="bg-info" style="padding: 10px;">
+    Al {% if entidad_a_borrar != "punto de venta" %}eliminar{% else %}desactivar{% endif %} el <strong>{{ entidad_a_borrar }}</strong>
+    los comprobantes que estén asociados al mismo seguirán existiendo.<br/>
+    {% if entidad_a_borrar != "punto de venta" %}
+    Puede imprimir y autorizar los comprobantes asociados al {{ entidad_a_borrar }},
+    pero en caso de querer editar alguno de ellos deberá elegir un nuevo {{ entidad_a_borrar }}.<br/>
+    {% else %}
+    Puede imprimir pero <strong> NO </strong> autorizar los comprobantes asociados al {{ entidad_a_borrar }},
+    para autorizarlos deberá editarlos y elegir un nuevo {{ entidad_a_borrar }}.<br/>
+    {% endif %}
+    Al crear comprobantes no encontrará el {{ entidad_a_borrar }} {% if entidad_a_borrar != "punto de venta" %}desactivado{% else %}eliminado{% endif %} entre las opciones a elegir.
+
+    {% if cant_oc_asociadas %}
+        <br/><br/>
+        Las ordenes de compra asociadas al <strong>{{ entidad_a_borrar }}</strong> seguirán existiendo pero no podrán generarse comprobantes a partir de éstas.
+    {% endif %}
+</p>
