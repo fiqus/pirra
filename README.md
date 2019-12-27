@@ -1,6 +1,8 @@
-(Work in progress)
-
 # Pirra - Facturas electronicas AFIP como Zeus manda
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Achille_a_Sciro2.JPG/220px-Achille_a_Sciro2.JPG" width="200" />
+
+> Tetis, temiendo por la vida de su hijo si éste fuera llevado con los combatientes, resolvió esconderlo a la vista de los griegos. Así, corrió a Tesalia, donde Aquiles se educaba bajo la tutela del viejo Quirón; y, llevándolo consigo, lo vistió ocultamente con vestimentas de mujer y lo entregó a un confidente suyo, ordenándole que lo condujera a la isla de Esciro, sede del rey Licomedes, y que allí, bajo el nombre de Pirra, como si fuera una hija de ella, lo custodiara ocultamente [...](https://es.wikipedia.org/wiki/Aquiles_en_Esciro_(Hasse))
 
 Configuracion de entorno
 ------------------------
