@@ -1,0 +1,13 @@
+---
+
+# SSL Nginx
+ssl_dest_dir: /etc/ssl
+ssl_crt: ssl.crt
+ssl_key: ssl.key
+
+nginx_static_dir: "{{ project_path }}/static/"
+nginx_media_dir: "{{ project_path }}/media/"
+nginx_path_logs: "/var/log/nginx"
+nginx_access_log_file: "{{ nginx_path_logs }}/{{ application_name }}_access.log"
+nginx_error_log_file: "{{ nginx_path_logs }}/{{ application_name }}_error.log"
+

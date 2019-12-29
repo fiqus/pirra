@@ -3,15 +3,18 @@
 # Application settings.
 project_name: Pirra
 application_name: pirra
+configuration_name: pirra_web
 virtualenv_path: "/webapps/{{ application_name }}"
 project_path: "{{ virtualenv_path }}/{{ project_name }}"
 server_name: localhost
+
+# Datos de Afip
 private_key: "" # private key from AFIP
 certificate: "" # certificate from AFIP
 
 # Users and groups
 user: "{{ application_name }}"
-group: webapps
+group: www-data
 
 # Database settings.
 db_name: "{{ application_name }}"
@@ -22,3 +25,12 @@ db_password_admin: password_admin
 
 # Nginx settings
 nginx_server_name: "{{server_name}}"
+
+# Pirra settings 
+pirra_cuit: "20000000001"
+pirra_nombre_empresa: "Empresa Cooperativa 123"
+
+#Super Usuario 
+pirra_su_username: "su_pirra"
+pirra_su_pass: "su_pirra"
+pirra_su_mail: "webmaster@testdomain.com.ar"

@@ -8,7 +8,7 @@
 - name: Create settings
   template:
     src: "{{ settings_template }}"
-    dest: "{{ application_path }}/pirra_web/settings/prod.py"
+    dest: "{{ application_path }}/{{ configuration_name }}/settings/prod.py"
     backup: true
   tags: django.create_settings
 
@@ -18,14 +18,31 @@
     chdir: "{{ application_path }}"
   tags: django.migrate
 
-#- name: Run Django collectstatic
-#  become: yes
-#  become_user: root
-#  django_manage:
-#    command: collectstatic
-#    app_path: "{{ application_path }}"
-#    virtualenv: "{{ virtualenv_path }}"
-#    settings: "{{ django_settings_file }}"
-#  environment: django_environment
-#  when: run_django_collectstatic
-#  tags: django.collectstatic
+- name: Clean collectstatic dir
+  file:
+    path: "{{ virtualenv_path }}/{{ project_name }}/static"
+    state: absent
+
+- name: Run Django collectstatic
+  shell: "{{ virtualenv_path }}/bin/python {{ virtualenv_path }}/{{ project_name }}/manage.py collectstatic --settings {{ django_settings_file }}"
+  args:
+    chdir: "{{ application_path }}"
+  tags: django.collectstatic
+
+- name: Create Django superUser
+  shell: "echo \"from django.contrib.auth.models import User; User.objects.filter(username='{{pirra_su_username}}').exists() or User.objects.create_superuser('{{pirra_su_username}}', '{{pirra_su_mail}}', '{{pirra_su_pass}}')\" |{{ virtualenv_path }}/bin/python {{ virtualenv_path }}/{{ project_name }}/manage.py shell --settings {{ django_settings_file }}"
+  args:
+    chdir: "{{ application_path }}"
+  tags: django.createsuperuser
+
+- name: Create Empresa Data
+  shell: "{{ virtualenv_path }}/bin/python {{ virtualenv_path }}/{{ project_name }}/manage.py init_empresa {{ pirra_cuit }} \"{{ pirra_nombre_empresa }}\" --settings {{ django_settings_file }}"
+  args:
+    chdir: "{{ application_path }}"
+  tags: django.init_empresa
+
+- name: Load Comprobantes Afip Data
+  shell: "{{ virtualenv_path }}/bin/python {{ virtualenv_path }}/{{ project_name }}/manage.py loaddata afip/fixtures/initial_data.json --settings {{ django_settings_file }}"
+  args:
+    chdir: "{{ application_path }}"
+  tags: django.loaddata

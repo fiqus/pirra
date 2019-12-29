@@ -1,5 +1,6 @@
 ---
 
 - name: Create the virtualenv
-  command: virtualenv -p python3 {{ virtualenv_path }} --no-site-packages
-  creates: "{{ virtualenv_path }}/bin/activate"
+  command: 
+    cmd: virtualenv -p python3 {{ virtualenv_path }} --no-site-packages
+    creates: "{{ virtualenv_path }}/bin/activate"

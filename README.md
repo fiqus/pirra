@@ -4,6 +4,20 @@
 
 > Tetis, temiendo por la vida de su hijo si éste fuera llevado con los combatientes, resolvió esconderlo a la vista de los griegos. Así, corrió a Tesalia, donde Aquiles se educaba bajo la tutela del viejo Quirón; y, llevándolo consigo, lo vistió ocultamente con vestimentas de mujer y lo entregó a un confidente suyo, ordenándole que lo condujera a la isla de Esciro, sede del rey Licomedes, y que allí, bajo el nombre de Pirra, como si fuera una hija de ella, lo custodiara ocultamente [...](https://es.wikipedia.org/wiki/Aquiles_en_Esciro_(Hasse))
 
+# Pirra - Facturas electronicas AFIP como Zeus manda
+
+Deploy en hashicorp/bionic64 con Vagrant
+------------------------
+
+1. Clonar repositorio
+git clone https://github.com/fiqus/pirra.git
+
+2. cd pirra/deploy
+
+3. vagrant up
+
+Queda sirviendo en localhost:8080
+
 Configuracion de entorno
 ------------------------
 
