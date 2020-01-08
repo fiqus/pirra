@@ -163,6 +163,7 @@ class BaseWS:
         self.Token = self.Sign = ""
         self.LanzarExcepciones = True
         self.InstallDir = os.path.dirname(os.path.abspath(__file__))
+        self.tmpDir = "/tmp"
     
     def inicializar(self):
         self.Excepcion = self.Traceback = ""
@@ -186,7 +187,7 @@ class BaseWS:
                 wsdl += self.WSDL[-5:]
             if not cache or self.HOMO:
                 # use 'cache' from installation base directory 
-                cache = os.path.join(self.InstallDir, 'cache')
+                cache = os.path.join(self.tmpDir, 'pirra_cache')
             self.log("Conectando a wsdl=%s cache=%s proxy=%s" % (wsdl, cache, proxy_dict))
             # analizar espacio de nombres (axis vs .net):
             ns = 'ser' if self.WSDL[-5:] == "?wsdl" else None

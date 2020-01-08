@@ -27,10 +27,10 @@ db_password_admin: password_admin
 nginx_server_name: "{{server_name}}"
 
 # Pirra settings 
-pirra_cuit: "20000000001"
-pirra_nombre_empresa: "Empresa Cooperativa 123"
+pirra_cuit: ""
+pirra_nombre_empresa: ""
 
 #Super Usuario 
-pirra_su_username: "su_pirra"
-pirra_su_pass: "su_pirra"
-pirra_su_mail: "webmaster@testdomain.com.ar"
+pirra_su_username: ""
+pirra_su_pass: ""
+pirra_su_mail: ""

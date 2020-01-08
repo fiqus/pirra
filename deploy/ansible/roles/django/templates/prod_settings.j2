@@ -34,6 +34,6 @@ REDIS_URL = "redis://localhost:6379/0"
 
 SECRET_KEY = '{{ django_secret_key }}'
 
-PRIVATE_KEY = '{{ private_key }}'
+PRIVATE_KEY = b"""{{ private_key }}"""
 
-CERTIFICATE = '{{ certificate }}'
+CERTIFICATE = b"""{{ certificate }}"""
