@@ -1,3 +1,3 @@
-module = wsgi:application
-wsgi-file = wsgi.py
+module = {{ configuration_name }}.wsgi
 home = {{ app_uwsgi_plugin_python3_venv_path }}
+env = DJANGO_SETTINGS_MODULE={{ configuration_name }}.settings.prod

@@ -3,11 +3,10 @@
 # Django
 application_path: "{{ project_path }}"
 application_log_dir: "{{ virtualenv_path }}/logs"
-application_log_file: "{{ application_log_dir }}/uwsgi_supervisor.log"
 requirements_file: "{{ project_path }}/requirements/base.txt"
 
 settings_template: prod_settings.j2
-django_settings_file: pirra_web.settings.prod
+django_settings_file: "{{ configuration_name }}.settings.prod"
 django_secret_key: zom3yqi7+rp=u_x060fga^*$swseb@-w2xvzu1y^sw1$$wv64e
 
 run_django_collectstatic: yes

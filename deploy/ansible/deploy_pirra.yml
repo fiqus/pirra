@@ -13,11 +13,10 @@
   
   roles:
     - role: base
+    - role: redis
     - role: postgres
-    - role: uwsgi
     - role: npm
     - role: django
-    - role: supervisor
+    - role: uwsgi
     - role: nginx
-    - role: redis
     - role: cron
