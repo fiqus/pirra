@@ -8,9 +8,9 @@
 Deploy en hashicorp/bionic64 con Vagrant
 ------------------------
 
-1. Instalar ansible
+1. Instalar Ansible y VirtualBox
 
-        sudo apt-get install ansible
+        sudo apt-get install ansible virtualbox
 
 2. Instalar vagrant según https://www.vagrantup.com/intro/getting-started/install.html
         
@@ -18,13 +18,21 @@ Deploy en hashicorp/bionic64 con Vagrant
 
         git clone https://github.com/fiqus/pirra.git
 
-4. Copy and rename `pirra/deploy/ansible/group_vars/extra-variables.template.yml` to `/home/willaru/dev/pirra/deploy/ansible/group_vars/extra-variables.yml` and complete the configuration data.
+4. Copiar el template de las variables de deploy al archivo de configuración:
+ 
+        cp pirra/deploy/ansible/group_vars/extra-variables.template.yml pirra/deploy/ansible/group_vars/extra-variables.yml
 
-5. `cd deploy`
+5. Completar las variables del archivo 'extra-variables.yml' con la configuración local que se desee.
 
-6. vagrant up
+6. Ingresar a la carpeta de deploy ubicada en el root del proyecto
 
-Queda sirviendo en localhost:8080
+        cd deploy
+
+7. Levantar el servidor localmente con Vagrant
+
+        vagrant up
+
+8. El servidor quedará corriendo en localhost:8080
 
 Configuracion de entorno de desarrollo
 --------------------------------------
