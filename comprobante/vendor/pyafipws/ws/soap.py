@@ -41,7 +41,7 @@ class SoapClient(object):
         self.exceptions = exceptions  # lanzar execpiones? (Soap Faults)
 
         if not proxy:
-            self.http = httplib2.Http('.cache', disable_ssl_certificate_validation=True)
+            self.http = httplib2.Http('/tmp/pirra_cache', disable_ssl_certificate_validation=True)
         else:
             import socks
             ##httplib2.debuglevel=4

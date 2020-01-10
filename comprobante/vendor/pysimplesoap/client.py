@@ -442,6 +442,7 @@ class SoapClient(object):
                     response, xml = self.http.request(url, "GET", None, {})
                 if cache:
                     log.info("Writing file %s" % (filename, ))
+                    log.info("AAAAAAAAAAAAAAAA: " + cache)
                     if not os.path.isdir(cache):
                         os.makedirs(cache)
                     f = open(filename, "wb")

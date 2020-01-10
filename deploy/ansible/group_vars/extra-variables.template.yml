@@ -3,22 +3,34 @@
 # Application settings.
 project_name: Pirra
 application_name: pirra
+configuration_name: pirra_web
 virtualenv_path: "/webapps/{{ application_name }}"
 project_path: "{{ virtualenv_path }}/{{ project_name }}"
 server_name: localhost
+
+# Datos de Afip
 private_key: "" # private key from AFIP
 certificate: "" # certificate from AFIP
 
 # Users and groups
 user: "{{ application_name }}"
-group: webapps
+group: www-data
 
 # Database settings.
 db_name: "{{ application_name }}"
 db_user: "{{ application_name }}"
-db_password: password
+db_password: ""
 db_user_admin: "{{ application_name }}_admin"
-db_password_admin: password_admin
+db_password_admin: ""
 
 # Nginx settings
 nginx_server_name: "{{server_name}}"
+
+# Pirra settings 
+pirra_cuit: "" # This CUIT has to be the one that matches the certificate chosen above.
+pirra_nombre_empresa: "" # This is the business name
+
+#Super User: This is the django user admin. This user will have all the privileges granted in the admin site.
+pirra_su_username: ""
+pirra_su_pass: ""
+pirra_su_mail: ""

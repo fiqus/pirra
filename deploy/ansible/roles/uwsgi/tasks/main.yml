@@ -23,6 +23,14 @@
     name: "uwsgi-plugin-{{ app_uwsgi_plugin }}"
     state: present
 
+- name: Permission for logs
+  file:
+    path: "{{ virtualenv_path }}/{{ project_name }}/logs"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    state: directory
+    recurse: yes
+    
 - name: Ensure app uWSGI config present
   template:
     src: templates/uwsgi_app.ini.j2

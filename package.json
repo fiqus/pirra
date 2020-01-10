@@ -37,7 +37,7 @@
     "selectize": "^0.12.6",
     "selectize-bootstrap4-theme": "^2.0.2",
     "tablesaw": "^3.1.2",
-    "toastr": "^2.1.4"
+    "toastr": "^2.1.4",
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

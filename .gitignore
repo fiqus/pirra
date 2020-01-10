@@ -8,6 +8,7 @@ afip_ws/ws/cache/*
 pirra_web/media/*
 pirra_web/settings/dev.py
 deploy/config/tmp/ansible.log
+deploy/ansible/group_vars/extra-variables.yml
 get-pip.py
 media/**
 .vscode

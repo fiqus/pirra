@@ -4,7 +4,7 @@
 app_socket_root: /var/run/uwsgi/
 
 # permissions over the socket file
-app_uwsgi_socket_chmod: 770
+app_uwsgi_socket_chmod: 660
 app_uwsgi_socket_user: "{{ user }}"
 app_uwsgi_socket_group: "{{ group }}"
 
@@ -15,7 +15,7 @@ app_uwsgi_process_number: 3
 app_uwsgi_process_requests_max: 1000
 
 # directory under the app will run
-app_uwsgi_chdir: ''
+app_uwsgi_chdir: "{{ project_path }}"
 
 # uwsgi plugin name required by app
 app_uwsgi_plugin: 'python3'
