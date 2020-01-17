@@ -272,7 +272,7 @@ def comprobante_create_edit(request, pk=None):
         cant_opcionales = 0
 
     if pk:
-        # Create cbte
+        # Edicion de  cbte
         comprobante = Comprobante.objects.get(pk=pk)
         if comprobante.cae or comprobante.nro:
             if comprobante.cae:
@@ -291,6 +291,7 @@ def comprobante_create_edit(request, pk=None):
             formset_opcional = OpcionalComprobanteFormSet(request.POST or None, queryset=comp_opcionales,
                                                           prefix='opcionales')
     else:
+        # Creacion de un nuevo comprobante
         detalles = DetalleComprobante.objects.none()
         comprobante = None
         comp_tributos = TributoComprobante.objects.none()
