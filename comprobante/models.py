@@ -72,6 +72,8 @@ class Comprobante(models.Model):
     # Las NC y ND de exportacion deben informar factura E asociada
     cbte_asoc = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
 
+    fecha_pago = models.DateField(blank=True, null=True)
+
     @property
     def importe_neto(self):
         return sum([d.importe_neto for d in self.detallecomprobante_set.all()])
@@ -362,7 +364,8 @@ class Comprobante(models.Model):
             "moneda_ctz": str(self.moneda_ctz),
             "observaciones_comerciales": self.observaciones_comerciales, "forma_pago": self.forma_pago,
             "condicion_venta_texto": self.condicion_venta_texto, "observaciones": self.observaciones,
-            "descuento": self.descuento, "detalle": []
+            "descuento": self.descuento, "detalle": [],
+            "fecha_pago": self.fecha_pago.strftime('%d/%m/%Y') if self.fecha_pago else "",
         }
 
         for detalle in self.detallecomprobante_set.all():

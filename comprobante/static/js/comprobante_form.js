@@ -137,11 +137,17 @@ $(function () {
 
     $("#id_fecha_emision").datepicker({language: "es", format: "dd/mm/yyyy"});
     $("#id_fecha_venc_pago").datepicker({language: "es", format: "dd/mm/yyyy"});
+    $("#id_fecha_pago").datepicker({language: "es", format: "dd/mm/yyyy"});
+
     $('#id_fecha_emision').datepicker().on('changeDate', function (e) {
         $('#id_fecha_emision').datepicker('hide');
     });
     $('#id_fecha_venc_pago').datepicker().on('changeDate', function (e) {
         $('#id_fecha_venc_pago').datepicker('hide');
+    });
+
+    $('#id_fecha_pago').datepicker().on('changeDate', function (e) {
+        $('#id_fecha_pago').datepicker('hide');
     });
 
     var detail_template = Handlebars.compile($("#detail-template").html());
@@ -364,9 +370,12 @@ $(function () {
             $(".subtotales").hide();
             if (noEsFacturaE(idCbte)) {
                 $("#cbte_asoc_container").show();
+                $("#id_fecha_pago").val("");
+                $("#fecha_pago_container").hide();
             } else {
                 $("#id_cbte_asoc").val("");
                 $("#cbte_asoc_container").hide();
+                $("#fecha_pago_container").show();
             }
         } else {
             $("#panel_exportacion").hide();
@@ -378,6 +387,8 @@ $(function () {
             $(".subtotales").show();
             $("#id_cbte_asoc").val("");
             $("#cbte_asoc_container").hide();
+            $("#id_fecha_pago").val("");
+            $("#fecha_pago_container").hide();
         }
         setupPrecios(idCbte);
         filtrarAlicuotasIva(idCbte);

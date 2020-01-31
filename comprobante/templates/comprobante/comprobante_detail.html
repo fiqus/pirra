@@ -93,6 +93,12 @@
                     <p class="form-control-static">{{ object.cbte_asoc.tipo_cbte.nombre }} {{ object.cbte_asoc.tipo_cbte.letra }} {{ object.cbte_asoc.pp_numero }}</p>
                 </div>
             {% endif %}
+            {% if object.fecha_pago %}
+                <div class="form-group col-md-3">
+                    <label class="control-label">Fecha Pago:</label>
+                    <p class="form-control-static">{{ object.fecha_pago }}</p>
+                </div>
+            {% endif %}
           </div>
         </div>
       </div>

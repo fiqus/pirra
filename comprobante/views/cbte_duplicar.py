@@ -37,6 +37,8 @@ def duplicate_comp(comprobante):
     comprobante_copy.fecha_emision = datetime.date.today()
     comprobante_copy.fecha_venc_pago = datetime.date.today() + datetime.timedelta(days=30)
     comprobante_copy.enviado = False
+    comprobante_copy.cbte_asoc = None
+    comprobante_copy.fecha_pago = None
     comprobante_copy.save()
     for detail in comprobante.detallecomprobante_set.all():
         detail_copy = deepcopy(detail)

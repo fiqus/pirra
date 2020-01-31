@@ -79,7 +79,7 @@ class TestMTX(unittest.TestCase):
         else:
             imp_total = "121.00"
             imp_trib = "0.00"        
-        imp_op_ex = "0.00"; 
+        imp_op_ex = "0.00"
         imp_subtotal = "100.00"
         fecha_cbte = fecha
         # Fechas del período del servicio facturado (solo si concepto = 1?)

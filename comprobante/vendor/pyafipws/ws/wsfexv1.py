@@ -88,7 +88,7 @@ class WSFEXv1(BaseWS):
             nombre_cliente="", cuit_pais_cliente="", domicilio_cliente="",
             id_impositivo="", moneda_id="PES", moneda_ctz=1.0,
             obs_comerciales="", obs_generales="", forma_pago="", incoterms="", 
-            idioma_cbte=7, incoterms_ds=None, **kwargs):
+            idioma_cbte=7, incoterms_ds=None, fecha_pago=None, **kwargs):
         "Creo un objeto factura (interna)"
         # Creo una factura electronica de exportación 
 
@@ -112,6 +112,7 @@ class WSFEXv1(BaseWS):
                 'cbtes_asoc': [],
                 'permisos': [],
                 'detalles': [],
+                'fecha_pago': fecha_pago,
             }
         self.factura = fact
 
@@ -195,11 +196,18 @@ class WSFEXv1(BaseWS):
                         'Pro_precio_uni': d['precio'],
                         'Pro_bonificacion': d['bonif'],
                         'Pro_total_item': d['importe'],
-                     }} for d in f['detalles']],                    
+                     }} for d in f['detalles']],
+                'Fecha_pago': f['fecha_pago'],
             })
 
         result = ret['FEXAuthorizeResult']
         self.__analizar_errores(result)
+
+        print('XML del request')
+        print(self.client.xml_request)
+        print('XML del response')
+        print(self.client.xml_response)
+
         if 'FEXResultAuth' in result:
             auth = result['FEXResultAuth']
             # Resultado: A: Aceptado, R: Rechazado
