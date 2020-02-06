@@ -63,7 +63,8 @@ class EmpresaForm(ModelForm):
         self.fields['fecha_serv_hasta'].label = 'Fin de actividades'
         self.fields['fecha_serv_hasta'].help_text = 'El formato de la fecha debe ser: DD/MM/AAAA'
         self.fields['mandar_copia_comprobante'].label = 'Enviarme una copia de los comprobantes que envio por mail.'
-        self.fields['mandar_copia_comprobante'].help_text = 'La copia del email será enviada a la casilla que configuró para su empresa, en el campo "Email" de este mismo formulario.'
+        self.fields[
+            'mandar_copia_comprobante'].help_text = 'La copia del email será enviada a la casilla que configuró para su empresa, en el campo "Email" de este mismo formulario.'
         self.fields['mandar_copia_comprobante'].widget.attrs['class'] = 'mandarCopiaOrigenInput'
         self.fields['imprimir_comp_triplicado'].label = 'Imprimir comprobante por duplicado y triplicado'
         self.fields['imprimir_comp_triplicado'].widget.attrs['class'] = 'imprimirDuplicadoYTriplicadoInput'
@@ -83,7 +84,8 @@ class EmpresaForm(ModelForm):
         model = Empresa
         fields = ['nro_doc', 'nombre', 'domicilio', 'localidad', 'cod_postal', 'email', 'condicion_iva',
                   'condicion_iibb', 'nro_iibb', 'concepto',
-                  'tipos_cbte', 'resoluciones_generales', 'fecha_serv_desde', 'fecha_serv_hasta', 'mandar_copia_comprobante',
+                  'tipos_cbte', 'resoluciones_generales', 'fecha_serv_desde', 'fecha_serv_hasta',
+                  'mandar_copia_comprobante',
                   'imprimir_comp_triplicado', 'logo', 'utiliza_edi']
 
     nro_doc = CharField(widget=TextInput(attrs={'readonly': 'readonly'}))
@@ -119,6 +121,7 @@ class EmpresaUpdate(MessageUpdateView):
     @method_decorator(permission_required("empresa.change_empresa", raise_exception=True))
     def dispatch(self, *args, **kwargs):
         return super(EmpresaUpdate, self).dispatch(*args, **kwargs)
+
 
 empresa_update = login_required(EmpresaUpdate.as_view())
 
@@ -165,7 +168,7 @@ class UserUpdateForm(ModelForm):
 
 class UserTable(Table):
     class Meta:
-        attrs = {"id": "users-table" }
+        attrs = {"id": "users-table"}
         model = User
         per_page = 10
         fields = ("username", "email", "groups", "is_active", "is_superuser")
@@ -177,6 +180,7 @@ class UserTable(Table):
 class UserList(SingleTableView):
     model = User
     table_class = UserTable
+
 
 user_list = login_required(UserList.as_view())
 
@@ -222,13 +226,15 @@ class PuntoDeVentaForm(ModelForm):
 
 class PuntoDeVentaTable(Table):
     class Meta:
-        attrs = {"id": "puntos-venta-table" }
+        attrs = {"id": "puntos-venta-table"}
         model = PuntoDeVenta
         per_page = 10
         fields = ("id_afip", "nombre")
 
-    actions = EditColumn('punto_de_venta.update', kwargs={"pk": A('pk')}, orderable=False, accessor='pk', verbose_name="Acciones")
-    delete = DeleteColumn('punto_de_venta.delete', kwargs={"pk": A('pk')}, orderable=False, accessor='pk', verbose_name=" ")
+    actions = EditColumn('punto_de_venta.update', kwargs={"pk": A('pk')}, orderable=False, accessor='pk',
+                         verbose_name="Acciones")
+    delete = DeleteColumn('punto_de_venta.delete', kwargs={"pk": A('pk')}, orderable=False, accessor='pk',
+                          verbose_name=" ")
 
 
 class PuntoDeVentaList(SingleTableView):
@@ -289,6 +295,7 @@ class PuntoDeVentaDelete(DeleteView):
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
 
+
 punto_de_venta_delete = login_required(PuntoDeVentaDelete.as_view())
 
 
@@ -304,7 +311,8 @@ def get_ptos_venta_afip(request):
                 messages.success(request, 'Se importaron con exito {} puntos de venta.'.format(ptos_venta_importados))
         except Exception as e:
             logger.error(str(e))
-            messages.error(request, "Se produjo un error al intentar importar sus puntos de venta. Vuelva a intentarlo mas tarde o  comuniquese con el equipo tecnico de Pirra.")
+            messages.error(request,
+                           "Se produjo un error al intentar importar sus puntos de venta. Vuelva a intentarlo mas tarde o  comuniquese con el equipo tecnico de Pirra.")
         finally:
             return HttpResponseRedirect(reverse_lazy('punto_de_venta.list'))
     else:
@@ -354,7 +362,8 @@ class ClienteTable(Table):
     telefono = Column(visible=False)
     email = Column(visible=False)
 
-    actions = EditColumn('cliente.update', kwargs={"pk": A('pk')}, orderable=False, accessor='pk', verbose_name="Acciones")
+    actions = EditColumn('cliente.update', kwargs={"pk": A('pk')}, orderable=False, accessor='pk',
+                         verbose_name="Acciones")
     delete = DeleteColumn('cliente.delete', kwargs={"pk": A('pk')}, orderable=False, accessor='pk', verbose_name=" ")
 
 
@@ -375,7 +384,8 @@ class ClienteList(SingleTableView):
             if self.form.cleaned_data["nombre"]:
                 queryset = queryset.filter(nombre__icontains=self.form.cleaned_data["nombre"])
             if self.form.cleaned_data["doc"]:
-                queryset = queryset.filter(nro_doc__iexact=self.form.cleaned_data["doc"].strip().replace("-", "").replace(".", ""))
+                queryset = queryset.filter(
+                    nro_doc__iexact=self.form.cleaned_data["doc"].strip().replace("-", "").replace(".", ""))
             # if self.form.cleaned_data["activo"]:
             #     queryset = queryset.filter(activo=self.form.cleaned_data["activo"])
             # queryset = queryset.filter(editable=True).order_by("-activo", "nombre", "-pk")
@@ -448,6 +458,7 @@ class ClienteDelete(DeleteView):
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
 
+
 cliente_delete = login_required(ClienteDelete.as_view())
 
 
@@ -456,13 +467,15 @@ class ProductoForm(ModelForm):
         super(ProductoForm, self).__init__(*args, **kwargs)
 
     class Meta:
-        fields = ["codigo", "codigo_barras_nro", "nombre", "ingresa_precio_final", "precio_final", "precio_unit", "alicuota_iva", "unidad"]
+        fields = ["codigo", "codigo_barras_nro", "nombre", "ingresa_precio_final", "precio_final", "precio_unit",
+                  "alicuota_iva", "unidad"]
         model = Producto
 
     ingresa_precio_final = forms.BooleanField(label="Preferís ingresar precio final?", required=False)
     alicuota_iva = forms.ModelChoiceField(queryset=AlicuotaIva.objects.order_by("id_afip"), required=False,
                                           widget=SelectAlicuotaIva, empty_label=None)
-    codigo_barras_nro = forms.DecimalField(label="Codigo de barras (EAN)", max_digits=13, decimal_places=0, required=False)
+    codigo_barras_nro = forms.DecimalField(label="Codigo de barras (EAN)", max_digits=13, decimal_places=0,
+                                           required=False)
     precio_final = forms.DecimalField(label="Precio final (con IVA)", max_digits=19, decimal_places=4, required=False)
     precio_unit = forms.DecimalField(label="Precio unitario (sin IVA)", max_digits=19, decimal_places=4)
     unidad = forms.ModelChoiceField(queryset=Unidad.objects.exclude(id_afip=Unidad.BONIFICACION_ID_AFIP), required=True)
@@ -470,10 +483,11 @@ class ProductoForm(ModelForm):
 
 class ProductoTable(Table):
     class Meta:
-        attrs = {"id": "productos-table" }
+        attrs = {"id": "productos-table"}
         model = Producto
         per_page = 30
-        fields = ("codigo", "codigo_barras_nro", "nombre", "unidad", "precio_unit", "precio_final", "alicuota_iva", "activo")
+        fields = (
+        "codigo", "codigo_barras_nro", "nombre", "unidad", "precio_unit", "precio_final", "alicuota_iva", "activo")
 
     actions = EditColumn('producto.update', kwargs={"pk": A('pk')}, orderable=False, accessor='pk',
                          verbose_name="Acciones")
@@ -564,7 +578,8 @@ class ProductoDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(ProductoDelete, self).get_context_data(**kwargs)
-        context['cant_comp_asociados'] = DetalleComprobante.objects.filter(producto=self.object).order_by('comprobante_id').distinct('comprobante_id').count()
+        context['cant_comp_asociados'] = DetalleComprobante.objects.filter(producto=self.object).order_by(
+            'comprobante_id').distinct('comprobante_id').count()
         context['entidad_a_borrar'] = "producto"
         return context
 
@@ -580,10 +595,10 @@ class ProductoDelete(DeleteView):
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
 
+
 producto_delete = login_required(ProductoDelete.as_view())
 
-
-INCREMENTAR_CHOICES = ('1','Incrementar',),('0','Decrementar',)
+INCREMENTAR_CHOICES = ('1', 'Incrementar',), ('0', 'Decrementar',)
 
 
 class ProductoCambiarPreciosForm(Form):
@@ -637,21 +652,26 @@ def change_prices(request):
 
 class ProductImportForm(Form):
     file = FileField(required=True, label='Archivo - Seleccione el archivo csv que contiene los productos a importar')
-    update_existing = forms.BooleanField(required=False, label='Desea actualizar los productos que ya existan en Pirra?')
+    update_existing = forms.BooleanField(required=False,
+                                         label='Desea actualizar los productos que ya existan en Pirra?')
     is_final_price = forms.BooleanField(required=False, label='Los productos a importar incluyen IVA?')
-    exclude_first_line = forms.BooleanField(initial=True, required=False, label='Excluir la primera línea (encabezado de columnas)')
+    exclude_first_line = forms.BooleanField(initial=True, required=False,
+                                            label='Excluir la primera línea (encabezado de columnas)')
 
     def __init__(self, *args, **kwargs):
-            super(ProductImportForm, self).__init__(*args, **kwargs)
-            self.fields['is_final_price'].help_text = 'Si no incluye la Alícuota de IVA que le corresponde al producto se completará con el 21% por definición.'
-            self.fields['update_existing'].help_text = 'Si no tilda esta opción, los productos a importar que ya existan en el sistema serán ignorados.'
+        super(ProductImportForm, self).__init__(*args, **kwargs)
+        self.fields[
+            'is_final_price'].help_text = 'Si no incluye la Alícuota de IVA que le corresponde al producto se completará con el 21% por definición.'
+        self.fields[
+            'update_existing'].help_text = 'Si no tilda esta opción, los productos a importar que ya existan en el sistema serán ignorados.'
 
     def save(self):
         update_existing = self.cleaned_data["update_existing"]
         exclude_first_line = self.cleaned_data["exclude_first_line"]
         is_final_price = self.cleaned_data["is_final_price"]
         file = self.cleaned_data["file"]
-        errors, imported, ignored, updated = import_product_csv(file, update_existing, exclude_first_line, is_final_price)
+        errors, imported, ignored, updated = import_product_csv(file, update_existing, exclude_first_line,
+                                                                is_final_price)
         if errors:
             for err in errors:
                 self.add_error(None, err)
@@ -701,11 +721,13 @@ def import_product(request):
 class ClientImportForm(Form):
     file = FileField(required=True, label='Archivo - Seleccione el archivo csv que contiene los clientes a importar')
     update_existing = forms.BooleanField(required=False, label='Desea actualizar los clientes que ya existan en Pirra?')
-    exclude_first_line = forms.BooleanField(initial=True, required=False, label='Excluir la primera línea (encabezado de columnas)')
+    exclude_first_line = forms.BooleanField(initial=True, required=False,
+                                            label='Excluir la primera línea (encabezado de columnas)')
 
     def __init__(self, *args, **kwargs):
-            super(ClientImportForm, self).__init__(*args, **kwargs)
-            self.fields['update_existing'].help_text = 'Si no tilda esta opción, los clientes a importar que ya existan en el sistema serán ignorados.'
+        super(ClientImportForm, self).__init__(*args, **kwargs)
+        self.fields[
+            'update_existing'].help_text = 'Si no tilda esta opción, los clientes a importar que ya existan en el sistema serán ignorados.'
 
     def save(self):
         update_existing = self.cleaned_data["update_existing"]
