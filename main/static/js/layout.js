@@ -8,7 +8,7 @@ $(document).ready(function () {
             $.get("/comprobantes/comprobante/check_status/")
                 .done(function (data) {
                     if (data.AppServerStatus === "ok" && data.DbServerStatus === "ok" && data.AuthServerStatus === "ok") {
-                        $("#server_status").html("<i class='fa fa-circle text-navy'></i>");
+                        $("#server_status").html("<i class='fa fa-circle text-success'></i>");
                         $("#server_status").attr("data-content", "Online");
                     }
                     else {
@@ -19,7 +19,7 @@ $(document).ready(function () {
                         checkServerStatus();
                     }, timeout);
                 })
-                .error(function (err) {
+                .fail(function (err) {
                     $("#server_status").html("<i class='fa fa-circle text-danger'></i>");
                     $("#server_status").attr("data-content", "Offline");
                     window.setTimeout(function () {

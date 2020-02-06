@@ -24,6 +24,9 @@ import 'chartjs-plugin-colorschemes';
 import 'jquery-mask-plugin';
 import 'jquery-form';
 
+import 'pace-progressbar';
+
+
 window.bootbox =require('bootbox');
 window.Handlebars = require('handlebars');
 window.Selectize = require('selectize');
