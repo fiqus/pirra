@@ -24,8 +24,10 @@ REDIS_URL = "redis://localhost:6379/0"
 
 SECRET_KEY = "" #Usar string random
 
-PRIVATE_KEY = "" #Clave AFIP
+CUIT_TO_CONNECT = ''  # CUIT relacionado al computador del propietario de la private key / certificate
 
-CERTIFICATE = "" #Certificado de la AFIP
+PRIVATE_KEY = b"""[Aquí su clave]"""  #Clave AFIP
+
+CERTIFICATE = b"""[Aquí su certificado]"""  #Certificado de la AFIP
 
 # INSTALLED_APPS = INSTALLED_APPS +  ("sample_hooks",)

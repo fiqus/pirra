@@ -487,7 +487,7 @@ def check_status(request):
     r = get_redis_client()
     data = r.get("pirra-afip-status")
     if not data:
-        resp = ws_helper.check_status('33712225659', settings.CERTIFICATE, settings.PRIVATE_KEY)
+        resp = ws_helper.check_status(settings.CUIT_TO_CONNECT, settings.CERTIFICATE, settings.PRIVATE_KEY)
         data = json.dumps(resp)
         r.set("pirra-afip-status", data)
         r.expireat("pirra-afip-status", datetime.datetime.now() + relativedelta(minutes=10))
