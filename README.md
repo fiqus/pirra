@@ -93,11 +93,6 @@ Configuracion de entorno de desarrollo
 10. Crear empresa
 
         python manage.py init_empresa [NRO_DOC] [EMPRESA]        
-        
-10. Cargar los datos de aplicacion AFIP (para tener tipos de comprobante, moneda, etc)
-
-        python manage.py loaddata afip/fixtures/initial_data.json 
-        # elegir el schema public
 
 
 11. Cargar datos del padron de inscripcion a la afip
