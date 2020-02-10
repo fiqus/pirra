@@ -392,7 +392,11 @@ class ErrorCustomAfip():
         {
             "codigo": "1500",
             "descripcion": "<p>La fecha del comprobante debe estar incluida en el per&iacute;odo N-5 y N+5 siendo N la fecha de emisi&oacute;n del mismo.</p>"
-        }
+        },
+        {
+            "codigo": "1672",
+            "descripcion": "<p>Para facturas de exportacion es obligatorio informar la fecha de pago</p>"
+        },
     ]
 
     def get_error(self, error_code):

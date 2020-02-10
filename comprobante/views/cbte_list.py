@@ -87,8 +87,6 @@ class ComprobanteList(SingleTableView):
                 queryset = queryset.filter(fecha_emision__gte=self.form.cleaned_data["fecha_desde"])
             if self.form.cleaned_data["fecha_hasta"]:
                 queryset = queryset.filter(fecha_emision__lte=self.form.cleaned_data["fecha_hasta"])
-            if self.form.cleaned_data["nro_orden_compra"]:
-                queryset = queryset.filter(orden_compra__nro=self.form.cleaned_data["nro_orden_compra"])
         queryset = queryset.order_by("-fecha_emision", "-id")
         return queryset
 

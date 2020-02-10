@@ -221,6 +221,9 @@ class Invoice(Base):
             if self.cbte_data.get("cbte_asoc", False):
                 data = data + "<b>Asociado a</b>: {cbte_asoc[tipo_cbte][nombre]} {cbte_asoc[tipo_cbte][letra]} {cbte_asoc[pp_numero]}"
 
+            if self.cbte_data.get("fecha_pago", False):
+                data = data + "<b>Fecha Pago</b>: {fecha_pago}"
+
             return [
                 VSpace(),
                 RestrictParagraph(self.f(data).replace(" ", "&nbsp;"), w, h, styles["header_small"]),

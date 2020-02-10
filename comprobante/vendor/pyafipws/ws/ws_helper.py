@@ -258,6 +258,7 @@ def autorizar(cbte, certificate, private_key):
         incoterms = cbte.incoterms.id_afip if cbte.incoterms else None
         incoterms_ds = cbte.incoterms_ds
         idioma_cbte = cbte.idioma.id_afip
+        fecha_pago = cbte.fecha_pago.strftime("%Y%m%d") if cbte.fecha_pago else ''
         
         # Creo una factura (internamente, no se llama al WebService):
         ok = wsfex.CrearFactura(cbte.tipo_cbte.id_afip, cbte.punto_vta.id_afip, cbte_nro,
@@ -266,7 +267,7 @@ def autorizar(cbte, certificate, private_key):
                                 cbte.cliente.nombre, cuit_pais_cliente, cbte.cliente.domicilio,
                                 id_impositivo, moneda_id, moneda_ctz,
                                 obs_comerciales, obs, forma_pago, incoterms,
-                                idioma_cbte, incoterms_ds)
+                                idioma_cbte, incoterms_ds, fecha_pago)
 
         for detalle in cbte.detallecomprobante_set.all():
             # Agrego un item:

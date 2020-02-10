@@ -1,3 +1,4 @@
+import datetime
 import logging
 
 import simplejson
@@ -34,7 +35,7 @@ class ComprobanteForm(ConditionalValidateForm):
         model = Comprobante
         fields = (
             "id", 'empresa', 'punto_vta', 'concepto', 'tipo_cbte', 'condicion_venta', 'condicion_venta_texto',
-            'remito_nro', 'cbte_asoc',
+            'remito_nro', 'cbte_asoc', 'fecha_pago',
             'fecha_emision', 'fecha_venc_pago', 'cliente',
             'tipo_expo', 'moneda', 'idioma', 'incoterms', 'pais_destino', 'id_impositivo', 'moneda_ctz',
             'forma_pago',
@@ -67,6 +68,9 @@ class ComprobanteForm(ConditionalValidateForm):
 
         if cleaned_data.get("tipo_cbte").id_afip in (TipoComprobante.NC_E, TipoComprobante.ND_E):
             self.validate_required_field(cleaned_data, 'cbte_asoc')
+
+        if cleaned_data.get("tipo_cbte").id_afip == TipoComprobante.FACTURA_E:
+            self.validate_required_field(cleaned_data, 'fecha_pago')
 
         dto = cleaned_data.get("descuento")
         if dto:
@@ -105,6 +109,20 @@ class ComprobanteForm(ConditionalValidateForm):
                     error = "Hubo un error al querer validar el comprobante asociado"
                     self.add_error("cbte_asoc", error)
         return cbte_asoc
+
+    def clean_fecha_pago(self):
+        fecha_pago = self.cleaned_data['fecha_pago']
+        tipo_cbte = self.cleaned_data.get("tipo_cbte").id_afip
+
+        if tipo_cbte == TipoComprobante.FACTURA_E:
+            if not fecha_pago:
+                error = "Debe informar una fecha de pago"
+                self.add_error("fecha_pago", error)
+            else:
+                if fecha_pago < datetime.date.today():
+                    error = "La fecha de pago debe ser mayor o igual a hoy"
+                    self.add_error("fecha_pago", error)
+        return fecha_pago
 
     tipo_cbte = forms.ModelChoiceField(queryset=TipoComprobante.objects.none())
     importe_total = forms.DecimalField(max_digits=19, decimal_places=4)
@@ -272,7 +290,7 @@ def comprobante_create_edit(request, pk=None):
         cant_opcionales = 0
 
     if pk:
-        # Create cbte
+        # Edicion de  cbte
         comprobante = Comprobante.objects.get(pk=pk)
         if comprobante.cae or comprobante.nro:
             if comprobante.cae:
@@ -291,6 +309,7 @@ def comprobante_create_edit(request, pk=None):
             formset_opcional = OpcionalComprobanteFormSet(request.POST or None, queryset=comp_opcionales,
                                                           prefix='opcionales')
     else:
+        # Creacion de un nuevo comprobante
         detalles = DetalleComprobante.objects.none()
         comprobante = None
         comp_tributos = TributoComprobante.objects.none()
