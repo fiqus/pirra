@@ -12,8 +12,6 @@ def load_fixtures(apps, schema_editor):
         'alicuotas_iva.json',
         'condiciones_iva.json',
         'condiciones_venta.json',
-        'convenio_multi_iibb.json',
-        'nueva_condicion_iibb.json',
         'unidades.json',
         'opcionales.json',
         'tipo_doc_otro.json',
