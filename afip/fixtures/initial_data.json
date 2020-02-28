@@ -33,6 +33,30 @@
   },
   {
     "fields": {
+      "nombre": "Otra",
+      "id_afip": 0
+    },
+    "model": "afip.condicioniibb",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "nombre": "Local (Provincial o CABA)",
+      "id_afip": 0
+    },
+    "model": "afip.condicioniibb",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "nombre": "Convenio Multilateral",
+      "id_afip": 0
+    },
+    "model": "afip.condicioniibb",
+    "pk": 5
+  },
+  {
+    "fields": {
       "nombre": "CUIT",
       "id_afip": 80
     },
