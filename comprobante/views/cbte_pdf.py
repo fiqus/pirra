@@ -1,9 +1,13 @@
 import io
+import os
+
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from reportlab.lib.pagesizes import A4
 from comprobante.models import Comprobante
 from comprobante.pdf.document.invoice import Invoice
+from comprobante.views.cbte_autorizar import genera_codigo_barra
 
 
 def gen_pdf_file(pdf, comprobante, es_impresion):
@@ -44,6 +48,11 @@ def fetch_resources(uri, _):
 @login_required
 def comprobante_to_pdf(_, pk):
     comprobante = Comprobante.objects.get(pk=pk)
+
+    # Chequeo de existencia de archivo
+    filename = os.path.join(settings.MEDIA_ROOT, comprobante.codigo_barras.name)
+    if not os.path.isfile(filename):
+        genera_codigo_barra(comprobante)
     result = io.BytesIO()
     try:
         gen_pdf_file(result, comprobante, True)

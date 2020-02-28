@@ -23,13 +23,7 @@ from main.redis import get_redlock_client
 
 logger = logging.getLogger(__name__)
 
-
-def comprobante_guardar_autorizacion(comprobante, ret):
-    comprobante.cae = ret.CAE
-    comprobante.fecha_vto_cae = datetime.datetime.strptime(ret.Vencimiento, "%Y%m%d").date()
-    comprobante.motivo = ret.Motivo if not ret.Motivo else ""
-    comprobante.resultado = ret.Resultado
-
+def genera_codigo_barra(comprobante):
     generador = pyi25.PyI25()
 
     cod_aux = comprobante.empresa.nro_doc
@@ -45,8 +39,16 @@ def comprobante_guardar_autorizacion(comprobante, ret):
     tmpfile_io = generador.GenerarImagen(cod_aux, filename, 9, 0, 90, "JPEG")
 
     image_file = InMemoryUploadedFile(tmpfile_io, None, filename, 'image/jpeg', tmpfile_io.getbuffer().nbytes, None)
-
     comprobante.codigo_barras.save(filename, image_file)
+
+
+def comprobante_guardar_autorizacion(comprobante, ret):
+    comprobante.cae = ret.CAE
+    comprobante.fecha_vto_cae = datetime.datetime.strptime(ret.Vencimiento, "%Y%m%d").date()
+    comprobante.motivo = ret.Motivo if not ret.Motivo else ""
+    comprobante.resultado = ret.Resultado
+
+    genera_codigo_barra(comprobante)
 
     # Limpiar errores u observaciones hechas por la AFIP previo a que el cliente las arregle y vuelva a intentar
     if hasattr(ret, 'Errores') and len(ret.Errores):
