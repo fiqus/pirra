@@ -28,7 +28,7 @@ def imprimir_coleccion_comprobantes(comprobantes, request, zip_prefix):
             with zipfile.ZipFile(f, mode='w', compression=zipfile.ZIP_DEFLATED) as zf:
                 for comprobante in comprobantes:
                     ultimo_procesado = str(comprobante.pp_numero) + comprobante.cliente.nombre
-                    pdf = StringIO.StringIO()
+                    pdf = StringIO.BytesIO()
                     try:
                         gen_pdf_file(pdf, comprobante, True)
                         filename = "{}_{}_{}_{}_{}.pdf".format(comprobante.tipo_cbte.nombre,
