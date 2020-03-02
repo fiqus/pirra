@@ -258,7 +258,7 @@ class Invoice(Base):
         return [
             RestrictParagraph(
                 "Esta factura electrónica fue confeccionada con el sistema de Facturación Electrónica "
-                "<a href='https://aquiles.com.ar'>Aquiles</a>. "
+                "Pirra"
                 "La información contenida en éste documento es privilegiada y confidencial, para uso exclusivo "
                 "de los destinatarios de la misma y/o de quienes hayan sido autorizados específicamente para leerla.",
                 w, h, styles['legend_xs']),
