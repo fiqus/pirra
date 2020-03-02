@@ -34,6 +34,7 @@
   pip: 
     name: virtualenv
     executable: pip3
+    version: 16
   tags: packages
 
 - include: create_users_and_groups.yml

@@ -118,7 +118,7 @@ ROOT_URLCONF = 'pirra_web.urls'
 WSGI_APPLICATION = 'pirra_web.wsgi.application'
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
+
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'help',
     'empresa',
     'comprobante',
+    'django.contrib.auth',
 )
 
 DEMO = False
