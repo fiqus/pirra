@@ -49,10 +49,12 @@ def fetch_resources(uri, _):
 def comprobante_to_pdf(_, pk):
     comprobante = Comprobante.objects.get(pk=pk)
 
-    # Chequeo de existencia de archivo
-    filename = os.path.join(settings.MEDIA_ROOT, comprobante.codigo_barras.name)
-    if not os.path.isfile(filename):
-        genera_codigo_barra(comprobante)
+    # Chequeo de existencia de archivo si tiene cae
+    if comprobante.cae:
+        filename = os.path.join(settings.MEDIA_ROOT, comprobante.codigo_barras.name)
+        if not os.path.isfile(filename):
+            genera_codigo_barra(comprobante)
+
     result = io.BytesIO()
     try:
         gen_pdf_file(result, comprobante, True)
