@@ -23,6 +23,7 @@ from main.redis import get_redlock_client
 
 logger = logging.getLogger(__name__)
 
+
 def genera_codigo_barra(comprobante):
     generador = pyi25.PyI25()
 

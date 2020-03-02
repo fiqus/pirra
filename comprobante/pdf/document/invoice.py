@@ -257,8 +257,7 @@ class Invoice(Base):
 
         return [
             RestrictParagraph(
-                "Esta factura electrónica fue confeccionada con el sistema de Facturación Electrónica "
-                "Pirra"
+                "Esta factura electrónica fue confeccionada con el sistema de Facturación Electrónica Pirra. "
                 "La información contenida en éste documento es privilegiada y confidencial, para uso exclusivo "
                 "de los destinatarios de la misma y/o de quienes hayan sido autorizados específicamente para leerla.",
                 w, h, styles['legend_xs']),
@@ -340,8 +339,6 @@ class Invoice(Base):
     def gen_footer_col1_last_page(self):
         w = self.usable_width / 2
         h = self.usable_height
-
-
 
         if self.cbte.cae:
             # Chequeo de existencia de archivo
