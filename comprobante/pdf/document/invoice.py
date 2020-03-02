@@ -1,6 +1,8 @@
 # coding=utf-8
+import os
 import string
 
+from django.conf import settings
 from django.db.models import Sum
 from django.db.models.expressions import F
 from reportlab.platypus.tables import TableStyle
@@ -12,6 +14,7 @@ from comprobante.pdf.document.elements import CenterRestrictImage, RestrictParag
 from comprobante.pdf.stylesheets.default import get_default_stylesheet, _baseFontNameB
 import logging
 
+from comprobante.views.cbte_autorizar import genera_codigo_barra
 
 styles = get_default_stylesheet()
 logger = logging.getLogger(__name__)
@@ -255,7 +258,7 @@ class Invoice(Base):
         return [
             RestrictParagraph(
                 "Esta factura electrónica fue confeccionada con el sistema de Facturación Electrónica "
-                "Pirra. "
+                "Pirra"
                 "La información contenida en éste documento es privilegiada y confidencial, para uso exclusivo "
                 "de los destinatarios de la misma y/o de quienes hayan sido autorizados específicamente para leerla.",
                 w, h, styles['legend_xs']),
@@ -338,7 +341,14 @@ class Invoice(Base):
         w = self.usable_width / 2
         h = self.usable_height
 
+
+
         if self.cbte.cae:
+            # Chequeo de existencia de archivo
+            filename = os.path.join(settings.MEDIA_ROOT, self.cbte.codigo_barras.name)
+            if not os.path.isfile(filename):
+                genera_codigo_barra(self.cbte)
+
             return [
                 VSpace(),
                 RestrictParagraph(self.f("""
