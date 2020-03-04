@@ -144,7 +144,7 @@ class UserCreateForm(UserCreationForm):
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
-            user.groups = self.cleaned_data["groups"]
+            user.groups.set(self.cleaned_data["groups"])
             user.save()
         return user
 
