@@ -15,7 +15,8 @@ class ComprobanteSearchForm(forms.Form):
                                        empty_label="Tipo de Comprobante")
     # cliente = forms.ModelChoiceField(queryset=Cliente.objects.filter(activo=True),
     # required=False, empty_label="Cliente")
-    cliente = forms.ModelChoiceField(queryset=Cliente.objects, required=False, empty_label="Cliente")
+    cliente = forms.ModelChoiceField(queryset=Cliente.objects, required=False, empty_label="Cliente",
+                                     widget=forms.Select(attrs={'class': "client-select-search"}))
     fecha_desde = forms.DateField(required=False)
     fecha_hasta = forms.DateField(required=False)
 

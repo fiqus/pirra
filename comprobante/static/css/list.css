@@ -14,3 +14,7 @@ button.more-actions:hover {
 .acciones_masivas {
     margin-left: -15px;
 }
+
+.client-select-search {
+  width: 250px !important;
+}
