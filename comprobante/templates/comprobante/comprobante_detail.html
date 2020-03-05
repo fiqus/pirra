@@ -3,8 +3,9 @@
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Wrapper for slides -->
+  
   <div class="carousel-inner">
-    <div class="item active">
+    <div class="carousel-item active">
       {% if comprobante.cae and comprobante.observaciones_wsfe %}
           <div class="aviso-afip obs-warning">
             <strong>Observaciones AFIP:</strong> <br/>
@@ -239,7 +240,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
-    <div class="item">
+    <div class="carousel-item">
         {% include "comprobante/comprobante_enviar_mail.html"%}
     </div>
   </div>
