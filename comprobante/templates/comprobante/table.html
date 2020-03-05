@@ -25,7 +25,9 @@
 {% block table.tbody.row %}
     <tr class="{% cycle "odd" "even" %}  {% if  row.record.cae %}success{% elif row.record.observaciones_wsfe or row.record.errores_wsfe %}danger{% endif %}">
         {% for column, cell in row.items %}
-            {% if column.name != "actions" and column.name != "selection" %}
+            {% if column.name == "enviado"%}
+                <td class="detail-click" data-url="{% url "comprobante.preview" row.record.pk %}" {{ column.attrs.td.as_html }}>{% if cell == True %}<i class="fas fa-check-circle"></i>{% else %}<i class="fas fa-times-circle"></i>{% endif %}</td>    
+            {% elif column.name != "actions" and column.name != "selection" %}
                 <td class="detail-click" data-url="{% url "comprobante.preview" row.record.pk %}" {{ column.attrs.td.as_html }}>{{ cell }}</td>
             {% else %}
                 <td {{ column.attrs.td.as_html }}>{{ cell }}</td>
