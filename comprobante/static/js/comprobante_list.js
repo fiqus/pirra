@@ -641,8 +641,8 @@ $(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    $("#id_fecha_desde").datepicker({language: "es", format: "dd/mm/yyyy"});
-    $("#id_fecha_hasta").datepicker({language: "es", format: "dd/mm/yyyy"});
+    $("#id_fecha_desde").datepicker({language: "es", format: "dd/mm/yyyy", orientation: "bottom"});
+    $("#id_fecha_hasta").datepicker({language: "es", format: "dd/mm/yyyy", orientation: "bottom"});
 
     $(".detail-click").click(function(e){
         if(!$(e.target).is(':checkbox')){
