@@ -240,8 +240,8 @@ class PuntoDeVentaTable(Table):
 class PuntoDeVentaList(SingleTableView):
     model = PuntoDeVenta
     table_class = PuntoDeVentaTable
-    # queryset = PuntoDeVenta.objects.filter(activo=True)
-    queryset = PuntoDeVenta.objects.all()
+    queryset = PuntoDeVenta.objects.filter(activo=True)
+   # queryset = PuntoDeVenta.objects.all()
 
 
 punto_de_venta_list = login_required(PuntoDeVentaList.as_view())
