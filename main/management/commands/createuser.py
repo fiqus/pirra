@@ -12,6 +12,7 @@ from django.core import exceptions
 from django.core.management.base import BaseCommand, CommandError
 from django.db import DEFAULT_DB_ALIAS
 from django.utils.text import capfirst
+from django.contrib.auth.models import Group
 
 
 class NotRunningInTTYException(Exception):
@@ -185,8 +186,9 @@ class Command(BaseCommand):
                         raise CommandError('You must use --%s with --noinput.' % field_name)
                     field = self.UserModel._meta.get_field(field_name)
                     user_data[field_name] = field.clean(value, None)
-
-            self.UserModel._default_manager.db_manager(database).create_user(**user_data)
+                
+            user = self.UserModel._default_manager.db_manager(database).create_user(**user_data)
+            user.groups.set(Group.objects.all())
             if options['verbosity'] >= 1:
                 self.stdout.write("User created successfully.")
         except KeyboardInterrupt:
