@@ -140,10 +140,10 @@ class ComprobanteForm(ConditionalValidateForm):
         super(ComprobanteForm, self).__init__(*args, **kwargs)
         self.fields['cliente'].empty_label = ""
         self.fields['concepto'].initial = empresa.concepto
-        # self.fields['punto_vta'].queryset = PuntoDeVenta.objects.filter(activo=True)
-        self.fields['punto_vta'].queryset = PuntoDeVenta.objects.all()
-        self.fields['cliente'].queryset = Cliente.objects.all()
-        # self.fields['cliente'].queryset = Cliente.objects.filter(activo=True)
+        self.fields['punto_vta'].queryset = PuntoDeVenta.objects.filter(activo=True)
+        # self.fields['punto_vta'].queryset = PuntoDeVenta.objects.all()
+        # self.fields['cliente'].queryset = Cliente.objects.all()
+        self.fields['cliente'].queryset = Cliente.objects.filter(activo=True)
         self.fields['tipo_cbte'].initial = empresa.tipos_cbte.first()
         self.fields['tipo_cbte'].queryset = empresa.tipos_cbte.all()
         self.fields['cbte_asoc'].queryset = Comprobante.objects.filter(tipo_cbte=TipoComprobante.FACTURA_E_PK)

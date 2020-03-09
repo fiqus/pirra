@@ -1,7 +1,7 @@
 {% if ptos_vta == 0 %}
     <div class="alert alert-danger" role="alert">
         Todavía no tenés cargado ningún <strong>punto de venta</strong>. Para gestionar tus puntos
-        de venta, <a href="{% url "punto_de_venta.list" %}" class="alert-link">ingresá acá</a>
+        de venta, <a href="{% url "punto_de_venta.list" %}">ingresá acá</a>
     </div>
 {% endif %}
 {% if empresa_tipos_cbte == 0 or empresa_concepto == 0 %}
