@@ -1,5 +1,4 @@
 {% load querystring from django_tables2 %}
-{% load title from django_tables2 %}
 {% load trans blocktrans from i18n %}
 {% load bootstrap4 %}
 
@@ -9,7 +8,7 @@
             <thead>
             <tr>
                 {% for column in table.columns %}
-                    <th>{{ column.header|title }}</th>
+                    <th>{{ column.header }}</th>
                 {% endfor %}
             </tr>
             </thead>
