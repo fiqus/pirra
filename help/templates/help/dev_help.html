@@ -1,284 +1,278 @@
-{% extends "base_header.html" %}
+{% extends "base_table.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
 {% load render_table from django_tables2 %}
 
-{% block title %}
-    <h2>Ayuda para Desarrolladores</h2>
-{% endblock %}
-
 {% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li>
-            <a href="#">Ayuda</a>
-        </li>
-        <li class="active">
-            <strong>Ayuda para Desarrolladores</strong>
-        </li>
-    </ol>
+    <li class="breadcrumb-item"><a href="#">Ayuda</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Ayuda para Desarrolladores</li>
 {% endblock %}
 
-{% block content %}
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="wrapper wrapper-content animated fadeInUp">
-                <div class="ibox">
-                    <div class="ibox-title">
-                        <strong>Importacion de Comprobantes</strong> (<a href="{{ STATIC_URL }}csv/cbtes.csv" target="_blank" class="alert-link">archivo de ejemplo</a>)
-                    </div>
-                    <div class="ibox-content">
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Campo</th>
-                                <th>Descripción</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td colspan="2"><strong>Cabecera</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Número de Item</td>
-                                <td>un nro distinto para cada cbte, no se guarda</td>
-                            </tr>
-                            <tr>
-                                <td>Tipo de comprobante</td>
-                                <td>ID del tipo de comprobante (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Tipo de comprobante</td>
-                                <td>ID del tipo de comprobante (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Punto de venta</td>
-                                <td>ID del punto de venta (debe estar cargado en el sistema)</td>
-                            </tr>
-                            <tr>
-                                <td>Concepto</td>
-                                <td>ID del concepto (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Numero de remito</td>
-                                <td>Opcional. Longitud maxima: 13 caracteres</td>
-                            </tr>
-                            <tr>
-                                <td>Fecha de Emision</td>
-                                <td>formato DD/MM/YYYY</td>
-                            </tr>
-                            <tr>
-                                <td>Fecha de Vencimiento</td>
-                                <td>formato DD/MM/YYYY</td>
-                            </tr>
-                            <tr>
-                                <td>Tipo de documento del cliente</td>
-                                <td>ID del tipo de documento (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Numero de documento</td>
-                                <td>Numero de documento del cliente</td>
-                            </tr>
-                            <tr>
-                                <td>Nombre</td>
-                                <td>Nombre del cliente</td>
-                            </tr>
-                            <tr>
-                                <td>Condicion IVA</td>
-                                <td>ID de Condicion de IVA del cliente (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Domicilio</td>
-                                <td>Domicilio del cliente</td>
-                            </tr>
-                            <tr>
-                                <td>Localidad</td>
-                                <td>Localidad del cliente</td>
-                            </tr>
-                            <tr>
-                                <td>Telefono</td>
-                                <td>Telefono del cliente</td>
-                            </tr>
-                            <tr>
-                                <td>Codigo Postal</td>
-                                <td>Codigo Postal del cliente</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>Email del cliente</td>
-                            </tr>
-                            <tr>
-                                <td>Tipo de Exportacion</td>
-                                <td>Id de tipo de exportacion (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Moneda</td>
-                                <td>Id de moneda (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Cotizacion</td>
-                                <td>Cotizacion de la moneda (1 si es pesos) - Decimal separado por "."</td>
-                            </tr>
-                            <tr>
-                                <td>Idioma</td>
-                                <td>Id de Idioma (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Incoterms</td>
-                                <td>Id de Incoterms (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Descripcion Incoterms</td>
-                                <td>Descripcion de Incoterms</td>
-                            </tr>
-                            <tr>
-                                <td>Pais de destino</td>
-                                <td>Id de pais (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>ID impositivo</td>
-                                <td>Longitud maxima 256 caracteres</td>
-                            </tr>
-                            <tr>
-                                <td>Observaciones Comerciales</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Observaciones</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Forma de pago</td>
-                                <td>Longitud maxima 256 caracteres</td>
-                            </tr>
-                            <tr>
-                                <td>Condicion de venta</td>
-                                <td>Id de Condicion de venta (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Condicion de venta - Otra</td>
-                                <td>Texto libre. Solo si la Condicion de venta es "otra"</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><strong>Detalle</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Codigo</td>
-                                <td>Codigo de producto. Opcional si no se desea crear un producto</td>
-                            </tr>
-                            <tr>
-                                <td>Nombre/detalle</td>
-                                <td>longitud maxima 256 caracteres</td>
-                            </tr>
-                            <tr>
-                                <td>Cantidad</td>
-                                <td>Decimal separado por "."</td>
-                            </tr>
-                            <tr>
-                                <td>Precio Unitario</td>
-                                <td>Decimal separado por "."</td>
-                            </tr>
-                            <tr>
-                                <td>Unidad de medida</td>
-                                <td>Id de Unidad de medida (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Alicuota</td>
-                                <td>Id de Alicuota (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><strong>Tributos</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Tributo</td>
-                                <td>Id de Tributo (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Detalle</td>
-                                <td>Texto libre. Longitud maxima 256 caracteres</td>
-                            </tr>
-                            <tr>
-                                <td>Base Imponible</td>
-                                <td>Decimal separado por "."</td>
-                            </tr>
-                            <tr>
-                                <td>Alicuota</td>
-                                <td>Porcentaje de alicuota. Decimal separado por "."</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><strong>Opcionales</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Opcional</td>
-                                <td>Id del Opcional (ver tabla)</td>
-                            </tr>
-                            <tr>
-                                <td>Valor</td>
-                                <td>Valor del opcional. Longitud maxima 256 caracteres</td>
-                            </tr>
-                            </tbody>
-                        </table>
+{% block card-body %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <strong>Importacion de Comprobantes</strong> (<a href="{{ STATIC_URL }}csv/cbtes.csv" target="_blank" class="alert-link">archivo de ejemplo</a>)
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Descripción</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td colspan="2"><strong>Cabecera</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Número de Item</td>
+                            <td>un nro distinto para cada cbte, no se guarda</td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de comprobante</td>
+                            <td>ID del tipo de comprobante (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de comprobante</td>
+                            <td>ID del tipo de comprobante (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Punto de venta</td>
+                            <td>ID del punto de venta (debe estar cargado en el sistema)</td>
+                        </tr>
+                        <tr>
+                            <td>Concepto</td>
+                            <td>ID del concepto (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Numero de remito</td>
+                            <td>Opcional. Longitud maxima: 13 caracteres</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de Emision</td>
+                            <td>formato DD/MM/YYYY</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de Vencimiento</td>
+                            <td>formato DD/MM/YYYY</td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de documento del cliente</td>
+                            <td>ID del tipo de documento (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Numero de documento</td>
+                            <td>Numero de documento del cliente</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Nombre del cliente</td>
+                        </tr>
+                        <tr>
+                            <td>Condicion IVA</td>
+                            <td>ID de Condicion de IVA del cliente (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Domicilio</td>
+                            <td>Domicilio del cliente</td>
+                        </tr>
+                        <tr>
+                            <td>Localidad</td>
+                            <td>Localidad del cliente</td>
+                        </tr>
+                        <tr>
+                            <td>Telefono</td>
+                            <td>Telefono del cliente</td>
+                        </tr>
+                        <tr>
+                            <td>Codigo Postal</td>
+                            <td>Codigo Postal del cliente</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>Email del cliente</td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de Exportacion</td>
+                            <td>Id de tipo de exportacion (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Moneda</td>
+                            <td>Id de moneda (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Cotizacion</td>
+                            <td>Cotizacion de la moneda (1 si es pesos) - Decimal separado por "."</td>
+                        </tr>
+                        <tr>
+                            <td>Idioma</td>
+                            <td>Id de Idioma (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Incoterms</td>
+                            <td>Id de Incoterms (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Descripcion Incoterms</td>
+                            <td>Descripcion de Incoterms</td>
+                        </tr>
+                        <tr>
+                            <td>Pais de destino</td>
+                            <td>Id de pais (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>ID impositivo</td>
+                            <td>Longitud maxima 256 caracteres</td>
+                        </tr>
+                        <tr>
+                            <td>Observaciones Comerciales</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Observaciones</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Forma de pago</td>
+                            <td>Longitud maxima 256 caracteres</td>
+                        </tr>
+                        <tr>
+                            <td>Condicion de venta</td>
+                            <td>Id de Condicion de venta (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Condicion de venta - Otra</td>
+                            <td>Texto libre. Solo si la Condicion de venta es "otra"</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Detalle</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Codigo</td>
+                            <td>Codigo de producto. Opcional si no se desea crear un producto</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre/detalle</td>
+                            <td>longitud maxima 256 caracteres</td>
+                        </tr>
+                        <tr>
+                            <td>Cantidad</td>
+                            <td>Decimal separado por "."</td>
+                        </tr>
+                        <tr>
+                            <td>Precio Unitario</td>
+                            <td>Decimal separado por "."</td>
+                        </tr>
+                        <tr>
+                            <td>Unidad de medida</td>
+                            <td>Id de Unidad de medida (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Alicuota</td>
+                            <td>Id de Alicuota (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Tributos</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Tributo</td>
+                            <td>Id de Tributo (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Detalle</td>
+                            <td>Texto libre. Longitud maxima 256 caracteres</td>
+                        </tr>
+                        <tr>
+                            <td>Base Imponible</td>
+                            <td>Decimal separado por "."</td>
+                        </tr>
+                        <tr>
+                            <td>Alicuota</td>
+                            <td>Porcentaje de alicuota. Decimal separado por "."</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Opcionales</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Opcional</td>
+                            <td>Id del Opcional (ver tabla)</td>
+                        </tr>
+                        <tr>
+                            <td>Valor</td>
+                            <td>Valor del opcional. Longitud maxima 256 caracteres</td>
+                        </tr>
+                        </tbody>
+                    </table>
 
 
-                        <h2>Aclaraciones</h2>
-                        <ul>
-                            <li> La primer columna del csv (cbte_item_number), es el identificador de comprobante dentro
-                                del archivo. Sirve solo para procesar los comprobantes y diferenciar cuando empieza y
-                                termina un comprobante.
-                            </li>
-                            <li>Si tira error algún comprobante, falla la carga y no confirma la transacción.</li>
-                            <li>Si procesa dos veces el mismo archivo, y las dos veces funciona correctamente, va a
-                                duplicar esa información. Es decir, en el archivo no hay ids que nos permitan saber que
-                                la información está duplicada.
-                            </li>
-                        </ul>
+                    <h2>Aclaraciones</h2>
+                    <ul>
+                        <li> La primer columna del csv (cbte_item_number), es el identificador de comprobante dentro
+                            del archivo. Sirve solo para procesar los comprobantes y diferenciar cuando empieza y
+                            termina un comprobante.
+                        </li>
+                        <li>Si tira error algún comprobante, falla la carga y no confirma la transacción.</li>
+                        <li>Si procesa dos veces el mismo archivo, y las dos veces funciona correctamente, va a
+                            duplicar esa información. Es decir, en el archivo no hay ids que nos permitan saber que
+                            la información está duplicada.
+                        </li>
+                    </ul>
 
-                        <h3>Productos</h3>
-                        <ul>
-                            <li>Si no tiene codigo, le pone el detalle como texto. Deben estar cargados campos alicuota
-                                iva, precio unitario, etc. Si no tiene cargado estos campos tira error.
-                            </li>
-                            <li>
-                                Si tiene codigo lo busca
-                                <ul>
-                                    <li>Si lo encuentra y tiene cargados campos alicuota iva y precio unitario usa
-                                        esos.
-                                    </li>
-                                    <li>Si no tiene esos campos, usa los datos del producto almacenado en la base.</li>
-                                    <li>Si no lo encuentra lo crea con los valores brindados. Si faltan valores tira
-                                        error.
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <h3>Clientes</h3>
-                        <ul>
-                            <li>Si encuentra tipo y nro de documento, usa el de la base.</li>
-                            <li>Si no encuentra el tipo y nro de documento en la base, el resto de los campos son
-                                obligatorios y los crea.
-                            </li>
-                        </ul>
+                    <h3>Productos</h3>
+                    <ul>
+                        <li>Si no tiene codigo, le pone el detalle como texto. Deben estar cargados campos alicuota
+                            iva, precio unitario, etc. Si no tiene cargado estos campos tira error.
+                        </li>
+                        <li>
+                            Si tiene codigo lo busca
+                            <ul>
+                                <li>Si lo encuentra y tiene cargados campos alicuota iva y precio unitario usa
+                                    esos.
+                                </li>
+                                <li>Si no tiene esos campos, usa los datos del producto almacenado en la base.</li>
+                                <li>Si no lo encuentra lo crea con los valores brindados. Si faltan valores tira
+                                    error.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3>Clientes</h3>
+                    <ul>
+                        <li>Si encuentra tipo y nro de documento, usa el de la base.</li>
+                        <li>Si no encuentra el tipo y nro de documento en la base, el resto de los campos son
+                            obligatorios y los crea.
+                        </li>
+                    </ul>
 
 
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="wrapper wrapper-content animated fadeInUp">
-                <div class="ibox">
-                    <div class="ibox-title">
-                        Parametros validos
-                    </div>
-                    <div class="ibox-content">
-                        {% for item in valid_param_values %}
-                            <h1>{{ item.title }}</h1>
-                            {% render_table item.values "help/simple_table.html" %}
-                        {% endfor %}
-                    </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-title">
+                    Parametros validos
+                </div>
+                <div class="ibox-content">
+                    {% for item in valid_param_values %}
+                        <h1>{{ item.title }}</h1>
+                        {% render_table item.values "help/simple_table.html" %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 {% endblock %}
+

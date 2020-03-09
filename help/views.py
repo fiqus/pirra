@@ -5,7 +5,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.db import connection
 from django.forms import Form
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 # Create your views here.
 from django.template.context import Context, RequestContext
 from django.template.loader import get_template
@@ -133,7 +133,7 @@ def dev_help(request):
             {"title": "Opcionales",
              "values": get_table(Opcional, ('id_afip', 'resolucion_general', 'campo'))},
         ]}
-    return render_to_response("help/dev_help.html", params, RequestContext(request))
+    return render(request, "help/dev_help.html", params)
 
 
 def help_edi(request):
