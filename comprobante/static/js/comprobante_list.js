@@ -647,6 +647,9 @@ $(function () {
     $(".detail-click").click(function(e){
         if(!$(e.target).is(':checkbox')){
             var url = $(e.target).data('url');
+            if (!url) {
+                url = this.getAttribute('data-url');
+            }
             preview(url);
         } else {
            toggleMassiveActionsButtons();
