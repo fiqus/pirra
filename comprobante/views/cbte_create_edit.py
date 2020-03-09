@@ -277,8 +277,8 @@ def comprobante_create_edit(request, pk=None):
         "nombre": str(p),
         "precio_unit": p.precio_unit,
         "alicuota_iva": p.alicuota_iva_id,
-        "unidad": p.unidad_id} for p in Producto.objects.all()})
-    # } for p in Producto.objects.filter(activo=True)})
+        "unidad": p.unidad_id} for p in Producto.objects.filter(activo=True)})
+        # "unidad": p.unidad_id} for p in Producto.objects.all()})
 
     empresa = Empresa.objects.first()
     opcionales = empresa.get_opcionales()
