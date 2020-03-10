@@ -104,8 +104,8 @@ def comprobante_imprimir_masivo_seleccion(request):
         form_masivo = ComprobanteImprimirMasivoSeleccionForm(request.POST)
         valores = eval(form_masivo['nros_comp_imprimir'].value())
 
+            # .exclude(cae="") \
         selected_objects = Comprobante.objects \
-            .exclude(cae="") \
             .filter(pk__in=valores) \
             .prefetch_related('detallecomprobante_set') \
             .prefetch_related('detallecomprobante_set__alicuota_iva') \
@@ -124,58 +124,6 @@ def comprobante_imprimir_masivo_seleccion(request):
         if not selected_objects:
             messages.error(request,
                            "No se han encontrado comprobantes autorizados para imprimir dentro de los que ha seleccionado.")
-            return HttpResponseRedirect(reverse_lazy('comprobante.list'))
-
-        zip_prefix = "comprobantes_desde_" + str(selected_objects[0].nro) + "_hasta_" + str(
-            selected_objects[selected_objects.count() - 1].nro)
-
-        return imprimir_coleccion_comprobantes(selected_objects, request, zip_prefix)
-    else:
-        comprobantes_list = json.loads(request.GET["comprobantes"])
-        comp_list = []
-        for comp in comprobantes_list:
-            comp_list.append(comp)
-
-        pks_list = json.loads(request.GET["pks"])
-        for pk in pks_list:
-            comp_ids.append(int(pk.get("value")))
-
-        return render_to_response('comprobante/comprobante_pre_imprimir_masivo_seleccion.html',
-                                  {"form": form_masivo,
-                                   "nros_comp_imprimir": comp_ids,
-                                   "comprobantes_list": comprobantes_list},
-                                  RequestContext(request))
-
-
-@csrf_exempt
-@login_required
-def comprobante_imprimir_masivo_seleccion(request):
-    form_masivo = ComprobanteImprimirMasivoSeleccionForm()
-    comp_ids = []
-    if request.method == 'POST':
-        form_masivo = ComprobanteImprimirMasivoSeleccionForm(request.POST)
-        valores = eval(form_masivo['nros_comp_imprimir'].value())
-
-        selected_objects = Comprobante.objects \
-            .exclude(cae="") \
-            .filter(pk__in=valores) \
-            .prefetch_related('detallecomprobante_set') \
-            .prefetch_related('detallecomprobante_set__alicuota_iva') \
-            .prefetch_related('tributocomprobante_set') \
-            .select_related('tipo_cbte') \
-            .select_related('punto_vta') \
-            .select_related('moneda') \
-            .select_related('condicion_venta') \
-            .select_related('empresa') \
-            .prefetch_related('empresa__condicion_iva') \
-            .prefetch_related('empresa__condicion_iibb') \
-            .select_related('cliente') \
-            .prefetch_related('cliente__condicion_iva') \
-            .prefetch_related('cliente__tipo_doc')
-
-        if not selected_objects:
-            messages.error(request, "No se han encontrado comprobantes autorizados para imprimir "
-                                    "dentro de los que ha seleccionado.")
             return HttpResponseRedirect(reverse_lazy('comprobante.list'))
 
         zip_prefix = "comprobantes_desde_" + str(selected_objects[0].nro) + "_hasta_" + str(
