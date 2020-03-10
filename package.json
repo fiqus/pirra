@@ -32,13 +32,14 @@
     "jquery-mask-plugin": "^1.14.16",
     "jquery-validation": "^1.19.1",
     "lodash": "^4.17.15",
+    "pace-progressbar": "^1.0.9",
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.16.0",
     "selectize": "^0.12.6",
     "selectize-bootstrap4-theme": "^2.0.2",
     "tablesaw": "^3.1.2",
-    "pace-progressbar": "^1.0.9",
-    "toastr": "^2.1.4"
+    "toastr": "^2.1.4",
+    "trip.js": "^3.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

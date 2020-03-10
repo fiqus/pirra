@@ -94,8 +94,8 @@
     {% hook "pirra.template.messages" %}
 </ul>
 </body>
-<script>
 
+<script>
     function menuTrip() {
         var options = {
             tripTheme: "dark",
@@ -112,7 +112,7 @@
             [
                 {
                     sel: $(".inicio-menu"),
-                    content: "Usá el inicio para acceder a la pantalla principal,<br/> donde encontrarás el Dashboard con datos que te pueden ser útiles.",
+                    content: "Usá el dashboard para acceder a la pantalla principal,<br/> donde encontrarás un panel de control con datos que te pueden ser útiles.",
                     position: "e",
                     delay: -1,
                     showNavigation: true
@@ -125,19 +125,26 @@
                     showNavigation: true
                 },
                 {
-                    sel: $(".empresa-menu"),
-                    content: "Usá este menú para acceder a las configuraciones relacionadas con la empresa. Como ser sus propios parámetros, puntos de venta, clientes, etc.",
+                    sel: $(".productos-menu"),
+                    content: "Usá esta opción para gestionar tus productos. No dejes de probar las funcionalidades de importación y modificación masiva de precios.",
                     position: "e",
                     delay: -1,
                     showNavigation: true
                 },
-                {#                    {#}
-                {#                        sel: $(".seguridad-menu"),#}
-                {#                        content: "Usá este menú para acceder a las configuraciones relacionadas a los accesos. Como ser usuarios habilitados a loguearse en esta cuenta y sus permisos.",#}
-                {#                        position: "e",#}
-                {#                        delay: -1,#}
-                {#                        showNavigation: true#}
-                {#                    },#}
+                {
+                    sel: $(".clientes-menu"),
+                    content: "Usá esta opción para gestionar tus clientes. No dejes de probar la importación de clientes para ahorrarte el trabajo de darlos de alta en forma individual.",
+                    position: "e",
+                    delay: -1,
+                    showNavigation: true
+                },
+                {
+                    sel: $(".empresa-menu"),
+                    content: "Usá este menú para acceder a las configuraciones relacionadas con la empresa. Como ser sus propios parámetros, puntos de venta y usuarios.",
+                    position: "e",
+                    delay: -1,
+                    showNavigation: true
+                },
                 {
                     sel: $(".ayuda-menu"),
                     content: "Usá este menú para acceder a toda ayuda complementaria, que te puede llegar a servir para usar el sistema.",
@@ -146,15 +153,8 @@
                     showNavigation: true
                 },
                 {
-                    sel: $(".server-status-container"),
+                    sel: $("#server_status"),
                     content: "Acá vas a poder ver el estado de los servidores de la AFIP. <br/> Si las autorizaciones fallan sistemáticamente, este indicador puede explicar una de las posibles causas.",
-                    position: "s",
-                    delay: -1,
-                    showNavigation: true
-                },
-                {
-                    sel: $(".usuario-menu"),
-                    content: "Usá el menú de usuario para acceder a las opciones propias del usuario, por ejemplo, para cambiar tu contraseña.",
                     position: "s",
                     delay: -1,
                     showNavigation: true
@@ -163,30 +163,29 @@
         trip.start();
     }
 
-    {#$(document).ready(function () {#}
-    {#    $("#menu-trip").click(function () {#}
-    {#        menuTrip();#}
-    {#    });#}
-    {##}
-    var $messages = $("ul#server_messages>li");
-    $messages.each(function (i, msg) {
-        var $msg = $(msg);
-        toastr[$msg.data("tags")]($msg.html());
-    });
-    {##}
-    {#    $('.navbar-minimalize').click(function () {#}
-    {#        saveMiniNavBar();#}
-    {#    });#}
-    {##}
-    {#    {% if "/empresa" in request.path %}#}
-    {#        $(".empresa-menu a:first").click();#}
-    {#    {% elif "/comprobantes" in request.path %}#}
-    {#        $(".comprobantes-menu a:first").click();#}
-    {#    {% elif "/ayuda" in request.path %}#}
-    {#        $(".ayuda-menu a:first").click();#}
-    {#    {% endif %}#}
-    {##}
-    {# }); #}
+    $(document).ready(function (){
+        $("#menu-trip").click(function (){
+            menuTrip();
+        });
+
+        var $messages = $("ul#server_messages>li");
+        $messages.each(function (i, msg) {
+            var $msg = $(msg);
+            toastr[$msg.data("tags")]($msg.html());
+        });
+
+        $('.navbar-minimalize').click(function () {
+            saveMiniNavBar();
+        });
+
+        {% if "/empresa" in request.path %}
+            $(".empresa-menu a:first").click();
+        {% elif "/comprobantes" in request.path %}
+            $(".comprobantes-menu a:first").click();
+        {% elif "/ayuda" in request.path %}
+            $(".ayuda-menu a:first").click();
+        {% endif %}
+     });
 </script>
 <script src="{% static "js/layout.js" %}"></script>
 

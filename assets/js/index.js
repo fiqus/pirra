@@ -26,8 +26,8 @@ import 'jquery-form';
 
 import 'pace-progressbar';
 
-
 window.bootbox =require('bootbox');
 window.Handlebars = require('handlebars');
 window.Selectize = require('selectize');
 window.toastr = require('toastr');
+window.Trip = require('trip.js');
