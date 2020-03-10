@@ -386,13 +386,13 @@ class ClienteList(SingleTableView):
             if self.form.cleaned_data["doc"]:
                 queryset = queryset.filter(
                     nro_doc__iexact=self.form.cleaned_data["doc"].strip().replace("-", "").replace(".", ""))
-            # if self.form.cleaned_data["activo"]:
-            #     queryset = queryset.filter(activo=self.form.cleaned_data["activo"])
-            # queryset = queryset.filter(editable=True).order_by("-activo", "nombre", "-pk")
-            queryset = queryset.filter(editable=True).order_by("nombre", "-pk")
+            if self.form.cleaned_data["activo"]:
+                queryset = queryset.filter(activo=self.form.cleaned_data["activo"])
+            queryset = queryset.filter(editable=True).order_by("-activo", "nombre", "-pk")
+            # queryset = queryset.filter(editable=True).order_by("nombre", "-pk")
         else:
-            # queryset = queryset.filter(editable=True, activo=True).order_by("-activo", "nombre", "-pk")
-            queryset = queryset.filter(editable=True).order_by("nombre", "-pk")
+            queryset = queryset.filter(editable=True, activo=True).order_by("-activo", "nombre", "-pk")
+            # queryset = queryset.filter(editable=True).order_by("nombre", "-pk")
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -524,13 +524,13 @@ class ProductoList(SingleTableView):
                 queryset = queryset.filter(codigo__iexact=self.form.cleaned_data["codigo"])
             if self.form.cleaned_data["codigo_barras_nro"]:
                 queryset = queryset.filter(codigo_barras_nro__icontains=self.form.cleaned_data["codigo_barras_nro"])
-            # if self.form.cleaned_data["activo"]:
-            #     queryset = queryset.filter(activo=self.form.cleaned_data["activo"])
-            # queryset = queryset.order_by("-activo", "codigo", "nombre", "-pk")
-            queryset = queryset.order_by("codigo", "nombre", "-pk")
+            if self.form.cleaned_data["activo"]:
+                queryset = queryset.filter(activo=self.form.cleaned_data["activo"])
+            queryset = queryset.order_by("-activo", "codigo", "nombre", "-pk")
+            # queryset = queryset.order_by("codigo", "nombre", "-pk")
         else:
-            # queryset = queryset.filter(activo=True).order_by("-activo", "codigo", "nombre", "-pk")
-            queryset = queryset.order_by("codigo", "nombre", "-pk")
+            queryset = queryset.filter(activo=True).order_by("-activo", "codigo", "nombre", "-pk")
+            # queryset = queryset.order_by("codigo", "nombre", "-pk")
         return queryset
 
     def get_context_data(self, **kwargs):
