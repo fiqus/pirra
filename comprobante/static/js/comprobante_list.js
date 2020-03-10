@@ -250,7 +250,7 @@ function autorizar_masivo_seleccion(url){
     $('input[name="selection"]:checked').each(function(){
         data.push({value:this.value});
         //FIXME esto no debería ser posicional! Si se cambian de lugar o se agregan columnas se rompe el envío
-        compNumber = $(this.parentNode.nextElementSibling).html().trim();
+        compNumber = $(this.parentNode.nextElementSibling.nextElementSibling).html().trim();
         if(compNumber.match(/\d+/g) == null){
             var tipoCompEl = this.parentNode.nextElementSibling.nextElementSibling;
             compDesc = $(tipoCompEl).html().trim() + ' - ' + $(tipoCompEl.nextElementSibling).html().trim();
@@ -378,7 +378,7 @@ function eliminar_masivo_seleccion(url){
     $('input[name="selection"]:checked').each(function(){
         data.push({value:this.value});
         //FIXME esto no debería ser posicional! Si se cambian de lugar o se agregan columnas se rompe el envío
-        compNumber = $(this.parentNode.nextElementSibling).html().trim();
+        compNumber = $(this.parentNode.nextElementSibling.nextElementSibling).html().trim();
         if(compNumber.match(/\d+/g) == null){
             var tipoCompEl = this.parentNode.nextElementSibling.nextElementSibling;
             compDesc = $(tipoCompEl).html().trim() + ' - ' + $(tipoCompEl.nextElementSibling).html().trim();
