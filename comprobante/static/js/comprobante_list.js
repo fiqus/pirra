@@ -92,6 +92,7 @@ function post_eliminacion_masiva(url){
     show_inprogess_message('eliminar');
     var $submitButton = $('#form_eliminar_masivo input:submit');
     $submitButton.attr('disabled', 'disabled');
+    $submitButton.show();
     var closeButton = $('#form_eliminar_masivo button');
     closeButton.click(function(){
         $('body').spin({color: "#1AB394"});
@@ -106,6 +107,7 @@ function post_eliminacion_masiva(url){
             var alertClass = 'alert-' + result.result_type;
             show_result_message(alertClass, result, 'eliminaron');
             $submitButton.removeAttr('disabled');
+            $submitButton.hide();
         },
         error: function (xhr, errmsg, err) {
             show_error_message('eliminaron');
@@ -224,9 +226,9 @@ function imprimir_masivo_seleccion(url){
         data.push({value:this.value});
         //FIXME esto no debería ser posicional! Si se cambian de lugar o se agregan columnas se rompe el envío
         compNumber = $(this.parentNode.nextElementSibling.nextElementSibling).html().trim();
-        if(compNumber.match(/\d+/g) != null){
+        // if(compNumber.match(/\d+/g) == null){
             comprobantesList.push(compNumber);
-        }
+        // }
     });
 
     var imprimir_template = Handlebars.compile($("#imprimir-masivo-seleccion-modal-template").html());
