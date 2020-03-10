@@ -407,6 +407,7 @@ function eliminar_masivo_seleccion(url){
         });
 
         var $submitButton = modal.find('#form_eliminar_masivo_seleccion input:submit');
+        $submitButton.show();
         $submitButton.on('click', function(){
             $submitButton.attr('disabled', 'disabled');
             show_inprogess_message('eliminar');
@@ -422,6 +423,7 @@ function eliminar_masivo_seleccion(url){
                     var alertClass = 'alert-' + result.result_type;
                     show_result_message(alertClass, result, 'eliminaron');
                     $submitButton.removeAttr('disabled');
+                    $submitButton.hide();
                 },
                 error: function (xhr, errmsg, err) {
                     show_error_message('eliminaron');
