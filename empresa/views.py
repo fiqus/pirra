@@ -422,9 +422,13 @@ class ClienteUpdate(MessageUpdateView):
     form_class = ClienteForm
     success_url = reverse_lazy('cliente.list')
 
-    @method_decorator(permission_required("empresa.change_cliente", raise_exception=True))
+    # @method_decorator(permission_required("empresa.change_cliente", raise_exception=True))
     def dispatch(self, *args, **kwargs):
-        return super(ClienteUpdate, self).dispatch(*args, **kwargs)
+        if self.request.user.has_perm("empresa.change_cliente"):
+            return super(ClienteUpdate, self).dispatch(*args, **kwargs)
+        messages.error(self.request,
+                        'No posee un usuario con los permisos necesarios para realizar esta accion.')
+        return HttpResponseRedirect(reverse_lazy('cliente.list'))
 
     def get_queryset(self):
         return Cliente.objects.filter(editable=True).all()
@@ -560,9 +564,13 @@ class ProductoUpdate(MessageUpdateView):
     form_class = ProductoForm
     success_url = reverse_lazy('producto.list')
 
-    @method_decorator(permission_required("empresa.change_producto", raise_exception=True))
+    # @method_decorator(permission_required("empresa.change_producto", raise_exception=True))
     def dispatch(self, *args, **kwargs):
-        return super(ProductoUpdate, self).dispatch(*args, **kwargs)
+        if self.request.user.has_perm("empresa.change_producto"):
+            return super(ProductoUpdate, self).dispatch(*args, **kwargs)
+        messages.error(self.request,
+                        'No posee un usuario con los permisos necesarios para realizar esta accion.')
+        return HttpResponseRedirect(reverse_lazy('producto.list'))        
 
 
 producto_update = login_required(ProductoUpdate.as_view())
