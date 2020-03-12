@@ -71,10 +71,6 @@ def comprobante_guardar_autorizacion(comprobante, ret):
 def comprobante_autorizar(request, pk):
     comprobante = Comprobante.objects.get(pk=pk)
 
-    if comprobante.cae:
-        messages.error(request, "El comprobante ya fue autorizado")
-        return HttpResponseRedirect(reverse_lazy('comprobante.list'))
-
     if request.method == 'POST':
 
         redlock = get_redlock_client()
@@ -136,7 +132,9 @@ def comprobante_autorizar(request, pk):
     else:
         # punto_venta_eliminado = PuntoDeVenta.objects.get(pk=comprobante.punto_vta_id).activo
         return render(request, 'comprobante/comprobante_pre_autorizar.html', {"comprobante": comprobante,
-                                                                              "punto_venta_eliminado": True})
+                                                                              "punto_venta_eliminado": True,
+                                                                              "existe_cae": comprobante.cae,
+                                                                              "cliente_activo": comprobante.cliente.activo})
 
 
 class ComprobanteAutorizarMasivoForm(Form):
@@ -154,11 +152,15 @@ def comprobante_autorizar_masivo(request):
         if form_masivo.is_valid():
             date_from = form_masivo.cleaned_data["autorizar_desde"]
             date_to = form_masivo.cleaned_data["autorizar_hasta"]
-            comprobantes = Comprobante.objects.filter(fecha_emision__range=[date_from, date_to], cae='').order_by(
-                'pk')
+            comprobantes = Comprobante.objects.filter(fecha_emision__range=[date_from, date_to], cae='').order_by('pk')
+
             comp_pto_vta_eliminado = comprobantes.count()
             comprobantes = comprobantes.filter(punto_vta__activo=True)
             comp_pto_vta_eliminado -= comprobantes.count()
+
+            comp_cliente_eliminado = comprobantes.count()
+            comprobantes = comprobantes.filter(cliente__activo=True)
+            comp_cliente_eliminado -= comprobantes.count()
 
             display_message = ""
             cant = 0
@@ -217,6 +219,10 @@ def comprobante_autorizar_masivo(request):
                 display_message += "Se han <strong>ignorado {} comprobantes</strong> porque estaban asociados a un punto de venta eliminado.<br/>".format(
                     comp_pto_vta_eliminado)
 
+            if comp_cliente_eliminado:
+                display_message += "Se han <strong>ignorado {} comprobantes</strong> porque estaban asociados a un cliente eliminado.<br/>".format(
+                    comp_cliente_eliminado)
+
             if error:
                 result_type = 'danger'
             else:
@@ -264,8 +270,15 @@ def comprobante_autorizar_masivo_seleccion(request):
     if request.method == 'POST':
         comp_ids = json.loads(request.POST["nros_comp_autorizar"])
 
-        comprobantes = Comprobante.objects.filter(pk__in=comp_ids, cae='', punto_vta__activo=True).order_by('pk')
-        comp_pto_vta_eliminado = comp_ids.__len__() - comprobantes.count()
+        comprobantes = Comprobante.objects.filter(pk__in=comp_ids, cae='').order_by('pk')
+
+        comp_pto_vta_eliminado = comprobantes.count()
+        comprobantes = comprobantes.filter(punto_vta__activo=True)
+        comp_pto_vta_eliminado -= comprobantes.count()
+
+        comp_cliente_eliminado = comprobantes.count()
+        comprobantes = comprobantes.filter(cliente__activo=True)
+        comp_cliente_eliminado -= comprobantes.count()        
 
         display_message = ""
         cant = 0
@@ -323,6 +336,10 @@ def comprobante_autorizar_masivo_seleccion(request):
         if comp_pto_vta_eliminado:
             display_message += "Se han <strong>ignorado {} comprobantes</strong> porque estaban asociados a un punto de venta eliminado.<br/>".format(
                 comp_pto_vta_eliminado)
+
+        if comp_cliente_eliminado:
+            display_message += "Se han <strong>ignorado {} comprobantes</strong> porque estaban asociados a un cliente eliminado.<br/>".format(
+                comp_cliente_eliminado)
 
         if error:
             result_type = 'danger'

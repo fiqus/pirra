@@ -10,7 +10,7 @@
             {% else %}
                 <div class="alert alert-info" style="margin-bottom: 10px; margin-top: 0;">
                     <i class="fa fa-exclamation-circle"></i> En esta pantalla podrá autorizar los comprobante que haya seleccionado en el listado de comprobantes.<br/>
-                    Recuerde que los comprobantes a autorizar <strong>no</strong> deben haber sido autorizados anteriormente ni tener asociado un punto de venta eliminado, de otra manera serán ignorados.
+                    Recuerde que los comprobantes a autorizar <strong>no</strong> deben haber sido autorizados anteriormente ni tener asociado un punto de venta o cliente eliminado, de otra manera serán ignorados.
                 </div>
                 {% block form %}
                     <input class="form-control" id="nros_comp_autorizar" name="nros_comp_autorizar" type="text" style="display: none" value="{{ nros_comp_autorizar }}">
