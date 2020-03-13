@@ -681,10 +681,8 @@ class ProductImportForm(Form):
         update_existing = self.cleaned_data["update_existing"]
         exclude_first_line = self.cleaned_data["exclude_first_line"]
         is_final_price = self.cleaned_data["is_final_price"]
-
         StreamReader = codecs.getreader('utf-8')
         file = StreamReader(self.cleaned_data["file"])
-
         errors, imported, ignored, updated = import_product_csv(file, update_existing, exclude_first_line,
                                                                 is_final_price)
         if errors:
@@ -745,7 +743,8 @@ class ClientImportForm(Form):
     def save(self):
         update_existing = self.cleaned_data["update_existing"]
         exclude_first_line = self.cleaned_data["exclude_first_line"]
-        file = self.cleaned_data["file"]
+        StreamReader = codecs.getreader('utf-8')
+        file = StreamReader(self.cleaned_data["file"])
         errors, imported, ignored, updated = import_client_csv(file, update_existing, exclude_first_line)
         if errors:
             for err in errors:
