@@ -28,6 +28,7 @@ from main.table2_columns import EditColumn, MoneyColumn, DeleteColumn
 from main.widgets import TextInputWithButton, SelectAlicuotaIva
 from django.utils.safestring import mark_safe
 import logging
+import codecs
 
 logger = logging.getLogger(__name__)
 
@@ -680,14 +681,16 @@ class ProductImportForm(Form):
         update_existing = self.cleaned_data["update_existing"]
         exclude_first_line = self.cleaned_data["exclude_first_line"]
         is_final_price = self.cleaned_data["is_final_price"]
-        file = self.cleaned_data["file"]
+
+        StreamReader = codecs.getreader('utf-8')
+        file = StreamReader(self.cleaned_data["file"])
+
         errors, imported, ignored, updated = import_product_csv(file, update_existing, exclude_first_line,
                                                                 is_final_price)
         if errors:
             for err in errors:
                 self.add_error(None, err)
         return errors, imported, ignored, updated
-
 
 @login_required()
 @permission_required('producto.add_producto', raise_exception=True)
@@ -704,7 +707,7 @@ def import_product(request):
         try:
             errors, imported, ignored, updated = form.save()
         except Exception as e:
-            display_message += "Error: {}".format(e.message)
+            display_message += "Error: {}".format(str(e))
             error = True
 
         if not (error or errors):
@@ -722,12 +725,11 @@ def import_product(request):
                 'result': display_message,
                 'result_type': result_type
             }
-            return render_to_response('empresa/importacion_success.html',
+            return render(request, 'empresa/importacion_success.html',
                                       {"result": result,
-                                       "entity": "producto"},
-                                      RequestContext(request))
-    return render_to_response('empresa/producto_importacion.html', {"form": form}, RequestContext(request))
+                                       "entity": "producto"})
 
+    return render(request, 'empresa/producto_importacion.html', {"form": form})
 
 class ClientImportForm(Form):
     file = FileField(required=True, label='Archivo - Seleccione el archivo csv que contiene los clientes a importar')
@@ -766,7 +768,7 @@ def import_client(request):
         try:
             errors, imported, ignored, updated = form.save()
         except Exception as e:
-            display_message += "Error: {}".format(e.message)
+            display_message += "Error: {}".format(str(e))
             error = True
 
         if not (error or errors):
@@ -784,11 +786,9 @@ def import_client(request):
                 'result': display_message,
                 'result_type': result_type
             }
-            return render_to_response('empresa/importacion_success.html',
+            return render(request, 'empresa/importacion_success.html',
                                       {"result": result,
-                                       "entity": "cliente"},
-                                      RequestContext(request))
+                                       "entity": "cliente"})
 
-    return render_to_response('empresa/cliente_importacion.html',
-                              {"form": form},
-                              RequestContext(request))
+    return render(request, "empresa/cliente_importacion.html",
+                              {"form": form})
