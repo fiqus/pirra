@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.forms import Form
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
@@ -87,8 +87,7 @@ def comprobante_imprimir_masivo(request):
 
             return imprimir_coleccion_comprobantes(comprobantes, request, zip_prefix)
     else:
-        return render_to_response('comprobante/comprobante_pre_imprimir_masivo.html', {"form": form_masivo},
-                                  RequestContext(request))
+        return render(request, 'comprobante/comprobante_pre_imprimir_masivo.html', {"form": form_masivo})
 
 
 class ComprobanteImprimirMasivoSeleccionForm(Form):

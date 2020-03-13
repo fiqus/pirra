@@ -163,11 +163,14 @@
         trip.start();
     }
 
-    $(document).ready(function (){
-        $("#menu-trip").click(function (){
+
+    window.onload = function (){
+        $("#menu-trip").click(() => {
             menuTrip();
         });
+    }
 
+    $(document).ready(function (){
         var $messages = $("ul#server_messages>li");
         $messages.each(function (i, msg) {
             var $msg = $(msg);

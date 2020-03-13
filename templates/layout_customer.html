@@ -62,7 +62,7 @@
                         <i class="nav-icon fa fa-address-card"></i> Clientes
                     </a>
                     <ul class="nav-dropdown-items">
-                        {% if perms.comprobante.add_comprobante %}
+                        {% if perms.comprobante.add_comprobante or perms.empresa.add_cliente %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url "cliente.create" %}">
                                     <i class="nav-icon fa fa-plus-square"></i> Crear

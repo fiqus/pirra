@@ -28,6 +28,7 @@ from main.table2_columns import EditColumn, MoneyColumn, DeleteColumn
 from main.widgets import TextInputWithButton, SelectAlicuotaIva
 from django.utils.safestring import mark_safe
 import logging
+import codecs
 
 logger = logging.getLogger(__name__)
 
@@ -422,9 +423,13 @@ class ClienteUpdate(MessageUpdateView):
     form_class = ClienteForm
     success_url = reverse_lazy('cliente.list')
 
-    @method_decorator(permission_required("empresa.change_cliente", raise_exception=True))
+    # @method_decorator(permission_required("empresa.change_cliente", raise_exception=True))
     def dispatch(self, *args, **kwargs):
-        return super(ClienteUpdate, self).dispatch(*args, **kwargs)
+        if self.request.user.has_perm("empresa.change_cliente"):
+            return super(ClienteUpdate, self).dispatch(*args, **kwargs)
+        messages.error(self.request,
+                        'Su usuario con los permisos necesarios para realizar esta accion.')
+        return HttpResponseRedirect(reverse_lazy('cliente.list'))
 
     def get_queryset(self):
         return Cliente.objects.filter(editable=True).all()
@@ -547,10 +552,13 @@ class ProductoCreate(CreateView):
     form_class = ProductoForm
     success_url = reverse_lazy('producto.list')
 
-    @method_decorator(permission_required("empresa.add_producto", raise_exception=True))
+    # @method_decorator(permission_required("empresa.add_producto", raise_exception=True))
     def dispatch(self, *args, **kwargs):
-        return super(ProductoCreate, self).dispatch(*args, **kwargs)
-
+        if self.request.user.has_perm("empresa.add_producto"):
+            return super(ProductoCreate, self).dispatch(*args, **kwargs)
+        messages.error(self.request,
+                        'Su usuario con los permisos necesarios para realizar esta accion.')
+        return HttpResponseRedirect(reverse_lazy('producto.list'))
 
 producto_create = login_required(ProductoCreate.as_view())
 
@@ -560,9 +568,13 @@ class ProductoUpdate(MessageUpdateView):
     form_class = ProductoForm
     success_url = reverse_lazy('producto.list')
 
-    @method_decorator(permission_required("empresa.change_producto", raise_exception=True))
+    # @method_decorator(permission_required("empresa.change_producto", raise_exception=True))
     def dispatch(self, *args, **kwargs):
-        return super(ProductoUpdate, self).dispatch(*args, **kwargs)
+        if self.request.user.has_perm("empresa.change_producto"):
+            return super(ProductoUpdate, self).dispatch(*args, **kwargs)
+        messages.error(self.request,
+                        'Su usuario con los permisos necesarios para realizar esta accion.')
+        return HttpResponseRedirect(reverse_lazy('producto.list'))
 
 
 producto_update = login_required(ProductoUpdate.as_view())
@@ -669,14 +681,14 @@ class ProductImportForm(Form):
         update_existing = self.cleaned_data["update_existing"]
         exclude_first_line = self.cleaned_data["exclude_first_line"]
         is_final_price = self.cleaned_data["is_final_price"]
-        file = self.cleaned_data["file"]
+        StreamReader = codecs.getreader('utf-8')
+        file = StreamReader(self.cleaned_data["file"])
         errors, imported, ignored, updated = import_product_csv(file, update_existing, exclude_first_line,
                                                                 is_final_price)
         if errors:
             for err in errors:
                 self.add_error(None, err)
         return errors, imported, ignored, updated
-
 
 @login_required()
 @permission_required('producto.add_producto', raise_exception=True)
@@ -693,7 +705,7 @@ def import_product(request):
         try:
             errors, imported, ignored, updated = form.save()
         except Exception as e:
-            display_message += "Error: {}".format(e.message)
+            display_message += "Error: {}".format(str(e))
             error = True
 
         if not (error or errors):
@@ -711,12 +723,11 @@ def import_product(request):
                 'result': display_message,
                 'result_type': result_type
             }
-            return render_to_response('empresa/importacion_success.html',
+            return render(request, 'empresa/importacion_success.html',
                                       {"result": result,
-                                       "entity": "producto"},
-                                      RequestContext(request))
-    return render_to_response('empresa/producto_importacion.html', {"form": form}, RequestContext(request))
+                                       "entity": "producto"})
 
+    return render(request, 'empresa/producto_importacion.html', {"form": form})
 
 class ClientImportForm(Form):
     file = FileField(required=True, label='Archivo - Seleccione el archivo csv que contiene los clientes a importar')
@@ -732,7 +743,8 @@ class ClientImportForm(Form):
     def save(self):
         update_existing = self.cleaned_data["update_existing"]
         exclude_first_line = self.cleaned_data["exclude_first_line"]
-        file = self.cleaned_data["file"]
+        StreamReader = codecs.getreader('utf-8')
+        file = StreamReader(self.cleaned_data["file"])
         errors, imported, ignored, updated = import_client_csv(file, update_existing, exclude_first_line)
         if errors:
             for err in errors:
@@ -755,7 +767,7 @@ def import_client(request):
         try:
             errors, imported, ignored, updated = form.save()
         except Exception as e:
-            display_message += "Error: {}".format(e.message)
+            display_message += "Error: {}".format(str(e))
             error = True
 
         if not (error or errors):
@@ -773,11 +785,9 @@ def import_client(request):
                 'result': display_message,
                 'result_type': result_type
             }
-            return render_to_response('empresa/importacion_success.html',
+            return render(request, 'empresa/importacion_success.html',
                                       {"result": result,
-                                       "entity": "cliente"},
-                                      RequestContext(request))
+                                       "entity": "cliente"})
 
-    return render_to_response('empresa/cliente_importacion.html',
-                              {"form": form},
-                              RequestContext(request))
+    return render(request, "empresa/cliente_importacion.html",
+                              {"form": form})

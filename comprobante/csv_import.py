@@ -400,6 +400,7 @@ def import_product_csv(csvfile, update_existing, exclude_first_line, is_final_pr
     imported = 0
     updated = 0
     linen = 0
+    lineerrs = []
     empresa = Empresa.objects.first()
     prefetched = _prefetch(empresa)
     try:
@@ -488,6 +489,7 @@ def import_client_csv(csvfile, update_existing, exclude_first_line):
     imported = 0
     updated = 0
     linen = 0
+    lineerrs = []
     ultimo_codigo = 0
     empresa = Empresa.objects.first()
     prefetched = _prefetch(empresa)
