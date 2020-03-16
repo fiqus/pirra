@@ -288,7 +288,8 @@
     </div>
     <form id="cbte-search-form" class="form-inline my-4">
         {% bootstrap_form form layout='inline' size='sm' field_class="mr-2" bound_css_class="" %}
-        <input type="submit" value="Buscar" class="btn btn-sm btn-primary ml-auto">
+        <a href="{% url "comprobante.list" %}" class="btn btn-sm btn-primary ml-auto">Limpiar</a>
+        <input type="submit" value="Buscar" class="btn btn-sm btn-primary ml-2">
     </form>
     <div class="row">
         <div class="col">
