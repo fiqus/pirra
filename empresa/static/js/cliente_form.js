@@ -48,6 +48,7 @@ $(document).ready(function () {
     }
 
     // aplico por js estilos porque cuando aparece label de validation hace subir al input
+    $('.btn-search-cuit').hide(); //Se oculta botón hasta que esté la funcionalidad usando la API  https://github.com/fiqus/aquiles/issues/91
     $('.btn-search-cuit').parent().attr('style','vertical-align: top;');
 
     $('#id_activo, #id_fecha_baja, #id_usuario_baja').parent().hide();

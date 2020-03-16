@@ -5,7 +5,7 @@
     <h1>Eliminar</h1>
     {% if cant_comp_asociados %}
         <p class="bg-danger" style="padding: 10px;">El punto de venta que desea eliminar tiene <strong>{{ cant_comp_asociados }} comprobante{% if cant_comp_autorizados > 1 %}s{% endif %} asociado{% if cant_comp_asociados > 1 %}s{% endif %}.</strong><br/>
-        Considere que <strong>NO</strong> podrá editar o autorizar un comprobante asociado a un punto de venta eliminado.</p>
+        Considere que <strong>NO</strong> podrá autorizar un comprobante asociado a un punto de venta eliminado y si edita un comprobante deberá seleccionar un nuevo punto de venta.</p>
     {% endif %}
     {% include "empresa/message_delete.html" with entidad=entidad_a_borrar %}
     <p>¿Confirma que desea <strong>eliminar</strong> el siguiente punto de venta?</p>
