@@ -31,3 +31,6 @@ window.Handlebars = require('handlebars');
 window.Selectize = require('selectize');
 window.toastr = require('toastr');
 window.Trip = require('trip.js');
+
+import {Spinner} from 'spin.js';
+window.spinner =  new Spinner({});

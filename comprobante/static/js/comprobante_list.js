@@ -66,7 +66,7 @@ function post_autorizacion_masiva(url){
     $submitButton.attr('disabled', 'disabled');
     var closeButton = $('#form_autorizar_masivo button');
     closeButton.click(function(){
-        $('body').spin({color: "#1AB394"});
+        spinner.spin(document.body);
         $('.overlay').css('display', 'block');
     });
 
@@ -95,7 +95,7 @@ function post_eliminacion_masiva(url){
     $submitButton.show();
     var closeButton = $('#form_eliminar_masivo button');
     closeButton.click(function(){
-        $('body').spin({color: "#1AB394"});
+        spinner.spin(document.body);
         $('.overlay').css('display', 'block');
     });
 
@@ -143,7 +143,8 @@ function autorizar_masivo(url) {
                 e.preventDefault();
                 var closeButton = modal.find('#form_autorizar_masivo button, .modal-header button.close');
                 closeButton.click(function(){
-                    $('body').spin({color: "#1AB394"});
+                    spinner.spin(document.body);
+        
                     $('.overlay').css('display', 'block');
                     location.reload();
                 });
@@ -194,7 +195,8 @@ function eliminar_masivo(url) {
         modal.find(".modal-dynamic-content").html(data);
         var closeButton = modal.find('#form_eliminar_masivo button');
         closeButton.click(function(){
-            $('body').spin({color: "#1AB394"});
+            spinner.spin(document.body);
+
             $('.overlay').css('display', 'block');
         });
 
@@ -283,7 +285,8 @@ function autorizar_masivo_seleccion(url){
 
             var closeButton = modal.find('#form_autorizar_masivo_seleccion button, .modal-header button.close');
             closeButton.click(function(){
-                $('body').spin({color: "#1AB394"});
+                spinner.spin(document.body);
+    
                 $('.overlay').css('display', 'block');
             });
 
@@ -341,7 +344,8 @@ function duplicar_masivo_seleccion(url){
 
         var closeButton = modal.find('#form_duplicar_masivo_seleccion button');
         closeButton.click(function(){
-            $('body').spin({color: "#1AB394"});
+            spinner.spin(document.body);
+
             $('.overlay').css('display', 'block');
         });
 
@@ -404,7 +408,8 @@ function eliminar_masivo_seleccion(url){
 
         var closeButton = modal.find('#form_eliminar_masivo_seleccion button');
         closeButton.click(function(){
-            $('body').spin({color: "#1AB394"});
+            spinner.spin(document.body);
+
             $('.overlay').css('display', 'block');
         });
 
@@ -479,7 +484,8 @@ function enviar_masivo_seleccion(url){
             show_inprogess_message('enviar');
 
             $cancelButton.click(function(){
-                $('body').spin({color: "#1AB394"});
+                spinner.spin(document.body);
+    
                 $('.overlay').css('display', 'block');
             });
 
