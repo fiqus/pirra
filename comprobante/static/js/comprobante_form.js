@@ -68,6 +68,8 @@ $(function () {
             var elem = $(element);
             if (elem.hasClass("desc_detalle")) {//fix to add border color to select2
                 $(element).parent().find('.selectize-control').addClass(errorClass);
+            } else if (elem.parent().hasClass("selectize-input")) {
+                $(element).parent().parent().addClass(errorClass);
             } else {
                 elem.addClass(errorClass);
             }
@@ -483,7 +485,7 @@ function esComprobanteM(idCbte) {
 
 function recalculateIva(unitario, cant, subtotal, line, porc, comboAlicuotaIva, neto_gravado, total_alicuotas, total, calculateFinal) {
     unitario = parseFloat(unitario.replace(",", "."));
-    cant = parseFloat(cant.replace(",", "."));
+    cant = cant ? parseFloat(cant.replace(",", ".")) : 0;
 
     var imp_neto = cant * unitario;
     subtotal += imp_neto;

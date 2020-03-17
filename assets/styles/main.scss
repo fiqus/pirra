@@ -9,6 +9,15 @@ $coreui-icons-font-path: "~@coreui/icons/fonts";
 @import "~trip.js/dist/trip";
 @import "~spin.js/spin";
 
+/* Validation */
+label.error {
+  color: #cc5965;
+  display: inline-block;
+  margin-left: 5px;
+}
+.form-control.error {
+  border: 1px dotted #cc5965;
+}
 
 .table-sm{
   font-size: 14px;

@@ -1,4 +1,5 @@
 import "../styles/main.scss";
+import "../styles/comprobante_form.scss";
 
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
