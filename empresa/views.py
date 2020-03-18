@@ -401,6 +401,15 @@ class ClienteList(SingleTableView):
         context['form'] = self.form
         return context
 
+    def get_table(self):
+        table = super(ClienteList, self).get_table()
+        table_exclude = ()
+        if not (self.request.user.has_perm("empresa.change_cliente")):
+            table_exclude += ('actions',)
+        if not (self.request.user.has_perm("empresa.delete_cliente")):
+            table_exclude += ('delete',)
+        table.exclude = table_exclude
+        return table
 
 cliente_list = login_required(ClienteList.as_view())
 
@@ -542,6 +551,16 @@ class ProductoList(SingleTableView):
         context = super(ProductoList, self).get_context_data(**kwargs)
         context['form'] = self.form
         return context
+    
+    def get_table(self):
+        table = super(ProductoList, self).get_table()
+        table_exclude = ()
+        if not (self.request.user.has_perm("empresa.change_producto")):
+            table_exclude += ('actions',)
+        if not (self.request.user.has_perm("empresa.delete_producto")):
+            table_exclude += ('delete',)
+        table.exclude = table_exclude
+        return table
 
 
 producto_list = login_required(ProductoList.as_view())
@@ -568,7 +587,7 @@ class ProductoUpdate(MessageUpdateView):
     form_class = ProductoForm
     success_url = reverse_lazy('producto.list')
 
-    # @method_decorator(permission_required("empresa.change_producto", raise_exception=True))
+    @method_decorator(permission_required("empresa.change_producto", raise_exception=True))
     def dispatch(self, *args, **kwargs):
         if self.request.user.has_perm("empresa.change_producto"):
             return super(ProductoUpdate, self).dispatch(*args, **kwargs)
