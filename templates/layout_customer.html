@@ -43,7 +43,7 @@
                         <i class="nav-icon fa fa-box-open"></i> Productos
                     </a>
                     <ul class="nav-dropdown-items">
-                        {% if perms.comprobante.add_comprobante %}
+                        {% if perms.empresa.add_producto %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url "producto.create" %}">
                                     <i class="nav-icon fa fa-plus-square"></i> Crear
