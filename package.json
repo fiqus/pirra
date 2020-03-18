@@ -37,6 +37,7 @@
     "popper.js": "^1.16.0",
     "selectize": "^0.12.6",
     "selectize-bootstrap4-theme": "^2.0.2",
+    "spin.js": "^4.1.0",
     "tablesaw": "^3.1.2",
     "toastr": "^2.1.4",
     "trip.js": "^3.3.5"

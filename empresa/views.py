@@ -423,7 +423,7 @@ class ClienteUpdate(MessageUpdateView):
     form_class = ClienteForm
     success_url = reverse_lazy('cliente.list')
 
-    # @method_decorator(permission_required("empresa.change_cliente", raise_exception=True))
+    @method_decorator(permission_required("empresa.change_cliente", raise_exception=True))
     def dispatch(self, *args, **kwargs):
         if self.request.user.has_perm("empresa.change_cliente"):
             return super(ClienteUpdate, self).dispatch(*args, **kwargs)
@@ -623,7 +623,7 @@ class ProductoCambiarPreciosForm(Form):
 
 @csrf_exempt
 @login_required
-@permission_required('producto.change_producto', raise_exception=True)
+@permission_required('empresa.change_producto', raise_exception=True)
 def change_prices(request):
     form_precios = ProductoCambiarPreciosForm()
     if request.method == 'POST':
@@ -636,7 +636,7 @@ def change_prices(request):
                     messages.error(request, "El porcentaje debe ser un numero positivo.")
                     return HttpResponseRedirect(reverse_lazy('producto.list'))
 
-                productos = Producto.objects.all()
+                productos = Producto.objects.filter(activo=True)
                 if not productos:
                     messages.error(request, "No hay productos para actualizar.")
                     return HttpResponseRedirect(reverse_lazy('producto.list'))
@@ -691,7 +691,7 @@ class ProductImportForm(Form):
         return errors, imported, ignored, updated
 
 @login_required()
-@permission_required('producto.add_producto', raise_exception=True)
+@permission_required('empresa.add_producto', raise_exception=True)
 def import_product(request):
     if request.method == 'POST':
         form = ProductImportForm(request.POST, request.FILES)

@@ -253,10 +253,7 @@ def generar_descuentos_por_alicuota(comprobante):
             detalle_descuento_global = DetalleComprobante(
                 alicuota_iva=detalle.alicuota_iva,
                 cant=1,
-                importe_neto=importe_neto_descuento,
-                precio_total=importe_neto_descuento,
                 precio_unit=importe_neto_descuento,
-                precio_unitario_con_iva=precio_unit_con_iva,
                 producto=None,
                 detalle="Descuento global",
                 unidad=unidad_bonificacion,

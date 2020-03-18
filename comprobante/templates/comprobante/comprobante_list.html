@@ -205,6 +205,7 @@
                    onclick="imprimir_masivo_seleccion('{% url "comprobante.imprimir_masivo_seleccion" %}');">
                     <i class="fas fa-print"></i><span class="d-sm-down-none"> Imprimir</span>
                 </a>
+                {% if perms.comprobante.change_comprobante %}
                 <a id="enviar_masivo_seleccion" class="nav-item btn btn-outline-primary btn-sm accion-masiva-selected d-none" href="#"
                    onclick="enviar_masivo_seleccion('{% url "comprobante.enviar_masivo_seleccion" %}');">
                     <i class="fas fa-paper-plane"></i><span class="d-sm-down-none"> Enviar</span>
@@ -218,9 +219,10 @@
                     <i class="fa fa-barcode"></i><span class="d-sm-down-none"> Autorizar</span>
                 </a>
                 <a id="eliminar_masivo_seleccion" class="nav-item btn btn-outline-primary btn-sm accion-masiva-selected d-none" href="#"
-                   onclick="eliminar_masivo_seleccion('{% url "comprobante.eliminar_masivo_seleccion" %}');">
+                    onclick="eliminar_masivo_seleccion('{% url "comprobante.eliminar_masivo_seleccion" %}');">
                     <i class="fa fa-trash"></i><span class="d-sm-down-none"> Eliminar</span>
                 </a>
+                {% endif %}
                 <div class="btn-group accion-masiva-deselected">
                     <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -288,7 +290,8 @@
     </div>
     <form id="cbte-search-form" class="form-inline my-4">
         {% bootstrap_form form layout='inline' size='sm' field_class="mr-2" bound_css_class="" %}
-        <input type="submit" value="Buscar" class="btn btn-sm btn-primary ml-auto">
+        <a href="{% url "comprobante.list" %}" class="btn btn-sm btn-primary ml-auto">Limpiar</a>
+        <input type="submit" value="Buscar" class="btn btn-sm btn-primary ml-2">
     </form>
     <div class="row">
         <div class="col">
