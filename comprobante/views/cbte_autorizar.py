@@ -120,7 +120,12 @@ def comprobante_autorizar(request, pk):
 
             except Exception as e:
                 logger.exception("Error con conectividad AFIP")
-                messages.error(request, handler_error_conectividad_afip(str(e)))
+                try:
+                    messages.error(request, handler_error_conectividad_afip(str(e)))
+                except Exception as ex:
+                    logger.exception("{} - {}".format(e.faultcode, e.faultstring))
+                    messages.error(request, "Error con conectividad AFIP."
+                                        "<br/> Vuelva a intentarlo mas tarde o  comuniquese con el equipo tecnico de Pirra. <br/>")
 
             redlock.unlock(cbte_lock_success)
         else:
