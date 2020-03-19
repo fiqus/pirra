@@ -451,6 +451,9 @@ def import_product_csv(csvfile, update_existing, exclude_first_line, is_final_pr
                         prod.alta_edi = False
                         prod.activo = True
 
+                        if lineerrs:
+                            raise Exception()
+
                         updated += 1
                         prod.save()
                     else:
@@ -467,6 +470,10 @@ def import_product_csv(csvfile, update_existing, exclude_first_line, is_final_pr
                         ingresa_precio_final=is_final_price,
                         alta_edi=False
                     )
+
+                    if lineerrs:
+                        raise Exception()
+
                     imported += 1
                     prod.save()
 
@@ -549,6 +556,9 @@ def import_client_csv(csvfile, update_existing, exclude_first_line):
                             cli.email = email
                             cli.activo = True
 
+                            if lineerrs:
+                                raise Exception()
+
                             updated += 1
                             cli.save()
                         else:
@@ -575,6 +585,10 @@ def import_client_csv(csvfile, update_existing, exclude_first_line):
                             email=email,
                             activo=True,
                         )
+
+                        if lineerrs:
+                            raise Exception()
+
                         imported += 1
                         cli.save()
 
