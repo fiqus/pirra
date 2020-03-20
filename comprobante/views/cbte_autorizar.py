@@ -44,6 +44,7 @@ def genera_codigo_barra(comprobante):
 
 
 def comprobante_guardar_autorizacion(comprobante, ret):
+    comprobante.nro = ret.CbteNro
     comprobante.cae = ret.CAE
     comprobante.fecha_vto_cae = datetime.datetime.strptime(ret.Vencimiento, "%Y%m%d").date()
     comprobante.motivo = ret.Motivo if not ret.Motivo else ""

@@ -105,9 +105,6 @@ def autorizar_cbte(cbte, punto_vta, tipo_cbte, wsfe):
 
     eliminar_nro_comprobantes_existentes(cbte_nro, punto_vta, tipo_cbte)
 
-    cbte.nro = cbte_nro
-    cbte.save()
-
     # genero alicuotas iva:
     alicuotas = {}
     if tipo_cbte not in (
@@ -181,10 +178,10 @@ def autorizar_cbte(cbte, punto_vta, tipo_cbte, wsfe):
     # llamo al websevice para obtener el CAE:
     wsfe.CAESolicitar()
 
-    # me aseguro de que si falló la autorización, el comprobante quede sin numero
-    if not len(wsfe.CAE):
-        cbte.nro = None
-        cbte.save()
+    # si NO falló la autorización, se devuelve el número de comprobante para que luego se asigne y guarde
+    if len(wsfe.CAE):
+        wsfe.CbteNro = cbte_nro
+
     return wsfe
 
 
@@ -241,7 +238,6 @@ def autorizar(cbte, certificate, private_key):
             logger.error([e for e in wsfex.Errores])
             logger.error([e for e in wsfex.Observaciones])
         cbte_nro = int(last_cmp) + 1
-        cbte.nro = cbte_nro
 
         eliminar_nro_comprobantes_existentes(cbte_nro, cbte.punto_vta.id_afip, cbte.tipo_cbte.id_afip)
 
@@ -291,12 +287,14 @@ def autorizar(cbte, certificate, private_key):
         cae = wsfex.Authorize(cbte.id_lote_afip)
 
         if not cae:
-            cbte.nro = None
             if wsfex.Errores:
                 logger.error([e for e in wsfex.Errores])
                 logger.error([e for e in wsfex.Observaciones])
                 # adapto Errores para que tenga el mismo manejo que con WSFEv1
                 wsfex.Errores = [str(error.encode("utf-8").decode("latin1")) for error in wsfex.Errores]
+        else:
+            # si NO falló la autorización, se devuelve el número de comprobante para que luego se asigne y guarde
+            wsfex.CbteNro = cbte_nro
         if wsfex.Vencimiento:
             wsfex.Vencimiento = "%s/%s/%s" % (wsfex.Vencimiento[6:10], wsfex.Vencimiento[3:5], wsfex.Vencimiento[0:2])
             wsfex.Vencimiento = wsfex.Vencimiento.replace("/", "")
