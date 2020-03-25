@@ -7,6 +7,10 @@
     vertical-align: middle;
 }
 
+.pagination li {
+    margin-right: 4px;
+}
+
 button.more-actions:hover {
     border-left: 1px solid;
 }
