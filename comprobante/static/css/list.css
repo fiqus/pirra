@@ -22,3 +22,7 @@ button.more-actions:hover {
 .client-select-search {
   width: 250px !important;
 }
+
+#opcionales{
+    margin-left: 5px;
+}
