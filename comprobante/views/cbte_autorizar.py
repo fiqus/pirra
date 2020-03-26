@@ -54,12 +54,12 @@ def comprobante_guardar_autorizacion(comprobante, ret):
 
     # Limpiar errores u observaciones hechas por la AFIP previo a que el cliente las arregle y vuelva a intentar
     if hasattr(ret, 'Errores') and len(ret.Errores):
-        comprobante.errores_wsfe = "<br/>".join([e.encode('utf8') for e in ret.Errores])
+        comprobante.errores_wsfe = b"<br/>".join([e.encode('utf8') for e in ret.Errores])
     else:
         comprobante.errores_wsfe = None
 
     if hasattr(ret, 'Observaciones') and len(ret.Observaciones):
-        comprobante.observaciones_wsfe = "<br />".join([e.encode('utf8') for e in ret.Observaciones])
+        comprobante.observaciones_wsfe = b"<br />".join([e.encode('utf8') for e in ret.Observaciones])
     else:
         comprobante.observaciones_wsfe = None
 
