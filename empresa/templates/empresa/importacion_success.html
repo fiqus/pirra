@@ -6,7 +6,7 @@
         <div id="massive-result" class="alert alert-{{ result.result_type}}" style="margin-bottom: 10px; margin-top: 0;">
             <span id="massive-result-header"><strong>Resultado de la importación:</strong></span>
             <div id="massive-result-body">
-                {{ result.display_message }}
+                {{ result.result }}
             </div>
             {% if result.imported or result.updated or result.ignored %}
                 <span id="massive-result-footer">

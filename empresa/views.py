@@ -684,8 +684,8 @@ def change_prices(request):
 class ProductImportForm(Form):
     file = FileField(required=True, label='Archivo - Seleccione el archivo csv que contiene los productos a importar')
     update_existing = forms.BooleanField(required=False,
-                                         label='Desea actualizar los productos que ya existan en Pirra?')
-    is_final_price = forms.BooleanField(required=False, label='Los productos a importar incluyen IVA?')
+                                         label='Actualizar los productos que ya existan en Pirra')
+    is_final_price = forms.BooleanField(required=False, label='Los productos a importar incluyen IVA')
     exclude_first_line = forms.BooleanField(initial=True, required=False,
                                             label='Excluir la primera línea (encabezado de columnas)')
 
@@ -729,10 +729,10 @@ def import_product(request):
 
         if not (error or errors):
             if imported > 0 or updated > 0 and not errors:
-                display_message += "Importación masiva realizada con éxito. <br/>"
+                display_message += "Importación masiva realizada con éxito."
                 result_type = 'success'
             else:
-                display_message += "No se encontraron productos para importar. <br/>"
+                display_message += "No se encontraron productos para importar."
                 result_type = 'warning'
 
             result = {
@@ -750,7 +750,7 @@ def import_product(request):
 
 class ClientImportForm(Form):
     file = FileField(required=True, label='Archivo - Seleccione el archivo csv que contiene los clientes a importar')
-    update_existing = forms.BooleanField(required=False, label='Desea actualizar los clientes que ya existan en Pirra?')
+    update_existing = forms.BooleanField(required=False, label='Actualizar los clientes que ya existan en Pirra')
     exclude_first_line = forms.BooleanField(initial=True, required=False,
                                             label='Excluir la primera línea (encabezado de columnas)')
 
@@ -791,10 +791,10 @@ def import_client(request):
 
         if not (error or errors):
             if imported > 0 or updated > 0 and not errors:
-                display_message += "Importación masiva realizada con éxito. <br/>"
+                display_message += "Importación masiva realizada con éxito."
                 result_type = 'success'
             else:
-                display_message += "No se encontraron clientes para importar. <br/>"
+                display_message += "No se encontraron clientes para importar."
                 result_type = 'warning'
 
             result = {

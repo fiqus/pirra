@@ -104,6 +104,27 @@ def get_or_error(errors, linen, record, field_name, obj_list, verbose_name, opci
 
     return ret
 
+def get_nro_dni_or_error(errors, linen, record, field_name, verbose_name, opcional=False, default=None):
+    ret = None
+    try:
+        val = record.get(field_name, default) or default
+        if not val:
+            if opcional:
+                return None
+            errors.append("La columna '{}' en la linea nro {} no puede estar vacia".format(verbose_name, linen))
+        else:
+            if str(val):
+                ret = str(val)
+            else:
+                errors.append(
+                    "La columna '{}' en la linea nro {} tiene un valor incorrecto. "
+                    "Los valores posibles son: {}".format(verbose_name, linen,
+                                                          ", ".join(list(obj_list.keys()))))
+    except:
+        errors.append("Error al procesar la columna {} de la linea {}".format(verbose_name, linen))
+
+    return ret
+
 
 def check_str(errors, linen, record, field_name, max_length, verbose_name):
     val = record.get(field_name, "")
@@ -520,7 +541,7 @@ def import_client_csv(csvfile, update_existing, exclude_first_line):
                     # chequeo si el cliente existe
                     tipo_doc = get_or_error(lineerrs, linen, record, "cli_tipo_doc", prefetched[TipoDoc],
                                           "Tipo de Documento", opcional=True)
-                    nro_doc = check_str(lineerrs, linen, record, "cli_nro_doc", 128, "numero de documento")
+                    nro_doc = get_nro_dni_or_error(lineerrs, linen, record, "cli_nro_doc", "numero de documento")
 
                     cli = None
                     if tipo_doc and nro_doc:
