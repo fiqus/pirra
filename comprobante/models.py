@@ -324,7 +324,8 @@ class Comprobante(models.Model):
             "nro": self.nro,
             "pp_numero": self.pp_numero,
             "condicion_venta": self.condicion_venta.nombre if self.condicion_venta else "",
-            "remito_nro": self.remito_nro, "fecha_emision": self.fecha_emision.strftime('%d/%m/%Y'),
+            "remito_nro": self.remito_nro, 
+            "fecha_emision": self.fecha_emision.strftime('%d/%m/%Y'),
             "fecha_venc_pago": self.fecha_venc_pago.strftime('%d/%m/%Y'),
             "importe_total": str(self.importe_total),
             "importe_no_gravado": str(self.importe_no_gravado),
@@ -354,7 +355,8 @@ class Comprobante(models.Model):
                 "simbolo": self.moneda.simbolo
             },
             "tipo_expo": self.tipo_expo.nombre if self.tipo_expo else "",
-            "incoterms": self.incoterms.id_afip if self.incoterms else "", "incoterms_ds": self.incoterms_ds,
+            "incoterms": self.incoterms.id_afip if self.incoterms else "", 
+            "incoterms_ds": self.incoterms_ds,
             "idioma": self.idioma.nombre if self.idioma else "",
             "pais_destino": {
                 "id_afip": self.pais_destino.id_afip if self.pais_destino else "",
@@ -362,9 +364,12 @@ class Comprobante(models.Model):
                 "cuit": self.pais_destino.cuit if self.pais_destino else ""
             }, "id_impositivo": self.id_impositivo,
             "moneda_ctz": str(self.moneda_ctz),
-            "observaciones_comerciales": self.observaciones_comerciales, "forma_pago": self.forma_pago,
-            "condicion_venta_texto": self.condicion_venta_texto, "observaciones": self.observaciones,
-            "descuento": self.descuento, "detalle": [],
+            "observaciones_comerciales": self.observaciones_comerciales, 
+            "forma_pago": self.forma_pago,
+            "condicion_venta_texto": self.condicion_venta_texto, 
+            "observaciones": self.observaciones,
+            "descuento": str(self.descuento), 
+            "detalle": [],
             "fecha_pago": self.fecha_pago.strftime('%d/%m/%Y') if self.fecha_pago else "",
         }
 
