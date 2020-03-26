@@ -273,6 +273,7 @@ class Comprobante(models.Model):
             TipoComprobante.FACTURA_M, TipoComprobante.RECIBO_M, TipoComprobante.NC_M, TipoComprobante.ND_M)
 
     def esta_autorizada(self):
+
         return self.cae and len(self.cae) > 0
 
     def muestra_subtotales(self):
@@ -326,17 +327,17 @@ class Comprobante(models.Model):
             "condicion_venta": self.condicion_venta.nombre if self.condicion_venta else "",
             "remito_nro": self.remito_nro, "fecha_emision": self.fecha_emision.strftime('%d/%m/%Y'),
             "fecha_venc_pago": self.fecha_venc_pago.strftime('%d/%m/%Y'),
-            "importe_total": str(self.importe_total),
-            "importe_no_gravado": str(self.importe_no_gravado),
-            "importe_dto_no_gravado": str(self.importe_dto_no_gravado),
-            "importe_neto_gravado": str(self.importe_neto_gravado),
-            "importe_dto_neto_gravado": str(self.importe_dto_neto_gravado),
-            "importe_neto": str(self.importe_neto),
-            "importe_neto_con_iva": str(self.importe_neto_con_iva),
-            "importe_tributos": str(self.importe_tributos),
-            "importe_exento": str(self.importe_exento),
-            "importe_dto_exento": str(self.importe_dto_exento),
-            "importe_iva": str(self.importe_iva),
+            "importe_total": float(self.importe_total),
+            "importe_no_gravado": float(self.importe_no_gravado),
+            "importe_dto_no_gravado": float(self.importe_dto_no_gravado),
+            "importe_neto_gravado": float(self.importe_neto_gravado),
+            "importe_dto_neto_gravado": float(self.importe_dto_neto_gravado),
+            "importe_neto": float(self.importe_neto),
+            "importe_neto_con_iva": float(self.importe_neto_con_iva),
+            "importe_tributos": float(self.importe_tributos),
+            "importe_exento": float(self.importe_exento),
+            "importe_dto_exento": float(self.importe_dto_exento),
+            "importe_iva": float(self.importe_iva),
             "cliente": {
                 "tipo_doc": self.cliente.tipo_doc.nombre,
                 "nro_doc": self.cliente.nro_doc,
@@ -361,7 +362,7 @@ class Comprobante(models.Model):
                 "nombre": self.pais_destino.nombre if self.pais_destino else "",
                 "cuit": self.pais_destino.cuit if self.pais_destino else ""
             }, "id_impositivo": self.id_impositivo,
-            "moneda_ctz": str(self.moneda_ctz),
+            "moneda_ctz": float(self.moneda_ctz),
             "observaciones_comerciales": self.observaciones_comerciales, "forma_pago": self.forma_pago,
             "condicion_venta_texto": self.condicion_venta_texto, "observaciones": self.observaciones,
             "descuento": self.descuento, "detalle": [],
@@ -373,10 +374,10 @@ class Comprobante(models.Model):
                 "cant": str(detalle.cant),
                 "unidad": detalle.unidad.nombre,
                 "detalle": detalle.detalle,
-                "precio_unit": str(detalle.precio_unit),
+                "precio_unit": float(detalle.precio_unit),
                 "alicuota_iva": {
                     "nombre": detalle.alicuota_iva.nombre if detalle.alicuota_iva else "",
-                    "porc": str(detalle.alicuota_iva.porc) if detalle.alicuota_iva else ""
+                    "porc": float(detalle.alicuota_iva.porc) if detalle.alicuota_iva else ""
                 }
             })
 
