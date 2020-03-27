@@ -117,7 +117,9 @@ TYPE_UNMARSHAL_FN = {
 }
 
 REVERSE_TYPE_MAP = dict([(v, k) for k, v in TYPE_MAP.items()])
-
+REVERSE_TYPE_MAP.update({
+    'long': int,
+})
 
 class OrderedDict(dict):
     "Minimal ordered dictionary for xsd:sequences"
