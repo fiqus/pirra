@@ -364,12 +364,12 @@ class Comprobante(models.Model):
                 "nombre": self.pais_destino.nombre if self.pais_destino else "",
                 "cuit": self.pais_destino.cuit if self.pais_destino else ""
             }, "id_impositivo": self.id_impositivo,
-            "moneda_ctz": float(self.moneda_ctz),
+            "moneda_ctz": str(self.moneda_ctz),
             "observaciones_comerciales": self.observaciones_comerciales, 
             "forma_pago": self.forma_pago,
             "condicion_venta_texto": self.condicion_venta_texto, 
             "observaciones": self.observaciones,
-            "descuento": float(self.descuento), 
+            "descuento": str(self.descuento), 
             "detalle": [],
             "fecha_pago": self.fecha_pago.strftime('%d/%m/%Y') if self.fecha_pago else "",
         }
@@ -379,10 +379,10 @@ class Comprobante(models.Model):
                 "cant": str(detalle.cant),
                 "unidad": detalle.unidad.nombre,
                 "detalle": detalle.detalle,
-                "precio_unit": float(detalle.precio_unit),
+                "precio_unit": str(detalle.precio_unit),
                 "alicuota_iva": {
                     "nombre": detalle.alicuota_iva.nombre if detalle.alicuota_iva else "",
-                    "porc": float(detalle.alicuota_iva.porc) if detalle.alicuota_iva else ""
+                    "porc": str(detalle.alicuota_iva.porc) if detalle.alicuota_iva else ""
                 }
             })
 
