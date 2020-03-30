@@ -18,10 +18,10 @@ class ComprobantePreview(DetailView):
             context['comprobante'] = comprobante
 
             importe_descuento = self.get_importe_descuento(comprobante)
-            context['importe_neto_gravado'] = float(comprobante.importe_neto_gravado)
-            context['importe_no_gravado'] = float(comprobante.importe_no_gravado)
-            context['importe_exento'] = float(comprobante.importe_exento)
-            context['importe_descuento'] = float(importe_descuento)
+            context['importe_neto_gravado'] = Comprobante.formatNumericFieldToFloat(comprobante, comprobante.importe_neto_gravado)
+            context['importe_no_gravado'] = Comprobante.formatNumericFieldToFloat(comprobante, comprobante.importe_no_gravado)
+            context['importe_exento'] = Comprobante.formatNumericFieldToFloat(comprobante, comprobante.importe_exento)
+            context['importe_descuento'] = Comprobante.formatNumericFieldToFloat(comprobante, importe_descuento)
 
             tributos = comprobante.tributocomprobante_set.aggregate(
                 total_tributos=Sum(F('base_imponible') * F('alicuota') / 100))

@@ -196,19 +196,20 @@ def comprobante_enviar_masivo_seleccion(request):
                     error_sending = False
                 except Exception as e:
                     status = "Error"
-                    display_message += "Error: {}".format(e.message)
+                    display_message += "Error: {}".format(str(e or e.message))
                     error = True
                     error_sending = True
                 finally:
-                    comp.enviado = True
-                    comp.save()
+                    if (not error):
+                        comp.enviado = True
+                        comp.save()
 
-                    mail_enviado_comprobante = MailEnviadoComprobante(comprobante=comp,
-                                                                      email=comp.cliente.email,
-                                                                      fecha_envio=datetime.datetime.now(),
-                                                                      estado=status, texto=text_content)
-                    mail_enviado_comprobante.save()
-                    status = "Enviado"
+                        mail_enviado_comprobante = MailEnviadoComprobante(comprobante=comp,
+                                                                        email=comp.cliente.email,
+                                                                        fecha_envio=datetime.datetime.now(),
+                                                                        estado=status, texto=text_content)
+                        mail_enviado_comprobante.save()
+                        status = "Enviado"
             else:
                 status = "Email de cliente incompleto"
                 cant_error += 1

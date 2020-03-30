@@ -294,6 +294,9 @@ class Comprobante(models.Model):
     def get_data_para_imprimir(self):
         return self.get_json_data() if not self.esta_autorizada() else self.data
 
+    def formatNumericFieldToFloat(self, field):
+        return 0 if field is None else float(field)
+
     def get_json_data(self):
 
         json_data = {
@@ -328,17 +331,17 @@ class Comprobante(models.Model):
             "remito_nro": self.remito_nro, 
             "fecha_emision": self.fecha_emision.strftime('%d/%m/%Y'),
             "fecha_venc_pago": self.fecha_venc_pago.strftime('%d/%m/%Y'),
-            "importe_total": float(self.importe_total),
-            "importe_no_gravado": float(self.importe_no_gravado),
-            "importe_dto_no_gravado": float(self.importe_dto_no_gravado),
-            "importe_neto_gravado": float(self.importe_neto_gravado),
-            "importe_dto_neto_gravado": float(self.importe_dto_neto_gravado),
-            "importe_neto": float(self.importe_neto),
-            "importe_neto_con_iva": float(self.importe_neto_con_iva),
-            "importe_tributos": float(self.importe_tributos),
-            "importe_exento": float(self.importe_exento),
-            "importe_dto_exento": float(self.importe_dto_exento),
-            "importe_iva": float(self.importe_iva),
+            "importe_total": self.formatNumericFieldToFloat(self.importe_total),
+            "importe_no_gravado": self.formatNumericFieldToFloat(self.importe_no_gravado),
+            "importe_dto_no_gravado": self.formatNumericFieldToFloat(self.importe_dto_no_gravado),
+            "importe_neto_gravado": self.formatNumericFieldToFloat(self.importe_neto_gravado),
+            "importe_dto_neto_gravado": self.formatNumericFieldToFloat(self.importe_dto_neto_gravado),
+            "importe_neto": self.formatNumericFieldToFloat(self.importe_neto),
+            "importe_neto_con_iva": self.formatNumericFieldToFloat(self.importe_neto_con_iva),
+            "importe_tributos": self.formatNumericFieldToFloat(self.importe_tributos),
+            "importe_exento": self.formatNumericFieldToFloat(self.importe_exento),
+            "importe_dto_exento": self.formatNumericFieldToFloat(self.importe_dto_exento),
+            "importe_iva": self.formatNumericFieldToFloat(self.importe_iva),
             "cliente": {
                 "tipo_doc": self.cliente.tipo_doc.nombre,
                 "nro_doc": self.cliente.nro_doc,
@@ -364,12 +367,12 @@ class Comprobante(models.Model):
                 "nombre": self.pais_destino.nombre if self.pais_destino else "",
                 "cuit": self.pais_destino.cuit if self.pais_destino else ""
             }, "id_impositivo": self.id_impositivo,
-            "moneda_ctz": str(self.moneda_ctz),
+            "moneda_ctz": self.formatNumericFieldToFloat(self.moneda_ctz),
             "observaciones_comerciales": self.observaciones_comerciales, 
             "forma_pago": self.forma_pago,
             "condicion_venta_texto": self.condicion_venta_texto, 
             "observaciones": self.observaciones,
-            "descuento": str(self.descuento), 
+            "descuento": self.formatNumericFieldToFloat(self.descuento), 
             "detalle": [],
             "fecha_pago": self.fecha_pago.strftime('%d/%m/%Y') if self.fecha_pago else "",
         }
