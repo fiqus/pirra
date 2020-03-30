@@ -369,7 +369,7 @@ class Comprobante(models.Model):
             "forma_pago": self.forma_pago,
             "condicion_venta_texto": self.condicion_venta_texto, 
             "observaciones": self.observaciones,
-            "descuento": str(self.descuento), 
+            "descuento": float(self.descuento) if self.descuento else "", 
             "detalle": [],
             "fecha_pago": self.fecha_pago.strftime('%d/%m/%Y') if self.fecha_pago else "",
         }
