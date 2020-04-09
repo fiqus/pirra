@@ -65,6 +65,7 @@ class Comprobante(models.Model):
     enviado = models.BooleanField(default=False)
 
     data = JSONField(null=True, default=dict)
+    data_arreglada = models.BooleanField(default=False)
 
     # Un comprobante puede crearse a partir de una OrdenDeCompra
     orden_compra = models.ForeignKey('OrdenCompra', null=True, blank=True, on_delete=models.CASCADE)
