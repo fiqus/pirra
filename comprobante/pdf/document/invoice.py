@@ -258,8 +258,8 @@ class Invoice(Base):
         return [
             RestrictParagraph(
                 "Esta factura electrónica fue confeccionada con el sistema de Facturación Electrónica Pirra. "
-                "La información contenida en éste documento es privilegiada y confidencial, para uso exclusivo "
-                "de los destinatarios de la misma y/o de quienes hayan sido autorizados específicamente para leerla.",
+                "Para uso exclusivo en la feria contable, con fines educativos. "
+                "Este comprobante no es valido como una factura",
                 w, h, styles['legend_xs']),
             VSpace(),
             PageCounterParagraph("Página 1 de 1", get_data, w, h, styles['legend_xs'])

@@ -1,6 +1,7 @@
 import datetime
 import json
 import logging
+import random
 
 from django import forms
 from django.contrib import messages
@@ -13,7 +14,6 @@ from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 
-from afip.utils import handler_errores_afip, handler_error_conectividad_afip
 from comprobante.models import Comprobante
 from comprobante.vendor import pyi25
 from comprobante.vendor.pyafipws.ws.soap import SoapFault
@@ -23,6 +23,29 @@ from main.redis import get_redlock_client
 
 logger = logging.getLogger(__name__)
 
+def generar_cae():
+    cae = ""
+
+    for x in range(14):
+        number = str(random.randrange(0, 9))
+        cae += number
+
+    return cae
+
+def sig_nro_cbte():
+    return str(Comprobante.objects.exclude(cae="").count() + 1)
+
+class Ret():
+    def __init__(self, cbte_nro):
+        self.Resultado = "A"
+        self.CAE = generar_cae()
+        self.CbteNro = cbte_nro
+        self.Vencimiento = "20250325"
+        self.Resultado = ""
+        self.Motivo = ""
+        self.Observaciones = ""
+        self.Reproceso = ""
+        self.Errores = ""
 
 def genera_codigo_barra(comprobante):
     generador = pyi25.PyI25()
@@ -52,7 +75,7 @@ def comprobante_guardar_autorizacion(comprobante, ret):
 
     genera_codigo_barra(comprobante)
 
-    # Limpiar errores u observaciones hechas por la AFIP previo a que el cliente las arregle y vuelva a intentar
+    # No esta autorizando con AFIP y no va a devolver Erores u Obsevaciones
     if hasattr(ret, 'Errores') and len(ret.Errores):
         comprobante.errores_wsfe = b"<br/>".join([e.encode('utf8') for e in ret.Errores])
     else:
@@ -73,60 +96,16 @@ def comprobante_autorizar(request, pk):
     comprobante = Comprobante.objects.get(pk=pk)
 
     if request.method == 'POST':
-
+        cbte_nro = sig_nro_cbte()
+        ret = Ret(cbte_nro)
         redlock = get_redlock_client()
         cbte_lock_success = redlock.lock("pirra-cbte_lock-{}-{}".format(comprobante.empresa.nro_doc, comprobante.id),
                                          60)
 
         if cbte_lock_success:
 
-            try:
-                ret = autorizar(comprobante, request)
-
-                display_messages = handler_errores_afip(ret, comprobante)
-
-                if len(display_messages["display_obs"]):
-                    messages.warning(request, display_messages["display_obs"])
-
-                if ret.Resultado == "R":
-                    messages.error(request,
-                                   "Error al autorizar comprobante. <br/>{}".format(display_messages["display_errors"]))
-                elif ret.Reproceso == "S":  # WSFEXv1
-                    comprobante_guardar_autorizacion(comprobante, ret)
-                    messages.success(request, "El comprobante ya había sido autorizado anteriormente. "
-                                              "Se le ha asignado el CAE correctamente.")
-                elif ret.Resultado == "A":
-                    messages.success(request, "Comprobante autorizado correctamente")
-                    comprobante_guardar_autorizacion(comprobante, ret)
-                elif ret.Resultado == "":
-                    if len(display_messages["display_errors"]):
-                        messages.error(request,
-                                       "Error al autorizar comprobante. {}".format(display_messages["display_errors"]))
-                    if len(ret.CAE):
-                        comprobante_guardar_autorizacion(comprobante, ret)
-
-                else:
-                    messages.error(request, "Error al autorizar comprobante.")
-
-            except SoapFault as e:
-                logger.exception("Error al autorizar comprobante")
-                messages.error(request, "Error al autorizar comprobante. "
-                                        "<br/> Codigo: {}. <br/>"
-                                        "{}".format(e.faultcode, handler_error_conectividad_afip(e.faultstring)))
-            except WSFEError as e:
-                logger.exception("Error al autorizar comprobante")
-                messages.error(request, "Error al autorizar comprobante. "
-                                        "<br/> Codigo: {}. <br/>"
-                                        "{}".format(e.code, handler_error_conectividad_afip(e.msg)))
-
-            except Exception as e:
-                logger.exception("Error con conectividad AFIP")
-                try:
-                    messages.error(request, handler_error_conectividad_afip(str(e)))
-                except Exception as ex:
-                    logger.exception("{} - {}".format(e.faultcode, e.faultstring))
-                    messages.error(request, "Error con conectividad AFIP."
-                                        "<br/> Vuelva a intentarlo mas tarde o  comuniquese con el equipo tecnico de Pirra. <br/>")
+            messages.success(request, "Comprobante autorizado correctamente")
+            comprobante_guardar_autorizacion(comprobante, ret)
 
             redlock.unlock(cbte_lock_success)
         else:
@@ -173,53 +152,10 @@ def comprobante_autorizar_masivo(request):
             error = False
 
             for comprobante in comprobantes:
-                try:
-                    ret = autorizar(comprobante, request)
-
-                    # si existen errores se guardan en el comprobante pero no se muestran en pantalla
-                    handler_errores_afip(ret, comprobante)
-
-                    if ret.Resultado == "R":
-                        display_message += get_comprobante_error(comprobante)
-                        error = True
-                        break
-                    elif ret.Reproceso == "S":  # WSFEXv1
-                        comprobante_guardar_autorizacion(comprobante, ret)
-                        cant += 1
-                    elif ret.Resultado == "A":
-                        comprobante_guardar_autorizacion(comprobante, ret)
-                        cant += 1
-                    elif ret.Resultado == "":
-                        if len(ret.CAE):
-                            comprobante_guardar_autorizacion(comprobante, ret)
-                            cant += 1
-                        else:
-                            display_message += get_comprobante_error(comprobante)
-                            error = True
-                            break
-                    else:
-                        display_message += get_comprobante_error(comprobante)
-                        error = True
-                        break
-                except SoapFault as e:
-                    display_message += get_comprobante_error(comprobante)
-                    display_message += "Codigo del error del Servicio AFIP: {}. <br/>{}".format(e.faultcode,
-                                                                                                handler_error_conectividad_afip(
-                                                                                                    e.faultstring))
-                    error = True
-                    break
-                except WSFEError as e:
-                    display_message += get_comprobante_error(comprobante)
-                    display_message += "Codigo del error del Servicio AFIP: {}. <br/>{}".format(e.faultcode,
-                                                                                                handler_error_conectividad_afip(
-                                                                                                    e.faultstring))
-                    error = True
-                    break
-                except Exception as e:
-                    display_message += get_comprobante_error(comprobante)
-                    display_message += "Error: {}".format(handler_error_conectividad_afip(e.message))
-                    error = True
-                    break
+                cbte_nro = sig_nro_cbte()
+                ret = Ret(cbte_nro)
+                comprobante_guardar_autorizacion(comprobante, ret)
+                cant += 1
 
             if comp_pto_vta_eliminado:
                 display_message += "Se han <strong>ignorado {} comprobantes</strong> porque estaban asociados a un punto de venta eliminado.<br/>".format(
@@ -291,53 +227,10 @@ def comprobante_autorizar_masivo_seleccion(request):
         error = False
 
         for comprobante in comprobantes:
-            try:
-                ret = autorizar(comprobante, request)
-
-                # si existen errores se guardan en el comprobante pero no se muestran en pantalla
-                handler_errores_afip(ret, comprobante)
-
-                if ret.Resultado == "R":
-                    display_message += get_comprobante_error(comprobante)
-                    error = True
-                    break
-                elif ret.Reproceso == "S":  # WSFEXv1
-                    comprobante_guardar_autorizacion(comprobante, ret)
-                    cant += 1
-                elif ret.Resultado == "A":
-                    comprobante_guardar_autorizacion(comprobante, ret)
-                    cant += 1
-                elif ret.Resultado == "":
-                    if len(ret.CAE):
-                        comprobante_guardar_autorizacion(comprobante, ret)
-                        cant += 1
-                    else:
-                        display_message += get_comprobante_error(comprobante)
-                        error = True
-                        break
-                else:
-                    display_message += get_comprobante_error(comprobante)
-                    error = True
-                    break
-            except SoapFault as e:
-                display_message += get_comprobante_error(comprobante)
-                display_message += "Codigo del error del Servicio AFIP: {}. <br/>{}".format(e.faultcode,
-                                                                                            handler_error_conectividad_afip(
-                                                                                                e.faultstring))
-                error = True
-                break
-            except WSFEError as e:
-                display_message += get_comprobante_error(comprobante)
-                display_message += "Codigo del error del Servicio AFIP: {}. <br/>{}".format(e.faultcode,
-                                                                                            handler_error_conectividad_afip(
-                                                                                                e.faultstring))
-                error = True
-                break
-            except Exception as e:
-                display_message += get_comprobante_error(comprobante)
-                display_message += "Error: {}".format(handler_error_conectividad_afip(e.message))
-                error = True
-                break
+            cbte_nro = sig_nro_cbte()
+            ret = Ret(cbte_nro)
+            comprobante_guardar_autorizacion(comprobante, ret)
+            cant += 1
 
         if comp_pto_vta_eliminado:
             display_message += "Se han <strong>ignorado {} comprobantes</strong> porque estaban asociados a un punto de venta eliminado.<br/>".format(
