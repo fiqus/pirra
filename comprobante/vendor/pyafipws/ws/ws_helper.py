@@ -1,6 +1,7 @@
 # coding=utf-8
 import json
 import re
+import random
 from afip.models import AlicuotaIva, TipoComprobante, Concepto
 from comprobante.models import Comprobante
 from comprobante.vendor.pyafipws.ws.utils import date
@@ -207,98 +208,33 @@ def autorizarWSFE(cbte, cert, key, cbte_nro=None):
         wsfe = autorizar_cbte(cbte, punto_vta, tipo_cbte, wsfe)
     return wsfe
 
+def generar_cae():
+    cae = ""
 
-def autorizar(cbte, certificate, private_key):
-    empresa = cbte.empresa
+    for x in range(14):
+        number = str(random.randrange(0, 9))
+        cae += number
 
-    cert, key = get_cert_and_key(certificate, private_key)
+    return cae
 
-    if cbte.tipo_cbte.id_afip in (TipoComprobante.FACTURA_A, TipoComprobante.ND_A, TipoComprobante.NC_A, TipoComprobante.RECIBO_A,
-                                  TipoComprobante.FACTURA_B, TipoComprobante.ND_B, TipoComprobante.NC_B, TipoComprobante.RECIBO_B,
-                                  TipoComprobante.FACTURA_C, TipoComprobante.ND_C, TipoComprobante.NC_C, TipoComprobante.RECIBO_C,
-                                  TipoComprobante.FACTURA_M, TipoComprobante.NC_M, TipoComprobante.ND_M, TipoComprobante.RECIBO_M):
+def sig_nro_cbte():
+    return str(Comprobante.objects.exclude(cae="").count() + 1)
 
-        return autorizarWSFE(cbte, cert, key, cbte.nro)
+class Ret():
+    def __init__(self):
+        self.Resultado = "A"
+        self.CAE = generar_cae()
+        self.CbteNro = sig_nro_cbte()
+        self.Vencimiento = "20250325"
+        self.Resultado = ""
+        self.Motivo = ""
+        self.Observaciones = ""
+        self.Reproceso = ""
+        self.Errores = ""
 
-    elif cbte.tipo_cbte.id_afip in (TipoComprobante.FACTURA_E, TipoComprobante.ND_E, TipoComprobante.NC_E):
-        wsfex = setupWSFEX(int(empresa.nro_doc), cert, key)
 
-        if not cbte.id_lote_afip:
-            last_id = wsfex.GetLastID()
-            if not last_id:
-                last_id = 0
-                logger.error([e for e in wsfex.Errores])
-                logger.error([e for e in wsfex.Observaciones])
-            cbte.id_lote_afip = int(last_id) + 1
-            cbte.save()
-
-        last_cmp = wsfex.GetLastCMP(cbte.tipo_cbte.id_afip, cbte.punto_vta.id_afip)
-        if not last_cmp:
-            last_cmp = 0
-            logger.error([e for e in wsfex.Errores])
-            logger.error([e for e in wsfex.Observaciones])
-        cbte_nro = int(last_cmp) + 1
-
-        eliminar_nro_comprobantes_existentes(cbte_nro, cbte.punto_vta.id_afip, cbte.tipo_cbte.id_afip)
-
-        tipo_expo = cbte.tipo_expo.id_afip
-        permiso_existente = "" if (cbte.tipo_cbte.id_afip in (TipoComprobante.ND_E, TipoComprobante.NC_E) or tipo_expo in (2, 4)) else "S"
-        dst_cmp = cbte.pais_destino.id_afip
-        cuit_pais_cliente = cbte.pais_destino.cuit
-        id_impositivo = cbte.id_impositivo
-        moneda_id = cbte.moneda.id_afip
-        moneda_ctz = cbte.moneda_ctz
-        obs_comerciales = cbte.observaciones_comerciales
-        obs = cbte.observaciones
-        forma_pago = cbte.forma_pago
-        incoterms = cbte.incoterms.id_afip if cbte.incoterms else None
-        incoterms_ds = cbte.incoterms_ds
-        idioma_cbte = cbte.idioma.id_afip
-        fecha_pago = cbte.fecha_pago.strftime("%Y%m%d") if cbte.fecha_pago else ''
-        
-        # Creo una factura (internamente, no se llama al WebService):
-        ok = wsfex.CrearFactura(cbte.tipo_cbte.id_afip, cbte.punto_vta.id_afip, cbte_nro,
-                                cbte.fecha_emision.strftime("%Y%m%d"),
-                                _f(cbte.importe_total), tipo_expo, permiso_existente, dst_cmp,
-                                cbte.cliente.nombre, cuit_pais_cliente, cbte.cliente.domicilio,
-                                id_impositivo, moneda_id, moneda_ctz,
-                                obs_comerciales, obs, forma_pago, incoterms,
-                                idioma_cbte, incoterms_ds, fecha_pago)
-
-        for detalle in cbte.detallecomprobante_set.all():
-            # Agrego un item:
-            codigo = detalle.pk
-            ds = detalle.detalle
-            qty = detalle.cant
-            precio = _f(detalle.precio_unit)
-            umed = detalle.unidad.id_afip
-            bonif = "0.00"
-            imp_total = _f(detalle.precio_total)
-            ok = wsfex.AgregarItem(codigo, ds, qty, umed, precio, imp_total, bonif)
-
-        # informo un comprobante asociado (solo notas de credito / debito de exportacion)
-        if cbte.cbte_asoc:
-            tipo_cbte = cbte.cbte_asoc.tipo_cbte.id_afip
-            pto_venta = cbte.cbte_asoc.punto_vta.id_afip
-            nro = cbte.cbte_asoc.nro
-            wsfex.AgregarCmpAsoc(tipo_cbte, pto_venta, nro)
-
-        # Llamo al WebService de Autorización para obtener el CAE
-        cae = wsfex.Authorize(cbte.id_lote_afip)
-
-        if not cae:
-            if wsfex.Errores:
-                logger.error([e for e in wsfex.Errores])
-                logger.error([e for e in wsfex.Observaciones])
-                # adapto Errores para que tenga el mismo manejo que con WSFEv1
-                wsfex.Errores = [str(error.encode("utf-8").decode("latin1")) for error in wsfex.Errores]
-        else:
-            # si NO falló la autorización, se devuelve el número de comprobante para que luego se asigne y guarde
-            wsfex.CbteNro = cbte_nro
-        if wsfex.Vencimiento:
-            wsfex.Vencimiento = "%s/%s/%s" % (wsfex.Vencimiento[6:10], wsfex.Vencimiento[3:5], wsfex.Vencimiento[0:2])
-            wsfex.Vencimiento = wsfex.Vencimiento.replace("/", "")
-        return wsfex
+def autorizar(cbte, _certificate, _private_key):
+    return Ret()
 
 
 def get_cert_and_key(certificate, private_key):

@@ -257,7 +257,7 @@ class Invoice(Base):
 
         return [
             RestrictParagraph(
-                "Esta factura electrónica fue confeccionada con el sistema de Facturación Electrónica Pirra. "
+                "Esta factura fue confeccionada con el sistema de Facturación Electrónica Pirra. "
                 "Para uso exclusivo en la feria contable, con fines educativos. "
                 "Este comprobante no es valido como una factura",
                 w, h, styles['legend_xs']),

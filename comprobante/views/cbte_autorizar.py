@@ -1,7 +1,6 @@
 import datetime
 import json
 import logging
-import random
 
 from django import forms
 from django.contrib import messages
@@ -22,30 +21,6 @@ from comprobante.views.utils import autorizar, get_comprobante_error
 from main.redis import get_redlock_client
 
 logger = logging.getLogger(__name__)
-
-def generar_cae():
-    cae = ""
-
-    for x in range(14):
-        number = str(random.randrange(0, 9))
-        cae += number
-
-    return cae
-
-def sig_nro_cbte():
-    return str(Comprobante.objects.exclude(cae="").count() + 1)
-
-class Ret():
-    def __init__(self, cbte_nro):
-        self.Resultado = "A"
-        self.CAE = generar_cae()
-        self.CbteNro = cbte_nro
-        self.Vencimiento = "20250325"
-        self.Resultado = ""
-        self.Motivo = ""
-        self.Observaciones = ""
-        self.Reproceso = ""
-        self.Errores = ""
 
 def genera_codigo_barra(comprobante):
     generador = pyi25.PyI25()
@@ -96,8 +71,7 @@ def comprobante_autorizar(request, pk):
     comprobante = Comprobante.objects.get(pk=pk)
 
     if request.method == 'POST':
-        cbte_nro = sig_nro_cbte()
-        ret = Ret(cbte_nro)
+        ret = autorizar(comprobante, request)
         redlock = get_redlock_client()
         cbte_lock_success = redlock.lock("pirra-cbte_lock-{}-{}".format(comprobante.empresa.nro_doc, comprobante.id),
                                          60)
@@ -152,8 +126,7 @@ def comprobante_autorizar_masivo(request):
             error = False
 
             for comprobante in comprobantes:
-                cbte_nro = sig_nro_cbte()
-                ret = Ret(cbte_nro)
+                ret = autorizar(comprobante, request)
                 comprobante_guardar_autorizacion(comprobante, ret)
                 cant += 1
 
@@ -227,8 +200,7 @@ def comprobante_autorizar_masivo_seleccion(request):
         error = False
 
         for comprobante in comprobantes:
-            cbte_nro = sig_nro_cbte()
-            ret = Ret(cbte_nro)
+            ret = autorizar(comprobante, request)
             comprobante_guardar_autorizacion(comprobante, ret)
             cant += 1
 
