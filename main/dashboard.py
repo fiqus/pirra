@@ -187,6 +187,6 @@ def get_dashboard_data():
         "fact_today": fact_today,
         "fact_month": fact_monthly[current_fact_period],
         "fact_year": fact_year,
-        # "show_vinculacion_msg": not vinculada,
+        "show_vinculacion_msg": False,
     }
     return ret
