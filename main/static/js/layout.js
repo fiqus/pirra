@@ -4,29 +4,8 @@ $(document).ready(function () {
     function checkServerStatus() {
         $("#server_status").html("<i class='fa fa-spinner fa-spin'></i>");
         $("#server_status").attr("data-content", "Actualizando...");
-        Pace.ignore(function () {
-            $.get("/comprobantes/comprobante/check_status/")
-                .done(function (data) {
-                    if (data.AppServerStatus === "ok" && data.DbServerStatus === "ok" && data.AuthServerStatus === "ok") {
-                        $("#server_status").html("<i class='fa fa-circle text-success'></i>");
-                        $("#server_status").attr("data-content", "Online");
-                    }
-                    else {
-                        $("#server_status").html("<i class='fa fa-circle text-danger'></i>");
-                        $("#server_status").attr("data-content", "Offline");
-                    }
-                    window.setTimeout(function () {
-                        checkServerStatus();
-                    }, timeout);
-                })
-                .fail(function (err) {
-                    $("#server_status").html("<i class='fa fa-circle text-danger'></i>");
-                    $("#server_status").attr("data-content", "Offline");
-                    window.setTimeout(function () {
-                        checkServerStatus();
-                    }, timeout);
-                });
-        });
+        $("#server_status").html("<i class='fa fa-circle text-success'></i>");
+        $("#server_status").attr("data-content", "Online");
     }
 
     checkServerStatus();
