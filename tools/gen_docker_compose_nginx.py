@@ -4,29 +4,29 @@ import os
 
 from jinja2 import Environment, FileSystemLoader
 
-""" traer grupos y formatear para el template """
+# get groups and format for template
 with open("./grupos.csv", "r") as grupos_csv:
     csv_reader = csv.reader(grupos_csv)
     groups = []
 
-    for i, name in enumerate(csv_reader, start=1):
+    for i, data in enumerate(csv_reader, start=1):
         groups.append({
-            "name": name[0],
+            "name": data[0],
             "container_number": i
         })
 
 file_loader = FileSystemLoader("templates")
 env = Environment(loader=file_loader)
 
-""" genera docker-compose.yml """
+# generate docker-compose.yml
 template_yml = env.get_template("template.yml")
 template_yml.stream(groups=groups).dump("./outputs/docker-compose.yml")
 
-""" genera nginx.conf """
+# generate nginx.conf
 template_conf = env.get_template("template.conf")
 template_conf.stream(groups=groups).dump("./outputs/nginx.conf")
 
-""" mover al root (si existe lo reemplaza) """
+# move to root (if it exists replaces it)
 src = "./outputs/"
 dst = "./../"
 docker_filename = "docker-compose.yml"
