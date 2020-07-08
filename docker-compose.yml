@@ -40,9 +40,9 @@ services:
 
   pirra_2:
     build: .
+    container_name: pirra_2
     volumes:
       - .:/usr/src/app
-    container_name: pirra_2
     environment:
       - DJANGO_SITE_URL=g2.pirra.local
       - DJANGO_DATABASE=g2
