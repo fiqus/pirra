@@ -8,7 +8,7 @@ with open("./grupos.csv", "r") as grupos_csv:
     for i, data in enumerate(csv_reader, start=1):
         group_name = data[0]
         group_cuit = data[1]
-        db_name = "g" + str(i)
+        db_name = group_name
         container_name = "pirra_" + str(i)
         
         # create db and migrate
