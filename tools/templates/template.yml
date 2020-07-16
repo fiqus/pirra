@@ -6,9 +6,9 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - .:/usr/src/pirra
-#      - ./nginx/error.log:/etc/nginx/error_log.log
-#      - ./nginx/cache/:/etc/nginx/cache
-#      - /etc/letsencrypt/:/etc/letsencrypt/
+#     - ./nginx/error.log:/etc/nginx/error_log.log
+#     - ./nginx/cache/:/etc/nginx/cache
+#     - /etc/letsencrypt/:/etc/letsencrypt/
     ports:
       - 80:80
       - 443:443
@@ -16,6 +16,8 @@ services:
   # Tools
   postgres:
     image: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
@@ -38,3 +40,6 @@ services:
     expose:
       - "8080"
 {% endfor %}
+volumes:
+  postgres-data:
+    driver: local

@@ -50,6 +50,7 @@ services:
       - DJANGO_DATABASE=g2
     expose:
       - "8080"
+
 volumes:
   postgres-data:
     driver: local
