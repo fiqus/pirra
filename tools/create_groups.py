@@ -12,7 +12,7 @@ with open("./grupos.csv", "r") as grupos_csv:
         container_name = "pirra_" + str(i)
         
         # create db and migrate
-        p1 = subprocess.Popen(["docker-compose", "exec", "-u", "postgres", "postgres", "createdb", db_name])
+        p1 = subprocess.Popen(["createdb", db_name])
         p1.wait()
 
         p2 = subprocess.Popen(["docker-compose", "exec", container_name, "python3", "manage.py", "migrate"])
