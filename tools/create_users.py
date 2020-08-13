@@ -5,6 +5,9 @@ import os
 # get groups and format for template
 with open("./grupos.csv", "r") as grupos_csv:
     csv_reader = csv.reader(grupos_csv)
+    admin_user = os.getenv("ADMIN_USER")
+    admin_email = os.getenv("ADMIN_EMAIL")
+    admin_pass = os.getenv("ADMIN_PASS")
 
     for i, data in enumerate(csv_reader, start=1):
         group_name = data[0]
@@ -19,7 +22,7 @@ with open("./grupos.csv", "r") as grupos_csv:
             [
                 "docker-compose", "exec", container_name, "python3", "manage.py", "shell", "-c", 
                 "from django.contrib.auth import get_user_model; User = get_user_model(); \
-                    User.objects.create_superuser('carolina', 'carolina.guglielmotti@cpem17.com.ar', 'carito2626')"
+                    User.objects.create_superuser('{admin_user}', '{admin_email}', '{admin_pass}')"
             ]
         )
         p2.wait()
