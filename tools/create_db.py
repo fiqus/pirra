@@ -1,16 +1,26 @@
-import subprocess
 import csv
 import os
 
-# get groups and format for template
+from psycopg2 import connect
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+
+con = connect(dbname="", user="postgres", host="localhost", password="postgres")
+con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+cur = con.cursor()
+
+
 with open("./grupos.csv", "r") as grupos_csv:
     csv_reader = csv.reader(grupos_csv)
 
     for i, data in enumerate(csv_reader, start=1):
-        db_name = data[0]
+        group_name = data[0]
+        group_cuit = data[1]
 
-        # create db and migrate
-        p1 = subprocess.Popen(["createdb", db_name])
-        p1.wait()
+        cur.execute("CREATE DATABASE " + group_name)
+        cur.execute("CREATE USER " + group_name + " WITH ENCRYPTED PASSWORD '" + group_cuit + "'")
+        cur.execute("GRANT ALL PRIVILEGES ON DATABASE " + group_name + " TO " + group_name)
 
-        print(db_name + " CREATED!")
+        print(group_name + " CREATED!")
+
+cur.close()
+con.close()

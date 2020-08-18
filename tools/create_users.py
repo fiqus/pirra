@@ -2,7 +2,6 @@ import subprocess
 import csv
 import os
 
-# get groups and format for template
 with open("./grupos.csv", "r") as grupos_csv:
     csv_reader = csv.reader(grupos_csv)
     admin_user = os.getenv("ADMIN_USER")
