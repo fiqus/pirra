@@ -27,6 +27,8 @@ services:
     environment:
       - DJANGO_SITE_URL=g1.pirra.local
       - DJANGO_DATABASE=g1
+      - DJANGO_DATABASE_USER=g1
+      - DJANGO_DATABASE_PASSWORD=0123456789
     expose:
       - "8080"
 
@@ -38,5 +40,7 @@ services:
     environment:
       - DJANGO_SITE_URL=g2.pirra.local
       - DJANGO_DATABASE=g2
+      - DJANGO_DATABASE_USER=g2
+      - DJANGO_DATABASE_PASSWORD=9876543210
     expose:
       - "8080"

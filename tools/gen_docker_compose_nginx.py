@@ -12,6 +12,7 @@ with open("./grupos.csv", "r") as grupos_csv:
     for i, data in enumerate(csv_reader, start=1):
         groups.append({
             "name": data[0],
+            "password": data[1],
             "container_number": i
         })
 

@@ -14,16 +14,6 @@ services:
       - 443:443
 
   # Tools
-  postgres:
-    image: postgres
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-
   redis:
     image: redis
     ports:
@@ -37,9 +27,8 @@ services:
     environment:
       - DJANGO_SITE_URL={{group.name}}.pirra.local
       - DJANGO_DATABASE={{group.name}}
+      - DJANGO_DATABASE_USER={{group.name}}
+      - DJANGO_DATABASE_PASSWORD={{group.password}}
     expose:
       - "8080"
 {% endfor %}
-volumes:
-  postgres-data:
-    driver: local
