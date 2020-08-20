@@ -28,7 +28,7 @@ services:
       - DJANGO_SITE_URL={{group.name}}.pirra.local
       - DJANGO_DATABASE={{group.name}}
       - DJANGO_DATABASE_USER={{group.name}}
-      - DJANGO_DATABASE_PASSWORD={{group.password}}
+      - DJANGO_DATABASE_PASSWORD={{"${" +group.env_var_name + "}"}}
     expose:
       - "8080"
 {% endfor %}

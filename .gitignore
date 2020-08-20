@@ -67,3 +67,5 @@ pirra.iml
 deploy/ansible/deploy_pirra.retry
 /pirra_web/settings/prod.py
 /Vagrantfile
+
+.env
