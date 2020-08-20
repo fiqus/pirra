@@ -21,7 +21,7 @@ with open("./grupos.csv", "r") as grupos_csv:
             [
                 "docker-compose", "exec", container_name, "python3", "manage.py", "shell", "-c", 
                 "from django.contrib.auth import get_user_model; User = get_user_model(); \
-                    User.objects.create_superuser('{admin_user}', '{admin_email}', '{admin_pass}')"
+                    User.objects.create_superuser('" + admin_user + "', '" + admin_email + "', '" + admin_pass + "')"
             ]
         )
         p2.wait()
