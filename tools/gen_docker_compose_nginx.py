@@ -8,7 +8,6 @@ from jinja2 import Environment, FileSystemLoader
 with open("./grupos.csv", "r") as grupos_csv:
     csv_reader = csv.reader(grupos_csv)
     groups = []
-    db_passwords = []
 
     for i, data in enumerate(csv_reader, start=1):
         group_name = data[0]
@@ -23,17 +22,13 @@ with open("./grupos.csv", "r") as grupos_csv:
 file_loader = FileSystemLoader("templates")
 env = Environment(loader=file_loader)
 
-# generate docker-compose.yml
-template_yml = env.get_template("docker_compose_template.yml")
-template_yml.stream(groups=groups).dump("./outputs/docker-compose.yml")
+def create_file(templete_name, file_name):
+    templete = env.get_template(templete_name)
+    templete.stream(groups=groups).dump(file_name)
 
-# generate nginx.conf
-template_conf = env.get_template("nginx_template.conf")
-template_conf.stream(groups=groups).dump("./outputs/nginx.conf")
-
-# generate .env
-template_conf = env.get_template("env_templete.j2")
-template_conf.stream(groups=groups).dump("./outputs/.env")
+create_file("docker_compose_template.yml", "./outputs/docker-compose.yml")
+create_file("nginx_template.conf", "./outputs/nginx.conf")
+create_file("env_templete.j2", "./outputs/.env")
 
 # move to root (if it exists replaces it)
 src = "./outputs/"
