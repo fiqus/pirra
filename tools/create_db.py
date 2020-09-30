@@ -9,7 +9,7 @@ con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 cur = con.cursor()
 
 
-with open("./grupos.csv", "r") as grupos_csv:
+with open("./first_batch.csv.csv", "r") as grupos_csv:
     csv_reader = csv.reader(grupos_csv)
 
     for i, data in enumerate(csv_reader, start=1):
