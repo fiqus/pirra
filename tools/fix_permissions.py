@@ -15,10 +15,10 @@ with open("./first_batch.csv", "r") as grupos_csv:
     for i, data in enumerate(csv_reader, start=1):
         group_name = data[0]
 
-        cur.execute("GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public to " + group_name)
-        cur.execute("GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public to " + group_name)
-        cur.execute("GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public to " + group_name)
-
+        cur.execute("psql " + group_name + " -c GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public to " + group_name)
+        cur.execute("psql " + group_name + " -c GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public to " + group_name)
+        cur.execute("psql " + group_name + " -c GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public to " + group_name)
+ 
         print(group_name + " FIXED")
 
 cur.close()
