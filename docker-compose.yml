@@ -213,3 +213,354 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ARGENTINATURISMO_DB_PASSWORD}
     expose:
       - "8080"
+
+  pirra_16:
+    build: .
+    container_name: pirra_16
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=vendemostodo.pirra.local
+      - DJANGO_DATABASE=vendemostodo
+      - DJANGO_DATABASE_USER=vendemostodo
+      - DJANGO_DATABASE_PASSWORD=${VENDEMOSTODO_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_17:
+    build: .
+    container_name: pirra_17
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=aerocondor.pirra.local
+      - DJANGO_DATABASE=aerocondor
+      - DJANGO_DATABASE_USER=aerocondor
+      - DJANGO_DATABASE_PASSWORD=${AEROCONDOR_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_18:
+    build: .
+    container_name: pirra_18
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=materos.pirra.local
+      - DJANGO_DATABASE=materos
+      - DJANGO_DATABASE_USER=materos
+      - DJANGO_DATABASE_PASSWORD=${MATEROS_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_19:
+    build: .
+    container_name: pirra_19
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=lhd.pirra.local
+      - DJANGO_DATABASE=lhd
+      - DJANGO_DATABASE_USER=lhd
+      - DJANGO_DATABASE_PASSWORD=${LHD_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_20:
+    build: .
+    container_name: pirra_20
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=mollange.pirra.local
+      - DJANGO_DATABASE=mollange
+      - DJANGO_DATABASE_USER=mollange
+      - DJANGO_DATABASE_PASSWORD=${MOLLANGE_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_21:
+    build: .
+    container_name: pirra_21
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=mediasocre.pirra.local
+      - DJANGO_DATABASE=mediasocre
+      - DJANGO_DATABASE_USER=mediasocre
+      - DJANGO_DATABASE_PASSWORD=${MEDIASOCRE_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_22:
+    build: .
+    container_name: pirra_22
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=sancho.pirra.local
+      - DJANGO_DATABASE=sancho
+      - DJANGO_DATABASE_USER=sancho
+      - DJANGO_DATABASE_PASSWORD=${SANCHO_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_23:
+    build: .
+    container_name: pirra_23
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=mypets.pirra.local
+      - DJANGO_DATABASE=mypets
+      - DJANGO_DATABASE_USER=mypets
+      - DJANGO_DATABASE_PASSWORD=${MYPETS_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_24:
+    build: .
+    container_name: pirra_24
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=elpepe.pirra.local
+      - DJANGO_DATABASE=elpepe
+      - DJANGO_DATABASE_USER=elpepe
+      - DJANGO_DATABASE_PASSWORD=${ELPEPE_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_25:
+    build: .
+    container_name: pirra_25
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=harrisandcompany.pirra.local
+      - DJANGO_DATABASE=harrisandcompany
+      - DJANGO_DATABASE_USER=harrisandcompany
+      - DJANGO_DATABASE_PASSWORD=${HARRISANDCOMPANY_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_26:
+    build: .
+    container_name: pirra_26
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=proxel.pirra.local
+      - DJANGO_DATABASE=proxel
+      - DJANGO_DATABASE_USER=proxel
+      - DJANGO_DATABASE_PASSWORD=${PROXEL_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_27:
+    build: .
+    container_name: pirra_27
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=perfumeriakaori.pirra.local
+      - DJANGO_DATABASE=perfumeriakaori
+      - DJANGO_DATABASE_USER=perfumeriakaori
+      - DJANGO_DATABASE_PASSWORD=${PERFUMERIAKAORI_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_28:
+    build: .
+    container_name: pirra_28
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=musicstar.pirra.local
+      - DJANGO_DATABASE=musicstar
+      - DJANGO_DATABASE_USER=musicstar
+      - DJANGO_DATABASE_PASSWORD=${MUSICSTAR_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_29:
+    build: .
+    container_name: pirra_29
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=booklook.pirra.local
+      - DJANGO_DATABASE=booklook
+      - DJANGO_DATABASE_USER=booklook
+      - DJANGO_DATABASE_PASSWORD=${BOOKLOOK_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_30:
+    build: .
+    container_name: pirra_30
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=indumentariaking.pirra.local
+      - DJANGO_DATABASE=indumentariaking
+      - DJANGO_DATABASE_USER=indumentariaking
+      - DJANGO_DATABASE_PASSWORD=${INDUMENTARIAKING_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_31:
+    build: .
+    container_name: pirra_31
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=culturavintageantigüedades.pirra.local
+      - DJANGO_DATABASE=culturavintageantigüedades
+      - DJANGO_DATABASE_USER=culturavintageantigüedades
+      - DJANGO_DATABASE_PASSWORD=${CULTURAVINTAGEANTIGÜEDADES_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_32:
+    build: .
+    container_name: pirra_32
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=ciberneticos.pirra.local
+      - DJANGO_DATABASE=ciberneticos
+      - DJANGO_DATABASE_USER=ciberneticos
+      - DJANGO_DATABASE_PASSWORD=${CIBERNETICOS_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_33:
+    build: .
+    container_name: pirra_33
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=fullsport.pirra.local
+      - DJANGO_DATABASE=fullsport
+      - DJANGO_DATABASE_USER=fullsport
+      - DJANGO_DATABASE_PASSWORD=${FULLSPORT_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_34:
+    build: .
+    container_name: pirra_34
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=sportvla.pirra.local
+      - DJANGO_DATABASE=sportvla
+      - DJANGO_DATABASE_USER=sportvla
+      - DJANGO_DATABASE_PASSWORD=${SPORTVLA_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_35:
+    build: .
+    container_name: pirra_35
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=0800nestitor.pirra.local
+      - DJANGO_DATABASE=0800nestitor
+      - DJANGO_DATABASE_USER=0800nestitor
+      - DJANGO_DATABASE_PASSWORD=${0800NESTITOR_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_36:
+    build: .
+    container_name: pirra_36
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=autosportangostura.pirra.local
+      - DJANGO_DATABASE=autosportangostura
+      - DJANGO_DATABASE_USER=autosportangostura
+      - DJANGO_DATABASE_PASSWORD=${AUTOSPORTANGOSTURA_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_37:
+    build: .
+    container_name: pirra_37
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=mueblesindustriaargentina.pirra.local
+      - DJANGO_DATABASE=mueblesindustriaargentina
+      - DJANGO_DATABASE_USER=mueblesindustriaargentina
+      - DJANGO_DATABASE_PASSWORD=${MUEBLESINDUSTRIAARGENTINA_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_38:
+    build: .
+    container_name: pirra_38
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=lahuella.pirra.local
+      - DJANGO_DATABASE=lahuella
+      - DJANGO_DATABASE_USER=lahuella
+      - DJANGO_DATABASE_PASSWORD=${LAHUELLA_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_39:
+    build: .
+    container_name: pirra_39
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=energivla.pirra.local
+      - DJANGO_DATABASE=energivla
+      - DJANGO_DATABASE_USER=energivla
+      - DJANGO_DATABASE_PASSWORD=${ENERGIVLA_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_40:
+    build: .
+    container_name: pirra_40
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=lapicessa.pirra.local
+      - DJANGO_DATABASE=lapicessa
+      - DJANGO_DATABASE_USER=lapicessa
+      - DJANGO_DATABASE_PASSWORD=${LAPICESSA_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_41:
+    build: .
+    container_name: pirra_41
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=electrodelsur.pirra.local
+      - DJANGO_DATABASE=electrodelsur
+      - DJANGO_DATABASE_USER=electrodelsur
+      - DJANGO_DATABASE_PASSWORD=${ELECTRODELSUR_DB_PASSWORD}
+    expose:
+      - "8080"
+
+  pirra_42:
+    build: .
+    container_name: pirra_42
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=vera-lopez.pirra.local
+      - DJANGO_DATABASE=vera-lopez
+      - DJANGO_DATABASE_USER=vera-lopez
+      - DJANGO_DATABASE_PASSWORD=${VERA-LOPEZ_DB_PASSWORD}
+    expose:
+      - "8080"
