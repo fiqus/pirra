@@ -470,7 +470,7 @@ services:
       - DJANGO_SITE_URL=0800nestitor.pirra.local
       - DJANGO_DATABASE=nestitor
       - DJANGO_DATABASE_USER=0800nestitor
-      - DJANGO_DATABASE_PASSWORD=${0800NESTITOR_DB_PASSWORD}
+      - DJANGO_DATABASE_PASSWORD=${NESTITOR_DB_PASSWORD}
     expose:
       - "8080"
 
@@ -561,6 +561,6 @@ services:
       - DJANGO_SITE_URL=vera-lopez.pirra.local
       - DJANGO_DATABASE=vera-lopez
       - DJANGO_DATABASE_USER=vera-lopez
-      - DJANGO_DATABASE_PASSWORD=${VERA-LOPEZ_DB_PASSWORD}
+      - DJANGO_DATABASE_PASSWORD=${VERALOPEZ_DB_PASSWORD}
     expose:
       - "8080"
