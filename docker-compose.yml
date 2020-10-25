@@ -418,7 +418,7 @@ services:
       - DJANGO_SITE_URL=culturavintageantigüedades.pirra.local
       - DJANGO_DATABASE=culturavintageantigüedades
       - DJANGO_DATABASE_USER=culturavintageantigüedades
-      - DJANGO_DATABASE_PASSWORD=${CULTURAVINTAGEANTIGÜEDADES_DB_PASSWORD}
+      - DJANGO_DATABASE_PASSWORD=${CULTURAVINTAGE_DB_PASSWORD}
     expose:
       - "8080"
 
@@ -468,7 +468,7 @@ services:
       - .:/usr/src/app
     environment:
       - DJANGO_SITE_URL=0800nestitor.pirra.local
-      - DJANGO_DATABASE=0800nestitor
+      - DJANGO_DATABASE=nestitor
       - DJANGO_DATABASE_USER=0800nestitor
       - DJANGO_DATABASE_PASSWORD=${0800NESTITOR_DB_PASSWORD}
     expose:
