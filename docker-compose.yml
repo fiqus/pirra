@@ -31,6 +31,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${G1_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_2:
     build: .
@@ -44,6 +48,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${G2_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_3:
     build: .
@@ -57,6 +65,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ESSENCIAL_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_4:
     build: .
@@ -70,6 +82,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${TECNOSHOP_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_5:
     build: .
@@ -83,6 +99,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${PAPELANDIA_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_6:
     build: .
@@ -96,6 +116,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${BURITA_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_7:
     build: .
@@ -109,6 +133,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ELECTRODOMESTICOS_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_8:
     build: .
@@ -122,6 +150,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${LAHUMILDAD_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_9:
     build: .
@@ -135,6 +167,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${PARAELHOGAR_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_10:
     build: .
@@ -148,6 +184,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${COMPUTADORAS_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_11:
     build: .
@@ -161,6 +201,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MAKTRUCKKING_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_12:
     build: .
@@ -174,6 +218,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${THELASTBOOKSTORE_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_13:
     build: .
@@ -187,6 +235,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${CIRIO_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_14:
     build: .
@@ -200,6 +252,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${TECSSIRVE_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_15:
     build: .
@@ -213,6 +269,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ARGENTINATURISMO_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_16:
     build: .
@@ -226,6 +286,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${VENDEMOSTODO_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_17:
     build: .
@@ -239,6 +303,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${AEROCONDOR_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_18:
     build: .
@@ -252,6 +320,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MATEROS_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_19:
     build: .
@@ -265,6 +337,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${LHD_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_20:
     build: .
@@ -278,6 +354,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MOLLANGE_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_21:
     build: .
@@ -291,6 +371,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MEDIASOCRE_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_22:
     build: .
@@ -304,6 +388,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${SANCHO_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_23:
     build: .
@@ -317,6 +405,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MYPETS_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_24:
     build: .
@@ -330,6 +422,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ELPEPE_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_25:
     build: .
@@ -343,6 +439,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${HARRISANDCOMPANY_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_26:
     build: .
@@ -356,6 +456,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${PROXEL_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_27:
     build: .
@@ -369,6 +473,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${PERFUMERIAKAORI_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_28:
     build: .
@@ -382,6 +490,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MUSICSTAR_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_29:
     build: .
@@ -395,6 +507,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${BOOKLOOK_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_30:
     build: .
@@ -408,6 +524,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${INDUMENTARIAKING_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_31:
     build: .
@@ -418,9 +538,13 @@ services:
       - DJANGO_SITE_URL=culturavintageantigüedades.pirra.local
       - DJANGO_DATABASE=culturavintageantigüedades
       - DJANGO_DATABASE_USER=culturavintageantigüedades
-      - DJANGO_DATABASE_PASSWORD=${CULTURAVINTAGE_DB_PASSWORD}
+      - DJANGO_DATABASE_PASSWORD=${CULTURAVINTAGEANTIGÜEDADES_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_32:
     build: .
@@ -434,6 +558,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${CIBERNETICOS_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_33:
     build: .
@@ -447,6 +575,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${FULLSPORT_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_34:
     build: .
@@ -460,6 +592,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${SPORTVLA_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_35:
     build: .
@@ -468,11 +604,15 @@ services:
       - .:/usr/src/app
     environment:
       - DJANGO_SITE_URL=0800nestitor.pirra.local
-      - DJANGO_DATABASE=nestitor
+      - DJANGO_DATABASE=0800nestitor
       - DJANGO_DATABASE_USER=0800nestitor
-      - DJANGO_DATABASE_PASSWORD=${NESTITOR_DB_PASSWORD}
+      - DJANGO_DATABASE_PASSWORD=${0800NESTITOR_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_36:
     build: .
@@ -486,6 +626,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${AUTOSPORTANGOSTURA_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_37:
     build: .
@@ -499,6 +643,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MUEBLESINDUSTRIAARGENTINA_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_38:
     build: .
@@ -512,6 +660,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${LAHUELLA_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_39:
     build: .
@@ -525,6 +677,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ENERGIVLA_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_40:
     build: .
@@ -538,6 +694,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${LAPICESSA_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_41:
     build: .
@@ -551,6 +711,10 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ELECTRODELSUR_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 
   pirra_42:
     build: .
@@ -561,6 +725,10 @@ services:
       - DJANGO_SITE_URL=vera-lopez.pirra.local
       - DJANGO_DATABASE=vera-lopez
       - DJANGO_DATABASE_USER=vera-lopez
-      - DJANGO_DATABASE_PASSWORD=${VERALOPEZ_DB_PASSWORD}
+      - DJANGO_DATABASE_PASSWORD=${VERA-LOPEZ_DB_PASSWORD}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M

@@ -31,4 +31,8 @@ services:
       - DJANGO_DATABASE_PASSWORD={{"${" +group.env_var_name + "}"}}
     expose:
       - "8080"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
 {% endfor %}
