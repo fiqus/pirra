@@ -31,7 +31,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${G1_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_2:
     build: .
@@ -45,7 +45,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${G2_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_3:
     build: .
@@ -59,7 +59,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ESSENCIAL_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_4:
     build: .
@@ -73,7 +73,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${TECNOSHOP_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_5:
     build: .
@@ -87,7 +87,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${PAPELANDIA_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_6:
     build: .
@@ -101,7 +101,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${BURITA_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_7:
     build: .
@@ -115,7 +115,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ELECTRODOMESTICOS_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_8:
     build: .
@@ -129,7 +129,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${LAHUMILDAD_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_9:
     build: .
@@ -143,7 +143,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${PARAELHOGAR_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_10:
     build: .
@@ -157,7 +157,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${COMPUTADORAS_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_11:
     build: .
@@ -171,7 +171,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MAKTRUCKKING_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_12:
     build: .
@@ -185,7 +185,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${THELASTBOOKSTORE_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_13:
     build: .
@@ -199,7 +199,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${CIRIO_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_14:
     build: .
@@ -213,7 +213,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${TECSSIRVE_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_15:
     build: .
@@ -227,7 +227,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ARGENTINATURISMO_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_16:
     build: .
@@ -241,7 +241,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${VENDEMOSTODO_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_17:
     build: .
@@ -255,7 +255,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${AEROCONDOR_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_18:
     build: .
@@ -269,7 +269,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MATEROS_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_19:
     build: .
@@ -283,7 +283,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${LHD_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_20:
     build: .
@@ -297,7 +297,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MOLLANGE_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_21:
     build: .
@@ -311,7 +311,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MEDIASOCRE_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_22:
     build: .
@@ -325,7 +325,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${SANCHO_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_23:
     build: .
@@ -339,7 +339,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MYPETS_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_24:
     build: .
@@ -353,7 +353,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ELPEPE_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_25:
     build: .
@@ -367,7 +367,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${HARRISANDCOMPANY_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_26:
     build: .
@@ -381,7 +381,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${PROXEL_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_27:
     build: .
@@ -395,7 +395,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${PERFUMERIAKAORI_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_28:
     build: .
@@ -409,7 +409,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MUSICSTAR_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_29:
     build: .
@@ -423,7 +423,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${BOOKLOOK_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_30:
     build: .
@@ -437,7 +437,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${INDUMENTARIAKING_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_31:
     build: .
@@ -451,7 +451,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${CULTURAVINTAGE_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_32:
     build: .
@@ -465,7 +465,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${CIBERNETICOS_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_33:
     build: .
@@ -479,7 +479,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${FULLSPORT_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_34:
     build: .
@@ -493,7 +493,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${SPORTVLA_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_35:
     build: .
@@ -507,7 +507,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${NESTITOR_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_36:
     build: .
@@ -521,7 +521,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${AUTOSPORTANGOSTURA_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_37:
     build: .
@@ -535,7 +535,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${MUEBLESINDUSTRIAARGENTINA_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_38:
     build: .
@@ -549,7 +549,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${LAHUELLA_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_39:
     build: .
@@ -563,7 +563,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ENERGIVLA_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_40:
     build: .
@@ -577,7 +577,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${LAPICESSA_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_41:
     build: .
@@ -591,7 +591,7 @@ services:
       - DJANGO_DATABASE_PASSWORD=${ELECTRODELSUR_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
 
   pirra_42:
     build: .
@@ -605,4 +605,4 @@ services:
       - DJANGO_DATABASE_PASSWORD=${VERALOPEZ_DB_PASSWORD}
     expose:
       - "8080"
-    mem_limit: 300m
+    mem_limit: 160m
