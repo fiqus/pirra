@@ -535,10 +535,10 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - DJANGO_SITE_URL=culturavintageantigüedades.pirra.local
-      - DJANGO_DATABASE=culturavintageantigüedades
-      - DJANGO_DATABASE_USER=culturavintageantigüedades
-      - DJANGO_DATABASE_PASSWORD=${CULTURAVINTAGEANTIGÜEDADES_DB_PASSWORD}
+      - DJANGO_SITE_URL=culturavintage.pirra.local
+      - DJANGO_DATABASE=culturavintage
+      - DJANGO_DATABASE_USER=culturavintage
+      - DJANGO_DATABASE_PASSWORD=${CULTURAVINTAGE_DB_PASSWORD}
     expose:
       - "8080"
     deploy:
@@ -603,10 +603,10 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - DJANGO_SITE_URL=0800nestitor.pirra.local
-      - DJANGO_DATABASE=0800nestitor
-      - DJANGO_DATABASE_USER=0800nestitor
-      - DJANGO_DATABASE_PASSWORD=${0800NESTITOR_DB_PASSWORD}
+      - DJANGO_SITE_URL=nestitor.pirra.local
+      - DJANGO_DATABASE=nestitor
+      - DJANGO_DATABASE_USER=nestitor
+      - DJANGO_DATABASE_PASSWORD=${NESTITOR_DB_PASSWORD}
     expose:
       - "8080"
     deploy:
