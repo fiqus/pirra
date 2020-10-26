@@ -599,10 +599,10 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - DJANGO_SITE_URL=vera-lopez.pirra.local
-      - DJANGO_DATABASE=vera-lopez
-      - DJANGO_DATABASE_USER=vera-lopez
-      - DJANGO_DATABASE_PASSWORD=${VERA-LOPEZ_DB_PASSWORD}
+      - DJANGO_SITE_URL=veralopez.pirra.local
+      - DJANGO_DATABASE=veralopez
+      - DJANGO_DATABASE_USER=veralopez
+      - DJANGO_DATABASE_PASSWORD=${VERALOPEZ_DB_PASSWORD}
     expose:
       - "8080"
     mem_limit: 300m
