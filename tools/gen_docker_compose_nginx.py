@@ -5,7 +5,7 @@ import os
 from jinja2 import Environment, FileSystemLoader
 
 # get groups and format for template
-with open("./second_batch.csv", "r") as grupos_csv:
+with open("./all_groups.csv", "r") as grupos_csv:
     csv_reader = csv.reader(grupos_csv)
     groups = []
 

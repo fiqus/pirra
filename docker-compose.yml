@@ -606,3 +606,129 @@ services:
     expose:
       - "8080"
     mem_limit: 160m
+
+  pirra_43:
+    build: .
+    container_name: pirra_43
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=tupana.pirra.local
+      - DJANGO_DATABASE=tupana
+      - DJANGO_DATABASE_USER=tupana
+      - DJANGO_DATABASE_PASSWORD=${TUPANA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_44:
+    build: .
+    container_name: pirra_44
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=elpalaciodelosespejos.pirra.local
+      - DJANGO_DATABASE=elpalaciodelosespejos
+      - DJANGO_DATABASE_USER=elpalaciodelosespejos
+      - DJANGO_DATABASE_PASSWORD=${ELPALACIODELOSESPEJOS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_45:
+    build: .
+    container_name: pirra_45
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=goodhouse.pirra.local
+      - DJANGO_DATABASE=goodhouse
+      - DJANGO_DATABASE_USER=goodhouse
+      - DJANGO_DATABASE_PASSWORD=${GOODHOUSE_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_46:
+    build: .
+    container_name: pirra_46
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=gorrasfacheras.pirra.local
+      - DJANGO_DATABASE=gorrasfacheras
+      - DJANGO_DATABASE_USER=gorrasfacheras
+      - DJANGO_DATABASE_PASSWORD=${GORRASFACHERAS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_47:
+    build: .
+    container_name: pirra_47
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=intentar.pirra.local
+      - DJANGO_DATABASE=intentar
+      - DJANGO_DATABASE_USER=intentar
+      - DJANGO_DATABASE_PASSWORD=${INTENTAR_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_48:
+    build: .
+    container_name: pirra_48
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=losartesanosdelsur.pirra.local
+      - DJANGO_DATABASE=losartesanosdelsur
+      - DJANGO_DATABASE_USER=losartesanosdelsur
+      - DJANGO_DATABASE_PASSWORD=${LOSARTESANOSDELSUR_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_49:
+    build: .
+    container_name: pirra_49
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=karensindumentaria.pirra.local
+      - DJANGO_DATABASE=karensindumentaria
+      - DJANGO_DATABASE_USER=karensindumentaria
+      - DJANGO_DATABASE_PASSWORD=${KARENSINDUMENTARIA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_50:
+    build: .
+    container_name: pirra_50
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=fresh.pirra.local
+      - DJANGO_DATABASE=fresh
+      - DJANGO_DATABASE_USER=fresh
+      - DJANGO_DATABASE_PASSWORD=${FRESH_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_51:
+    build: .
+    container_name: pirra_51
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=perfumeriadiamont.pirra.local
+      - DJANGO_DATABASE=perfumeriadiamont
+      - DJANGO_DATABASE_USER=perfumeriadiamont
+      - DJANGO_DATABASE_PASSWORD=${PERFUMERIADIAMONT_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
