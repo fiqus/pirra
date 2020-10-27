@@ -2,7 +2,7 @@ import subprocess
 import csv
 import os
 
-with open("./second_batch.csv", "r") as grupos_csv:
+with open("./all_groups.csv", "r") as grupos_csv:
     csv_reader = csv.reader(grupos_csv)
     admin_user = os.getenv("ADMIN_USER")
     admin_email = os.getenv("ADMIN_EMAIL")
