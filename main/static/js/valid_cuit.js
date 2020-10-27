@@ -15,7 +15,7 @@ $("form").validate({
 */
 
 function validCUIT(cuit) {
-    if (typeof (cuit) == 'undefined') {
+    /* if (typeof (cuit) == 'undefined') {
         return true;
     }
 
@@ -36,5 +36,7 @@ function validCUIT(cuit) {
         var mod = total % 11;
         var digit = mod == 0 ? 0 : mod == 1 ? 9 : 11 - mod;
     }
-    return digit == parseInt(cuit[10]);
+    return digit == parseInt(cuit[10]); */
+
+    return true;
 }
