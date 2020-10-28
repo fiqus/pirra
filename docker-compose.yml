@@ -809,10 +809,10 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - DJANGO_SITE_URL=g1segundod.pirra.local
-      - DJANGO_DATABASE=g1segundod
-      - DJANGO_DATABASE_USER=g1segundod
-      - DJANGO_DATABASE_PASSWORD=${G1SEGUNDOD_DB_PASSWORD}
+      - DJANGO_SITE_URL=g2segundod.pirra.local
+      - DJANGO_DATABASE=g2segundod
+      - DJANGO_DATABASE_USER=g2segundod
+      - DJANGO_DATABASE_PASSWORD=${G2SEGUNDOD_DB_PASSWORD}
     expose:
       - "8080"
     mem_limit: 160m
