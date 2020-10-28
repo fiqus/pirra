@@ -732,3 +732,87 @@ services:
     expose:
       - "8080"
     mem_limit: 160m
+
+  pirra_52:
+    build: .
+    container_name: pirra_52
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=bonnevoyage.pirra.local
+      - DJANGO_DATABASE=bonnevoyage
+      - DJANGO_DATABASE_USER=bonnevoyage
+      - DJANGO_DATABASE_PASSWORD=${BONNEVOYAGE_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_53:
+    build: .
+    container_name: pirra_53
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=g1segundoa.pirra.local
+      - DJANGO_DATABASE=g1segundoa
+      - DJANGO_DATABASE_USER=g1segundoa
+      - DJANGO_DATABASE_PASSWORD=${G1SEGUNDOA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_54:
+    build: .
+    container_name: pirra_54
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=g2segundoa.pirra.local
+      - DJANGO_DATABASE=g2segundoa
+      - DJANGO_DATABASE_USER=g2segundoa
+      - DJANGO_DATABASE_PASSWORD=${G2SEGUNDOA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_55:
+    build: .
+    container_name: pirra_55
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=g3segundoa.pirra.local
+      - DJANGO_DATABASE=g3segundoa
+      - DJANGO_DATABASE_USER=g3segundoa
+      - DJANGO_DATABASE_PASSWORD=${G3SEGUNDOA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_56:
+    build: .
+    container_name: pirra_56
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=g1segundod.pirra.local
+      - DJANGO_DATABASE=g1segundod
+      - DJANGO_DATABASE_USER=g1segundod
+      - DJANGO_DATABASE_PASSWORD=${G1SEGUNDOD_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_57:
+    build: .
+    container_name: pirra_57
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=g1segundod.pirra.local
+      - DJANGO_DATABASE=g1segundod
+      - DJANGO_DATABASE_USER=g1segundod
+      - DJANGO_DATABASE_PASSWORD=${G1SEGUNDOD_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
