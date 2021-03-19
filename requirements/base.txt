@@ -2,7 +2,7 @@ amqp==2.5.2
 anyjson==0.3.3
 billiard==3.6.1.0
 celery==4.3.0
-Django==2.2.9
+Django==2.2.18
 django-admin-sortable2==0.7.4
 django-adminplus==0.5
 django-audit-log==0.7.0
