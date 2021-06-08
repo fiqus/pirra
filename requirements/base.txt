@@ -19,7 +19,7 @@ html5lib==1.0.1
 httplib2==0.14.0
 kombu==4.6.6
 M2Crypto==0.30.1
-Pillow==6.2.1
+Pillow==8.2.0
 psycopg2-binary==2.8.4
 pyaml==19.4.1
 pyPdf==1.13
