@@ -29,6 +29,7 @@ services:
       - DJANGO_DATABASE={{group.name}}
       - DJANGO_DATABASE_USER={{group.name}}
       - DJANGO_DATABASE_PASSWORD={{"${" +group.env_var_name + "}"}}
+      - DJANGO_DATABASE_HOST=host.docker.internal
     expose:
       - "8080"
     mem_limit: 160m

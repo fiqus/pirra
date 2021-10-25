@@ -29,6 +29,7 @@ services:
       - DJANGO_DATABASE=dnb
       - DJANGO_DATABASE_USER=dnb
       - DJANGO_DATABASE_PASSWORD=${DNB_DB_PASSWORD}
+      - DJANGO_DATABASE_HOST=host.docker.internal
     expose:
       - "8080"
     mem_limit: 160m
@@ -43,6 +44,7 @@ services:
       - DJANGO_DATABASE=sportvla
       - DJANGO_DATABASE_USER=sportvla
       - DJANGO_DATABASE_PASSWORD=${SPORTVLA_DB_PASSWORD}
+      - DJANGO_DATABASE_HOST=host.docker.internal
     expose:
       - "8080"
     mem_limit: 160m
@@ -57,6 +59,7 @@ services:
       - DJANGO_DATABASE=daiwel
       - DJANGO_DATABASE_USER=daiwel
       - DJANGO_DATABASE_PASSWORD=${DAIWEL_DB_PASSWORD}
+      - DJANGO_DATABASE_HOST=host.docker.internal
     expose:
       - "8080"
     mem_limit: 160m
@@ -71,6 +74,7 @@ services:
       - DJANGO_DATABASE=tiendadedeportes
       - DJANGO_DATABASE_USER=tiendadedeportes
       - DJANGO_DATABASE_PASSWORD=${TIENDADEDEPORTES_DB_PASSWORD}
+      - DJANGO_DATABASE_HOST=host.docker.internal
     expose:
       - "8080"
     mem_limit: 160m
@@ -85,6 +89,7 @@ services:
       - DJANGO_DATABASE=peperairhips
       - DJANGO_DATABASE_USER=peperairhips
       - DJANGO_DATABASE_PASSWORD=${PEPERAIRHIPS_DB_PASSWORD}
+      - DJANGO_DATABASE_HOST=host.docker.internal
     expose:
       - "8080"
     mem_limit: 160m
@@ -99,6 +104,7 @@ services:
       - DJANGO_DATABASE=fandomshop
       - DJANGO_DATABASE_USER=fandomshop
       - DJANGO_DATABASE_PASSWORD=${FANDOMSHOP_DB_PASSWORD}
+      - DJANGO_DATABASE_HOST=host.docker.internal
     expose:
       - "8080"
     mem_limit: 160m
@@ -113,6 +119,7 @@ services:
       - DJANGO_DATABASE=narniashop
       - DJANGO_DATABASE_USER=narniashop
       - DJANGO_DATABASE_PASSWORD=${NARNIASHOP_DB_PASSWORD}
+      - DJANGO_DATABASE_HOST=host.docker.internal
     expose:
       - "8080"
     mem_limit: 160m
