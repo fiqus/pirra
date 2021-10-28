@@ -4,7 +4,7 @@ services:
     image: nginx:latest
     container_name: nginx
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx_{{institution_name}}.conf:/etc/nginx/nginx.conf
       - .:/usr/src/pirra
 #     - ./nginx/error.log:/etc/nginx/error_log.log
 #     - ./nginx/cache/:/etc/nginx/cache
@@ -29,7 +29,6 @@ services:
       - DJANGO_DATABASE={{group.name}}
       - DJANGO_DATABASE_USER={{group.name}}
       - DJANGO_DATABASE_PASSWORD={{"${" +group.env_var_name + "}"}}
-      - DJANGO_DATABASE_HOST=host.docker.internal
     expose:
       - "8080"
     mem_limit: 160m

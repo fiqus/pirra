@@ -69,3 +69,4 @@ deploy/ansible/deploy_pirra.retry
 /Vagrantfile
 
 .env
+.env_cpem_17
