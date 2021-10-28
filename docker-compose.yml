@@ -123,3 +123,33 @@ services:
     expose:
       - "8080"
     mem_limit: 160m
+
+  pirra_8:
+    build: .
+    container_name: pirra_8
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=cpem17.pirra.local
+      - DJANGO_DATABASE=cpem17
+      - DJANGO_DATABASE_USER=cpem17
+      - DJANGO_DATABASE_PASSWORD=${CPEM17_DB_PASSWORD}
+      - DJANGO_DATABASE_HOST=host.docker.internal
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_9:
+    build: .
+    container_name: pirra_9
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=cpem68.pirra.local
+      - DJANGO_DATABASE=cpem68
+      - DJANGO_DATABASE_USER=cpem68
+      - DJANGO_DATABASE_PASSWORD=${CPEM68_DB_PASSWORD}
+      - DJANGO_DATABASE_HOST=host.docker.internal
+    expose:
+      - "8080"
+    mem_limit: 160m
