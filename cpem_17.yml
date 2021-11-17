@@ -123,10 +123,10 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - DJANGO_SITE_URL=cpem17.pirra.local
-      - DJANGO_DATABASE=cpem17
-      - DJANGO_DATABASE_USER=cpem17
-      - DJANGO_DATABASE_PASSWORD=${CPEM17_DB_PASSWORD}
+      - DJANGO_SITE_URL=todomodas.pirra.local
+      - DJANGO_DATABASE=todomodas
+      - DJANGO_DATABASE_USER=todomodas
+      - DJANGO_DATABASE_PASSWORD=${TODOMODAS_DB_PASSWORD}
     expose:
       - "8080"
     mem_limit: 160m
@@ -137,10 +137,892 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - DJANGO_SITE_URL=cpem68.pirra.local
-      - DJANGO_DATABASE=cpem68
-      - DJANGO_DATABASE_USER=cpem68
-      - DJANGO_DATABASE_PASSWORD=${CPEM68_DB_PASSWORD}
+      - DJANGO_SITE_URL=unadiosa.pirra.local
+      - DJANGO_DATABASE=unadiosa
+      - DJANGO_DATABASE_USER=unadiosa
+      - DJANGO_DATABASE_PASSWORD=${UNADIOSA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_10:
+    build: .
+    container_name: pirra_10
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=elbardelosvideosjuegos.pirra.local
+      - DJANGO_DATABASE=elbardelosvideosjuegos
+      - DJANGO_DATABASE_USER=elbardelosvideosjuegos
+      - DJANGO_DATABASE_PASSWORD=${ELBARDELOSVIDEOSJUEGOS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_11:
+    build: .
+    container_name: pirra_11
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=chameleon.pirra.local
+      - DJANGO_DATABASE=chameleon
+      - DJANGO_DATABASE_USER=chameleon
+      - DJANGO_DATABASE_PASSWORD=${CHAMELEON_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_12:
+    build: .
+    container_name: pirra_12
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=tutifruti.pirra.local
+      - DJANGO_DATABASE=tutifruti
+      - DJANGO_DATABASE_USER=tutifruti
+      - DJANGO_DATABASE_PASSWORD=${TUTIFRUTI_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_13:
+    build: .
+    container_name: pirra_13
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=mansionesextraordinarias.pirra.local
+      - DJANGO_DATABASE=mansionesextraordinarias
+      - DJANGO_DATABASE_USER=mansionesextraordinarias
+      - DJANGO_DATABASE_PASSWORD=${MANSIONESEXTRAORDINARIAS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_14:
+    build: .
+    container_name: pirra_14
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=tecnoshop.pirra.local
+      - DJANGO_DATABASE=tecnoshop
+      - DJANGO_DATABASE_USER=tecnoshop
+      - DJANGO_DATABASE_PASSWORD=${TECNOSHOP_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_15:
+    build: .
+    container_name: pirra_15
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=indumentariamc.pirra.local
+      - DJANGO_DATABASE=indumentariamc
+      - DJANGO_DATABASE_USER=indumentariamc
+      - DJANGO_DATABASE_PASSWORD=${INDUMENTARIAMC_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_16:
+    build: .
+    container_name: pirra_16
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=esco.pirra.local
+      - DJANGO_DATABASE=esco
+      - DJANGO_DATABASE_USER=esco
+      - DJANGO_DATABASE_PASSWORD=${ESCO_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_17:
+    build: .
+    container_name: pirra_17
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=nyc.pirra.local
+      - DJANGO_DATABASE=nyc
+      - DJANGO_DATABASE_USER=nyc
+      - DJANGO_DATABASE_PASSWORD=${NYC_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_18:
+    build: .
+    container_name: pirra_18
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=dmjc.pirra.local
+      - DJANGO_DATABASE=dmjc
+      - DJANGO_DATABASE_USER=dmjc
+      - DJANGO_DATABASE_PASSWORD=${DMJC_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_19:
+    build: .
+    container_name: pirra_19
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=mig.pirra.local
+      - DJANGO_DATABASE=mig
+      - DJANGO_DATABASE_USER=mig
+      - DJANGO_DATABASE_PASSWORD=${MIG_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_20:
+    build: .
+    container_name: pirra_20
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=kinokocakes.pirra.local
+      - DJANGO_DATABASE=kinokocakes
+      - DJANGO_DATABASE_USER=kinokocakes
+      - DJANGO_DATABASE_PASSWORD=${KINOKOCAKES_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_21:
+    build: .
+    container_name: pirra_21
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=matrix.pirra.local
+      - DJANGO_DATABASE=matrix
+      - DJANGO_DATABASE_USER=matrix
+      - DJANGO_DATABASE_PASSWORD=${MATRIX_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_22:
+    build: .
+    container_name: pirra_22
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=lobi.pirra.local
+      - DJANGO_DATABASE=lobi
+      - DJANGO_DATABASE_USER=lobi
+      - DJANGO_DATABASE_PASSWORD=${LOBI_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_23:
+    build: .
+    container_name: pirra_23
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=guceaifif.pirra.local
+      - DJANGO_DATABASE=guceaifif
+      - DJANGO_DATABASE_USER=guceaifif
+      - DJANGO_DATABASE_PASSWORD=${GUCEAIFIF_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_24:
+    build: .
+    container_name: pirra_24
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=kaviam.pirra.local
+      - DJANGO_DATABASE=kaviam
+      - DJANGO_DATABASE_USER=kaviam
+      - DJANGO_DATABASE_PASSWORD=${KAVIAM_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_25:
+    build: .
+    container_name: pirra_25
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=bicisvla.pirra.local
+      - DJANGO_DATABASE=bicisvla
+      - DJANGO_DATABASE_USER=bicisvla
+      - DJANGO_DATABASE_PASSWORD=${BICISVLA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_26:
+    build: .
+    container_name: pirra_26
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=astethic.pirra.local
+      - DJANGO_DATABASE=astethic
+      - DJANGO_DATABASE_USER=astethic
+      - DJANGO_DATABASE_PASSWORD=${ASTETHIC_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_27:
+    build: .
+    container_name: pirra_27
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=fmashop.pirra.local
+      - DJANGO_DATABASE=fmashop
+      - DJANGO_DATABASE_USER=fmashop
+      - DJANGO_DATABASE_PASSWORD=${FMASHOP_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_28:
+    build: .
+    container_name: pirra_28
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=losoriginales.pirra.local
+      - DJANGO_DATABASE=losoriginales
+      - DJANGO_DATABASE_USER=losoriginales
+      - DJANGO_DATABASE_PASSWORD=${LOSORIGINALES_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_29:
+    build: .
+    container_name: pirra_29
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=losteros.pirra.local
+      - DJANGO_DATABASE=losteros
+      - DJANGO_DATABASE_USER=losteros
+      - DJANGO_DATABASE_PASSWORD=${LOSTEROS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_30:
+    build: .
+    container_name: pirra_30
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=miimovil.pirra.local
+      - DJANGO_DATABASE=miimovil
+      - DJANGO_DATABASE_USER=miimovil
+      - DJANGO_DATABASE_PASSWORD=${MIIMOVIL_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_31:
+    build: .
+    container_name: pirra_31
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=ponogo.pirra.local
+      - DJANGO_DATABASE=ponogo
+      - DJANGO_DATABASE_USER=ponogo
+      - DJANGO_DATABASE_PASSWORD=${PONOGO_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_32:
+    build: .
+    container_name: pirra_32
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=tatomeroboelzapato.pirra.local
+      - DJANGO_DATABASE=tatomeroboelzapato
+      - DJANGO_DATABASE_USER=tatomeroboelzapato
+      - DJANGO_DATABASE_PASSWORD=${TATOMEROBOELZAPATO_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_33:
+    build: .
+    container_name: pirra_33
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=vintageneptuno.pirra.local
+      - DJANGO_DATABASE=vintageneptuno
+      - DJANGO_DATABASE_USER=vintageneptuno
+      - DJANGO_DATABASE_PASSWORD=${VINTAGENEPTUNO_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_34:
+    build: .
+    container_name: pirra_34
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=freesports.pirra.local
+      - DJANGO_DATABASE=freesports
+      - DJANGO_DATABASE_USER=freesports
+      - DJANGO_DATABASE_PASSWORD=${FREESPORTS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_35:
+    build: .
+    container_name: pirra_35
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=aerocondor.pirra.local
+      - DJANGO_DATABASE=aerocondor
+      - DJANGO_DATABASE_USER=aerocondor
+      - DJANGO_DATABASE_PASSWORD=${AEROCONDOR_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_36:
+    build: .
+    container_name: pirra_36
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=gamehouse.pirra.local
+      - DJANGO_DATABASE=gamehouse
+      - DJANGO_DATABASE_USER=gamehouse
+      - DJANGO_DATABASE_PASSWORD=${GAMEHOUSE_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_37:
+    build: .
+    container_name: pirra_37
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=up.pirra.local
+      - DJANGO_DATABASE=up
+      - DJANGO_DATABASE_USER=up
+      - DJANGO_DATABASE_PASSWORD=${UP_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_38:
+    build: .
+    container_name: pirra_38
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=lafldsmdfr.pirra.local
+      - DJANGO_DATABASE=lafldsmdfr
+      - DJANGO_DATABASE_USER=lafldsmdfr
+      - DJANGO_DATABASE_PASSWORD=${LAFLDSMDFR_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_39:
+    build: .
+    container_name: pirra_39
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=mydcell.pirra.local
+      - DJANGO_DATABASE=mydcell
+      - DJANGO_DATABASE_USER=mydcell
+      - DJANGO_DATABASE_PASSWORD=${MYDCELL_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_40:
+    build: .
+    container_name: pirra_40
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=modcelu.pirra.local
+      - DJANGO_DATABASE=modcelu
+      - DJANGO_DATABASE_USER=modcelu
+      - DJANGO_DATABASE_PASSWORD=${MODCELU_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_41:
+    build: .
+    container_name: pirra_41
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=sportwear.pirra.local
+      - DJANGO_DATABASE=sportwear
+      - DJANGO_DATABASE_USER=sportwear
+      - DJANGO_DATABASE_PASSWORD=${SPORTWEAR_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_42:
+    build: .
+    container_name: pirra_42
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=fugagor.pirra.local
+      - DJANGO_DATABASE=fugagor
+      - DJANGO_DATABASE_USER=fugagor
+      - DJANGO_DATABASE_PASSWORD=${FUGAGOR_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_43:
+    build: .
+    container_name: pirra_43
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=programacióntecnologica.pirra.local
+      - DJANGO_DATABASE=programacióntecnologica
+      - DJANGO_DATABASE_USER=programacióntecnologica
+      - DJANGO_DATABASE_PASSWORD=${PROGRAMACIÓNTECNOLOGICA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_44:
+    build: .
+    container_name: pirra_44
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=armateesesanguchito.pirra.local
+      - DJANGO_DATABASE=armateesesanguchito
+      - DJANGO_DATABASE_USER=armateesesanguchito
+      - DJANGO_DATABASE_PASSWORD=${ARMATEESESANGUCHITO_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_45:
+    build: .
+    container_name: pirra_45
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=hyperpc.pirra.local
+      - DJANGO_DATABASE=hyperpc
+      - DJANGO_DATABASE_USER=hyperpc
+      - DJANGO_DATABASE_PASSWORD=${HYPERPC_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_46:
+    build: .
+    container_name: pirra_46
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=lasantadelseñor.pirra.local
+      - DJANGO_DATABASE=lasantadelseñor
+      - DJANGO_DATABASE_USER=lasantadelseñor
+      - DJANGO_DATABASE_PASSWORD=${LASANTADELSEÑOR_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_47:
+    build: .
+    container_name: pirra_47
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=modayoutfits.pirra.local
+      - DJANGO_DATABASE=modayoutfits
+      - DJANGO_DATABASE_USER=modayoutfits
+      - DJANGO_DATABASE_PASSWORD=${MODAYOUTFITS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_48:
+    build: .
+    container_name: pirra_48
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=donpepitobags.pirra.local
+      - DJANGO_DATABASE=donpepitobags
+      - DJANGO_DATABASE_USER=donpepitobags
+      - DJANGO_DATABASE_PASSWORD=${DONPEPITOBAGS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_49:
+    build: .
+    container_name: pirra_49
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=rayo95.pirra.local
+      - DJANGO_DATABASE=rayo95
+      - DJANGO_DATABASE_USER=rayo95
+      - DJANGO_DATABASE_PASSWORD=${RAYO95_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_50:
+    build: .
+    container_name: pirra_50
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=smellsliketeenspirit.pirra.local
+      - DJANGO_DATABASE=smellsliketeenspirit
+      - DJANGO_DATABASE_USER=smellsliketeenspirit
+      - DJANGO_DATABASE_PASSWORD=${SMELLSLIKETEENSPIRIT_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_51:
+    build: .
+    container_name: pirra_51
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=artenea.pirra.local
+      - DJANGO_DATABASE=artenea
+      - DJANGO_DATABASE_USER=artenea
+      - DJANGO_DATABASE_PASSWORD=${ARTENEA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_52:
+    build: .
+    container_name: pirra_52
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=condonman.pirra.local
+      - DJANGO_DATABASE=condonman
+      - DJANGO_DATABASE_USER=condonman
+      - DJANGO_DATABASE_PASSWORD=${CONDONMAN_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_53:
+    build: .
+    container_name: pirra_53
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=mlnindumentariadeportiva.pirra.local
+      - DJANGO_DATABASE=mlnindumentariadeportiva
+      - DJANGO_DATABASE_USER=mlnindumentariadeportiva
+      - DJANGO_DATABASE_PASSWORD=${MLNINDUMENTARIADEPORTIVA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_54:
+    build: .
+    container_name: pirra_54
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=electroflows.pirra.local
+      - DJANGO_DATABASE=electroflows
+      - DJANGO_DATABASE_USER=electroflows
+      - DJANGO_DATABASE_PASSWORD=${ELECTROFLOWS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_55:
+    build: .
+    container_name: pirra_55
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=valleautomotriz.pirra.local
+      - DJANGO_DATABASE=valleautomotriz
+      - DJANGO_DATABASE_USER=valleautomotriz
+      - DJANGO_DATABASE_PASSWORD=${VALLEAUTOMOTRIZ_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_56:
+    build: .
+    container_name: pirra_56
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=pieded1os.pirra.local
+      - DJANGO_DATABASE=pieded1os
+      - DJANGO_DATABASE_USER=pieded1os
+      - DJANGO_DATABASE_PASSWORD=${PIEDED1OS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_57:
+    build: .
+    container_name: pirra_57
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=topsoul.pirra.local
+      - DJANGO_DATABASE=topsoul
+      - DJANGO_DATABASE_USER=topsoul
+      - DJANGO_DATABASE_PASSWORD=${TOPSOUL_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_58:
+    build: .
+    container_name: pirra_58
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=zapashop.pirra.local
+      - DJANGO_DATABASE=zapashop
+      - DJANGO_DATABASE_USER=zapashop
+      - DJANGO_DATABASE_PASSWORD=${ZAPASHOP_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_59:
+    build: .
+    container_name: pirra_59
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=skishop.pirra.local
+      - DJANGO_DATABASE=skishop
+      - DJANGO_DATABASE_USER=skishop
+      - DJANGO_DATABASE_PASSWORD=${SKISHOP_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_60:
+    build: .
+    container_name: pirra_60
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=herb.pirra.local
+      - DJANGO_DATABASE=herb
+      - DJANGO_DATABASE_USER=herb
+      - DJANGO_DATABASE_PASSWORD=${HERB_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_61:
+    build: .
+    container_name: pirra_61
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=jupiter.pirra.local
+      - DJANGO_DATABASE=jupiter
+      - DJANGO_DATABASE_USER=jupiter
+      - DJANGO_DATABASE_PASSWORD=${JUPITER_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_62:
+    build: .
+    container_name: pirra_62
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=ballcok.pirra.local
+      - DJANGO_DATABASE=ballcok
+      - DJANGO_DATABASE_USER=ballcok
+      - DJANGO_DATABASE_PASSWORD=${BALLCOK_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_63:
+    build: .
+    container_name: pirra_63
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=perfumelandia.pirra.local
+      - DJANGO_DATABASE=perfumelandia
+      - DJANGO_DATABASE_USER=perfumelandia
+      - DJANGO_DATABASE_PASSWORD=${PERFUMELANDIA_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_64:
+    build: .
+    container_name: pirra_64
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=discostu.pirra.local
+      - DJANGO_DATABASE=discostu
+      - DJANGO_DATABASE_USER=discostu
+      - DJANGO_DATABASE_PASSWORD=${DISCOSTU_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_65:
+    build: .
+    container_name: pirra_65
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=dinotoys.pirra.local
+      - DJANGO_DATABASE=dinotoys
+      - DJANGO_DATABASE_USER=dinotoys
+      - DJANGO_DATABASE_PASSWORD=${DINOTOYS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_66:
+    build: .
+    container_name: pirra_66
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=tkjenny.pirra.local
+      - DJANGO_DATABASE=tkjenny
+      - DJANGO_DATABASE_USER=tkjenny
+      - DJANGO_DATABASE_PASSWORD=${TKJENNY_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_67:
+    build: .
+    container_name: pirra_67
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=puntocel.pirra.local
+      - DJANGO_DATABASE=puntocel
+      - DJANGO_DATABASE_USER=puntocel
+      - DJANGO_DATABASE_PASSWORD=${PUNTOCEL_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_68:
+    build: .
+    container_name: pirra_68
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=viajesacv.pirra.local
+      - DJANGO_DATABASE=viajesacv
+      - DJANGO_DATABASE_USER=viajesacv
+      - DJANGO_DATABASE_PASSWORD=${VIAJESACV_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_69:
+    build: .
+    container_name: pirra_69
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=deauwits.pirra.local
+      - DJANGO_DATABASE=deauwits
+      - DJANGO_DATABASE_USER=deauwits
+      - DJANGO_DATABASE_PASSWORD=${DEAUWITS_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_70:
+    build: .
+    container_name: pirra_70
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=tecnocell.pirra.local
+      - DJANGO_DATABASE=tecnocell
+      - DJANGO_DATABASE_USER=tecnocell
+      - DJANGO_DATABASE_PASSWORD=${TECNOCELL_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_71:
+    build: .
+    container_name: pirra_71
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=convell.pirra.local
+      - DJANGO_DATABASE=convell
+      - DJANGO_DATABASE_USER=convell
+      - DJANGO_DATABASE_PASSWORD=${CONVELL_DB_PASSWORD}
+    expose:
+      - "8080"
+    mem_limit: 160m
+
+  pirra_72:
+    build: .
+    container_name: pirra_72
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DJANGO_SITE_URL=baratiphone.pirra.local
+      - DJANGO_DATABASE=baratiphone
+      - DJANGO_DATABASE_USER=baratiphone
+      - DJANGO_DATABASE_PASSWORD=${BARATIPHONE_DB_PASSWORD}
     expose:
       - "8080"
     mem_limit: 160m
