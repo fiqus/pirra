@@ -613,10 +613,10 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - DJANGO_SITE_URL=programacióntecnologica.pirra.local
-      - DJANGO_DATABASE=programacióntecnologica
-      - DJANGO_DATABASE_USER=programacióntecnologica
-      - DJANGO_DATABASE_PASSWORD=${PROGRAMACIÓNTECNOLOGICA_DB_PASSWORD}
+      - DJANGO_SITE_URL=programaciontecnologica.pirra.local
+      - DJANGO_DATABASE=programaciontecnologica
+      - DJANGO_DATABASE_USER=programaciontecnologica
+      - DJANGO_DATABASE_PASSWORD=${PROGRAMACIONTECNOLOGICA_DB_PASSWORD}
     expose:
       - "8080"
     mem_limit: 160m
