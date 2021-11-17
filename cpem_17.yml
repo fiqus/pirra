@@ -655,10 +655,10 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - DJANGO_SITE_URL=lasantadelseñor.pirra.local
-      - DJANGO_DATABASE=lasantadelseñor
-      - DJANGO_DATABASE_USER=lasantadelseñor
-      - DJANGO_DATABASE_PASSWORD=${LASANTADELSEÑOR_DB_PASSWORD}
+      - DJANGO_SITE_URL=lasantadelsenor.pirra.local
+      - DJANGO_DATABASE=lasantadelsenor
+      - DJANGO_DATABASE_USER=lasantadelsenor
+      - DJANGO_DATABASE_PASSWORD=${LASANTADELSENOR_DB_PASSWORD}
     expose:
       - "8080"
     mem_limit: 160m
