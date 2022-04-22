@@ -23,7 +23,7 @@ Pillow==6.2.1
 psycopg2-binary==2.8.4
 pyaml==19.4.1
 pyPdf==1.13
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 python-dateutil==2.8.1
 python-stdnum==1.12
 pytz==2019.3
