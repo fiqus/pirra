@@ -30,7 +30,7 @@
     "jquery": "^3.4.1",
     "jquery-form": "^4.2.2",
     "jquery-mask-plugin": "^1.14.16",
-    "jquery-validation": "^1.19.1",
+    "jquery-validation": "^1.19.4",
     "lodash": "^4.17.15",
     "pace-progressbar": "^1.0.9",
     "perfect-scrollbar": "^1.4.0",
