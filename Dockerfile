@@ -15,7 +15,7 @@ WORKDIR /usr/src/app
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y \
         build-essential openssl libssl-dev swig libtiff5-dev libjpeg8-dev zlib1g-dev \
         libfreetype6-dev liblcms2-dev libwebp-dev tcl-dev tk-dev libpq-dev python-dev \
-        python3-pip
+        python3-pip npm
 
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y uwsgi uwsgi-plugin-python3
 
@@ -29,9 +29,12 @@ COPY . .
 
 ENV DJANGO_SETTINGS_MODULE=pirra_web.settings.prod
 
+RUN npm install
+
+RUN npm run build
+
 CMD [ "uwsgi", \
-               #"--socket", "0.0.0.0:8080", \
-               "--http-socket", "0.0.0.0:8080", \
+               "--http-socket", "0.0.0.0:5000", \
                "--plugins", "python3", \
                "--protocol", "uwsgi", \
                "--wsgi", "pirra_web.wsgi:application" ]
