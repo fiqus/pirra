@@ -20,7 +20,7 @@ httplib2==0.14.0
 kombu==4.6.6
 M2Crypto==0.35.2
 Pillow==6.2.1
-psycopg2-binary==2.8.4
+psycopg2-binary==2.8.6
 pyaml==19.4.1
 pyPdf==1.13
 PyPDF2==1.26.0
