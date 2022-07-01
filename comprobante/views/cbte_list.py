@@ -6,6 +6,7 @@ from django_tables2 import Table, Column, CheckBoxColumn, TemplateColumn, Single
 from afip.models import TipoComprobante
 from comprobante.models import Comprobante
 from empresa.models import Cliente, Empresa
+from user.models import ProxiUser
 
 COMPROBANTES_PAGE_SIZE = 25
 
@@ -78,7 +79,8 @@ class ComprobanteList(SingleTableView):
             return HttpResponseBadRequest()
 
     def get_queryset(self):
-        queryset = Comprobante.objects
+        proxi_user = ProxiUser.objects.get(user=self.request.user)
+        queryset = Comprobante.objects.filter(empresa=proxi_user.company)
         if hasattr(self.form, "cleaned_data"):
             if self.form.cleaned_data["tipo_cbte"]:
                 queryset = queryset.filter(tipo_cbte=self.form.cleaned_data["tipo_cbte"])
