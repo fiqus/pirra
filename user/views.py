@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User, Group
-from django.forms import ModelForm, CharField, TextInput, ModelMultipleChoiceField, CheckboxSelectMultiple
+from django.forms import ModelForm, CharField, ModelMultipleChoiceField, CheckboxSelectMultiple
 from django.shortcuts import render, redirect
 
 from afip.models import TipoComprobante, ResolucionGeneral
@@ -76,12 +76,6 @@ class CompanyForm(ModelForm):
 
         # Si el usuario no tiene un plan EDI oculto la opcion de empresa con EDI
         self.fields['utiliza_edi'].widget = forms.HiddenInput()
-
-    def _clean_readonly_field(self, fname):
-        return self.initial[fname]
-
-    def clean_nro_doc(self):
-        return self.instance.nro_doc
 
     class Meta:
         model = Empresa
