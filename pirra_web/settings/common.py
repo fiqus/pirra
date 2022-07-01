@@ -139,6 +139,7 @@ INSTALLED_APPS = (
     'help',
     'empresa',
     'comprobante',
+    'user'
 )
 
 DEMO = False

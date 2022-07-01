@@ -7,6 +7,7 @@ from afip.models import CondicionIIBB, CondicionIva, Idioma, AlicuotaIva, Incote
     ResolucionGeneral, Opcional, OpcionOpcional
 from help.models import FrequentlyAskedQuestion, LatestNews
 from main.admin_views import consultar_comprobante, tokens_admin, create_token, delete_token
+from user.models import ProxiUser
 
 admin.site.register(CondicionIIBB)
 admin.site.register(CondicionIva)
@@ -27,6 +28,7 @@ admin.site.register(Tributo)
 admin.site.register(ResolucionGeneral)
 admin.site.register(Opcional)
 admin.site.register(OpcionOpcional)
+admin.site.register(ProxiUser)
 
 
 class MyModelAdmin(SortableAdminMixin, ModelAdmin):

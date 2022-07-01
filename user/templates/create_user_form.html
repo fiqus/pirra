@@ -1,0 +1,8 @@
+{% block content %}
+<h2>Crear Cuenta</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Registrar</button>
+</form>
+{% endblock %}
