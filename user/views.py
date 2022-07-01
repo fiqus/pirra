@@ -2,7 +2,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 from empresa.models import Empresa
 from user.models import ProxiUser
@@ -16,7 +16,9 @@ class CreateUserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'groups')
+
+    groups = forms.ModelMultipleChoiceField(queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple(), label="Permisos")
 
 
 def create_user(request):
@@ -28,9 +30,9 @@ def create_user(request):
             raw_password = form.cleaned_data.get('password1')
             dni = form.cleaned_data.get('dni')
             company_name = form.cleaned_data.get('company')
-            print(company_name)
             company = Empresa.objects.get(nombre=company_name)
             user = authenticate(username=username, password=raw_password)
+            user.groups.set(form.cleaned_data["groups"])
             ProxiUser.objects.create(user=user, dni=dni, company=company)
             login(request, user)
             return redirect("index")
