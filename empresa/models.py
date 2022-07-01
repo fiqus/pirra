@@ -92,6 +92,7 @@ class BajaLogicaClass(models.Model):
     activo = models.BooleanField(default=True)
     fecha_baja = models.DateTimeField(null=True, blank=True)
     usuario_baja = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    empresa = models.ForeignKey(Empresa, null=True, blank=True, on_delete=models.CASCADE)
 
     class Meta:
         abstract = True

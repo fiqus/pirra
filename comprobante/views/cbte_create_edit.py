@@ -19,6 +19,7 @@ from comprobante.models import Comprobante, DetalleComprobante, TributoComproban
 from comprobante.views.utils import tiene_detalles_creados, importe_cbte_asoc_valido
 from empresa.models import Empresa, PuntoDeVenta, Cliente, Producto
 from main.widgets import SelectAlicuotaIva
+from user.models import ProxiUser
 
 logger = logging.getLogger(__name__)
 

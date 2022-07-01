@@ -5,9 +5,20 @@ from django.contrib.admin import ModelAdmin
 from afip.models import CondicionIIBB, CondicionIva, Idioma, AlicuotaIva, Incoterms, Moneda, PaisDestino, \
     TipoComprobante, TipoComprobanteAlicuotaIva, Unidad, TipoExportacion, TipoDoc, CondicionVenta, Padron, Tributo, \
     ResolucionGeneral, Opcional, OpcionOpcional
+from comprobante.models import Comprobante
+from empresa.models import Empresa
 from help.models import FrequentlyAskedQuestion, LatestNews
-from main.admin_views import consultar_comprobante, tokens_admin, create_token, delete_token
 from user.models import ProxiUser
+
+
+class ComprobanteInline(admin.TabularInline):
+    model = Comprobante
+
+
+class EmpresaAdmin(admin.ModelAdmin):
+    inlines = [
+        ComprobanteInline,
+    ]
 
 admin.site.register(CondicionIIBB)
 admin.site.register(CondicionIva)
@@ -29,6 +40,7 @@ admin.site.register(ResolucionGeneral)
 admin.site.register(Opcional)
 admin.site.register(OpcionOpcional)
 admin.site.register(ProxiUser)
+admin.site.register(Empresa, EmpresaAdmin)
 
 
 class MyModelAdmin(SortableAdminMixin, ModelAdmin):

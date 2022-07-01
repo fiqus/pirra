@@ -30,6 +30,8 @@ from django.utils.safestring import mark_safe
 import logging
 import codecs
 
+from user.models import ProxiUser
+
 logger = logging.getLogger(__name__)
 
 permisos_explicacion = mark_safe(
@@ -256,6 +258,12 @@ class PuntoDeVentaCreate(CreateView):
     @method_decorator(permission_required("empresa.add_puntodeventa", raise_exception=True))
     def dispatch(self, *args, **kwargs):
         return super(PuntoDeVentaCreate, self).dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        proxi_user = ProxiUser.objects.get(user=self.request.user)
+        company = proxi_user.company
+        form.instance.empresa = company
+        return super().form_valid(form)
 
 
 punto_de_venta_create = login_required(PuntoDeVentaCreate.as_view())
