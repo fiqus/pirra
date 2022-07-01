@@ -1,0 +1,33 @@
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{# Display a form #}
+<div class="container w-50 pt-4 pb-4">
+    <h1>Crear mi Empresa Pirra</h1>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5>{% block form_title %}{% endblock %}</h5>
+                    {% block card-body %}{% endblock %}
+                    {% block form_container %}
+                    <form class="form" method="post">
+                        {% csrf_token %}
+                        {% block form %}
+                        {% bootstrap_form form %}
+                        {% endblock %}
+                        {% buttons submit="Crear Empresa" %}{% endbuttons %}
+                    </form>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
