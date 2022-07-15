@@ -96,13 +96,6 @@
                                     </a>
                                 </li>
                             {% endif %}
-                            {% if perms.auth.add_user %}
-                                <li class="nav-item usuario-menu">
-                                    <a class="nav-link" href="{% url "user.list" %}">
-                                        <i class="nav-icon fa fa-address-book"></i> Usuarios
-                                    </a>
-                                </li>
-                            {% endif %}
                         </ul>
                     </li>
                 {% endif %}
