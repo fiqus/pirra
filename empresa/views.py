@@ -244,7 +244,11 @@ class PuntoDeVentaList(SingleTableView):
     model = PuntoDeVenta
     table_class = PuntoDeVentaTable
     queryset = PuntoDeVenta.objects.filter(activo=True)
-   # queryset = PuntoDeVenta.objects.all()
+
+    def get_queryset(self):
+        proxi_user = ProxiUser.objects.get(user=self.request.user)
+        company = proxi_user.company
+        return PuntoDeVenta.objects.filter(activo=True, empresa=company)
 
 
 punto_de_venta_list = login_required(PuntoDeVentaList.as_view())
