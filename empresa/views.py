@@ -119,7 +119,9 @@ class EmpresaUpdate(MessageUpdateView):
     success_url = "/empresa/empresa"
 
     def get_object(self, queryset=None):
-        return Empresa.objects.first()
+        proxy_user = ProxiUser.objects.get(user=self.request.user)
+        empresa_id = proxy_user.company.id
+        return Empresa.objects.get(pk=empresa_id)
 
     @method_decorator(permission_required("empresa.change_empresa", raise_exception=True))
     def dispatch(self, *args, **kwargs):
