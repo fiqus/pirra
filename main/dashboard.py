@@ -64,7 +64,7 @@ def crear_consumidor_final():
     cliente.save()
 
 
-def get_cbtes(date_from, date_to):
+def get_cbtes(date_from, date_to, empresa):
     return Comprobante.objects.order_by('fecha_emision') \
         .prefetch_related('detallecomprobante_set') \
         .prefetch_related('tributocomprobante_set') \
@@ -73,13 +73,13 @@ def get_cbtes(date_from, date_to):
         .prefetch_related('cliente') \
         .prefetch_related('detallecomprobante_set__producto') \
         .prefetch_related('detallecomprobante_set__alicuota_iva') \
-        .filter(fecha_emision__gte=date_from, fecha_emision__lte=date_to).all()
+        .filter(fecha_emision__gte=date_from, fecha_emision__lte=date_to, empresa=empresa).all()
 
 
-def get_fact_year(now):
+def get_fact_year(now, empresa):
     from_january = date(datetime.now().year, 1, 1)
     to_now = date(now.year, now.month, now.day)
-    cbtes_year = get_cbtes(from_january, to_now)
+    cbtes_year = get_cbtes(from_january, to_now, empresa)
     fact_year = 0
 
     for cbte in cbtes_year:
@@ -91,7 +91,7 @@ def get_fact_year(now):
     return fact_year
 
 
-def get_dashboard_data():
+def get_dashboard_data(empresa):
     now = datetime.now()
     year = now.year - 1
     month = now.month + 1
@@ -104,8 +104,8 @@ def get_dashboard_data():
     if Cliente.objects.count() == 0:
         crear_consumidor_final()
 
-    cbtes = get_cbtes(date_from, date_to)
-    fact_year = get_fact_year(now)
+    cbtes = get_cbtes(date_from, date_to, empresa)
+    fact_year = get_fact_year(now, empresa)
 
     month_gen = get_past_months(now.year, now.month)
     day_gen = get_past_days(now.year, now.month, now.day)

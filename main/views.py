@@ -18,6 +18,6 @@ def index_customer(request):
         'ptos_vta': PuntoDeVenta.objects.filter(empresa=empresa, activo=True).count(),
         'empresa_tipos_cbte': empresa.tipos_cbte.count(),
         'empresa_concepto': 1 if empresa.concepto else 0,
-        'dashboard_data': get_dashboard_data(),
+        'dashboard_data': get_dashboard_data(empresa),
     }
     return render(request, 'index_customer.html', ctx)
