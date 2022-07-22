@@ -44,6 +44,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - static:/static
+      - .:/root/pirra
     ports:
       - 80:80
       - 443:443
