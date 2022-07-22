@@ -26,8 +26,6 @@ services:
   django:
     build: .
     container_name: django
-    volumes:
-      - .:/usr/src/app
     environment:
       - DJANGO_DATABASE=pirra
       - DJANGO_DATABASE_USER=postgres
@@ -36,6 +34,7 @@ services:
     expose:
       - "5000"
     volumes:
+      - .:/usr/src/app
       - static:/usr/src/app/static
 
   nginx:
