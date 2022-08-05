@@ -145,7 +145,7 @@ class ComprobanteForm(ConditionalValidateForm):
         self.fields['empresa'].choices = Empresa.objects.filter(pk=empresa.id)
         self.fields['cliente'].empty_label = ""
         self.fields['concepto'].initial = empresa.concepto
-        self.fields['punto_vta'].queryset = PuntoDeVenta.objects.filter(activo=True)
+        self.fields['punto_vta'].queryset = PuntoDeVenta.objects.filter(activo=True, empresa=empresa)
         # self.fields['punto_vta'].queryset = PuntoDeVenta.objects.all()
         # self.fields['cliente'].queryset = Cliente.objects.all()
         self.fields['cliente'].queryset = Cliente.objects.filter(activo=True)
