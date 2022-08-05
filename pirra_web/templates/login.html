@@ -1,0 +1,40 @@
+{% extends "layout_empty.html" %}
+{% load bootstrap4 %}
+
+{% block main %}
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card p-4">
+        <div class="card-body">
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="hidden" name="next" value="{{ next }}"/>
+            <div class="row">
+              <div class="col-6">
+                <button class="btn btn-primary px-4" type="submit">Login</button>
+              </div>
+              <div class="col-6 text-right">
+                <a class="btn btn-link px-0" href="{% url 'password_reset' %}">
+                  Recuperar Contraseña?
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-1">
+    <div class="col-6">
+      <div class="card p-1">
+        <div class="card-body text-center">
+          <h5 class="pt-3">Nuevo en Pirra? <a href="{% url 'create_company' %}">Create una Empresa</a></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
