@@ -136,9 +136,13 @@ class ComprobanteForm(ConditionalValidateForm):
         queryset=Comprobante.objects.filter(tipo_cbte=TipoComprobante.FACTURA_E_PK).exclude(cae=''), required=False,
         label="Factura asociada", empty_label="Ingrese numero")
 
-    def __init__(self, *args, **kwargs):
-        empresa = Empresa.objects.first()
+    def __init__(self, user, *args, **kwargs):
+        proxi_user = ProxiUser.objects.get(user=user)
+        empresa = proxi_user.company
         super(ComprobanteForm, self).__init__(*args, **kwargs)
+        self.fields['empresa'].value = Empresa.objects.filter(pk=empresa.id)
+        self.fields['empresa'].initial = empresa.id
+        self.fields['empresa'].choices = Empresa.objects.filter(pk=empresa.id)
         self.fields['cliente'].empty_label = ""
         self.fields['concepto'].initial = empresa.concepto
         self.fields['punto_vta'].queryset = PuntoDeVenta.objects.filter(activo=True)
@@ -278,7 +282,8 @@ def comprobante_create_edit(request, pk=None):
         "unidad": p.unidad_id} for p in Producto.objects.filter(activo=True)})
         # "unidad": p.unidad_id} for p in Producto.objects.all()})
 
-    empresa = Empresa.objects.first()
+    proxi_user = ProxiUser.objects.get(user=request.user)
+    empresa = proxi_user.company
     opcionales = empresa.get_opcionales()
     rgs = empresa.get_resoluciones_generales()
 
@@ -326,7 +331,7 @@ def comprobante_create_edit(request, pk=None):
     tiene_cbtes = empresa.tieneTiposCbte
     # tiene_puntos_de_venta = PuntoDeVenta.objects.filter(activo=True).count() > 0
     tiene_puntos_de_venta = PuntoDeVenta.objects.count() > 0
-    form = ComprobanteForm(request.POST or None, instance=comprobante)
+    form = ComprobanteForm(request.user, request.POST or None, instance=comprobante)
 
     formset_detalle = DetalleComprobanteFormSet(request.POST or None, queryset=detalles, prefix='detalles')
 

@@ -6,6 +6,7 @@ from afip.models import AlicuotaIva, TipoComprobante, Concepto
 from comprobante.models import Comprobante
 from comprobante.vendor.pyafipws.ws.utils import date
 from main.redis import get_redis_client
+from user.models import ProxiUser
 
 __author__ = 'mlambir'
 
@@ -217,14 +218,17 @@ def generar_cae():
 
     return cae
 
-def sig_nro_cbte():
-    return str(Comprobante.objects.exclude(cae="").count() + 1)
+def sig_nro_cbte(user):
+    proxi_user = ProxiUser.objects.get(user=user.id)
+    queryset = Comprobante.objects.filter(empresa=proxi_user.company)
+    
+    return str(queryset.exclude(cae="").count() + 1)
 
 class Ret():
-    def __init__(self):
+    def __init__(self, user):
         self.Resultado = "A"
         self.CAE = generar_cae()
-        self.CbteNro = sig_nro_cbte()
+        self.CbteNro = sig_nro_cbte(user)
         self.Vencimiento = "20250325"
         self.Resultado = ""
         self.Motivo = ""
@@ -233,8 +237,8 @@ class Ret():
         self.Errores = ""
 
 
-def autorizar(cbte, _certificate, _private_key):
-    return Ret()
+def autorizar(cbte, _certificate, _private_key, user):
+    return Ret(user)
 
 
 def get_cert_and_key(certificate, private_key):

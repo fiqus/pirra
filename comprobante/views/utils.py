@@ -13,8 +13,9 @@ def get_normalized_ascii(text):
     return str(unicodedata.normalize('NFKD', text).encode('ascii', 'ignore'))
 
 
-def autorizar(comprobante, _):
-    return ws_helper.autorizar(comprobante, settings.CERTIFICATE, settings.PRIVATE_KEY)
+def autorizar(comprobante, request):
+    user = request.user
+    return ws_helper.autorizar(comprobante, settings.CERTIFICATE, settings.PRIVATE_KEY, user)
 
 
 def tiene_detalles_creados(form_data):

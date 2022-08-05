@@ -317,9 +317,11 @@ punto_de_venta_delete = login_required(PuntoDeVentaDelete.as_view())
 @csrf_exempt
 @login_required
 def get_ptos_venta_afip(request):
+    proxi_user = ProxiUser.objects.get(user=request.user)
+    empresa = proxi_user.company
     if request.method == 'POST':
         try:
-            ptos_venta_importados = get_ptos_venta(request, Empresa.objects.first().nro_doc)
+            ptos_venta_importados = get_ptos_venta(request, empresa.nro_doc)
             if not ptos_venta_importados:
                 messages.error(request, "No hay puntos de venta para importar.")
             else:
