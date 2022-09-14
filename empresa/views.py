@@ -2,7 +2,6 @@
 import datetime
 
 from django.urls import reverse_lazy, reverse
-
 from afip.views import get_ptos_venta
 from comprobante.csv_import import import_product_csv, import_client_csv
 from comprobante.models import Comprobante, DetalleComprobante, DetalleOrdenCompra, OrdenCompra
@@ -14,7 +13,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User, Group
 from django.db.models import F
 from django.forms import ModelForm, Form, CharField, TextInput, ModelMultipleChoiceField, CheckboxSelectMultiple, \
-    ClearableFileInput, FileField
+    ClearableFileInput, FileField, HiddenInput
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
@@ -500,6 +499,9 @@ class ProductoForm(ModelForm):
         fields = ["codigo", "codigo_barras_nro", "nombre", "ingresa_precio_final", "precio_final", "precio_unit",
                   "alicuota_iva", "unidad"]
         model = Producto
+        widgets = {
+            'empresa': HiddenInput
+        }
 
     ingresa_precio_final = forms.BooleanField(label="Preferís ingresar precio final?", required=False)
     alicuota_iva = forms.ModelChoiceField(queryset=AlicuotaIva.objects.order_by("id_afip"), required=False,
@@ -546,7 +548,8 @@ class ProductoList(SingleTableView):
             return HttpResponseBadRequest()
 
     def get_queryset(self):
-        queryset = super(ProductoList, self).get_queryset()
+        proxi_user = ProxiUser.objects.get(user=self.request.user)
+        queryset = Producto.objects.filter(empresa=proxi_user.company)
         if hasattr(self.form, "cleaned_data"):
             if self.form.cleaned_data["nombre"]:
                 queryset = queryset.filter(nombre__icontains=self.form.cleaned_data["nombre"])
@@ -594,6 +597,12 @@ class ProductoCreate(CreateView):
         messages.error(self.request,
                         'Su usuario con los permisos necesarios para realizar esta accion.')
         return HttpResponseRedirect(reverse_lazy('producto.list'))
+
+    def form_valid(self, form):
+        proxi_user = ProxiUser.objects.get(user=self.request.user)
+        company = proxi_user.company
+        form.instance.empresa = company
+        return super().form_valid(form)
 
 producto_create = login_required(ProductoCreate.as_view())
 
